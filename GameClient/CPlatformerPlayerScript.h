@@ -11,5 +11,11 @@ public:
 public:
     virtual void Begin() override;
     virtual void Tick() override;
+
+private:
+    void Move();
+    void Jump();
+    void Shoot(Vec3 pos, Vec3 rot);
+    void Aim(Vec3 rot);
 };
 

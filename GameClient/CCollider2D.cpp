@@ -7,22 +7,16 @@
 CCollider2D::CCollider2D()
 	: Component(COMPONENT_TYPE::COLLIDER2D)
 	, m_Scale(Vec2(1.f, 1.f))
-	, m_OverlapCount(0)
-{
-}
+	, m_OverlapCount(0) {}
 
-CCollider2D::~CCollider2D()
-{
-}
+CCollider2D::~CCollider2D() {}
 
-void CCollider2D::FinalTick()
-{
+void CCollider2D::FinalTick() {
 	Matrix matTran = XMMatrixTranslation(m_Offset.x, m_Offset.y, 0.f);
 	Matrix matScale = XMMatrixScaling(m_Scale.x, m_Scale.y, 0.f);
 
 	m_matWorld = matScale * matTran;
 	m_matWorld *= Transform()->GetWorldMat();
-
 
 	if (0 < m_OverlapCount)
 		DrawDebugRect(m_matWorld, Vec4(1.f, 0.f, 0.f, 1.f), 0.f);
@@ -50,31 +44,25 @@ void CCollider2D::Overlap(Ptr<CCollider2D> _Other) {
 		(m_vecOverCompDel[i].Inst->*m_vecOverCompDel[i].MemFunc)(this, _Other.Get());
 }
 
-void CCollider2D::EndOverlap(Ptr<CCollider2D> _Other)
-{
+void CCollider2D::EndOverlap(Ptr<CCollider2D> _Other) {
 	--m_OverlapCount;
 
 	for (size_t i = 0; i < m_vecEndDel.size(); ++i)
 		(m_vecEndDel[i].Inst->*m_vecEndDel[i].MemFunc)(this, _Other.Get());
 	for (size_t i = 0; i < m_vecEndCompDel.size(); ++i)
 		(m_vecEndCompDel[i].Inst->*m_vecEndCompDel[i].MemFunc)(this, _Other.Get());
-
 }
 
 
-void CCollider2D::AddDynamicBeginOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc)
-{
+void CCollider2D::AddDynamicBeginOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc) {
 	m_vecBeginDel.push_back(COLLISION_DELEGATE{ _Inst , _MemFunc });
 }
 
-void CCollider2D::AddDynamicOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc)
-{
+void CCollider2D::AddDynamicOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc) {
 	m_vecOverDel.push_back(COLLISION_DELEGATE{ _Inst , _MemFunc });
-
 }
 
-void CCollider2D::AddDynamicEndOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc)
-{
+void CCollider2D::AddDynamicEndOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc) {
 	m_vecEndDel.push_back(COLLISION_DELEGATE{ _Inst , _MemFunc });
 }
 

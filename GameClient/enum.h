@@ -4,6 +4,8 @@ namespace ELevelLayer {
 	enum Type {
 		E_Player = 1,
 		E_Ground,
+		E_Obstacle,
+		E_Projectile
 	};
 }
 

@@ -8,7 +8,7 @@
 #include "CollisionMgr.h"
 
 #include "CPlayerScript.h"
-#include "CCamMoveScript.h"
+#include "CTrackingCameraScript.h"
 #include "CPlatformerPlayerScript.h"
 
 LevelMgr::LevelMgr()
@@ -42,7 +42,8 @@ void LevelMgr::Init()
 
 	pObject->AddComponent(new CTransform);
 	pObject->AddComponent(new CCamera);
-	pObject->AddComponent(new CCamMoveScript);
+	auto tracking = new CTrackingCameraScript;
+	pObject->AddComponent(tracking);
 
 	pObject->Camera()->LayerCheckAll();
 	//pObject->Camera()->LayerCheck(0); 
@@ -56,7 +57,8 @@ void LevelMgr::Init()
 	Vec2 vResolution = Device::GetInst()->GetRenderResolution();
 	pObject->Camera()->SetAspectRatio(vResolution.x / vResolution.y); // 종횡비(AspectRatio)
 	pObject->Camera()->SetWidth(vResolution.x);
-	
+	mMainCam = pObject;
+
 	m_CurLevel->AddObject(0, pObject);
 
 	// 바닥 생성
@@ -72,6 +74,33 @@ void LevelMgr::Init()
 	pGround->BillboardRender()->SetBillboardScale(Vec2(2000.f, 50.f));
 	
 	m_CurLevel->AddObject(ELevelLayer::E_Ground, pGround);
+
+	// 벽 생성
+	Ptr<GameObject> leftWall = new GameObject;
+	leftWall->SetName(L"LeftWall");
+
+	leftWall->AddComponent(new CTransform);
+	leftWall->AddComponent(new CBillboardRender);
+	leftWall->AddComponent(new CCollider2D);
+
+	leftWall->Transform()->SetRelativePos(Vec3(-(1000.f + 25.f), 75.f, 0.f));
+	leftWall->Transform()->SetRelativeScale(Vec3(50.f, 1000.f, 0.f));
+	leftWall->BillboardRender()->SetBillboardScale(Vec2(50.f, 1000.f));
+
+	m_CurLevel->AddObject(ELevelLayer::E_Obstacle, leftWall);
+
+	Ptr<GameObject> rightWall = new GameObject;
+	rightWall->SetName(L"RightWall");
+
+	rightWall->AddComponent(new CTransform);
+	rightWall->AddComponent(new CBillboardRender);
+	rightWall->AddComponent(new CCollider2D);
+
+	rightWall->Transform()->SetRelativePos(Vec3((1000.f + 25.f), 75.f, 0.f));
+	rightWall->Transform()->SetRelativeScale(Vec3(50.f, 1000.f, 0.f));
+	rightWall->BillboardRender()->SetBillboardScale(Vec2(50.f, 1000.f));
+
+	m_CurLevel->AddObject(ELevelLayer::E_Obstacle, rightWall);
 
 	// 플레이어 생성
 	Ptr<GameObject> pPlayer = new GameObject;
@@ -90,9 +119,40 @@ void LevelMgr::Init()
 	pPlayer->MeshRender()->SetMesh(AssetMgr::GetInst()->Find<AMesh>(L"RectMesh"));
 	pPlayer->MeshRender()->SetMtrl(AssetMgr::GetInst()->Find<AMaterial>(L"Std2DMtrl"));
 
+	// 플레이어 손 생성
+	Ptr<GameObject> pArm = new GameObject;
+	pArm->SetName(L"Arm");
+	pArm->AddComponent(new CTransform);
+
+	pArm->Transform()->SetIndependentScale(true);
+
+	Ptr<GameObject> pHand = new GameObject;
+	pHand->SetName(L"Hand");
+	pHand->AddComponent(new CTransform);
+	pHand->AddComponent(new CMeshRender);
+	pHand->AddComponent(new CCollider2D);
+
+	pHand->Transform()->SetRelativePos(Vec3(60.f, 0.f, 0.f));
+	pHand->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 1.f));
+	pHand->Transform()->SetIndependentScale(true);
+
+	pHand->MeshRender()->SetMesh(AssetMgr::GetInst()->Find<AMesh>(L"RectMesh"));
+	pHand->MeshRender()->SetMtrl(AssetMgr::GetInst()->Find<AMaterial>(L"Std2DMtrl"));
+
+	pArm->AddChild(pHand);
+	pPlayer->AddChild(pArm);
+
+	// 플레이어 레벨 추가
 	m_CurLevel->AddObject(ELevelLayer::E_Player, pPlayer);
 
+	// 카메라 타겟 설정
+	tracking->SetTarget(pPlayer);
+
+	// 충돌 설정
 	m_CurLevel->CheckCollisionLayer(ELevelLayer::E_Player, ELevelLayer::E_Ground);
+	m_CurLevel->CheckCollisionLayer(ELevelLayer::E_Player, ELevelLayer::E_Obstacle);
+	m_CurLevel->CheckCollisionLayer(ELevelLayer::E_Ground, ELevelLayer::E_Projectile);
+	m_CurLevel->CheckCollisionLayer(ELevelLayer::E_Obstacle, ELevelLayer::E_Projectile);
 
 	//// 몬스터 생성
 	//Ptr<GameObject> pMonster = new GameObject;

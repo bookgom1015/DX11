@@ -16,6 +16,8 @@ public:
     void AddForce(const Vec3& force);
     void AddImpulse(const Vec3& force);
 
+    void SetVelocity(const Vec3& vel);
+
     bool IsOnGround() const noexcept { return mbGrounded; }
 
 private:
@@ -23,11 +25,15 @@ private:
     void ApplyGravity();
 
     void OnBeginOverlap(CCollider2D* pOwn, CCollider2D* pOther);
+    void OnOverlap(CCollider2D* pOwn, CCollider2D* pOther);
     void OnEndOverlap(CCollider2D* pOwn, CCollider2D* pOther);
 
 private:
     Vec3 mVelocity{};
+    Vec3 mManualVelocity{};
     Vec3 mAccleration{};
+
+    float mDamping{ 0.98f };
 
     bool mbGrounded{};
 };

@@ -1,40 +1,43 @@
-D:\Dx11\GameClient\ALevel.cpp;D:\Dx11\GameClient\x64\Debug\ALevel.obj
-D:\Dx11\GameClient\AMaterial.cpp;D:\Dx11\GameClient\x64\Debug\AMaterial.obj
-D:\Dx11\GameClient\AMesh.cpp;D:\Dx11\GameClient\x64\Debug\AMesh.obj
-D:\Dx11\GameClient\Asset.cpp;D:\Dx11\GameClient\x64\Debug\Asset.obj
-D:\Dx11\GameClient\AssetMgr.cpp;D:\Dx11\GameClient\x64\Debug\AssetMgr.obj
-D:\Dx11\GameClient\AssetMgr_Init.cpp;D:\Dx11\GameClient\x64\Debug\AssetMgr_Init.obj
-D:\Dx11\GameClient\ATexture.cpp;D:\Dx11\GameClient\x64\Debug\ATexture.obj
-D:\Dx11\GameClient\CBillboardRender.cpp;D:\Dx11\GameClient\x64\Debug\CBillboardRender.obj
-D:\Dx11\GameClient\CCamera.cpp;D:\Dx11\GameClient\x64\Debug\CCamera.obj
-D:\Dx11\GameClient\CCamMoveScript.cpp;D:\Dx11\GameClient\x64\Debug\CCamMoveScript.obj
-D:\Dx11\GameClient\CCollider2D.cpp;D:\Dx11\GameClient\x64\Debug\CCollider2D.obj
-D:\Dx11\GameClient\CMeshRender.cpp;D:\Dx11\GameClient\x64\Debug\CMeshRender.obj
-D:\Dx11\GameClient\CMissileScript.cpp;D:\Dx11\GameClient\x64\Debug\CMissileScript.obj
-D:\Dx11\GameClient\CollisionMgr.cpp;D:\Dx11\GameClient\x64\Debug\CollisionMgr.obj
-D:\Dx11\GameClient\Component.cpp;D:\Dx11\GameClient\x64\Debug\Component.obj
-D:\Dx11\GameClient\ConstBuffer.cpp;D:\Dx11\GameClient\x64\Debug\ConstBuffer.obj
-D:\Dx11\GameClient\CPlatformerPlayerScript.cpp;D:\Dx11\GameClient\x64\Debug\CPlatformerPlayerScript.obj
-D:\Dx11\GameClient\CPlayerScript.cpp;D:\Dx11\GameClient\x64\Debug\CPlayerScript.obj
-D:\Dx11\GameClient\CRenderComponent.cpp;D:\Dx11\GameClient\x64\Debug\CRenderComponent.obj
-D:\Dx11\GameClient\CScript.cpp;D:\Dx11\GameClient\x64\Debug\CScript.obj
-D:\Dx11\GameClient\CTransform.cpp;D:\Dx11\GameClient\x64\Debug\CTransform.obj
-D:\Dx11\GameClient\Device.cpp;D:\Dx11\GameClient\x64\Debug\Device.obj
-D:\Dx11\GameClient\Engine.cpp;D:\Dx11\GameClient\x64\Debug\Engine.obj
-D:\Dx11\GameClient\Engine_Init.cpp;D:\Dx11\GameClient\x64\Debug\Engine_Init.obj
-D:\Dx11\GameClient\Entity.cpp;D:\Dx11\GameClient\x64\Debug\Entity.obj
-D:\Dx11\GameClient\AGraphicShader.cpp;D:\Dx11\GameClient\x64\Debug\AGraphicShader.obj
-D:\Dx11\GameClient\extern.cpp;D:\Dx11\GameClient\x64\Debug\extern.obj
-D:\Dx11\GameClient\func.cpp;D:\Dx11\GameClient\x64\Debug\func.obj
-D:\Dx11\GameClient\GameObject.cpp;D:\Dx11\GameClient\x64\Debug\GameObject.obj
-D:\Dx11\GameClient\KeyMgr.cpp;D:\Dx11\GameClient\x64\Debug\KeyMgr.obj
-D:\Dx11\GameClient\Layer.cpp;D:\Dx11\GameClient\x64\Debug\Layer.obj
-D:\Dx11\GameClient\LevelMgr.cpp;D:\Dx11\GameClient\x64\Debug\LevelMgr.obj
-D:\Dx11\GameClient\main.cpp;D:\Dx11\GameClient\x64\Debug\main.obj
-D:\Dx11\GameClient\PathMgr.cpp;D:\Dx11\GameClient\x64\Debug\PathMgr.obj
-D:\Dx11\GameClient\pch.cpp;D:\Dx11\GameClient\x64\Debug\pch.obj
-D:\Dx11\GameClient\RenderMgr.cpp;D:\Dx11\GameClient\x64\Debug\RenderMgr.obj
-D:\Dx11\GameClient\CSpriteRender.cpp;D:\Dx11\GameClient\x64\Debug\CSpriteRender.obj
-D:\Dx11\GameClient\CRigidBody.cpp;D:\Dx11\GameClient\x64\Debug\CRigidBody.obj
-D:\Dx11\GameClient\TaskMgr.cpp;D:\Dx11\GameClient\x64\Debug\TaskMgr.obj
-D:\Dx11\GameClient\TimeMgr.cpp;D:\Dx11\GameClient\x64\Debug\TimeMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\ALevel.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\ALevel.obj
+D:\Visual Studio Projects\DX11\GameClient\AMaterial.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\AMaterial.obj
+D:\Visual Studio Projects\DX11\GameClient\AMesh.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\AMesh.obj
+D:\Visual Studio Projects\DX11\GameClient\Asset.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Asset.obj
+D:\Visual Studio Projects\DX11\GameClient\AssetMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\AssetMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\AssetMgr_Init.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\AssetMgr_Init.obj
+D:\Visual Studio Projects\DX11\GameClient\ATexture.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\ATexture.obj
+D:\Visual Studio Projects\DX11\GameClient\CArmScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CArmScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CBillboardRender.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CBillboardRender.obj
+D:\Visual Studio Projects\DX11\GameClient\CCamera.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CCamera.obj
+D:\Visual Studio Projects\DX11\GameClient\CCamMoveScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CCamMoveScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CCollider2D.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CCollider2D.obj
+D:\Visual Studio Projects\DX11\GameClient\CMeshRender.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CMeshRender.obj
+D:\Visual Studio Projects\DX11\GameClient\CMissileScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CMissileScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CollisionMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CollisionMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\Component.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Component.obj
+D:\Visual Studio Projects\DX11\GameClient\ConstBuffer.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\ConstBuffer.obj
+D:\Visual Studio Projects\DX11\GameClient\CPlatformerPlayerScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CPlatformerPlayerScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CPlayerScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CPlayerScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CRenderComponent.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CRenderComponent.obj
+D:\Visual Studio Projects\DX11\GameClient\CScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CTargetMissileScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CTargetMissileScript.obj
+D:\Visual Studio Projects\DX11\GameClient\CTransform.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CTransform.obj
+D:\Visual Studio Projects\DX11\GameClient\Device.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Device.obj
+D:\Visual Studio Projects\DX11\GameClient\Engine.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Engine.obj
+D:\Visual Studio Projects\DX11\GameClient\Engine_Init.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Engine_Init.obj
+D:\Visual Studio Projects\DX11\GameClient\Entity.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Entity.obj
+D:\Visual Studio Projects\DX11\GameClient\AGraphicShader.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\AGraphicShader.obj
+D:\Visual Studio Projects\DX11\GameClient\extern.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\extern.obj
+D:\Visual Studio Projects\DX11\GameClient\func.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\func.obj
+D:\Visual Studio Projects\DX11\GameClient\GameObject.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\GameObject.obj
+D:\Visual Studio Projects\DX11\GameClient\KeyMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\KeyMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\Layer.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\Layer.obj
+D:\Visual Studio Projects\DX11\GameClient\LevelMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\LevelMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\main.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\main.obj
+D:\Visual Studio Projects\DX11\GameClient\PathMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\PathMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\pch.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\pch.obj
+D:\Visual Studio Projects\DX11\GameClient\RenderMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\RenderMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\CSpriteRender.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CSpriteRender.obj
+D:\Visual Studio Projects\DX11\GameClient\CRigidBody.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CRigidBody.obj
+D:\Visual Studio Projects\DX11\GameClient\TaskMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\TaskMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\TimeMgr.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\TimeMgr.obj
+D:\Visual Studio Projects\DX11\GameClient\CTrackingCameraScript.cpp;D:\Visual Studio Projects\DX11\GameClient\x64\Debug\CTrackingCameraScript.obj

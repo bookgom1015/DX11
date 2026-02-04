@@ -142,10 +142,19 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>GameEngine\03. Manager\08. CollisionMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CRigidBody.h">
+    <ClInclude Include="CPlatformerPlayerScript.h">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="CPlatformerPlayerScript.h">
+    <ClInclude Include="CTrackingCameraScript.h">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CTargetMissileScript.h">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>GameEngine\06. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CArmScript.h">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
   </ItemGroup>
@@ -394,7 +403,16 @@
     <ClCompile Include="CPlatformerPlayerScript.cpp">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
+    <ClCompile Include="CTrackingCameraScript.cpp">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CTargetMissileScript.cpp">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClCompile>
     <ClCompile Include="CRigidBody.cpp">
+      <Filter>GameEngine\06. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CArmScript.cpp">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
   </ItemGroup>

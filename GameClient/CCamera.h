@@ -49,6 +49,9 @@ public:
     void Render();
 
 public:
+    Vec3 ScreenToWorld(const Vec2& spos);
+
+public:
     CCamera();
     virtual ~CCamera();
 };

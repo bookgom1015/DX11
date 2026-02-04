@@ -52,6 +52,8 @@ public:
 
     const Matrix& GetWorldMat() { return m_matWorld; }
 
+    const Vec2& GetScale() const { return m_Scale; }
+
 private:
     void BeginOverlap(Ptr<CCollider2D> _Other);
     void Overlap(Ptr<CCollider2D> _Other);

@@ -112,6 +112,26 @@ void CCamera::Render()
 	}
 }
 
+Vec3 CCamera::ScreenToWorld(const Vec2& spos) {
+	auto temp = spos / Vec2(1600.f, 900.f);
+	temp = temp * 2.f - Vec2(1.f, 1.f);
+
+	Vec4 ndc(temp.x, temp.y, 0.f, 1.f);
+	ndc.y *= -1.f;
+
+	auto detView = XMMatrixDeterminant(m_matView);
+	auto detProj = XMMatrixDeterminant(m_matProj);
+	auto invView = XMMatrixInverse(&detView, m_matView);
+	auto invProj = XMMatrixInverse(&detProj, m_matProj);
+
+	Vec4 vpos = XMVector3TransformCoord(ndc, invProj);
+	vpos /= vpos.w;
+
+	Vec4 wpos = XMVector3TransformCoord(vpos, invView);
+
+	return wpos;
+}
+
 void CCamera::LayerCheck(int _Idx)
 {
 	m_LayerCheck ^= (1 << _Idx);

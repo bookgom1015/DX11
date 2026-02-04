@@ -166,6 +166,7 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="AssetMgr.h" />
     <ClInclude Include="assets.h" />
     <ClInclude Include="ATexture.h" />
+    <ClInclude Include="CArmScript.h" />
     <ClInclude Include="CBillboardRender.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCamMoveScript.h" />
@@ -181,6 +182,7 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="CRenderComponent.h" />
     <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CScript.h" />
+    <ClInclude Include="CTargetMissileScript.h" />
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Device.h" />
@@ -208,6 +210,7 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TaskMgr.h" />
     <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="CTrackingCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ALevel.cpp" />
@@ -217,6 +220,7 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="AssetMgr.cpp" />
     <ClCompile Include="AssetMgr_Init.cpp" />
     <ClCompile Include="ATexture.cpp" />
+    <ClCompile Include="CArmScript.cpp" />
     <ClCompile Include="CBillboardRender.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCamMoveScript.cpp" />
@@ -230,6 +234,7 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="CPlayerScript.cpp" />
     <ClCompile Include="CRenderComponent.cpp" />
     <ClCompile Include="CScript.cpp" />
+    <ClCompile Include="CTargetMissileScript.cpp" />
     <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -255,6 +260,7 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="CRigidBody.cpp" />
     <ClCompile Include="TaskMgr.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="CTrackingCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameClient.rc" />
