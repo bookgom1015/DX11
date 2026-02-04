@@ -1,0 +1,98 @@
+﻿  .\GameClient\billboard.fx
+  .\GameClient\dbg.fx
+  .\GameClient\std2d.fx
+  .\GameClient\value.fx
+  4 File(s) copied
+  OK: Updated components.h
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see D:\Dx11\Game\Bin\billboard.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see D:\Dx11\Game\Bin\dbg.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see D:\Dx11\Game\Bin\std2d.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see D:\Dx11\Game\Bin\value.cso
+  pch.cpp
+  ALevel.cpp
+  AMaterial.cpp
+  AMesh.cpp
+  Asset.cpp
+D:\Dx11\GameClient\AMesh.cpp(41,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  (소스 파일 '/AMesh.cpp'을(를) 컴파일하는 중)
+  
+D:\Dx11\GameClient\AMesh.cpp(67,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  (소스 파일 '/AMesh.cpp'을(를) 컴파일하는 중)
+  
+  AssetMgr.cpp
+  AssetMgr_Init.cpp
+D:\Dx11\GameClient\AssetMgr_Init.cpp(116,72): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/AssetMgr_Init.cpp'을(를) 컴파일하는 중)
+  
+D:\Dx11\GameClient\AssetMgr_Init.cpp(116,42): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/AssetMgr_Init.cpp'을(를) 컴파일하는 중)
+  
+D:\Dx11\GameClient\AssetMgr_Init.cpp(130,72): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/AssetMgr_Init.cpp'을(를) 컴파일하는 중)
+  
+D:\Dx11\GameClient\AssetMgr_Init.cpp(130,42): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/AssetMgr_Init.cpp'을(를) 컴파일하는 중)
+  
+  ATexture.cpp
+  CBillboardRender.cpp
+  CCamera.cpp
+  CCamMoveScript.cpp
+  CCollider2D.cpp
+  CMeshRender.cpp
+  CMissileScript.cpp
+  CollisionMgr.cpp
+  Component.cpp
+  ConstBuffer.cpp
+  CPlatformerPlayerScript.cpp
+  CPlayerScript.cpp
+  CRenderComponent.cpp
+  CScript.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  CTransform.cpp
+  Device.cpp
+  Engine.cpp
+  Engine_Init.cpp
+  Entity.cpp
+  AGraphicShader.cpp
+  extern.cpp
+  func.cpp
+  GameObject.cpp
+  KeyMgr.cpp
+  Layer.cpp
+  LevelMgr.cpp
+  main.cpp
+  PathMgr.cpp
+D:\Dx11\GameClient\PathMgr.cpp(25,10): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/PathMgr.cpp'을(를) 컴파일하는 중)
+  
+  RenderMgr.cpp
+  CSpriteRender.cpp
+  CRigidBody.cpp
+  TaskMgr.cpp
+D:\Dx11\GameClient\TaskMgr.cpp(31,37): warning C4244: '인수': 'DWORD_PTR'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/TaskMgr.cpp'을(를) 컴파일하는 중)
+  
+  TimeMgr.cpp
+  코드를 생성하고 있습니다...
+DirectXTex_debug.lib(DirectXTexImage.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexImage.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexDDS.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexDDS.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexTGA.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexTGA.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexWIC.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexWIC.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexD3D11.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexD3D11.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexUtil.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexUtil.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexConvert.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexConvert.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexMipMaps.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexMipMaps.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(DirectXTexCompress.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(DirectXTexCompress.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(BC.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(BC.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(BC4BC5.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(BC4BC5.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_debug.lib(BC6HBC7.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_debug.lib(BC6HBC7.obj)' 또는 'D:\Dx11\Game\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  GameClient.vcxproj -> D:\Dx11\Game\Bin\GameClient.exe

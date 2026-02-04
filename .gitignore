@@ -1,0 +1,4 @@
+./GameClient/x64/
+./GameClient/x64/**
+
+*.obj
