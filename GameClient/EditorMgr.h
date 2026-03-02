@@ -29,6 +29,8 @@ public:
 
 	HWND GetSceneHWND() { return m_SceneUI->GetSceneHWND(); }
 
+	void SetDpi() { SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); }
+
 public:
 	void Init();
 	void Progress();

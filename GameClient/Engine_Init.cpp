@@ -14,6 +14,8 @@ LRESULT CALLBACK  WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height)
 {
+    EditorMgr::GetInst()->SetDpi();
+
     m_hInst = _hInst;
     m_Resolution = Vec2(_Width, _Height);
 
