@@ -227,8 +227,6 @@ void AssetMgr::CreateEngineTexture()
 	Load<ATexture>(L"Link", L"Texture\\link.png");
 
 	Load<ATexture>(L"TileAtlas", L"Texture\\TILE.bmp");
-
-	Load<ATexture>(L"Ghost", L"Texture\\ghost.png");
 }
 
 void AssetMgr::CreateEngineMaterial()
@@ -273,16 +271,7 @@ void AssetMgr::CreateEngineMaterial()
 	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_DEBUG);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
-	///////////////////
-	pMtrl = new AMaterial;
-	pMtrl->SetName(L"EnemyMtrl");
-	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
-	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Ghost"));
-
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
-	AddAsset(pMtrl->GetName(), pMtrl.Get());
-
-	//Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");
+	Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");
 }
 
 void AssetMgr::CreateEngineSprite()

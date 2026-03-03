@@ -12,12 +12,13 @@
 
 LRESULT CALLBACK  WndProc(HWND, UINT, WPARAM, LPARAM);
 
-int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height)
+int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
 {
     EditorMgr::GetInst()->SetDpi();
 
     m_hInst = _hInst;
     m_Resolution = Vec2(_Width, _Height);
+    m_EditorMode = _EditorMode;
 
     // 생성시킬 윈도우(창) 옵션 설정
     WNDCLASSEXW wcex = {};
@@ -30,7 +31,7 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height)
     wcex.hInstance = m_hInst;
     wcex.hIcon = LoadIcon(m_hInst, MAKEINTRESOURCE(IDI_GAMECLIENT));
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.hbrBackground = static_cast<HBRUSH>(GetStockObject(DKGRAY_BRUSH));
     wcex.lpszMenuName = nullptr;// MAKEINTRESOURCEW(IDC_GAMECLIENT); // 메뉴창 제거
     wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
     RegisterClassExW(&wcex);
@@ -106,7 +107,10 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height)
     RenderMgr::GetInst()->Init();
 
     // Editor 매니저 초기화
-    EditorMgr::GetInst()->Init();
+    if (m_EditorMode)
+    {
+        EditorMgr::GetInst()->Init();
+    }     
 
     return S_OK;
 }

@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "ATileMap.h"
 
-
-
+#include "AssetMgr.h"
 
 ATileMap::ATileMap()
 	: Asset(ASSET_TYPE::TILEMAP)
@@ -32,12 +31,52 @@ void ATileMap::SetSprite(UINT _Row, UINT _Col, Ptr<ASprite> _Sprite)
 	m_vecSpriteInfo[Idx] = _Sprite;
 }
 
-int ATileMap::Load(const wstring& _FilePath)
+int ATileMap::Save(const wstring& _FilePath)
 {
+	FILE* pFile = nullptr;
+	_wfopen_s(&pFile, _FilePath.c_str(), L"wb");
+		
+
+	fwrite(&m_Row, sizeof(UINT), 1, pFile);
+	fwrite(&m_Col, sizeof(UINT), 1, pFile);
+	fwrite(&m_TileSize, sizeof(Vec2), 1, pFile);
+	
+	SaveAssetRef(pFile, m_Atlas.Get());
+
+	UINT SpriteCount = (UINT)m_vecSpriteInfo.size();
+	fwrite(&SpriteCount, sizeof(UINT), 1, pFile);
+
+	for (const auto& Sprite : m_vecSpriteInfo)
+	{
+		SaveAssetRef(pFile, Sprite.Get());
+	}	
+
+	fclose(pFile);
 	return 0;
 }
 
-int ATileMap::Save(const wstring& _FilePath)
+int ATileMap::Load(const wstring& _FilePath)
 {
+	FILE* pFile = nullptr;
+	_wfopen_s(&pFile, _FilePath.c_str(), L"rb");
+
+	UINT Row = 0, Col = 0;
+	fread(&Row, sizeof(UINT), 1, pFile);
+	fread(&Col, sizeof(UINT), 1, pFile);
+	SetRowCol(Row, Col);
+
+	fread(&m_TileSize, sizeof(Vec2), 1, pFile);
+
+	m_Atlas = LoadAssetRef<ATexture>(pFile);
+
+	UINT SpriteCount = 0;
+	fread(&SpriteCount, sizeof(UINT), 1, pFile);
+
+	for (UINT i = 0; i < SpriteCount; ++i)
+	{
+		m_vecSpriteInfo[i] = LoadAssetRef<ASprite>(pFile);
+	}
+
+	fclose(pFile);
 	return 0;
 }

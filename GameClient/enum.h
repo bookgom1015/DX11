@@ -193,6 +193,8 @@ enum class TASK_TYPE
 {
 	CREATE_OBJECT,
 	DESTROY_OBJECT,
+	CHANGE_LEVEL,
+	CHANGE_LEVEL_STATE
 };
 
 enum class LIGHT_TYPE
@@ -227,3 +229,11 @@ static string GetRenderDomainName(RENDER_DOMAIN domain) {
 	}
 }
 
+namespace ELevelState {
+	enum Type {
+		E_Playing = 0,
+		E_Paused,
+		E_Stopped,
+		Count
+	};
+}

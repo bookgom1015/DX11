@@ -2,26 +2,36 @@
 
 #include "ALevel.h"
 
-class LevelMgr
-	: public singleton<LevelMgr>
-{
+class LevelMgr : public singleton<LevelMgr> {
 	SINGLE(LevelMgr)
-private:
-	Ptr<ALevel>		m_CurLevel;	
-	Ptr<GameObject> m_MainCam;
-
-public:
-	Ptr<ALevel> GetCurLevel() { return m_CurLevel; }
-	Ptr<GameObject> GetMainCam() { return m_MainCam; }
-	Ptr<GameObject> FindObjectByName(const wstring& _name);
-
-private:
-	void CreateGrounds();
-	void CreateLights();
-	void CreateEnemies();
 
 public:
 	void Init();
 	void Progress();
+
+public:
+	Ptr<ALevel> GetCurLevel() { return m_CurLevel; }
+	Ptr<GameObject> GetMainCam() { return m_MainCam; }
+	void SetMainCam(Ptr<GameObject> cam) { m_MainCam = cam; }
+	Ptr<GameObject> FindObjectByName(const wstring& _name);
+
+	ELevelState::Type GetLevelState() const { return m_LevelState; }
+
+public:
+	void ChangeLevel(Ptr<ALevel> level);
+	void ChangeLevelState(ELevelState::Type state);
+
+private:
+	void CreatePlayer(Ptr<ALevel> level);
+	void CreateGrounds(Ptr<ALevel> level);
+	void CreateLights(Ptr<ALevel> level);
+	void CreateEnemies(Ptr<ALevel> level);
+
+private:
+	Ptr<ALevel> m_CurLevel{};
+	Ptr<ALevel> m_SharedLevel{};
+	Ptr<GameObject> m_MainCam{};
+
+	ELevelState::Type m_LevelState{};
 };
 

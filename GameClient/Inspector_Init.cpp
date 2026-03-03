@@ -9,6 +9,7 @@
 #include "SpriteRenderUI.h"
 #include "FlipbookRenderUI.h"
 #include "TileRenderUI.h"
+#include "RigidbodyUI.h"
 
 #include "MeshUI.h"
 #include "MaterialUI.h"
@@ -35,12 +36,13 @@ void Inspector::CreateChildUI()
 {
 	ADD_COMPONENT_UI(COMPONENT_TYPE::TRANSFORM,			TransformUI,		Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::COLLIDER2D,		Collider2DUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::CAMERA,			CameraUI,			Vec2(0.f, 300.f));
+	ADD_COMPONENT_UI(COMPONENT_TYPE::CAMERA,			CameraUI,			Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::LIGHT2D,			Light2DUI,			Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::MESHRENDER,		MeshRenderUI,		Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::SPRITE_RENDER,		SpriteRenderUI,		Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::FLIPBOOK_RENDER,	FlipbookRenderUI,	Vec2(0.f, 200.f));
 	ADD_COMPONENT_UI(COMPONENT_TYPE::TILE_RENDER,		TileRenderUI,		Vec2(0.f, 200.f));
+	ADD_COMPONENT_UI(COMPONENT_TYPE::RIGIDBODY,			RigidbodyUI,		Vec2(0.f, 200.f));
 
 	ADD_ASSET_UI(ASSET_TYPE::MESH, MeshUI);
 	ADD_ASSET_UI(ASSET_TYPE::MATERIAL, MaterialUI);

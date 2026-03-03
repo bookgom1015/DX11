@@ -25,7 +25,7 @@ void MaterialUI::Tick_UI()
 	string Key = string(pMtrl->GetKey().begin(), pMtrl->GetKey().end());
 
 	ImGui::Text("Name");
-	ImGui::SameLine(100);
+	ImGui::SameLine(120);
 	ImGui::InputText("##MtrlName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
 	// ======
@@ -78,13 +78,95 @@ void MaterialUI::Tick_UI()
 		pUI->SetActive(true);
 	}
 
+	// Render Domain
+
+
+
+	// Shader Param
+	ShaderParameter();
 
 	// Save Button
+	ImGui::Spacing(); ImGui::Spacing(); ImGui::Spacing();
 	if (ImGui::Button("Save##MtrlSaveBtn"))
 	{
 		wstring FilePath = CONTENT_PATH + pMtrl->GetKey();
 		pMtrl->Save(FilePath);
 	}
+}
+
+void MaterialUI::ShaderParameter()
+{
+	Ptr<AMaterial> pMtrl = (AMaterial*)GetTargetAsset().Get();
+	if (nullptr == pMtrl->GetShader())
+		return;
+
+	ImGui::Spacing(); ImGui::Spacing(); ImGui::Spacing();
+	ImGui::Text("Shader Parameter");
+	ImGui::Separator();
+
+	const vector<ShaderParam>& vecParam = pMtrl->GetShader()->GetShaderParam();
+
+	for (size_t i = 0; i < vecParam.size(); ++i)
+	{
+		switch (vecParam[i].Type)
+		{
+		case SHADER_PARAM::INT:
+			break;
+		case SHADER_PARAM::FLOAT:
+			break;
+		case SHADER_PARAM::VEC2:
+			break;
+		case SHADER_PARAM::VEC4:
+		{
+			ImGui::Text(string(vecParam[i].Desc.begin(), vecParam[i].Desc.end()).c_str());
+			ImGui::SameLine();
+
+			SCALAR_PARAM Param = (SCALAR_PARAM)((UINT)SCALAR_PARAM::VEC4_0 + vecParam[i].Index);
+			Vec4& Data = pMtrl->GetScalar<Vec4>(Param);
+			ImGui::InputFloat4("##InputFloat4", Data);
+		}
+			break;
+		case SHADER_PARAM::MAT:
+			break;
+		case SHADER_PARAM::TEX:
+		{
+			ImGui::Text(string(vecParam[i].Desc.begin(), vecParam[i].Desc.end()).c_str());
+					
+
+			Ptr<ATexture> pTex = pMtrl->GetTexture((TEX_PARAM)vecParam[i].Index);
+			ImTextureRef SRV = nullptr;
+
+			if (nullptr != pTex)
+			{
+				SRV = pTex->GetSRV().Get();
+			}
+
+			// 이미지 샘플
+			ImGui::ImageWithBg(SRV , ImVec2(100, 100)
+							, Vec2(0.f, 0.f), Vec2(1.f, 1.f)
+							, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+
+			// 특정 위젯에서 드래그가 발생했고, 해당 위젯 위에 마우스가 호버링 중인지
+			if (ImGui::BeginDragDropTarget())
+			{
+				const ImGuiPayload* PayLoad = ImGui::AcceptDragDropPayload("Content");
+				if (PayLoad)
+				{
+					DWORD_PTR data = *((DWORD_PTR*)PayLoad->Data);
+					Ptr<Asset> pAsset = (Asset*)data;
+
+					if (ASSET_TYPE::TEXTURE == pAsset->GetType())
+					{
+						pMtrl->SetTexture((TEX_PARAM)vecParam[i].Index, (ATexture*)pAsset.Get());
+					}
+				}
+
+				ImGui::EndDragDropTarget();
+			}
+		}
+			break;	
+		}		
+	}	
 }
 
 void MaterialUI::SelectShader(DWORD_PTR _ListUI)

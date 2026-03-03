@@ -21,7 +21,7 @@ Ptr<AMaterial> CRenderComponent::GetSharedMaterial() {
 }
 
 Ptr<AMaterial> CRenderComponent::CreateDynamicMaterial() {
-	assert(LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Playing);
+	assert(LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Play);
 
 	if (m_DynamicMtrl != nullptr) {
 		m_Mtrl = m_DynamicMtrl;

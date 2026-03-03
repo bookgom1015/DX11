@@ -49,22 +49,6 @@ void GameObject::FinalTick() {
 	}
 }
 
-void GameObject::FinalTick_Editor() {
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i) {
-		if (nullptr != m_Com[i]) m_Com[i]->FinalTick();
-	}
-
-	// 자식 오브젝트 FinalTick 호출
-	// 만약 Dead 상태인 자식 오브젝트가 있으면, Vector 에서 제거한다.
-	vector<Ptr<GameObject>>::iterator iter = m_vecChild.begin();
-	for (auto end = m_vecChild.end(); iter != end; ) {
-		(*iter)->FinalTick();
-
-		if ((*iter)->IsDead()) iter = m_vecChild.erase(iter);
-		else ++iter;
-	}
-}
-
 void GameObject::RegisterLayer() {
 	Ptr<ALevel> pCurLevel = LevelMgr::GetInst()->GetCurLevel();
 	Layer* pLayer = pCurLevel->GetLayer(m_LayerIdx);
@@ -128,7 +112,7 @@ void GameObject::AddChild(Ptr<GameObject> _Child) {
 		_Child->m_LayerIdx = m_LayerIdx;
 
 		if (m_LayerIdx != -1 
-			&& LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Playing)
+			&& LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Play)
 			_Child->Begin();
 	}
 

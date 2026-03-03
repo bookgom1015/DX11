@@ -32,6 +32,8 @@ class RenderMgr
 	SINGLE(RenderMgr);
 private:
 	Ptr<CCamera>			m_MainCam;
+	Ptr<CCamera>			m_EditorCam;
+
 	Ptr<GameObject>			m_DbgObj;			// 디버그 렌더링을 위한 Dummy GameObject
 	list<DbgInfo>			m_DbgInfoList;		// 디버그 요청 정보
 
@@ -42,6 +44,8 @@ private:
 
 public:
 	void RegisterCamera(Ptr<CCamera> _Cam) { m_MainCam = _Cam; }
+	void RegisterEditorCamera(Ptr<CCamera> _Cam) { m_EditorCam = _Cam; }
+
 	Ptr<CCamera> GetPOVCamera() { return m_MainCam; }
 	void AddDebugInfo(const DbgInfo& _Info)  {  if(m_bDebugRender) m_DbgInfoList.push_back(_Info); }
 	void RegisterLight2D(Ptr<CLight2D> _Light2D) { m_vecLight2D.push_back(_Light2D); }

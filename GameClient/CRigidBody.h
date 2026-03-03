@@ -22,6 +22,7 @@ public:
     Vec3 GetActualVelocity() const { return mVelocity + mManualVelocity; }
 
     bool IsOnGround() const noexcept { return mbGrounded; }
+    Ptr<GameObject> GetGround() const { return mGround; }
 
     void AbsorbForce() {
         mVelocity = {};
@@ -52,9 +53,13 @@ private:
     float mDamping{ 0.98f };
 
     bool mbGrounded{};
+    Ptr<GameObject> mGround;
 
     float mGravityCoeff{ 1.f };
 
     float mAccumulator{};
+
+    bool mbKinematic{};
+    Vec3 mPrevPos{};
 };
 

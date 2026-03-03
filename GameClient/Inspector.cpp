@@ -10,8 +10,7 @@ Inspector::Inspector()
 	: EditorUI("Inspector")
 {
 	CreateChildUI();
-
-	SetTargetObject(LevelMgr::GetInst()->FindObjectByName(L"Monster"));	
+	SetTargetObject(nullptr);	
 }
 
 Inspector::~Inspector()

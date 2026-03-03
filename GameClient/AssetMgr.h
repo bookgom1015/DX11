@@ -2,6 +2,7 @@
 
 #include "assets.h"
 #include "PathMgr.h"
+#include "ALevel.h"
 
 class AssetMgr
 	: public singleton<AssetMgr>
@@ -58,6 +59,8 @@ ASSET_TYPE GetAssetType()
 		return ASSET_TYPE::FLIPBOOK;
 	else if constexpr (std::is_same_v<T, ATileMap>)
 		return ASSET_TYPE::TILEMAP;
+	else if constexpr (std::is_same_v<T, ALevel>)
+		return ASSET_TYPE::LEVEL;
 
 	return ASSET_TYPE::END;
 }

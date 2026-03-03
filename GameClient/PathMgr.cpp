@@ -24,7 +24,6 @@ void PathMgr::Init()
 
 	int Len = wcslen(m_ContentPath);
 
-
 	for (int i = Len - 1; 0 <= i; --i)
 	{
 		if ('\\' == m_ContentPath[i])

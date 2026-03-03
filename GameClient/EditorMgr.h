@@ -16,6 +16,8 @@ private:
 	Ptr<SceneUI>				m_SceneUI;
 	Ptr<LogUI>					m_LogUI;
 
+	vector<Ptr<GameObject>>		m_EditorObject;
+
 public:
 	bool IsShowDemo() { return m_ShowDemo; }
 	void ShowDemo(bool _Show) { m_ShowDemo = _Show; }
@@ -26,6 +28,7 @@ public:
 	void RegisterFocusedUI(Ptr<EditorUI> _UI) { m_FocusedUI = _UI; }
 
 	void AddLog(const LogEntry& entry);
+	void AddInfoLog(const std::string& msg);
 
 	HWND GetSceneHWND() { return m_SceneUI->GetSceneHWND(); }
 
@@ -41,5 +44,6 @@ private:
 
 private:
 	void CreateEditorUI();
+	void CreateEditorObject();
 };
 

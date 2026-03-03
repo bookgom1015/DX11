@@ -13,6 +13,7 @@ Engine::Engine()
     : m_hInst(nullptr)
     , m_hWnd(nullptr)
     , m_Resolution{}
+    , m_EditorMode(true)
 {
 }
 
@@ -35,7 +36,10 @@ int Engine::Progress()
     RenderMgr::GetInst()->Progress();
        
     // EditorMgr
-    EditorMgr::GetInst()->Progress();
+    if (m_EditorMode)
+    {
+        EditorMgr::GetInst()->Progress();
+    }    
 
     // 렌더타겟에 그려진 그림을, 윈도우 비트맵으로 복사
     Device::GetInst()->Present();

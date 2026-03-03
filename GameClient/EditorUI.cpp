@@ -110,6 +110,9 @@ void EditorUI::CheckFocus()
 {
 	if (ImGui::IsWindowFocused())
 		EditorMgr::GetInst()->RegisterFocusedUI(this);
+
+	if (ImGui::IsWindowFocused(ImGuiFocusedFlags_ChildWindows))
+		EditorMgr::GetInst()->RegisterFocusedUI(this);
 }
 
 Vec2::operator ImVec2() const

@@ -2,18 +2,17 @@
 
 #include "GameObject.h"
 
-class TaskMgr
-	: public singleton<TaskMgr>
-{
+class TaskMgr : public singleton<TaskMgr> {
 	SINGLE(TaskMgr);
-private:
-	vector<TaskInfo>		m_vecTask;
-	vector<Ptr<GameObject>> m_Garbage;
+
+public:
+	void Progress();
 
 public:
 	void AddTask(const TaskInfo& _info) { m_vecTask.push_back(_info); }
 
-public:
-	void Progress();
+private:
+	vector<TaskInfo>		m_vecTask;
+	vector<Ptr<GameObject>> m_Garbage;
 };
 

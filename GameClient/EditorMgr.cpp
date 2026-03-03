@@ -8,6 +8,7 @@
 #include "Engine.h"
 #include "Device.h"
 #include "KeyMgr.h"
+#include "RenderMgr.h"
 
 #include "Menu.h"
 #include "Inspector.h"
@@ -16,6 +17,8 @@
 #include "ListUI.h"
 #include "TreeUI.h"
 #include "Profiler.h"
+
+#include "CCamMoveScript.h"
 
 EditorMgr::EditorMgr()
     : m_ShowDemo(false)
@@ -81,7 +84,10 @@ void EditorMgr::Init()
     ImGui_ImplDX11_Init(DEVICE, CONTEXT);
 
     // 게임 에디터 UI 만들기
-    CreateEditorUI();    
+    CreateEditorUI();
+
+    // Editor 용 GameObject 만들기
+    CreateEditorObject();
 }
 
 void EditorMgr::Progress()
@@ -92,6 +98,17 @@ void EditorMgr::Progress()
 
 void EditorMgr::Tick()
 {
+    // =============
+    // Editor Object
+    // =============
+    {
+        for (const auto& Object : m_EditorObject)
+            Object->Tick();
+
+        for (const auto& Object : m_EditorObject)
+            Object->FinalTick_Editor();
+    }
+
     // Start the Dear ImGui frame
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
@@ -174,6 +191,33 @@ void EditorMgr::CreateEditorUI()
     AddUI(pUI->GetUIName(), pUI);
 }
 
+void EditorMgr::CreateEditorObject()
+{
+    // Editor Camera Object 생성
+    Ptr<GameObject> pObject = new GameObject;
+    pObject->SetName(L"EditorCamera");
+
+    pObject->AddComponent(new CTransform);
+    pObject->AddComponent(new CCamera);
+    pObject->AddComponent(new CCamMoveScript);
+
+    pObject->Camera()->LayerCheckAll();
+
+    pObject->Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
+    pObject->Camera()->SetFar(10000.f);
+    pObject->Camera()->SetFOV(90.f);
+    pObject->Camera()->SetOrthoScale(1.f);
+
+    Vec2 vResolution = Device::GetInst()->GetRenderResolution();
+    pObject->Camera()->SetAspectRatio(vResolution.x / vResolution.y); // 종횡비(AspectRatio)
+    pObject->Camera()->SetWidth(vResolution.x);
+
+    m_EditorObject.push_back(pObject);
+
+    // Editor 용 카메라로서 RenderMgr 에 등록
+    RenderMgr::GetInst()->RegisterEditorCamera(pObject->Camera());
+}
+
 void EditorMgr::AddUI(const string& _UIName, Ptr<EditorUI> _UI)
 {
     Ptr<EditorUI> pUI = FindUI(_UIName);
@@ -192,5 +236,12 @@ Ptr<EditorUI> EditorMgr::FindUI(const string& _UIName)
 }
 
 void EditorMgr::AddLog(const LogEntry& entry) {
+    m_LogUI->AddLog(entry);
+}
+
+void EditorMgr::AddInfoLog(const std::string& msg) {
+    auto entry = LogEntry{
+            .Level = LogLevel::E_Info,
+            .Message = msg };
     m_LogUI->AddLog(entry);
 }

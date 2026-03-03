@@ -2,6 +2,26 @@
 #include "Asset.h"
 
 
+enum class SHADER_PARAM
+{
+    INT,
+    FLOAT,
+    VEC2,
+    VEC4,
+    MAT,
+    TEX,
+};
+
+struct ShaderParam
+{
+    SHADER_PARAM    Type;
+    int             Index;
+    wstring         Desc;
+    int             Step;    // ImGui 에서 값의 변화량
+    bool            IsInput; // ImGui 에서 표현할 위젯 스타일
+};
+
+
 
 // 에셋 - 공유자원
 // 렌더링 파이프라인 자체를 하나의 에셋으로 본다
@@ -21,6 +41,15 @@ private:
     
     ComPtr<ID3D11InputLayout>	m_Layout; // 정점 쉐이더에 입력으로 들어오는 정점 하나의 구성정보
     D3D11_PRIMITIVE_TOPOLOGY    m_Topology; // 렌더링 과정에서, 정점들을 어떤 도형으로 인지할 것인지
+
+    vector<ShaderParam>         m_vecShaderParam;
+
+public:
+    void AddShaderParam(SHADER_PARAM _Type, int _Idx, const wstring& _Desc, int _Step = 0, bool IsInput = true)
+    {
+        m_vecShaderParam.push_back(ShaderParam{ _Type , _Idx, _Desc , _Step , IsInput });
+    }
+    const vector<ShaderParam>& GetShaderParam() { return m_vecShaderParam; }
 
 
 public:

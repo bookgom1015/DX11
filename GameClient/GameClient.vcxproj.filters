@@ -340,6 +340,9 @@
     <ClInclude Include="LogUI.h">
       <Filter>GameEngine\07. EditorUI\11. LogUI</Filter>
     </ClInclude>
+    <ClInclude Include="RigidbodyUI.h">
+      <Filter>GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="GameClient.ico">
@@ -604,6 +607,9 @@
     </Filter>
     <Filter Include="GameEngine\07. EditorUI\11. LogUI">
       <UniqueIdentifier>{28b0df42-a8df-4624-82c7-da64d5e22636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI">
+      <UniqueIdentifier>{5bdde204-4970-4bb0-a831-46dbeb75abf0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -918,6 +924,9 @@
     </ClCompile>
     <ClCompile Include="LogUI.cpp">
       <Filter>GameEngine\07. EditorUI\11. LogUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidbodyUI.cpp">
+      <Filter>GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

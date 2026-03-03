@@ -57,20 +57,30 @@ void RenderMgr::Progress() {
 	// 레더링 시작전에 할 일
 	Render_Start();
 
-	// 카메라 기반 렌더링
-	if (nullptr == m_MainCam) return;
+	if (LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Playing) {
+		// 카메라 기반 렌더링
+		if (nullptr == m_MainCam) return;
 
-	ApplyShadow();
+		ApplyShadow();
 
-	// 타겟 설정
-	Device::GetInst()->OMSetTarget();
+		// 타겟 설정
+		Device::GetInst()->OMSetTarget();
 
-	// 렌더타겟 클리어
-	Device::GetInst()->ClearTarget();
+		// 렌더타겟 클리어
+		Device::GetInst()->ClearTarget();
 
-	// 카메라를 이용해서 레벨안에 있는 물체들을 렌더링
-	m_MainCam->SortObject();
-	m_MainCam->Render();
+		// 카메라를 이용해서 레벨안에 있는 물체들을 렌더링
+		m_MainCam->SortObject();
+		m_MainCam->Render();
+	}
+	else {
+		// 카메라 기반 렌더링
+		if (nullptr == m_EditorCam) return;
+
+		// 카메라를 이용해서 레벨안에 있는 물체들을 렌더링
+		m_EditorCam->SortObject();
+		m_EditorCam->Render();
+	}
 
 	Device::GetInst()->ResetTarget();
 

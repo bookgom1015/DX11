@@ -47,5 +47,8 @@ private:
     Ptr<GameObject> mLight{};
     bool mbFlashed{};
     float mbFlashTimer{};
+
+    Ptr<GameObject> mGround{};
+    Vec3 mGroundPrevPos{};
 };
 

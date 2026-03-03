@@ -15,7 +15,6 @@ TransformUI::~TransformUI()
 void TransformUI::Tick_UI()
 {
 	OutputTitle("Transform");
-
 	
 	Vec3 vPos = GetTarget()->Transform()->GetRelativePos();
 	Vec3 vScale = GetTarget()->Transform()->GetRelativeScale();

@@ -3,6 +3,10 @@
 #include "RenderMgr.h"
 #include "TaskMgr.h"
 
+namespace {
+	wchar_t Buff[255]{};
+}
+
 void CreateObject(GameObject* _Object, int LayerIdx)
 {
     TaskInfo info = {};
@@ -12,6 +16,27 @@ void CreateObject(GameObject* _Object, int LayerIdx)
     info.Param_1 = LayerIdx;
 
     TaskMgr::GetInst()->AddTask(info);
+}
+
+void Util::ChangeLevel(const wstring& _NextLevelName)
+{
+	TaskInfo info = {};
+
+	wcscpy_s(Buff, 255, _NextLevelName.c_str());
+	
+	info.Type = TASK_TYPE::CHANGE_LEVEL;
+	info.Param_0 = (DWORD_PTR)Buff;	
+
+	TaskMgr::GetInst()->AddTask(info);
+}
+
+void ChangeLevelState(ELevelState::Type _NextState) {
+	TaskInfo info = {};
+
+	info.Type = TASK_TYPE::CHANGE_LEVEL_STATE;
+	info.Param_0 = (DWORD_PTR)_NextState;
+
+	TaskMgr::GetInst()->AddTask(info);
 }
 
 void DrawDebugRect(Vec3 _Pos, Vec3 _Scale, Vec3 _Rot, Vec4 _Color, float _Duration, bool _DepthTest)
@@ -99,6 +124,7 @@ void SaveAssetRef(FILE* _File, Asset* _Asset)
         SaveWString(_File, _Asset->GetRelativePath());
     }
 }
+
 
 
 

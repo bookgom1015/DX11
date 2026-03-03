@@ -146,9 +146,6 @@ void AssetMgr::CreateEngineShader()
 	pShader->CreatePixelShader(L"Shader\\std2d.fx", "PS_Std2D");
 	pShader->SetRSType(RS_TYPE::CULL_NONE);
 
-	pShader->AddShaderParam(SHADER_PARAM::VEC4, 0, L"TintColor");
-	pShader->AddShaderParam(SHADER_PARAM::TEX, 0, L"OutColor");
-
 	AddAsset(L"Std2DShader", pShader.Get());
 
 	
@@ -227,8 +224,6 @@ void AssetMgr::CreateEngineTexture()
 	Load<ATexture>(L"Link", L"Texture\\link.png");
 
 	Load<ATexture>(L"TileAtlas", L"Texture\\TILE.bmp");
-
-	Load<ATexture>(L"Ghost", L"Texture\\ghost.png");
 }
 
 void AssetMgr::CreateEngineMaterial()
@@ -273,15 +268,6 @@ void AssetMgr::CreateEngineMaterial()
 	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_DEBUG);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
-	///////////////////
-	pMtrl = new AMaterial;
-	pMtrl->SetName(L"EnemyMtrl");
-	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
-	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Ghost"));
-
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
-	AddAsset(pMtrl->GetName(), pMtrl.Get());
-
 	//Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");
 }
 
@@ -290,22 +276,21 @@ void AssetMgr::CreateEngineSprite()
 	// =======
 	// TileMap
 	// =======
-	//Ptr<ATileMap> pTileMap = nullptr;
+	Ptr<ATileMap> pTileMap = nullptr;
 
-	//pTileMap = new ATileMap;
-	//pTileMap->SetName(L"TileMap\\TestTileMap.tile");
-	//pTileMap->SetRowCol(20, 20);
-	//pTileMap->SetTileSize(Vec2(64.f, 64.f));
-	//pTileMap->SetAtlas(FIND(ATexture, L"TileAtlas"));
+	pTileMap = new ATileMap;
+	pTileMap->SetName(L"TestTileMap");
+	pTileMap->SetRowCol(20, 20);
+	pTileMap->SetTileSize(Vec2(64.f, 64.f));
+	pTileMap->SetAtlas(FIND(ATexture, L"TileAtlas"));
 
-	//for (int i = 0; i < 20; ++i)
-	//{
-	//	for (int j = 0; j < 20; ++j)
-	//	{
-	//		pTileMap->SetSprite(i, j, LOAD(ASprite, L"Sprite\\TileSprite_1.sprite"));
-	//	}		
-	//}		
+	for (int i = 0; i < 20; ++i)
+	{
+		for (int j = 0; j < 20; ++j)
+		{
+			pTileMap->SetSprite(i, j, LOAD(ASprite, L"Sprite\\TileSprite_1.sprite"));
+		}		
+	}		
 
-	//AddAsset(pTileMap->GetName(), pTileMap.Get());
-	//pTileMap->Save(CONTENT_PATH + pTileMap->GetKey());
+	AddAsset(pTileMap->GetName(), pTileMap.Get());
 }

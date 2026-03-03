@@ -254,6 +254,7 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="Random.h" />
     <ClInclude Include="RenderMgr.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RigidbodyUI.h" />
     <ClInclude Include="SceneUI.h" />
     <ClInclude Include="Shadow.h" />
     <ClInclude Include="SimpleMath.h" />
@@ -371,6 +372,7 @@ call ComponentAuto.exe</Command>
     </ClCompile>
     <ClCompile Include="RenderMgr.cpp" />
     <ClCompile Include="CSpriteRender.cpp" />
+    <ClCompile Include="RigidbodyUI.cpp" />
     <ClCompile Include="SceneUI.cpp" />
     <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="SoundUI.cpp" />

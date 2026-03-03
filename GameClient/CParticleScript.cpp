@@ -38,7 +38,7 @@ void CParticleScript::Tick() {
 	BillboardRender()->SetAlbedo(color);
 
 	if (mElapsedTime > lifeTime) {
-		Transform()->SetRelativePos(Vec3(0.f, -10000.f, 0.f));
+		//Transform()->SetRelativePos(Vec3(0.f, -10000.f, 0.f));
 		SelfDestruct();
 	}
 }

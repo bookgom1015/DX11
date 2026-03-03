@@ -77,6 +77,24 @@ void CPlatfomerPlayerScript::Tick() {
 
 	Animation();
 	Relocate();
+
+	if (RigidBody()->IsOnGround()) {
+		auto ground = RigidBody()->GetGround();
+		auto groundPos = ground->Transform()->GetRelativePos();
+	
+		if (mGround == nullptr) mGroundPrevPos = groundPos;
+	
+		auto delta = groundPos - mGroundPrevPos;
+	
+		auto pos = Transform()->GetRelativePos();
+		Transform()->SetRelativePos(pos + delta);
+	
+		mGroundPrevPos = groundPos;
+		mGround = ground;
+	}
+	else {
+		mGround = nullptr;
+	}
 }
 
 void CPlatfomerPlayerScript::Move() {

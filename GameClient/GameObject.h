@@ -5,22 +5,13 @@
 
 #define GET_COMPONENT(COM_NAME, COM_TYPE)     Ptr<C##COM_NAME> COM_NAME() { return (C##COM_NAME*)m_Com[(UINT)COMPONENT_TYPE::COM_TYPE].Get(); }
 
+class GameObject : public Entity {
+    friend class Layer;
+    friend class TaskMgr;
 
-class GameObject :
-    public Entity
-{
-private:
-    Ptr<Component>          m_Com[(UINT)COMPONENT_TYPE::END];
-    Ptr<CRenderComponent>   m_RenderCom;
-    vector<Ptr<CScript>>    m_vecScripts;
-
-    GameObject*             m_Parent;
-    vector<Ptr<GameObject>> m_vecChild;
-
-    // GameObject 본인이 속한 Layer Index, 
-    // -1 인 경우, 어떤 레이어에도 속하지 않는다 == 레벨안에 있지 않은 오브젝트
-    int                     m_LayerIdx; 
-    bool                    m_Dead;
+public:
+    GameObject();
+    virtual ~GameObject();
 
 public:
     // 레벨이 처음 시작될때 호출되는 함수
@@ -31,6 +22,7 @@ public:
 
     // 매 프레임마다 Tick 이후에 뒷 수습작업 수행
     void FinalTick();
+    void FinalTick_Editor();
 
     // 자신을 타겟에 그림
     void Render();
@@ -46,7 +38,6 @@ public:
     void DisconnectWithParent();
     void RegisterAsParent();
     void DeregisterAsParent();
-
 
     Ptr<GameObject> GetParent() { return m_Parent; }
     Ptr<GameObject> GetChild(int _idx) { return m_vecChild[_idx]; }
@@ -74,14 +65,19 @@ public:
 private:
     void RegisterLayer();
 
-public:
-    GameObject();
-    virtual ~GameObject();
+private:
+    Ptr<Component>          m_Com[(UINT)COMPONENT_TYPE::END];
+    Ptr<CRenderComponent>   m_RenderCom;
+    vector<Ptr<CScript>>    m_vecScripts;
 
-    friend class Layer;
-    friend class TaskMgr;
+    GameObject* m_Parent;
+    vector<Ptr<GameObject>> m_vecChild;
+
+    // GameObject 본인이 속한 Layer Index, 
+    // -1 인 경우, 어떤 레이어에도 속하지 않는다 == 레벨안에 있지 않은 오브젝트
+    int                     m_LayerIdx;
+    bool                    m_Dead;
 };
-
 
 bool IsValid(Ptr<GameObject>& _Object);
 

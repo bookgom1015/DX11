@@ -3,6 +3,7 @@
 
 void FlipbookRenderUI::Tick_UI()
 {
+	OutputTitle("FlipbookRender");
 }
 
 FlipbookRenderUI::FlipbookRenderUI()

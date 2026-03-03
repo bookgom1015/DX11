@@ -12,7 +12,7 @@
 #include "AssetMgr.h"
 #include "LevelMgr.h"
 #include "TaskMgr.h"
-#include "RenderMgr.h"
+#include "EditorMgr.h"
 
 namespace {
 	const Vec3 gGravityForce = Vec3(0.f, -9.8f * 160.f, 0.f);
@@ -55,13 +55,23 @@ void CRigidBody::SetActualVelocity(const Vec3& vel) {
 }
 
 void CRigidBody::Resolve() {
-	mAccumulator += DT;
+	if (mbKinematic) {
+		auto pos = GetOwner()->Transform()->GetRelativePos();
 
-	int steps = 0;
-	while (mAccumulator >= gFixedDT && steps < gMaxSteps) {
-		PhysicsStep(gFixedDT);
-		mAccumulator -= gFixedDT;
-		++steps;
+		auto delta = pos - mPrevPos;
+		mVelocity = delta;
+
+		mPrevPos = pos;
+	}
+	else {
+		mAccumulator += DT;
+
+		int steps = 0;
+		while (mAccumulator >= gFixedDT && steps < gMaxSteps) {
+			PhysicsStep(gFixedDT);
+			mAccumulator -= gFixedDT;
+			++steps;
+		}
 	}
 }
 
@@ -89,6 +99,7 @@ void CRigidBody::OnBeginOverlap(CollisionData pOwn, CollisionData pOther) {
 		if (pOwn.Collider->GetOwner()->GetLayerIndex() != ELevelLayer::E_Particle) {
 			if (dot > 0.9f) {
 				mbGrounded = true;
+				mGround = pOther.Collider->GetOwner();
 				mVelocity.y = max(0.f, mVelocity.y);
 			}
 			else if (dot < -0.9f) {
@@ -109,6 +120,7 @@ void CRigidBody::OnOverlap(CollisionData pOwn, CollisionData pOther) {
 
 			if (dot > 0.9f) {
 				mbGrounded = true;
+				mGround = pOther.Collider->GetOwner();
 				mVelocity.y = max(0.f, mVelocity.y);
 			}
 		}
@@ -150,13 +162,19 @@ void CRigidBody::OnOverlap(CollisionData pOwn, CollisionData pOther) {
 			pos.x += mtv.x;
 			pos.y += mtv.y;
 			Transform()->SetRelativePos(pos);
+
+			if (pOwn.Collider->GetOwner()->GetName() == L"Player") {
+				EditorMgr::GetInst()->AddInfoLog("붙음");
+			}
 		}
 	}
 }
 
 void CRigidBody::OnEndOverlap(CollisionData pOwn, CollisionData pOther) {
 	if (pOther.Collider->GetOwner()->GetLayerIndex() == ELevelLayer::E_Ground) {
-		if (pOwn.Collider->GetOwner()->GetLayerIndex() != ELevelLayer::E_Particle)
+		if (pOwn.Collider->GetOwner()->GetLayerIndex() != ELevelLayer::E_Particle) {
 			mbGrounded = false;
+			mGround = nullptr;
+		}
 	}	
 }

@@ -7,6 +7,7 @@ public:
     virtual void Tick_UI() override;
 
 private:
+    void ShaderParameter();
     void SelectShader(DWORD_PTR _ListUI);
 
 public:
