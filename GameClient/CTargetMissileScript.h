@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CScript.h"
+
 #include "GameObject.h"
 
 class CTargetMissileScript : public CScript {
@@ -12,6 +13,10 @@ public:
     virtual void Begin();
     virtual void Tick();
 
+public:
+    CLONE(CTargetMissileScript);
+
+public:
     void BeginOverlap(CollisionData pOwner, CollisionData pOther);
     void Overlap(CollisionData pOwner, CollisionData pOther);
     void EndOverlap(CollisionData pOwner, CollisionData pOther);

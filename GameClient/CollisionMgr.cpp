@@ -19,6 +19,53 @@ void CollisionMgr::Progress(Ptr<ALevel> _Level) {
 	}
 }
 
+bool CollisionMgr::IsCollision(Ptr<CCollider2D> collider, Vec3 pos) {
+	Ptr<AMesh> pRectMesh = FIND(AMesh, L"RectMesh");
+	const Vtx* pVtx = pRectMesh->GetVtxSysMem();
+
+	const Matrix& W = collider->GetWorldMat();
+
+	// RectMesh의 로컬 기준에서 "중심(0)"과 "두 축 방향 벡터(엣지)"를 월드로 만든다.
+	// (0 -> 1), (0 -> 3) 이 두 엣지가 직사각형의 두 축.
+	const Vec3 p0 = XMVector3TransformCoord(pVtx[0].vPos, W);
+	const Vec3 p1 = XMVector3TransformCoord(pVtx[1].vPos, W);
+	const Vec3 p3 = XMVector3TransformCoord(pVtx[3].vPos, W);
+
+	Vec3 axisX = p1 - p0;   // 월드 공간에서의 로컬 X축 방향(스케일 포함)
+	Vec3 axisY = p3 - p0;   // 월드 공간에서의 로컬 Y축 방향(스케일 포함)
+
+	float lenX = axisX.Length();
+	float lenY = axisY.Length();
+
+	// 축 길이가 0에 가깝면(스케일 0 등) 충돌 판정 불가 -> 안전하게 false
+	if (lenX < 1e-6f || lenY < 1e-6f)
+		return false;
+
+	// 정규화된 축(투영 축)
+	Vec3 uX = axisX / lenX;
+	Vec3 uY = axisY / lenY;
+
+	// 중심은 월드행렬로 원점 변환 (네 코드 스타일 그대로)
+	Vec3 center = XMVector3TransformCoord(Vec3(0.f), W);
+
+	// 점을 콜라이더 로컬(축 기준)으로 투영: center->pos 벡터를 각 축으로 dot
+	Vec3 d = pos - center;
+
+	float distX = fabs(d.Dot(uX));
+	float distY = fabs(d.Dot(uY));
+
+	// RectMesh의 (0->1), (0->3) 엣지 길이는 "전체 폭/높이"에 해당.
+	// 반-폭(half extent)은 그 절반.
+	float halfX = lenX * 0.5f;
+	float halfY = lenY * 0.5f;
+
+	// 분리축 테스트(2개 축만)
+	if (distX > halfX) return false;
+	if (distY > halfY) return false;
+
+	return true;
+}
+
 void CollisionMgr::CollisionBtwLayer(Layer* _Left, Layer* _Right) {
 	const vector<Ptr<GameObject>>& vecLeft = _Left->GetAllObjects();
 	const vector<Ptr<GameObject>>& vecRight = _Right->GetAllObjects();
@@ -34,7 +81,7 @@ void CollisionMgr::CollisionBtwLayer(Layer* _Left, Layer* _Right) {
 			colid.LeftID = vecLeft[i]->Collider2D()->GetID();
 			colid.RightID = vecRight[j]->Collider2D()->GetID();
 
-			map<ULONGLONG, bool>::iterator iter = m_mapColID.find(colid.ID);
+			auto iter = m_mapColID.find(colid.ID);
 
 			if (iter == m_mapColID.end()) {
 				m_mapColID.insert(make_pair(colid.ID, false));

@@ -107,19 +107,30 @@ void Menu::View()
 			EditorMgr::GetInst()->ShowDemo(ShowDemo);
 		}
 
+		Ptr<EditorUI> pScene = EditorMgr::GetInst()->FindUI("Scene");
+		bool SceneActive = pScene->IsActive();
+		if (ImGui::MenuItem("Scene", nullptr, &SceneActive))
+			pScene->SetActive(SceneActive);
+
 		Ptr<EditorUI> pInspector = EditorMgr::GetInst()->FindUI("Inspector");
 		bool InspectorActive = pInspector->IsActive();
 		if (ImGui::MenuItem("Inspector", nullptr, &InspectorActive))
-		{
 			pInspector->SetActive(InspectorActive);
-		}
 
 		Ptr<EditorUI> pOutliner = EditorMgr::GetInst()->FindUI("Outliner");
 		bool OutlinerActive = pOutliner->IsActive();
 		if (ImGui::MenuItem("Outliner", nullptr, &OutlinerActive))
-		{
 			pOutliner->SetActive(OutlinerActive);
-		}
+
+		Ptr<EditorUI> pContent = EditorMgr::GetInst()->FindUI("Content");
+		bool ContentActive = pContent->IsActive();
+		if (ImGui::MenuItem("Content", nullptr, &ContentActive))
+			pContent->SetActive(ContentActive);
+
+		Ptr<EditorUI> pLog = EditorMgr::GetInst()->FindUI("Log");
+		bool LogActive = pLog->IsActive();
+		if (ImGui::MenuItem("Log", nullptr, &LogActive))
+			pLog->SetActive(LogActive);
 
 		ImGui::EndMenu();
 	}
@@ -170,6 +181,8 @@ void Menu::Asset()
 
 void Menu::Render() {
 	if (ImGui::BeginMenu("Render")) {
+		ImGui::MenuItem("Show Collider", NULL, &RenderMgr::DebugRender);
+
 		if (ImGui::BeginMenu("Gamma Correction")) {
 			ImGui::MenuItem("Enabled", NULL, &RenderMgr::GammaEnabled);
 
@@ -186,8 +199,8 @@ void Menu::Render() {
 			if (ImGui::Combo(
 				"##Type",
 				reinterpret_cast<int*>(&RenderMgr::ToneType),
-				TonemapperTypeNames,
-				ToneMapper::Count));
+				EToneMapper::TypeNames,
+				EToneMapper::Count));
 
 			ImGui::EndMenu();
 		}

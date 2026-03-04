@@ -4,19 +4,19 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "RenderMgr.h"
+#include "AssetMgr.h"
+#include "TaskMgr.h"
+#include "EditorMgr.h"
 
-#include "CTransform.h"
 #include "GameObject.h"
-#include "CTargetMissileScript.h"
+#include "CTransform.h"
 #include "CRigidBody.h"
+
+#include "CTargetMissileScript.h"
 #include "CSandevistanScript.h"
 #include "CCyberPsychosisScript.h"
 #include "CRelicScript.h"
 
-#include "AssetMgr.h"
-#include "LevelMgr.h"
-#include "TaskMgr.h"
-#include "EditorMgr.h"
 #include "SceneUI.h"
 
 CPlatfomerPlayerScript::CPlatfomerPlayerScript() {}
@@ -32,8 +32,9 @@ void CPlatfomerPlayerScript::Begin() {
 
 	decltype(auto) light = mLight->Light2D();
 	light->SetLightType(LIGHT_TYPE::POINT);
-	light->SetLightColor(Vec3(255.f / 255.f, 81.f / 255.f, 13.f / 255.f) * 1.f);
-	light->SetRadius(200.f);
+	light->SetLightColor(Vec3(255.f / 255.f, 81.f / 255.f, 13.f / 255.f));
+	light->SetIntensity(5.f);
+	light->SetRadius(80.f);
 	light->Disable(true);
 
 	CreateObject(mLight.Get(), ELevelLayer::E_Light);
@@ -47,7 +48,7 @@ void CPlatfomerPlayerScript::Tick() {
 	auto pos = Transform()->GetRelativePos();
 	auto mpos = KeyMgr::GetInst()->GetMousePosOnScene();
 
-	auto wpos = LevelMgr::GetInst()->GetMainCam()->Camera()->ScreenToWorld(
+	auto wpos = RenderMgr::GetInst()->GetPOVCamera()->Camera()->ScreenToWorld(
 		mpos, scene->GetSceneSize());
 
 	auto dir = (wpos - pos).Normalize();

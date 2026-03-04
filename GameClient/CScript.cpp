@@ -3,22 +3,14 @@
 
 #include "TaskMgr.h"
 
-CScript::CScript()
-	: Component(COMPONENT_TYPE::SCRIPT)
-{
-}
+CScript::CScript() : Component(COMPONENT_TYPE::SCRIPT) {}
 
-CScript::~CScript()
-{
-}
+CScript::~CScript() {}
 
-void CScript::Destroy()
-{
-	if (GetOwner()->IsDead())
-		return;
+void CScript::Destroy() {
+	if (GetOwner()->IsDead()) return;
 
-	TaskInfo info = {};
-
+	TaskInfo info{};
 	info.Type = TASK_TYPE::DESTROY_OBJECT;
 	info.Param_0 = (DWORD_PTR)GetOwner();
 

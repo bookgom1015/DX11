@@ -6,9 +6,27 @@
 
 GameObject::GameObject()
 	: m_Com{}
-	, m_Parent(nullptr)
-	, m_LayerIdx(-1)
-	, m_Dead(false)	{}
+	, m_Parent{}
+	, m_LayerIdx{ -1 }
+	, m_Dead{} {}
+
+GameObject::GameObject(const GameObject& _Origin)
+	: Entity(_Origin)
+	, m_Com{}
+	, m_Parent{}
+	, m_LayerIdx{ -1 }
+	, m_Dead{} {
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i) {
+		if (_Origin.m_Com[i] == nullptr) continue;
+		AddComponent(_Origin.m_Com[i]->Clone());
+	}
+	for (const auto& script : _Origin.m_vecScripts) {
+		AddComponent(script->Clone());
+	}
+	for (const auto& child : _Origin.m_vecChild) {
+		AddChild(child->Clone());
+	}
+}
 
 GameObject::~GameObject() {}
 
@@ -29,6 +47,17 @@ void GameObject::Tick() {
 	
 	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
 		m_vecChild[i]->Tick();
+}
+
+void GameObject::LateTick() {
+	for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i)
+		m_vecScripts[i]->LateTick();
+
+	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
+		m_vecChild[i]->LateTick();
+
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+		if (nullptr != m_Com[i]) m_Com[i]->LateTick();
 }
 
 void GameObject::FinalTick() {
@@ -57,7 +86,7 @@ void GameObject::FinalTick_Editor() {
 	// 자식 오브젝트 FinalTick 호출
 	// 만약 Dead 상태인 자식 오브젝트가 있으면, Vector 에서 제거한다.
 	vector<Ptr<GameObject>>::iterator iter = m_vecChild.begin();
-	for (auto end = m_vecChild.end(); iter != end; ) {
+	for (; iter != m_vecChild.end(); ) {
 		(*iter)->FinalTick();
 
 		if ((*iter)->IsDead()) iter = m_vecChild.erase(iter);
@@ -145,7 +174,7 @@ void GameObject::DisconnectWithParent() {
 	if (m_LayerIdx != -1) LevelMgr::GetInst()->GetCurLevel()->SetChanged();
 
 	auto iter = m_Parent->m_vecChild.begin();
-	for (auto end = m_Parent->m_vecChild.end(); iter != end; ++iter) {
+	for (; iter != m_Parent->m_vecChild.end(); ++iter) {
 		if (*iter == this) {
 			m_Parent->m_vecChild.erase(iter);
 			m_Parent = nullptr;

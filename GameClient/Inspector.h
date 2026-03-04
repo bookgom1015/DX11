@@ -20,6 +20,8 @@ public:
 
 public:
     void SetTargetObject(Ptr<GameObject> _Object);
+    Ptr<GameObject> GetTargetObject() { return m_TargetObject; }
+
     void SetTargetAsset(Ptr<Asset> _Asset);
 
 private:

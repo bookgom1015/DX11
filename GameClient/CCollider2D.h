@@ -12,35 +12,31 @@ class CCollider2D;
 typedef void(CScript::* COLLISION_EVENT)(CollisionData, CollisionData);
 typedef void(Component::* COLLISION_EVENT_COMP)(CollisionData, CollisionData);
 
-struct COLLISION_DELEGATE
-{
+struct COLLISION_DELEGATE {
     CScript*        Inst;
     COLLISION_EVENT MemFunc;
 };
 
-struct COLLISION_DELEGATE_COMP
-{
+struct COLLISION_DELEGATE_COMP {
     Component* Inst;
     COLLISION_EVENT_COMP MemFunc;
 };
 
-class CCollider2D :
-    public Component
-{
+class CCollider2D : public Component {
+    friend class CollisionMgr;
+
+public:
+    CCollider2D();
+    CCollider2D(const CCollider2D& _Origin);
+    virtual ~CCollider2D();
+
+public:
+    virtual void FinalTick() override;
+
 private:
-    Vec2        m_Offset;
-    Vec2        m_Scale;
-
-    int         m_OverlapCount;
-    Matrix      m_matWorld;
-       
-    vector<COLLISION_DELEGATE> m_vecBeginDel;
-    vector<COLLISION_DELEGATE> m_vecOverDel;
-    vector<COLLISION_DELEGATE> m_vecEndDel;
-
-    vector<COLLISION_DELEGATE_COMP> m_vecBeginCompDel;
-    vector<COLLISION_DELEGATE_COMP> m_vecOverCompDel;
-    vector<COLLISION_DELEGATE_COMP> m_vecEndCompDel;
+    void BeginOverlap(CollisionData _Other);
+    void Overlap(CollisionData _Other);
+    void EndOverlap(CollisionData _Other);
 
 public:
     void AddDynamicBeginOverlap(CScript* _Inst, COLLISION_EVENT _MemFunc);    
@@ -52,23 +48,26 @@ public:
     void AddDynamicEndOverlap(Component* _Inst, COLLISION_EVENT_COMP _MemFunc);
 
 public:
+    CLONE(CCollider2D);
+
     GET_SET(Vec2, Offset);
     GET_SET(Vec2, Scale);
 
     const Matrix& GetWorldMat() { return m_matWorld; }
 
 private:
-    void BeginOverlap(CollisionData _Other);
-    void Overlap(CollisionData _Other);
-    void EndOverlap(CollisionData _Other);
+    Vec2 m_Offset;
+    Vec2 m_Scale;
 
+    int m_OverlapCount;
+    Matrix m_matWorld;
 
-public:
-    virtual void FinalTick() override;
-    
-public:
-    CCollider2D();
-    virtual ~CCollider2D();
-    friend class CollisionMgr;
+    vector<COLLISION_DELEGATE> m_vecBeginDel;
+    vector<COLLISION_DELEGATE> m_vecOverDel;
+    vector<COLLISION_DELEGATE> m_vecEndDel;
+
+    vector<COLLISION_DELEGATE_COMP> m_vecBeginCompDel;
+    vector<COLLISION_DELEGATE_COMP> m_vecOverCompDel;
+    vector<COLLISION_DELEGATE_COMP> m_vecEndCompDel;
 };
 

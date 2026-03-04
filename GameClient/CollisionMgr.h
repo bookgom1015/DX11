@@ -18,6 +18,9 @@ class CollisionMgr : public singleton<CollisionMgr> {
 public:
 	void Progress(Ptr<ALevel> _Level);
 
+public:
+	bool IsCollision(Ptr<CCollider2D> collider, Vec3 pos);
+
 private:
 	void CollisionBtwLayer(Layer* _Left, Layer* _Right);
 	bool IsCollision(Ptr<CCollider2D> _LeftCol, Ptr<CCollider2D> _RightCol, CollisionData& data);

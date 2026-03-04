@@ -82,9 +82,6 @@
     <ClInclude Include="CScript.h">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayerScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
     <ClInclude Include="AssetMgr.h">
       <Filter>GameEngine\03. Manager\04. AssetMgr</Filter>
     </ClInclude>
@@ -99,9 +96,6 @@
     </ClInclude>
     <ClInclude Include="Layer.h">
       <Filter>GameEngine\04. Asset\04. Level\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="CMissileScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="components.h">
       <Filter>Header</Filter>
@@ -231,9 +225,6 @@
     </ClInclude>
     <ClInclude Include="ListUI.h">
       <Filter>GameEngine\07. EditorUI\07. ListUI</Filter>
-    </ClInclude>
-    <ClInclude Include="CMonsterScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="ContentUI.h">
       <Filter>GameEngine\07. EditorUI\05. Content</Filter>
@@ -666,9 +657,6 @@
     <ClCompile Include="CScript.cpp">
       <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayerScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
     <ClCompile Include="AssetMgr.cpp">
       <Filter>GameEngine\03. Manager\04. AssetMgr</Filter>
     </ClCompile>
@@ -683,9 +671,6 @@
     </ClCompile>
     <ClCompile Include="Layer.cpp">
       <Filter>GameEngine\04. Asset\04. Level\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="CMissileScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>GameEngine\06. Component\02. Camera</Filter>
@@ -818,9 +803,6 @@
     </ClCompile>
     <ClCompile Include="ListUI.cpp">
       <Filter>GameEngine\07. EditorUI\07. ListUI</Filter>
-    </ClCompile>
-    <ClCompile Include="CMonsterScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="ContentUI.cpp">
       <Filter>GameEngine\07. EditorUI\05. Content</Filter>

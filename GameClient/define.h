@@ -17,3 +17,5 @@
 
 #define ClientWidth 1600
 #define ClientHeight 900
+
+#define CLONE(Type) Type* Clone() { return new Type(*this); }

@@ -27,7 +27,7 @@ int APIENTRY wWinMain(_In_      HINSTANCE hInstance,
 
     // Engine 초기화
     // 최상위 관리자
-    if (FAILED(Engine::GetInst()->Init(hInstance, 1600, 900, true)))
+    if (FAILED(Engine::GetInst()->Init(hInstance, ClientWidth, ClientHeight, true)))
     {
         return 0;
     }

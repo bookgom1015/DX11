@@ -4,15 +4,14 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "RenderMgr.h"
-
-#include "CTransform.h"
-#include "GameObject.h"
-#include "CMissileScript.h"
-
 #include "AssetMgr.h"
 #include "LevelMgr.h"
 #include "TaskMgr.h"
 #include "EditorMgr.h"
+
+#include "GameObject.h"
+
+#include "CTransform.h"
 
 namespace {
 	const Vec3 gGravityForce = Vec3(0.f, -9.8f * 160.f, 0.f);
@@ -34,9 +33,11 @@ void CRigidBody::Begin() {
 		this, (COLLISION_EVENT_COMP)&CRigidBody::OnEndOverlap);
 }
 
-void CRigidBody::FinalTick() {
+void CRigidBody::LateTick() {
 	Resolve();
 }
+
+void CRigidBody::FinalTick() {}
 
 void CRigidBody::AddForce(const Vec3& force) {
 	mAccleration += force;
@@ -129,12 +130,19 @@ void CRigidBody::OnOverlap(CollisionData pOwn, CollisionData pOther) {
 		auto obsPos = pOther.Collider->Transform()->GetRelativePos();
 
 		Vec2 scale = Transform()->GetRelativeScale() * 0.5f * Collider2D()->GetScale();
-		Vec2 obsScale = pOther.Collider->Transform()->GetRelativeScale() * 0.5f * pOther.Collider->Collider2D()->GetScale();
+		Vec2 offset = scale * Collider2D()->GetOffset() * -1.f;
 
-		auto posMin = pos - Vec3(scale.x, scale.y, 0.f);
-		auto posMax = pos + Vec3(scale.x, scale.y, 0.f);
-		auto obsPosMin = obsPos - Vec3(obsScale.x, obsScale.y, 0.f);
-		auto obsPosMax = obsPos + Vec3(obsScale.x, obsScale.y, 0.f);
+		Vec2 obsScale = pOther.Collider->Transform()->GetRelativeScale() 
+			* 0.5f * pOther.Collider->Collider2D()->GetScale();
+		Vec2 obsOffset = obsScale * pOther.Collider->Collider2D()->GetOffset() * -1.f;
+
+		auto posMin = pos - Vec3(scale.x + offset.x, scale.y + offset.y, 0.f);
+		auto posMax = pos + Vec3(scale.x + offset.x, scale.y + offset.y, 0.f);
+
+		auto obsPosMin = obsPos 
+			- Vec3(obsScale.x + obsOffset.x, obsScale.y + obsOffset.y, 0.f);
+		auto obsPosMax = obsPos 
+			+ Vec3(obsScale.x + obsOffset.x, obsScale.y + obsOffset.y, 0.f);
 				
 		if ((posMax.x >= obsPosMin.x && obsPosMax.x >= posMin.x) 
 			&& (posMax.y >= obsPosMin.y && obsPosMax.y >= posMin.y)) {
@@ -160,12 +168,24 @@ void CRigidBody::OnOverlap(CollisionData pOwn, CollisionData pOther) {
 			}
 
 			pos.x += mtv.x;
-			pos.y += mtv.y;
+			pos.y += mtv.y;		
+			
 			Transform()->SetRelativePos(pos);
 
-			if (pOwn.Collider->GetOwner()->GetName() == L"Player") {
-				EditorMgr::GetInst()->AddInfoLog("붙음");
-			}
+			//const float DampScale = 0.5f;
+			//if (mtv.Length() > DampScale) {
+			//	pos.x += mtv.x;
+			//	pos.y += mtv.y;
+			//
+			//	auto damp = mtv;
+			//	damp.Normalize();
+			//	damp *= DampScale;
+			//
+			//	pos.x -= damp.x;
+			//	pos.y -= damp.y;
+			//
+			//	Transform()->SetRelativePos(pos);
+			//}
 		}
 	}
 }

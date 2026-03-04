@@ -14,6 +14,30 @@ namespace ELevelLayer {
 	};
 }
 
+namespace EToneMapper {
+	static const char* TypeNames[] = {
+		"ACES",
+		"Horror",
+		"Anime"
+	};
+
+	enum Type {
+		E_ACES = 0,
+		E_Horror,
+		E_Anime,
+		Count
+	};
+}
+
+namespace ELevelState {
+	enum Type {
+		E_Playing = 0,
+		E_Paused,
+		E_Stopped,
+		Count
+	};
+}
+
 static std::string GetLevelLayerName(ELevelLayer::Type type) {
 	switch (type) {
 	case ELevelLayer::E_Default:
@@ -35,6 +59,15 @@ static std::string GetLevelLayerName(ELevelLayer::Type type) {
 	default:
 		return {};
 	}
+}
+
+namespace EGizmoAxis {
+	enum Type { 
+		None, 
+		MoveXY, 
+		MoveX, 
+		MoveY 
+	};
 }
 
 static decltype(auto) GetTImeStamp() {
@@ -229,11 +262,7 @@ static string GetRenderDomainName(RENDER_DOMAIN domain) {
 	}
 }
 
-namespace ELevelState {
-	enum Type {
-		E_Playing = 0,
-		E_Paused,
-		E_Stopped,
-		Count
-	};
-}
+enum class PROJ_TYPE {
+	ORTHOGRAPHIC,   // 직교투영
+	PERSPECTIVE,    // 원근투영
+};

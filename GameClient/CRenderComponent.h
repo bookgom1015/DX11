@@ -8,6 +8,7 @@
 class CRenderComponent : public Component {
 public:
     CRenderComponent(COMPONENT_TYPE _Type);
+    CRenderComponent(const CRenderComponent& _Origin);
     virtual ~CRenderComponent();
 
 public:
@@ -28,10 +29,10 @@ public:
     Ptr<AMaterial> CreateDynamicMaterial();
 
 private:
-    Ptr<AMesh>          m_Mesh;
+    Ptr<AMesh> m_Mesh;
 
-    Ptr<AMaterial>      m_Mtrl;         // 현재 사용중인 재질
-    Ptr<AMaterial>      m_SharedMtrl;   // 공유 재질(에셋매니저의 관리를 받는..)
-    Ptr<AMaterial>      m_DynamicMtrl;  // 나만의 동적 재질(쓰고 버리는..)
+    Ptr<AMaterial> m_Mtrl;         // 현재 사용중인 재질
+    Ptr<AMaterial> m_SharedMtrl;   // 공유 재질(에셋매니저의 관리를 받는..)
+    Ptr<AMaterial> m_DynamicMtrl;  // 나만의 동적 재질(쓰고 버리는..)
 };
 

@@ -3,22 +3,18 @@
 
 #include "Engine.h"
 
+#include "LevelMgr.h"
+
 TimeMgr::TimeMgr()
 	: m_Frequency{}
 	, m_Prev{}
 	, m_Current{}
 	, m_DeltaTime(0.f)
-	, m_Time(0.f)
-{
-}
+	, m_Time(0.f) {}
 
-TimeMgr::~TimeMgr()
-{
+TimeMgr::~TimeMgr() {}
 
-}
-
-void TimeMgr::Init()
-{
+void TimeMgr::Init() {
 	// 1 초동안 가능한 카운팅 횟수
 	QueryPerformanceFrequency(&m_Frequency);
 
@@ -27,8 +23,7 @@ void TimeMgr::Init()
 	QueryPerformanceCounter(&m_Prev);	
 }
 
-void TimeMgr::Tick()
-{
+void TimeMgr::Tick() {
 	// 현재 카운팅 가져오기
 	QueryPerformanceCounter(&m_Current);
 
@@ -42,8 +37,7 @@ void TimeMgr::Tick()
 	m_Time += m_DeltaTime;
 
 	// 1 초마다 if 수행
-	if (1.f < m_Time)
-	{
+	if (1.f < m_Time) {
 		wchar_t buff[255] = {};
 		swprintf_s(buff, 255, L"DeltaTime : %f", m_DeltaTime);
 		SetWindowText(Engine::GetInst()->GetMainWndHwnd(), buff);
@@ -51,8 +45,19 @@ void TimeMgr::Tick()
 		m_Time -= 1.f;
 	}
 
-	g_Global.DeltaTime = m_DeltaTime;
-	g_Global.Time += m_DeltaTime;
+	// Game Engine용 Time
 	g_Global.EngineDT = m_DeltaTime;
 	g_Global.EngineTime += m_DeltaTime;
+
+	// Level 이 Pause 나 Stop 상태라면
+	if (LevelMgr::GetInst()->GetLevelState() != ELevelState::E_Playing) {
+		g_Global.DeltaTime = m_DeltaTime = 0.f;
+		g_Global.Time = 0.f;
+	}
+	// Level 이 Play 상태
+	else {
+		// Game Content 용 Time
+		g_Global.DeltaTime = m_DeltaTime;
+		g_Global.Time += m_DeltaTime;
+	}
 }

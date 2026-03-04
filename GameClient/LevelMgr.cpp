@@ -13,9 +13,10 @@
 #include "CFlashLightScript.h"
 #include "CElevationScript.h"
 
-LevelMgr::LevelMgr() {
-	m_LevelState = ELevelState::E_Playing;
-}
+LevelMgr::LevelMgr() 
+	: m_CurLevel{ nullptr }
+	, m_SharedLevel{ nullptr }
+	, m_LevelState{ ELevelState::E_Playing } { }
 
 LevelMgr::~LevelMgr() {}
 
@@ -80,7 +81,6 @@ void LevelMgr::Init() {
 
 	// 레벨을 변경
 	Util::ChangeLevel(L"Level01");
-	ChangeLevelState(ELevelState::E_Playing);
 }
 
 void LevelMgr::Progress() {
@@ -89,10 +89,11 @@ void LevelMgr::Progress() {
 	// 이전에 등록된 모든 오브젝트들 제거
 	m_CurLevel->Deregister();
 
-	if (m_LevelState == ELevelState::E_Playing)
-		m_CurLevel->Tick();
+	if (m_LevelState == ELevelState::E_Playing) m_CurLevel->Tick();
 
 	m_CurLevel->FinalTick();
+
+	if (m_LevelState == ELevelState::E_Playing)	m_CurLevel->LateTick();
 
 	if (m_LevelState == ELevelState::E_Playing)
 		CollisionMgr::GetInst()->Progress(m_CurLevel);
@@ -113,12 +114,14 @@ void LevelMgr::ChangeLevelState(ELevelState::Type state) {
 	// Stop -> Play
 	if (m_LevelState == ELevelState::E_Stopped && state == ELevelState::E_Playing) {
 		// 원본 에셋 레벨의 복제본 레벨을 만들어서 현재 레벨로 가리킨다.
-		//m_CurLevel = m_SharedLevel->Clone();
+		m_CurLevel = m_SharedLevel->Clone();
+		m_CurLevel->SetChanged();
 		m_CurLevel->Begin();
 	}
 	else if ((m_LevelState == ELevelState::E_Playing || m_LevelState == ELevelState::E_Paused)
 		&& state == ELevelState::E_Stopped) {
 		m_CurLevel = m_SharedLevel;
+		m_CurLevel->SetChanged();
 	}
 
 	m_LevelState = state;
@@ -193,11 +196,7 @@ void LevelMgr::CreatePlayer(Ptr<ALevel> level) {
 		camera->Camera()->SetAspectRatio(vResolution.x / vResolution.y); // 종횡비(AspectRatio)
 		camera->Camera()->SetWidth(vResolution.x);
 
-		m_MainCam = camera;
 		level->AddObject(ELevelLayer::E_Default, camera);
-
-		// 카메라 타겟 설정
-		tracking->SetTarget(player);
 	}
 }
 
@@ -292,10 +291,6 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 	{
 		auto pGround = new GameObject;
 		pGround->SetName(L"Ground5");
-
-		// 레벨 시작
-		level->SetChanged();
-		level->Begin();
 
 		pGround->AddComponent(new CTransform);
 		pGround->AddComponent(new CBillboardRender);

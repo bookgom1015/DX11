@@ -12,7 +12,21 @@ CTileRender::CTileRender() : CRenderComponent(COMPONENT_TYPE::TILE_RENDER) {
 	m_Buffer = new StructuredBuffer;
 }
 
+CTileRender::CTileRender(const CTileRender& _Origin) 
+	: CRenderComponent{ _Origin }
+	, m_TileMap { _Origin.m_TileMap }
+	, m_vecSpriteInfo{ _Origin.m_vecSpriteInfo }
+	, m_Buffer{} {
+	m_Buffer = new StructuredBuffer;
+}
+
 CTileRender::~CTileRender() {}
+
+void CTileRender::Init() {
+	CRenderComponent::Init();
+
+	SetTileMap(m_TileMap);
+}
 
 void CTileRender::FinalTick() {}
 

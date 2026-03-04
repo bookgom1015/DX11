@@ -12,20 +12,25 @@ struct SpriteInfo {
 
 class CTileRender : public CRenderComponent {
 public:
-    CTileRender();
+    CTileRender(); 
+    CTileRender(const CTileRender& _Origin);
     virtual ~CTileRender();
 
 public:
+    virtual void Init() override;
     virtual void FinalTick() override;
     virtual void Render() override;
     virtual void CreateMaterial() override;
 
 public:
+    CLONE(CTileRender);
+
+public:
     void SetTileMap(Ptr<ATileMap> _TileMap);
 
 private:
-    Ptr<ATileMap>           m_TileMap;
-    vector<SpriteInfo>      m_vecSpriteInfo;
-    Ptr<StructuredBuffer>   m_Buffer;
+    Ptr<ATileMap> m_TileMap;
+    vector<SpriteInfo> m_vecSpriteInfo;
+    Ptr<StructuredBuffer> m_Buffer;
 };
 

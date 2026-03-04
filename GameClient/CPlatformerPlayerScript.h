@@ -1,4 +1,5 @@
 #pragma once
+
 #include "CScript.h"
 
 #include "GameObject.h"
@@ -11,6 +12,9 @@ public:
 public:
     virtual void Begin() override;
     virtual void Tick() override;
+
+public:
+    CLONE(CPlatfomerPlayerScript);
 
 private:
     void Move();

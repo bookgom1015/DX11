@@ -9,6 +9,7 @@
 #include "Device.h"
 #include "KeyMgr.h"
 #include "RenderMgr.h"
+#include "LevelMgr.h"
 
 #include "Menu.h"
 #include "Inspector.h"
@@ -20,23 +21,16 @@
 
 #include "CCamMoveScript.h"
 
-EditorMgr::EditorMgr()
-    : m_ShowDemo(false)
-{
+EditorMgr::EditorMgr() : m_ShowDemo(false) {}
 
-}
-
-EditorMgr::~EditorMgr()
-{
+EditorMgr::~EditorMgr() {
     // Cleanup
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
     ImGui::DestroyContext();
 }
 
-
-void EditorMgr::Init()
-{
+void EditorMgr::Init() {
     // Make process DPI aware and obtain main monitor scale
     ImGui_ImplWin32_EnableDpiAwareness();
     float main_scale = ImGui_ImplWin32_GetDpiScaleForMonitor(::MonitorFromPoint(POINT{ 0, 0 }, MONITOR_DEFAULTTOPRIMARY));
@@ -73,8 +67,7 @@ void EditorMgr::Init()
     io.ConfigDpiScaleViewports = true;      // [Experimental] Scale Dear ImGui and Platform Windows when Monitor DPI changes.
 
     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
-    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-    {
+    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
@@ -90,18 +83,16 @@ void EditorMgr::Init()
     CreateEditorObject();
 }
 
-void EditorMgr::Progress()
-{
+void EditorMgr::Progress() {
     Tick();
     Render();
 }
 
-void EditorMgr::Tick()
-{
+void EditorMgr::Tick() {
     // =============
     // Editor Object
     // =============
-    {
+    if (LevelMgr::GetInst()->GetLevelState() != ELevelState::E_Playing) {
         for (const auto& Object : m_EditorObject)
             Object->Tick();
 
@@ -127,8 +118,7 @@ void EditorMgr::Tick()
         ImGui::ShowDemoWindow(&m_ShowDemo);
 
     // EditorUI
-    for (const auto& pair : m_mapUI)
-    {
+    for (const auto& pair : m_mapUI) {
         if(pair.second->IsActive())
             pair.second->Tick();
     }
@@ -139,8 +129,7 @@ void EditorMgr::Tick()
         KeyMgr::GetInst()->SetActive(true);
 }
 
-void EditorMgr::Render()
-{
+void EditorMgr::Render() {
     auto rtv = Device::GetInst()->GetRenderTargetView();
     FLOAT clearValues[4] = { 0.1f, 0.1f, 0.1f, 1.f };
     CONTEXT->ClearRenderTargetView(rtv, clearValues);
@@ -151,16 +140,14 @@ void EditorMgr::Render()
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
     // Update and Render additional Platform Windows
-    if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-    {
+    if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
     }
 }
 
-void EditorMgr::CreateEditorUI()
-{
-    Ptr<EditorUI> pUI = nullptr;
+void EditorMgr::CreateEditorUI() {
+    Ptr<EditorUI> pUI{};
 
     pUI = new Menu;
     AddUI(pUI->GetUIName(), pUI);
@@ -191,8 +178,7 @@ void EditorMgr::CreateEditorUI()
     AddUI(pUI->GetUIName(), pUI);
 }
 
-void EditorMgr::CreateEditorObject()
-{
+void EditorMgr::CreateEditorObject() {
     // Editor Camera Object 생성
     Ptr<GameObject> pObject = new GameObject;
     pObject->SetName(L"EditorCamera");
@@ -218,15 +204,13 @@ void EditorMgr::CreateEditorObject()
     RenderMgr::GetInst()->RegisterEditorCamera(pObject->Camera());
 }
 
-void EditorMgr::AddUI(const string& _UIName, Ptr<EditorUI> _UI)
-{
+void EditorMgr::AddUI(const string& _UIName, Ptr<EditorUI> _UI) {
     Ptr<EditorUI> pUI = FindUI(_UIName);
     assert(nullptr == pUI);
     m_mapUI.insert(make_pair(_UIName, _UI));
 }
 
-Ptr<EditorUI> EditorMgr::FindUI(const string& _UIName)
-{
+Ptr<EditorUI> EditorMgr::FindUI(const string& _UIName) {
     map<string, Ptr<EditorUI>>::iterator iter = m_mapUI.find(_UIName);
 
     if (iter == m_mapUI.end())
@@ -241,7 +225,7 @@ void EditorMgr::AddLog(const LogEntry& entry) {
 
 void EditorMgr::AddInfoLog(const std::string& msg) {
     auto entry = LogEntry{
-            .Level = LogLevel::E_Info,
-            .Message = msg };
+        .Level = LogLevel::E_Info,
+        .Message = msg };
     m_LogUI->AddLog(entry);
 }

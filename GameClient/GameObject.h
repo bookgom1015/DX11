@@ -1,9 +1,11 @@
 #pragma once
-#include "Entity.h"
 
+#include "Entity.h"
 #include "components.h"
 
-#define GET_COMPONENT(COM_NAME, COM_TYPE)     Ptr<C##COM_NAME> COM_NAME() { return (C##COM_NAME*)m_Com[(UINT)COMPONENT_TYPE::COM_TYPE].Get(); }
+#define GET_COMPONENT(COM_NAME, COM_TYPE) Ptr<C##COM_NAME> COM_NAME() { \
+    return (C##COM_NAME*)m_Com[(UINT)COMPONENT_TYPE::COM_TYPE].Get();   \
+}
 
 class GameObject : public Entity {
     friend class Layer;
@@ -11,6 +13,7 @@ class GameObject : public Entity {
 
 public:
     GameObject();
+    GameObject(const GameObject& _Origin);
     virtual ~GameObject();
 
 public:
@@ -19,6 +22,7 @@ public:
 
     // 매 프레임마다 할 일
     void Tick();
+    void LateTick();
 
     // 매 프레임마다 Tick 이후에 뒷 수습작업 수행
     void FinalTick();
@@ -62,33 +66,32 @@ public:
 
     constexpr int GetLayerIndex() const noexcept { return m_LayerIdx; }
 
+    CLONE(GameObject);
+
 private:
     void RegisterLayer();
 
 private:
-    Ptr<Component>          m_Com[(UINT)COMPONENT_TYPE::END];
-    Ptr<CRenderComponent>   m_RenderCom;
-    vector<Ptr<CScript>>    m_vecScripts;
+    Ptr<Component> m_Com[(UINT)COMPONENT_TYPE::END];
+    Ptr<CRenderComponent> m_RenderCom;
+    vector<Ptr<CScript>> m_vecScripts;
 
     GameObject* m_Parent;
     vector<Ptr<GameObject>> m_vecChild;
 
     // GameObject 본인이 속한 Layer Index, 
     // -1 인 경우, 어떤 레이어에도 속하지 않는다 == 레벨안에 있지 않은 오브젝트
-    int                     m_LayerIdx;
-    bool                    m_Dead;
+    int m_LayerIdx;
+    bool m_Dead;
 };
 
 bool IsValid(Ptr<GameObject>& _Object);
 
 template<typename T>
-inline Ptr<T> GameObject::GetScript()
-{
-    for (size_t i = 0; i < m_vecScripts.size(); ++i)
-    {
+inline Ptr<T> GameObject::GetScript() {
+    for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i) {
         T* pScript = dynamic_cast<T*>(m_vecScripts[i].Get());
-        if (nullptr == pScript)
-            continue;
+        if (nullptr == pScript) continue;
 
         return pScript;
     }

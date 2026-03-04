@@ -13,6 +13,9 @@ public:
     virtual void Tick() override;
 
 public:
+    CLONE(CElevationScript);
+
+public:
     void SetStopOverPos(const Vec3& pos) { mStopOverPos = pos; }
 
     void SetSpeed(float speed) { mSpeed = speed; }

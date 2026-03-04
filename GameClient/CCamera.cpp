@@ -2,37 +2,30 @@
 #include "CCamera.h"
 
 #include "LevelMgr.h"
-#include "ALevel.h"
-#include "Layer.h"
-
 #include "RenderMgr.h"
+
+#include "Layer.h"
+#include "Device.h"
+#include "GameObject.h"
+
+#include "ALevel.h"
 
 #include "CTransform.h"
 
-#include "Device.h"
 
-
-CCamera::CCamera()
-	: Component(COMPONENT_TYPE::CAMERA)
+CCamera::CCamera() : Component(COMPONENT_TYPE::CAMERA)
 	, m_LayerCheck(0)
-	, m_OrthoScale(1.f)
-{
+	, m_OrthoScale(1.f) {}
 
-}
+CCamera::~CCamera() {}
 
-CCamera::~CCamera()
-{
-}
-
-void CCamera::Begin()
-{
+void CCamera::Begin() {
 	// 레벨이 시작될때 호출됨
 	// RenderMgr 에 카메라(본인)를 등록
 	RenderMgr::GetInst()->RegisterCamera(this);
 }
 
-void CCamera::FinalTick()
-{
+void CCamera::FinalTick() {
 	// 뷰 행렬 계산
 	// 카메라의 위치
 	Vec3 vPos = Transform()->GetRelativePos();
@@ -79,24 +72,19 @@ void CCamera::FinalTick()
 
 	// 카메라가 원점인 공간으로 이동, 카메라가 바라보는 방향을 z 축으로 회전하는 회전을 적용
 	m_matView = matTrans * matRot;
-	
-
 
 	// 투영행렬
-	if (PROJ_TYPE::ORTHOGRAPHIC == m_ProjType)
-	{
+	if (PROJ_TYPE::ORTHOGRAPHIC == m_ProjType) {
 		// 직교투영(Orthographic) 행렬 계산	
 		m_matProj = XMMatrixOrthographicLH(m_Width * m_OrthoScale, (m_Width / m_AspectRatio) * m_OrthoScale, 1.f, m_Far);
 	}
-	else
-	{
+	else {
 		// 원근투영(Perspective)
 		m_matProj = XMMatrixPerspectiveFovLH(m_FOV, m_AspectRatio, 1.f, m_Far);
 	}	
 }
 
-void CCamera::SortObject()
-{
+void CCamera::SortObject() {
 	// 렌더링 할 물체들을 정렬한다.
 	m_vecOpaque.clear();
 	m_vecMasked.clear();
@@ -104,41 +92,35 @@ void CCamera::SortObject()
 
 	Ptr<ALevel> pCurLevel = LevelMgr::GetInst()->GetCurLevel();
 
-	for (UINT i = 0; i < MAX_LAYER; ++i)
-	{
+	for (UINT i = 0; i < MAX_LAYER; ++i) {
 		// 카메라가 레이어를 볼 수 있어야 함
-		if (false == (m_LayerCheck & (1 << i)))
-			continue;
+		if (!(m_LayerCheck & (1 << i))) continue;
 
 		// 레이어에 소속된 모든 오브젝트를 가져온다
 		Layer* pLayer = pCurLevel->GetLayer(i);
 		const vector<Ptr<GameObject>>& vecObjects = pLayer->GetAllObjects();
 
-		for (size_t j = 0; j < vecObjects.size(); ++j)
-		{
+		for (size_t j = 0, end = vecObjects.size(); j < end; ++j) {
 			// 오브젝트가 렌더링을 할 수 있는 상태인지 확인
 			if (nullptr == vecObjects[j]->GetRenderCom()
 				|| nullptr == vecObjects[j]->GetRenderCom()->GetMesh()
 				|| nullptr == vecObjects[j]->GetRenderCom()->GetMaterial())
-			{
 				continue;
-			}
 
 			RENDER_DOMAIN domain = vecObjects[j]->GetRenderCom()->GetMaterial()->GetDomain();
 
-			switch (domain)
-			{
+			switch (domain) {
 			case RENDER_DOMAIN::DOMAIN_OPAQUE:
-				m_vecOpaque.push_back(vecObjects[j]);
+				m_vecOpaque.push_back(vecObjects[j].Get());
 				break;
 			case RENDER_DOMAIN::DOMAIN_MASKED:
-				m_vecMasked.push_back(vecObjects[j]);
+				m_vecMasked.push_back(vecObjects[j].Get());
 				break;
 			case RENDER_DOMAIN::DOMAIN_TRANSPARENT:
-				m_vecTrapsnarent.push_back(vecObjects[j]);
+				m_vecTrapsnarent.push_back(vecObjects[j].Get());
 				break;			
 			case RENDER_DOMAIN::DOMAIN_POSTPROCESS:
-				m_vecPostProcess.push_back(vecObjects[j]);
+				m_vecPostProcess.push_back(vecObjects[j].Get());
 				break;
 
 			}
@@ -166,25 +148,43 @@ Vec3 CCamera::ScreenToWorld(const Vec2& spos, Vec2 screenSize) {
 	return wpos;
 }
 
-void CCamera::Render()
-{
+Vec2 CCamera::WorldToScreen(const Vec3& wpos, Vec2 screenSize) {
+	Vec4 pos(wpos.x, wpos.y, 0.f, 1.f);
+
+	// world → view
+	Vec4 vpos = XMVector3TransformCoord(pos, m_matView);
+
+	// view → clip
+	Vec4 cpos = XMVector3TransformCoord(vpos, m_matProj);
+
+	// perspective divide → NDC
+	cpos /= cpos.w;
+
+	// NDC → screen
+	Vec2 screen;
+	screen.x = (cpos.x + 1.f) * 0.5f * screenSize.x;
+	screen.y = (1.f - cpos.y) * 0.5f * screenSize.y;
+
+	return screen;
+}
+
+void CCamera::Render() {
 	g_Trans.matView = m_matView;
 	g_Trans.matProj = m_matProj;
 
 	// Domain 순서대로 렌더링 진행
-	for (size_t i = 0; i < m_vecOpaque.size(); ++i)
+	for (size_t i = 0, end = m_vecOpaque.size(); i < end; ++i)
 		m_vecOpaque[i]->Render();
 
-	for (size_t i = 0; i < m_vecMasked.size(); ++i)
+	for (size_t i = 0, end = m_vecMasked.size(); i < end; ++i)
 		m_vecMasked[i]->Render();
 
-	for (size_t i = 0; i < m_vecTrapsnarent.size(); ++i)
+	for (size_t i = 0, end = m_vecTrapsnarent.size(); i < end; ++i)
 		m_vecTrapsnarent[i]->Render();
 
-	for (size_t i = 0; i < m_vecPostProcess.size(); ++i)
+	for (size_t i = 0, end = m_vecPostProcess.size(); i < end; ++i)
 		m_vecPostProcess[i]->Render();
 }
-void CCamera::LayerCheck(int _Idx)
-{
+void CCamera::LayerCheck(int _Idx) {
 	m_LayerCheck ^= (1 << _Idx);
 }

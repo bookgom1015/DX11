@@ -12,6 +12,10 @@ public:
     virtual void Begin() override;
     virtual void Tick() override;
 
+public:
+    CLONE(CParticleScript);
+
+public:
     void BeginOverlap(CollisionData pOwner, CollisionData pOther);
     void Overlap(CollisionData pOwner, CollisionData pOther);
     void EndOverlap(CollisionData pOwner, CollisionData pOther);

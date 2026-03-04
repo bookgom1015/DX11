@@ -4,20 +4,15 @@
 #include "PathMgr.h"
 #include "ALevel.h"
 
-class AssetMgr
-	: public singleton<AssetMgr>
-{
+class AssetMgr : public singleton<AssetMgr> {
 	SINGLE(AssetMgr)
-private:
-	map<wstring, Ptr<Asset>>	m_mapAsset[(UINT)ASSET_TYPE::END];
-	bool						m_Changed;
 
 public:
 	void Init();
-	bool IsChanged()
-	{
+	bool IsChanged() {
 		bool Changed = m_Changed;
 		m_Changed = false;
+
 		return Changed;
 	}
 
@@ -40,11 +35,14 @@ public:
 
 	template<typename T>
 	Ptr<T> Load(const wstring& _Key, const wstring& _RelativePath);
+
+private:
+	map<wstring, Ptr<Asset>> m_mapAsset[(UINT)ASSET_TYPE::END];
+	bool m_Changed;
 };
 
 template<typename T>
-ASSET_TYPE GetAssetType()
-{	
+ASSET_TYPE GetAssetType() {	
 	if constexpr (std::is_same_v<T, AMesh>)
 		return ASSET_TYPE::MESH;		
 	else if constexpr (std::is_same_v<T, AMaterial>)
@@ -66,27 +64,22 @@ ASSET_TYPE GetAssetType()
 }
 
 template<typename T>
-Ptr<T> AssetMgr::Find(const wstring& _Key)
-{		
+Ptr<T> AssetMgr::Find(const wstring& _Key) {		
 	ASSET_TYPE Type = GetAssetType<T>();
 
-	map<wstring, Ptr<Asset>>::iterator iter = m_mapAsset[(UINT)Type].find(_Key);
-
-	if (iter == m_mapAsset[(UINT)Type].end())
-		return nullptr;
+	auto iter = m_mapAsset[(UINT)Type].find(_Key);
+	if (iter == m_mapAsset[(UINT)Type].end()) return nullptr;
 
 	return (T*)iter->second.Get();
 }
 
 template<typename T>
-Ptr<T> AssetMgr::Load(const wstring& _Key, const wstring& _RelativePath)
-{
+Ptr<T> AssetMgr::Load(const wstring& _Key, const wstring& _RelativePath) {
 	// 동일키로 먼저 등록된 에셋이 있는지 확인
 	Ptr<T> pAsset = Find<T>(_Key);
 	
 	// 동일키로 먼저 등록된 에셋이 있으면, 그걸 반환
-	if (nullptr != pAsset)
-		return pAsset;
+	if (pAsset != nullptr) return pAsset;
 
 	// 에셋 객체 생성
 	pAsset = new T;
@@ -111,15 +104,13 @@ Ptr<T> AssetMgr::Load(const wstring& _Key, const wstring& _RelativePath)
 }
 
 template<typename T>
-Ptr<T> LoadAssetRef(FILE* _File)
-{
+Ptr<T> LoadAssetRef(FILE* _File) {
 	// Asset 이 Null 인지 아닌지 저장
 	bool IsNull = false;
 	fread(&IsNull, sizeof(bool), 1, _File);
 
 	// Asset 의 Key, RelativePath 저장
-	if (IsNull)
-	{
+	if (IsNull) {
 		wstring Key = LoadWString(_File);
 		wstring RelativePath = LoadWString(_File);
 		return AssetMgr::GetInst()->Load<T>(Key, RelativePath);
@@ -127,7 +118,6 @@ Ptr<T> LoadAssetRef(FILE* _File)
 
 	return nullptr;
 }
-
 
 #define FIND(Type, Key) AssetMgr::GetInst()->Find<Type>(Key)
 #define LOAD(Type, AssetPath) AssetMgr::GetInst()->Load<Type>(AssetPath, AssetPath)

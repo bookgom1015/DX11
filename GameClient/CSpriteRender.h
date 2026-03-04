@@ -9,6 +9,13 @@ public:
     virtual ~CSpriteRender();
 
 public:
+    virtual void FinalTick() override;
+    virtual void Render() override;
+    virtual void CreateMaterial() override;
+
+public:
+    CLONE(CSpriteRender);
+
     GET_SET(Vec4, Albedo);
 
     __forceinline void SetSprite(Ptr<ASprite> _Sprite);
@@ -18,17 +25,12 @@ public:
     __forceinline void SetRelicEffect(bool status);
     __forceinline void SetEmit(bool status);
 
-public:
-    virtual void FinalTick() override;
-    virtual void Render() override;
-    virtual void CreateMaterial() override;
-
 private:
-    Ptr<ASprite>        m_Sprite;
-    Vec4                m_Albedo;
-    bool                m_GlitchEffectEnabled{};
-    bool                m_RelicEffectEnabled{};
-    bool                m_Emit{};
+    Ptr<ASprite> m_Sprite;
+    Vec4 m_Albedo;
+    bool m_GlitchEffectEnabled{};
+    bool m_RelicEffectEnabled{};
+    bool m_Emit{};
 };
 
 #include "CSpriteRender.inl"

@@ -13,5 +13,6 @@ public:
     virtual void Tick() override;
 
 public:
+    CLONE(CEnemyScript);
 };
 

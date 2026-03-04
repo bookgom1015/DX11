@@ -8,21 +8,15 @@ CTransform::CTransform()
 	: Component(COMPONENT_TYPE::TRANSFORM)
 	, m_RelativeScale(Vec3(1.f, 1.f, 1.f))
 	, m_Dir{}
-	, m_IndependentScale(false)
-{
+	, m_IndependentScale(false) {
 	m_Dir[(UINT)DIR::RIGHT] = Vec3(1.f, 0.f, 0.f);
 	m_Dir[(UINT)DIR::UP]	= Vec3(0.f, 1.f, 0.f);
 	m_Dir[(UINT)DIR::FRONT] = Vec3(0.f, 0.f, 1.f);
 }
 
-CTransform::~CTransform()
-{
-}
+CTransform::~CTransform() {}
 
-
-
-void CTransform::FinalTick()
-{
+void CTransform::FinalTick() {
 	// 크기 -> 회전 -> 이동
 	Matrix matTrans = XMMatrixTranslation(m_RelativePos.x, m_RelativePos.y, m_RelativePos.z);
 
@@ -50,11 +44,9 @@ void CTransform::FinalTick()
 	m_matWorld = matSclae * matRot * matTrans;
 
 	// 부모 오브젝트가 있었다면
-	if (nullptr != GetOwner()->GetParent())
-	{
+	if (GetOwner()->GetParent() != nullptr)	{
 		// 부모 오브젝트의 크기에 영향을 받지 않겠다.
-		if (m_IndependentScale)
-		{
+		if (m_IndependentScale) {
 			Vec3 ParentScale = GetOwner()->GetParent()->Transform()->GetWorldScale();
 			Matrix matParentScale = XMMatrixScaling(ParentScale.x, ParentScale.y, ParentScale.z);
 			Matrix matParentScaleInv = XMMatrixInverse(nullptr, matParentScale);
@@ -67,31 +59,22 @@ void CTransform::FinalTick()
 	}
 }
 
-void CTransform::Binding()
-{		
+void CTransform::Binding() {		
 	g_Trans.matWorld = m_matWorld;	
 
 	// 전역변수에 들어있는 오브젝트 위치 정보를 상수버퍼로 복사
 	Device::GetInst()->GetCB(CB_TYPE::TRANSFORM)->SetData(&g_Trans);
 	Device::GetInst()->GetCB(CB_TYPE::TRANSFORM)->Binding();
-}
+} 
 
-
-
-
-Vec3 CTransform::GetWorldScale()
-{
+Vec3 CTransform::GetWorldScale() {
 	Vec3 vWorldScale = m_RelativeScale;	
-	if (m_IndependentScale)
-		return vWorldScale;
+	if (m_IndependentScale) return vWorldScale;
 
 	Ptr<GameObject> pParent = GetOwner()->GetParent();
-	while (nullptr != pParent)
-	{
+	while (pParent != nullptr) {
 		vWorldScale *= pParent->Transform()->GetRelativeScale();
-
-		if (pParent->Transform()->m_IndependentScale)
-			break;
+		if (pParent->Transform()->m_IndependentScale) break;
 
 		pParent = pParent->GetParent();
 	}

@@ -3,6 +3,7 @@
 
 #include "KeyMgr.h"
 #include "TimeMgr.h"
+#include "LevelMgr.h"
 
 #include "CTransform.h"
 #include "GameObject.h"
@@ -10,6 +11,11 @@
 CTrackingCameraScript::CTrackingCameraScript() {}
 
 CTrackingCameraScript::~CTrackingCameraScript() {}
+
+void CTrackingCameraScript::Begin() {
+	auto level = LevelMgr::GetInst()->GetCurLevel();
+	mTarget = level->FindObjectByName(L"Player");
+}
 
 void CTrackingCameraScript::Tick() {
 	if (mTarget != nullptr) {
@@ -22,8 +28,4 @@ void CTrackingCameraScript::Tick() {
 
 		Transform()->SetRelativePos(newPos + offset);
 	}
-}
-
-void CTrackingCameraScript::SetTarget(Ptr<GameObject> target) {
-	mTarget = target;
 }

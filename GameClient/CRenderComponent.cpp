@@ -5,6 +5,16 @@
 
 CRenderComponent::CRenderComponent(COMPONENT_TYPE _Type) : Component(_Type) {}
 
+CRenderComponent::CRenderComponent(const CRenderComponent& _Origin) 
+	: Component{ _Origin }
+	, m_Mesh{ _Origin.m_Mesh }
+	, m_SharedMtrl{ _Origin.m_SharedMtrl } {
+	if (_Origin.m_Mtrl == _Origin.m_SharedMtrl) 
+		m_Mtrl = m_SharedMtrl;
+	else if (_Origin.m_DynamicMtrl != nullptr && _Origin.m_Mtrl == _Origin.m_DynamicMtrl) 
+		m_Mtrl = CreateDynamicMaterial();
+}
+
 CRenderComponent::~CRenderComponent() {}
 
 void CRenderComponent::Init() {

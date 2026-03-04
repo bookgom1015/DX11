@@ -8,6 +8,12 @@ CCollider2D::CCollider2D() : Component(COMPONENT_TYPE::COLLIDER2D)
 	, m_Scale(Vec2(1.f, 1.f))
 	, m_OverlapCount(0) {}
 
+CCollider2D::CCollider2D(const CCollider2D& _Origin) 
+	: Component{ _Origin }
+	, m_Offset{ _Origin.m_Offset }
+	, m_Scale{ _Origin.m_Scale }
+	, m_OverlapCount{} {}
+
 CCollider2D::~CCollider2D() {}
 
 void CCollider2D::FinalTick() {
@@ -43,6 +49,7 @@ void CCollider2D::Overlap(CollisionData _Other) {
 
 void CCollider2D::EndOverlap(CollisionData _Other) {
 	--m_OverlapCount;
+	if (m_OverlapCount < 0) m_OverlapCount = 0;
 
 	for (size_t i = 0, end = m_vecEndDel.size(); i < end; ++i)
 		(m_vecEndDel[i].Inst->*m_vecEndDel[i].MemFunc)({ this, Vec3() }, _Other);

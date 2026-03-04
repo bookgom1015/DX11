@@ -4,19 +4,16 @@
 #include "SceneUI.h"
 #include "LogUI.h"
 
-class EditorMgr
-	: public singleton<EditorMgr>
-{
+class EditorMgr	: public singleton<EditorMgr> {
 	SINGLE(EditorMgr);
+
+public:
+	void Init();
+	void Progress();
+
 private:
-	map<string, Ptr<EditorUI>>	m_mapUI;
-	bool						m_ShowDemo;
-
-	Ptr<EditorUI>				m_FocusedUI;
-	Ptr<SceneUI>				m_SceneUI;
-	Ptr<LogUI>					m_LogUI;
-
-	vector<Ptr<GameObject>>		m_EditorObject;
+	void Tick();
+	void Render();
 
 public:
 	bool IsShowDemo() { return m_ShowDemo; }
@@ -34,16 +31,18 @@ public:
 
 	void SetDpi() { SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); }
 
-public:
-	void Init();
-	void Progress();
-
-private:
-	void Tick();
-	void Render();
-
 private:
 	void CreateEditorUI();
 	void CreateEditorObject();
+
+private:
+	map<string, Ptr<EditorUI>> m_mapUI;
+	bool m_ShowDemo;
+
+	Ptr<EditorUI> m_FocusedUI;
+	Ptr<SceneUI> m_SceneUI;
+	Ptr<LogUI> m_LogUI;
+
+	vector<Ptr<GameObject>> m_EditorObject;
 };
 

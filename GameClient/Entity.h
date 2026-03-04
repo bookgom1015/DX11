@@ -1,14 +1,14 @@
 #pragma once
 
-class Entity
-{
-private:
-	static	UINT g_NextID; 
+class Entity {
+public:
+	Entity();
+	Entity(const Entity& _Other); // ID 가 겹치지 않게 하기 위해서, 직접 복사생성자 구현
+	//Entity(const Entity& _Other) = delete;	
+	virtual ~Entity();
 
-private:
-	const UINT	m_InstID;	// 객체마다 가지는 고유 ID 값
-	wstring		m_Name;		// 객체마다 이름을 지정할 수 있다.
-	int         m_RefCount; // 참조 카운팅
+	template<typename T>
+	friend class Ptr;
 
 public:
 	void AddRef() 	{ ++m_RefCount; }
@@ -19,14 +19,12 @@ public:
 	void SetName(const wstring& _Name) { m_Name = _Name; }
 	const wstring& GetName() { return m_Name; }
 
-public:
-	Entity();
-	Entity(const Entity& _Other); // ID 가 겹치지 않게 하기 위해서, 직접 복사생성자 구현
-	//Entity(const Entity& _Other) = delete;	
-	virtual ~Entity();
+private:
+	static	UINT g_NextID;
 
-
-	template<typename T>
-	friend class Ptr;
+private:
+	const UINT	m_InstID;	// 객체마다 가지는 고유 ID 값
+	wstring		m_Name;		// 객체마다 이름을 지정할 수 있다.
+	int         m_RefCount; // 참조 카운팅
 };
 

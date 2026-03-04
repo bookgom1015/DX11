@@ -1,14 +1,16 @@
 #pragma once
 #include "Component.h"
 
-class CLight2D :
-    public Component
-{
-private:
-    Light2DInfo     m_Info;
+class CLight2D : public Component {
+public:
+    CLight2D();
+    virtual ~CLight2D();
 
 public:
     virtual void FinalTick() override;    
+
+public:
+    CLONE(CLight2D);
 
 public:
     const Light2DInfo& GetInfo() { return m_Info; }
@@ -52,8 +54,7 @@ public:
     int GetSize() { return m_Info.Size; }
     void SetSize(int idx) { m_Info.Size = idx; }
 
-public:
-    CLight2D();
-    virtual ~CLight2D();
+private:
+    Light2DInfo m_Info;
 };
 

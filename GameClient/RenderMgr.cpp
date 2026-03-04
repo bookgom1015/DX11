@@ -15,15 +15,15 @@
 #include "EditorMgr.h"
 #include "LevelMgr.h"
 
+bool RenderMgr::DebugRender = false;
 bool RenderMgr::GammaEnabled = true;
-
 bool RenderMgr::ToneEnabled = true;
-ToneMapper::Type RenderMgr::ToneType = ToneMapper::Type::E_ACES;
-
 bool RenderMgr::BloomEnabled = true;
 
-RenderMgr::RenderMgr()
-	: m_bDebugRender(false) {
+EToneMapper::Type RenderMgr::ToneType = EToneMapper::E_ACES;
+
+
+RenderMgr::RenderMgr() {
 	mGamma = std::make_unique<GammaCorrection>();
 	mTone = std::make_unique<ToneMapping>();
 	mShadow = std::make_unique<Shadow>();
@@ -52,7 +52,7 @@ void RenderMgr::Init() {
 }
 
 void RenderMgr::Progress() {
-	if (KEY_TAP(KEY::F9)) m_bDebugRender ? m_bDebugRender = false : m_bDebugRender = true;
+	if (KEY_TAP(KEY::F9)) DebugRender ? DebugRender = false : DebugRender = true;
 	
 	// 레더링 시작전에 할 일
 	Render_Start();
@@ -77,6 +77,14 @@ void RenderMgr::Progress() {
 		// 카메라 기반 렌더링
 		if (nullptr == m_EditorCam) return;
 
+		ApplyShadow();
+
+		// 타겟 설정
+		Device::GetInst()->OMSetTarget();
+
+		// 렌더타겟 클리어
+		Device::GetInst()->ClearTarget();
+
 		// 카메라를 이용해서 레벨안에 있는 물체들을 렌더링
 		m_EditorCam->SortObject();
 		m_EditorCam->Render();
@@ -87,7 +95,7 @@ void RenderMgr::Progress() {
 	Render_Post();
 
 	// 디버그 렌더링 요청 처리
-	if (m_bDebugRender) Render_Debug();
+	if (DebugRender) Render_Debug();
 
 	Render_End();
 }
@@ -132,7 +140,7 @@ void RenderMgr::Render_End() {
 }
 
 void RenderMgr::Render_Debug() {
-	list<DbgInfo>::iterator iter = m_DbgInfoList.begin();
+	auto iter = m_DbgInfoList.begin();
 
 	for (; iter != m_DbgInfoList.end();) {
 		// Mesh 설정
@@ -178,7 +186,7 @@ void RenderMgr::Render_Debug() {
 		m_DbgObj->Render();
 
 		// 렌더링 시간 누적
-		(*iter).Age += DT;
+		(*iter).Age += E_DT;
 
 		// 최대 수명에 도달하면 정보 삭제
 		if ((*iter).Life < (*iter).Age)
@@ -195,7 +203,7 @@ void RenderMgr::Render_Post() {
 }
 
 void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
-	for (int i = 0, idx = 0; i < m_vecLight2D.size(); ++i) {
+	for (int i = 0, idx = 0, end = m_vecLight2D.size(); i < end; ++i) {
 		auto& light = m_vecLight2D[i];
 		auto type = light->GetLightType();
 

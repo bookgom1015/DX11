@@ -6,24 +6,18 @@
 #include "CTransform.h"
 #include "CCamera.h"
 
-CCamMoveScript::CCamMoveScript()
-{
-}
+CCamMoveScript::CCamMoveScript() {}
 
-CCamMoveScript::~CCamMoveScript()
-{
-}
+CCamMoveScript::~CCamMoveScript() {}
 
-void CCamMoveScript::Tick()
-{
+void CCamMoveScript::Tick() {
 	if (PROJ_TYPE::PERSPECTIVE == Camera()->GetProjType())
 		MovePerspective();
 	else
 		MoveOrthographic();
 }
 
-void CCamMoveScript::MovePerspective()
-{
+void CCamMoveScript::MovePerspective() {
 	Vec3 vPos = Transform()->GetRelativePos();
 	Vec3 vRot = Transform()->GetRelativeRot();
 
@@ -38,37 +32,35 @@ void CCamMoveScript::MovePerspective()
 
 
 	if (KEY_PRESSED(KEY::W))
-		vPos += vFront * 500.f * DT;
+		vPos += vFront * 500.f * E_DT;
 	if (KEY_PRESSED(KEY::S))
-		vPos -= vFront * 500.f * DT;
+		vPos -= vFront * 500.f * E_DT;
 	if (KEY_PRESSED(KEY::A))
-		vPos -= vRight * 500.f * DT;
+		vPos -= vRight * 500.f * E_DT;
 	if (KEY_PRESSED(KEY::D))
-		vPos += vRight * 500.f * DT;
+		vPos += vRight * 500.f * E_DT;
 
-	if (KEY_PRESSED(KEY::RBTN))
-	{
+	if (KEY_PRESSED(KEY::RBTN))	{
 		Vec2 vMouseDir = KeyMgr::GetInst()->GetMouseDir();
-		vRot.y += vMouseDir.x * DT * XM_2PI * 3.f;
-		vRot.x += vMouseDir.y * DT * XM_2PI * 3.f;
+		vRot.y += vMouseDir.x * E_DT * XM_2PI * 3.f;
+		vRot.x += vMouseDir.y * E_DT * XM_2PI * 3.f;
 	}
 
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRot(vRot);
 }
 
-void CCamMoveScript::MoveOrthographic()
-{
+void CCamMoveScript::MoveOrthographic() {
 	Vec3 vPos = Transform()->GetRelativePos();	
 
 	if (KEY_PRESSED(KEY::W))
-		vPos.y += DT * 500.f;
+		vPos.y += E_DT * 500.f;
 	if (KEY_PRESSED(KEY::S))
-		vPos.y -= DT * 500.f;
+		vPos.y -= E_DT * 500.f;
 	if (KEY_PRESSED(KEY::A))
-		vPos.x -= DT * 500.f;
+		vPos.x -= E_DT * 500.f;
 	if (KEY_PRESSED(KEY::D))
-		vPos.x += DT * 500.f;
+		vPos.x += E_DT * 500.f;
 
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRot(Vec3(0.f, 0.f, 0.f));

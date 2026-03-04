@@ -8,10 +8,11 @@ public:
     virtual ~CTrackingCameraScript();
 
 public:
+    virtual void Begin() override;
     virtual void Tick() override;
 
 public:
-    void SetTarget(Ptr<GameObject> target);
+    CLONE(CTrackingCameraScript);
 
 private:
     Ptr<GameObject> mTarget{};

@@ -4,15 +4,16 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "RenderMgr.h"
-
-#include "CTransform.h"
-#include "GameObject.h"
-#include "CRigidBody.h"
-
 #include "AssetMgr.h"
 #include "LevelMgr.h"
 #include "TaskMgr.h"
 #include "EditorMgr.h"
+
+#include "GameObject.h"
+
+#include "CTransform.h"
+#include "CRigidBody.h"
+
 #include "SceneUI.h"
 
 CFlashLightScript::CFlashLightScript() {}
@@ -32,6 +33,7 @@ void CFlashLightScript::Begin() {
 	mFlashLight->Light2D()->SetRadius(250.f);
 
 	CreateObject(mFlashLight.Get(), ELevelLayer::E_Light);
+
 	// Spot light
 	mFlashLight2 = new GameObject;
 	mFlashLight2->SetName(L"Player_SpotLight");
@@ -56,7 +58,7 @@ void CFlashLightScript::Tick() {
 	auto pos = Transform()->GetRelativePos();
 	auto mpos = KeyMgr::GetInst()->GetMousePosOnScene();
 
-	auto wpos = LevelMgr::GetInst()->GetMainCam()->Camera()->ScreenToWorld(
+	auto wpos = RenderMgr::GetInst()->GetPOVCamera()->Camera()->ScreenToWorld(
 		mpos, scene->GetSceneSize());
 
 	auto dir = (wpos - pos).Normalize();

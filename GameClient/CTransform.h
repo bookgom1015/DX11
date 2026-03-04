@@ -1,20 +1,21 @@
 #pragma once
+
 #include "Component.h"
 
-class CTransform :
-    public Component
-{
-private:
-    Vec3        m_RelativePos;
-    Vec3        m_RelativeScale;
-    Vec3        m_RelativeRot;
+class CTransform : public Component {
+public:
+    CTransform();
+    virtual ~CTransform();
 
-    // 단위벡터(길이가 1)
-    Vec3        m_Dir[(UINT)DIR::END];
+public:
+    // 세팅된 위치, 크기, 회전 정보를 하나의 월드행렬로 묶어준다.
+    virtual void FinalTick() override;
 
-    Matrix      m_matWorld;
+    // 데이터를 GPU 메모리로 전송
+    void Binding();
 
-    bool        m_IndependentScale; // 부모 오브젝트의 크기는 무시
+public:
+    CLONE(CTransform);
 
 public:
     Vec3 GetRelativePos() { return m_RelativePos; }
@@ -36,19 +37,16 @@ public:
     const Matrix& GetWorldMat() { return m_matWorld; }
     void SetWorldMat(const Matrix& _matWorld) { m_matWorld = _matWorld; }
 
+private:
+    Vec3 m_RelativePos;
+    Vec3 m_RelativeScale;
+    Vec3 m_RelativeRot;
 
-public:
-    // 세팅된 위치, 크기, 회전 정보를 하나의 월드행렬로 묶어준다.
-    virtual void FinalTick() override;
+    // 단위벡터(길이가 1)
+    Vec3 m_Dir[(UINT)DIR::END];
 
-    // 데이터를 GPU 메모리로 전송
-    void Binding();
+    Matrix m_matWorld;
 
-
-
-
-public:
-    CTransform();
-    virtual ~CTransform();
+    bool m_IndependentScale; // 부모 오브젝트의 크기는 무시
 };
 

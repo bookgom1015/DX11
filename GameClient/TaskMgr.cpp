@@ -14,7 +14,7 @@ void TaskMgr::Progress() {
 	m_Garbage.clear();	
 
 	// Task 처리
-	for (size_t i = 0, end = m_vecTask.size(); i < end; ++i) {
+	for (size_t i = 0; i < m_vecTask.size(); ++i) {
 		switch (m_vecTask[i].Type) {
 		case TASK_TYPE::CREATE_OBJECT: {
 			Ptr<GameObject> pNewObj = (GameObject*)m_vecTask[i].Param_0;

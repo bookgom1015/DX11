@@ -10,7 +10,11 @@ public:
 
 public:
     virtual void Begin() override;
+    virtual void LateTick() override;
     virtual void FinalTick() override;
+
+public:
+    CLONE(CRigidBody);
 
 public:
     void AddForce(const Vec3& force);

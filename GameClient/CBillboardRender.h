@@ -8,6 +8,8 @@ public:
     virtual ~CBillboardRender();
 
 public:
+    CLONE(CBillboardRender);
+
     GET_SET(Vec2, BillboardScale);
     GET_SET(Vec3, Albedo);
 
@@ -17,8 +19,8 @@ public:
     virtual void CreateMaterial() override;
 
 private:
-    Vec2            m_BillboardScale;
-    Ptr<ATexture>   m_Tex;
-    Vec3            m_Albedo;
+    Vec2 m_BillboardScale;
+    Ptr<ATexture> m_Tex;
+    Vec3 m_Albedo;
 };
 

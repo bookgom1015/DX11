@@ -11,8 +11,6 @@ public:
 
 public:
 	Ptr<ALevel> GetCurLevel() { return m_CurLevel; }
-	Ptr<GameObject> GetMainCam() { return m_MainCam; }
-	void SetMainCam(Ptr<GameObject> cam) { m_MainCam = cam; }
 	Ptr<GameObject> FindObjectByName(const wstring& _name);
 
 	ELevelState::Type GetLevelState() const { return m_LevelState; }
@@ -28,10 +26,9 @@ private:
 	void CreateEnemies(Ptr<ALevel> level);
 
 private:
-	Ptr<ALevel> m_CurLevel{};
-	Ptr<ALevel> m_SharedLevel{};
-	Ptr<GameObject> m_MainCam{};
+	Ptr<ALevel> m_CurLevel;
+	Ptr<ALevel> m_SharedLevel;
 
-	ELevelState::Type m_LevelState{};
+	ELevelState::Type m_LevelState;
 };
 
