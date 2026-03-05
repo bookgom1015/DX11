@@ -1,17 +1,11 @@
 #include "pch.h"
 #include "Device.h"
 
-Device::Device()	
-	: m_hWnd(nullptr)	
-{
-}
+Device::Device() : m_hWnd(nullptr) {}
 
-Device::~Device()
-{	
-}
+Device::~Device() {}
 
-int Device::Init(HWND _hwnd, Vec2 _Resolution)
-{
+int Device::Init(HWND _hwnd, Vec2 _Resolution) {
 	m_hWnd = _hwnd;
 	m_RenderResol = _Resolution;
 	g_Global.Resolution = m_RenderResol;
@@ -22,12 +16,13 @@ int Device::Init(HWND _hwnd, Vec2 _Resolution)
 
 	// 스마트 포인터
 
-
 #ifdef _DEBUG
 	UINT iFlag = D3D11_CREATE_DEVICE_DEBUG;
+#else
+	UINT iFlag = 0;
 #endif
 
-	D3D_FEATURE_LEVEL* pLevel = nullptr;
+	D3D_FEATURE_LEVEL* pLevel{};
 
 	// 이중 포인터
 	// ID3D11Device, ID3D11DeviceContext
@@ -37,19 +32,22 @@ int Device::Init(HWND _hwnd, Vec2 _Resolution)
 	// 따라서 스마트 포인터가 해당 객체를 가리키게 되면, 레퍼런스카운트가 2가 되는 문제가 생김
 	// 스마트 포인터가 대상을 가리키는 맴버 포인터의 주소(이중포인터)를 받아와서 가리킬 주소값을 강제로 바로 세팅해주려고
 	// 맴버의 주소(이중포인터) 를 요구함
-	if (FAILED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, iFlag, 0, 0, D3D11_SDK_VERSION
-		, m_Device.GetAddressOf(), pLevel, m_Context.GetAddressOf())))
-	{
+	if (FAILED(D3D11CreateDevice(
+		nullptr, 
+		D3D_DRIVER_TYPE_HARDWARE, 
+		nullptr, 
+		iFlag, 
+		0, 0, 
+		D3D11_SDK_VERSION, 
+		m_Device.GetAddressOf(), 
+		pLevel, 
+		m_Context.GetAddressOf())))
 		return E_FAIL;
-	}
 
 	// SwapChain
 	// 윈도우에서 이미지를 표시하기 위해, 비트맵 데이터를 SystemMemory 영역에 가지고 있다.
 	// 이 비트맵에 그림을 그려야 윈도우 화면 영역에 표시가 된다.
-	if (FAILED(CreateSwapChain()))
-	{
-		return E_FAIL;
-	}
+	if (FAILED(CreateSwapChain())) return E_FAIL;
 
 	// GPU 는 이 SystemMemory 영역에 직접적으로 접근이 불가능하다.
 	// 따라서 GPU 로 렌더링 작업을 하기 위해서 VRAM 에 RenderTarget(픽셀 데이터 집합체 버퍼) 을 생성하고
@@ -70,14 +68,10 @@ int Device::Init(HWND _hwnd, Vec2 _Resolution)
 	// DepthStnecilView
 	// ShaderResourceView
 	// UnorderedAccessView	
-	if (FAILED(CreateBuffer()))
-	{
-		return E_FAIL;
-	}
-
+	if (FAILED(CreateBuffer())) return E_FAIL;
 
 	// RenderTarget 을 목적지에 출력시킬 영역 설정
-	D3D11_VIEWPORT ViewPort = {};
+	D3D11_VIEWPORT ViewPort{};
 	ViewPort.TopLeftX	= 0;
 	ViewPort.TopLeftY	= 0;
 	ViewPort.Width		= m_RenderResol.x;
@@ -107,42 +101,39 @@ int Device::Init(HWND _hwnd, Vec2 _Resolution)
 	if (FAILED(CreateBlendState()))
 		return E_FAIL;
 		
-
 	// 각 b 레지스터 번호별로 대응하는 상수버퍼 제작
 	CreateConstBuffer();
 
 	return S_OK;
 }
 
-void Device::ClearTarget()
-{
+void Device::ClearTarget() {
 	Vec4 vColor = Vec4(0.f, 0.f, 0.f, 0.f);
 	m_Context->ClearRenderTargetView(m_HDR_Rtv.Get(), vColor);
 	m_Context->ClearDepthStencilView(m_DSV.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.f, 0);
 }
 
 void Device::OMSetTarget() {
-	D3D11_VIEWPORT ViewPort = {};
-	ViewPort.TopLeftX = 0;
-	ViewPort.TopLeftY = 0;
-	ViewPort.Width = m_RenderResol.x;
-	ViewPort.Height = m_RenderResol.y;
-	ViewPort.MinDepth = 0.f;
-	ViewPort.MaxDepth = 1.f;
+	D3D11_VIEWPORT viewPort = {};
+	viewPort.TopLeftX = 0;
+	viewPort.TopLeftY = 0;
+	viewPort.Width = m_RenderResol.x;
+	viewPort.Height = m_RenderResol.y;
+	viewPort.MinDepth = 0.f;
+	viewPort.MaxDepth = 1.f;
 
-	m_Context->RSSetViewports(1, &ViewPort);
+	m_Context->RSSetViewports(1, &viewPort);
 
 	auto rtv = m_HDR_Rtv.Get();
 	m_Context->OMSetRenderTargets(1, &rtv, m_DSV.Get());
 }
 
-void Device::ResetTarget() {
-	m_Context->OMSetRenderTargets(0, nullptr, nullptr);
-}
+void Device::ResetTarget() { m_Context->OMSetRenderTargets(0, nullptr, nullptr); }
 
-int Device::CreateSwapChain()
-{
-	DXGI_SWAP_CHAIN_DESC m_Desc = {};
+void Device::Present() { m_SwapChain->Present(0, DXGI_PRESENT_ALLOW_TEARING); }
+
+int Device::CreateSwapChain() {
+	DXGI_SWAP_CHAIN_DESC m_Desc{};
 		
 	// 버퍼 개수
 	m_Desc.BufferCount = 2;
@@ -173,7 +164,6 @@ int Device::CreateSwapChain()
 	m_Desc.SampleDesc.Quality = 0;
 	m_Desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
 	
-
 	// SwapChain 생성하기
 	// IDXGIFactory 가 필요
 	ComPtr<IDXGIDevice>	pDXGIDevice = nullptr;
@@ -185,15 +175,12 @@ int Device::CreateSwapChain()
 	pAdapter->GetParent(__uuidof(IDXGIFactory), (void**)pFactory.GetAddressOf());
 			
 	if (FAILED(pFactory->CreateSwapChain(m_Device.Get(), &m_Desc, m_SwapChain.GetAddressOf())))
-	{
 		return E_FAIL;
-	}
 
 	return S_OK;
 }
 
-int Device::CreateBuffer()
-{
+int Device::CreateBuffer() {
 	// RenderTarget
 	// SwapChain 생성할때 이미 같이 만들어져있다.
 	// 준비한 포인터에 주소만 받아오면 된다
@@ -244,101 +231,89 @@ int Device::CreateBuffer()
 
 	// DepthStencilTarget 제작하기
 	{
-		D3D11_TEXTURE2D_DESC Desc = {};
+		D3D11_TEXTURE2D_DESC desc{};
 
 		// 텍스쳐 1장
-		Desc.ArraySize = 1;
+		desc.ArraySize = 1;
 
 		// 해상도 - 깊이 타겟도 렌더타겟과 해상도가 동일해야한다.
-		Desc.Width = (UINT)m_RenderResol.x;
-		Desc.Height = (UINT)m_RenderResol.y;
-		Desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+		desc.Width = (UINT)m_RenderResol.x;
+		desc.Height = (UINT)m_RenderResol.y;
+		desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
 		// CPU 메모리 접근 옵션 - CPU 접근 불가
-		Desc.CPUAccessFlags = 0;
-		Desc.Usage = D3D11_USAGE_DEFAULT;
+		desc.CPUAccessFlags = 0;
+		desc.Usage = D3D11_USAGE_DEFAULT;
 
 		// 용도
-		Desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+		desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 
-		Desc.MipLevels = 1; // 밉맵, 저화질 버전 텍스쳐 추가생성, 1 == 원본
-		Desc.MiscFlags = 0;
-		Desc.SampleDesc.Count = 1;
-		Desc.SampleDesc.Quality = 0;
+		desc.MipLevels = 1; // 밉맵, 저화질 버전 텍스쳐 추가생성, 1 == 원본
+		desc.MiscFlags = 0;
+		desc.SampleDesc.Count = 1;
+		desc.SampleDesc.Quality = 0;
 
-		if (FAILED(m_Device->CreateTexture2D(&Desc, nullptr/*초기 전달할 데이터*/
-			, m_DepthStencilTarget.GetAddressOf())))
-		{
+		if (FAILED(m_Device->CreateTexture2D(
+			&desc, nullptr, m_DepthStencilTarget.GetAddressOf())))
 			return E_FAIL;
-		}
 	}
 	// HDR
 	{
-		if (FAILED(m_Device->CreateRenderTargetView(m_HDR.Get(), nullptr, m_HDR_Rtv.GetAddressOf())))
-		{
+		if (FAILED(m_Device->CreateRenderTargetView(
+			m_HDR.Get(), nullptr, m_HDR_Rtv.GetAddressOf())))
 			return E_FAIL;
-		}
-		if (FAILED(m_Device->CreateShaderResourceView(m_HDR.Get(), nullptr, m_HDR_Srv.GetAddressOf())))
-		{
+		if (FAILED(m_Device->CreateShaderResourceView(
+			m_HDR.Get(), nullptr, m_HDR_Srv.GetAddressOf())))
 			return E_FAIL;
-		}
 	}
 	// HDR_Copy
 	{
-		if (FAILED(m_Device->CreateRenderTargetView(m_HDR_Copy.Get(), nullptr, m_HDR_Copy_Rtv.GetAddressOf())))
-		{
+		if (FAILED(m_Device->CreateRenderTargetView(
+			m_HDR_Copy.Get(), nullptr, m_HDR_Copy_Rtv.GetAddressOf())))
 			return E_FAIL;
-		}
-		if (FAILED(m_Device->CreateShaderResourceView(m_HDR_Copy.Get(), nullptr, m_HDR_Copy_Srv.GetAddressOf())))
-		{
+		if (FAILED(m_Device->CreateShaderResourceView(
+			m_HDR_Copy.Get(), nullptr, m_HDR_Copy_Srv.GetAddressOf())))
 			return E_FAIL;
-		}
 	}
 
 	// Scene
-	if (FAILED(m_Device->CreateRenderTargetView(m_Scene.Get(), nullptr, m_Scene_Rtv.GetAddressOf())))
-	{
+	if (FAILED(m_Device->CreateRenderTargetView(
+		m_Scene.Get(), nullptr, m_Scene_Rtv.GetAddressOf())))
 		return E_FAIL;
-	}
-	if (FAILED(m_Device->CreateShaderResourceView(m_Scene.Get(), nullptr, m_Scene_Srv.GetAddressOf())))
-	{
+	if (FAILED(m_Device->CreateShaderResourceView(
+		m_Scene.Get(), nullptr, m_Scene_Srv.GetAddressOf())))
 		return E_FAIL;
-	}
 
 	// RenderTargetView
-	if (FAILED(m_Device->CreateRenderTargetView(m_RenderTarget.Get(), nullptr, m_RTV.GetAddressOf())))
-	{
+	if (FAILED(m_Device->CreateRenderTargetView(
+		m_RenderTarget.Get(), nullptr, m_RTV.GetAddressOf())))
 		return E_FAIL;
-	}
-	if (FAILED(m_Device->CreateShaderResourceView(m_RenderTargetCopy.Get(), nullptr, m_RenderTargetCopySrv.GetAddressOf())))
-	{
+	if (FAILED(m_Device->CreateShaderResourceView(
+		m_RenderTargetCopy.Get(), nullptr, m_RenderTargetCopySrv.GetAddressOf())))
 		return E_FAIL;
-	}
 
 	// DepthStencilView
-	if (FAILED(m_Device->CreateDepthStencilView(m_DepthStencilTarget.Get(), nullptr, m_DSV.GetAddressOf())))
-	{
+	if (FAILED(m_Device->CreateDepthStencilView(
+		m_DepthStencilTarget.Get(), nullptr, m_DSV.GetAddressOf())))
 		return E_FAIL;
-	}
 
 	return S_OK;
 }
 
-int Device::CreateSampler()
-{
+int Device::CreateSampler() {
 	// =====================
 	// 이방성 필터링 + 랩 모드
 	// =====================
-	D3D11_SAMPLER_DESC Desc = {};
+	D3D11_SAMPLER_DESC desc{};
 
-	Desc.Filter		= D3D11_FILTER_ANISOTROPIC;
+	desc.Filter		= D3D11_FILTER_ANISOTROPIC;
 
 	// Adress Mode
-	Desc.AddressU	= D3D11_TEXTURE_ADDRESS_WRAP;
-	Desc.AddressV	= D3D11_TEXTURE_ADDRESS_WRAP;
-	Desc.AddressW   = D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressU	= D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressV	= D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressW   = D3D11_TEXTURE_ADDRESS_WRAP;
 
-	DEVICE->CreateSamplerState(&Desc, m_arrSam[0].GetAddressOf());
+	DEVICE->CreateSamplerState(&desc, m_arrSam[0].GetAddressOf());
 
 	// s0 레지스터에 바인딩 (모든 파이프라인 단계에서 사용 가능)
 	CONTEXT->VSSetSamplers(0, 1, m_arrSam[0].GetAddressOf());
@@ -351,14 +326,14 @@ int Device::CreateSampler()
 	// =====================
 	// POINT 필터링 + 랩 모드
 	// =====================
-	Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+	desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
 
 	// Adress Mode
-	Desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
-	Desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
-	Desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 
-	DEVICE->CreateSamplerState(&Desc, m_arrSam[1].GetAddressOf());
+	DEVICE->CreateSamplerState(&desc, m_arrSam[1].GetAddressOf());
 
 	// s1 레지스터에 바인딩 (모든 파이프라인 단계에서 사용 가능)
 	CONTEXT->VSSetSamplers(1, 1, m_arrSam[1].GetAddressOf());
@@ -371,117 +346,113 @@ int Device::CreateSampler()
 	return S_OK;
 }
 
-int Device::CreateRasterizerState()
-{
+int Device::CreateRasterizerState() {
 	// CULL_BACK
-	m_RSState[(UINT)RS_TYPE::CULL_BACK] = nullptr;
+	m_RSState[ERasterizerState::E_CullBack] = nullptr;
 
 	// CULL_FRONT
-	D3D11_RASTERIZER_DESC Desc = {};
+	D3D11_RASTERIZER_DESC Desc{};
 	Desc.CullMode = D3D11_CULL_FRONT;
 	Desc.FillMode = D3D11_FILL_SOLID;	
-	DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::CULL_FRONT].GetAddressOf());
+	DEVICE->CreateRasterizerState(&Desc, m_RSState[ERasterizerState::E_CullFront].GetAddressOf());
 
 	// CULL_NONE
 	Desc = {};
 	Desc.CullMode = D3D11_CULL_NONE;
 	Desc.FillMode = D3D11_FILL_SOLID;
-	DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::CULL_NONE].GetAddressOf());
+	DEVICE->CreateRasterizerState(&Desc, m_RSState[ERasterizerState::E_CullNone].GetAddressOf());
 
 	// WIRE_FRAME
 	Desc = {};
 	Desc.CullMode = D3D11_CULL_NONE;
 	Desc.FillMode = D3D11_FILL_WIREFRAME;
-	DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::WIRE_FRAME].GetAddressOf());
+	DEVICE->CreateRasterizerState(&Desc, m_RSState[ERasterizerState::E_Wireframe].GetAddressOf());
 
 	return S_OK;
 }
 
-int Device::CreateDepthStencilState()
-{
+int Device::CreateDepthStencilState() {
 	// Less
-	m_DSState[(UINT)DS_TYPE::LESS] = nullptr;
+	m_DSState[EDepthStencilState::E_Less] = nullptr;
 
 	// LessEqual
-	D3D11_DEPTH_STENCIL_DESC Desc = {};
+	D3D11_DEPTH_STENCIL_DESC desc{};
 
-	Desc.DepthEnable = true;
-	Desc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;		// 작거나 같으면 통과
-	Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;	// 자신의 깊으로 덮어 씀
-	Desc.StencilEnable = false;
+	desc.DepthEnable = true;
+	desc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;		// 작거나 같으면 통과
+	desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;	// 자신의 깊으로 덮어 씀
+	desc.StencilEnable = false;
 
-	if (FAILED(DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::LESS_EQUL].GetAddressOf())))
+	if (FAILED(DEVICE->CreateDepthStencilState(
+		&desc, m_DSState[EDepthStencilState::E_LessEqual].GetAddressOf())))
 		return E_FAIL;
 
 	// NO_TEST
-	Desc.DepthEnable = true;
-	Desc.DepthFunc = D3D11_COMPARISON_ALWAYS;			// 깊이판정은 항상 통과
-	Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;	// 자신의 깊으로 덮어 씀
-	Desc.StencilEnable = false;
+	desc.DepthEnable = true;
+	desc.DepthFunc = D3D11_COMPARISON_ALWAYS;			// 깊이판정은 항상 통과
+	desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;	// 자신의 깊으로 덮어 씀
+	desc.StencilEnable = false;
 
-	if (FAILED(DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::NO_TEST].GetAddressOf())))
+	if (FAILED(DEVICE->CreateDepthStencilState(
+		&desc, m_DSState[EDepthStencilState::E_Never].GetAddressOf())))
 		return E_FAIL;
 
 	// NO_TEST_NO_WRITE
-	Desc.DepthEnable = false;
-	if (FAILED(DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::NO_TEST_NO_WRITE].GetAddressOf())))
+	desc.DepthEnable = false;
+	if (FAILED(DEVICE->CreateDepthStencilState(
+		&desc, m_DSState[EDepthStencilState::E_NeverWrite].GetAddressOf())))
 		return E_FAIL;
 
-
 	return S_OK;
 }
 
-int Device::CreateBlendState()
-{
+int Device::CreateBlendState() {
 	// 1. Default - (SrcRGB * 1) + (DestRGB * 0)
 	// Context 에 nullptr 를 전달하면, 기본 블렌드스테이트를 사용한다는 뜻
-	m_BSState[(UINT)BS_TYPE::DEFAULT] = nullptr; 
+	m_BSState[EBlendState::E_Default] = nullptr; 
 
 	// 2. AlphaBlend - (SrcRGB * SrcA) + (DestRGB * (1 - SrcA))
-	D3D11_BLEND_DESC Desc = {};
+	D3D11_BLEND_DESC desc{};
 
-	Desc.AlphaToCoverageEnable = false;
-	Desc.IndependentBlendEnable = false;
+	desc.AlphaToCoverageEnable = false;
+	desc.IndependentBlendEnable = false;
 
-	Desc.RenderTarget[0].BlendEnable = true;
-	Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL; // 블랜딩 결과를 타겟에 출력
+	desc.RenderTarget[0].BlendEnable = true;
+	desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL; // 블랜딩 결과를 타겟에 출력
 
-	Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-	Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-	Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 
-	Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
 
-	DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::ALPHABLEND].GetAddressOf());
-	
+	DEVICE->CreateBlendState(&desc, m_BSState[EBlendState::E_AlphaBlend].GetAddressOf());	
 
 	// 3. One_One -  (SrcRGB * 1) + (DestRGB * 1)
-	Desc = {};
+	desc = {};
 
-	Desc.AlphaToCoverageEnable = false;
-	Desc.IndependentBlendEnable = false;
+	desc.AlphaToCoverageEnable = false;
+	desc.IndependentBlendEnable = false;
 
-	Desc.RenderTarget[0].BlendEnable = true;
-	Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL; // 블랜딩 결과를 타겟에 출력
+	desc.RenderTarget[0].BlendEnable = true;
+	desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL; // 블랜딩 결과를 타겟에 출력
 
-	Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-	Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
-	Desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+	desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+	desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
 
-	Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
 
-	DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::ONE_ONE].GetAddressOf());
-
+	DEVICE->CreateBlendState(&desc, m_BSState[EBlendState::E_Additive].GetAddressOf());
 
 	return S_OK;
 }
 
-void Device::CreateConstBuffer()
-{
+void Device::CreateConstBuffer() {
 	// 앞으로 사용할 상수버퍼 미리 생성	
 	m_CB[(UINT)CB_TYPE::TRANSFORM] = new ConstBuffer;
 	m_CB[(UINT)CB_TYPE::TRANSFORM]->Create(CB_TYPE::TRANSFORM, sizeof(TransformMatrix));

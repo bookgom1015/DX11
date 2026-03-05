@@ -16,7 +16,8 @@
 
 #include "SceneUI.h"
 
-CFlashLightScript::CFlashLightScript() {}
+CFlashLightScript::CFlashLightScript() 
+	: CScript(SCRIPT_TYPE::FLASHLIGHTSCRIPT) {}
 
 CFlashLightScript::~CFlashLightScript() {}
 

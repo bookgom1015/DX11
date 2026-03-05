@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Engine.h"
 
-#include "Device.h"
 #include "TimeMgr.h"
 #include "KeyMgr.h"
 #include "LevelMgr.h"
@@ -9,20 +8,17 @@
 #include "TaskMgr.h"
 #include "EditorMgr.h"
 
+#include "Device.h"
+
 Engine::Engine()
     : m_hInst(nullptr)
     , m_hWnd(nullptr)
     , m_Resolution{}
-    , m_EditorMode(true)
-{
-}
+    , m_EditorMode(true) {}
 
-Engine::~Engine()
-{
-}
+Engine::~Engine() {}
 
-int Engine::Progress()
-{
+int Engine::Progress() {
     // DeltaTime 계산
     TimeMgr::GetInst()->Tick();
 

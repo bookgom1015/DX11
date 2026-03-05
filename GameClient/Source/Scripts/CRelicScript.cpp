@@ -14,7 +14,8 @@
 #include "TaskMgr.h"
 #include "RenderMgr.h"
 
-CRelicScript::CRelicScript() {}
+CRelicScript::CRelicScript() 
+	: CScript(SCRIPT_TYPE::RELICSCRIPT) {}
 
 CRelicScript::~CRelicScript() {}
 

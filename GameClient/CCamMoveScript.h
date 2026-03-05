@@ -16,5 +16,8 @@ public:
 private:
     void MovePerspective();
     void MoveOrthographic();
+
+private:
+    Vec2 m_MousePrevPos;
 };
 

@@ -12,6 +12,20 @@ namespace ELevelLayer {
 		E_Background,
 		Count
 	};
+
+	static string GetName(ELevelLayer::Type type) {
+		switch (type) {
+		case ELevelLayer::E_Default: return "Default";
+		case ELevelLayer::E_Player: return "Player";
+		case ELevelLayer::E_Light: return "Light";
+		case ELevelLayer::E_Enemy: return "Enemy";
+		case ELevelLayer::E_Ground: return "Ground";
+		case ELevelLayer::E_Projectile: return "Projectile";
+		case ELevelLayer::E_Particle: return "Particle";
+		case ELevelLayer::E_Background: return "Background";
+		default: return "Undefined";
+		}
+	}
 }
 
 namespace EToneMapper {
@@ -38,29 +52,6 @@ namespace ELevelState {
 	};
 }
 
-static std::string GetLevelLayerName(ELevelLayer::Type type) {
-	switch (type) {
-	case ELevelLayer::E_Default:
-		return "Default";
-	case ELevelLayer::E_Player:
-		return "Player";
-	case ELevelLayer::E_Light:
-		return "Light";
-	case ELevelLayer::E_Enemy:
-		return "Enemy";
-	case ELevelLayer::E_Ground:
-		return "Ground";
-	case ELevelLayer::E_Projectile:
-		return "Projectile";
-	case ELevelLayer::E_Particle:
-		return "Particle";
-	case ELevelLayer::E_Background:
-		return "Background";
-	default:
-		return {};
-	}
-}
-
 namespace EGizmoAxis {
 	enum Type { 
 		None, 
@@ -70,54 +61,49 @@ namespace EGizmoAxis {
 	};
 }
 
-static decltype(auto) GetTImeStamp() {
-	return chrono::duration_cast<chrono::milliseconds>(
-		chrono::high_resolution_clock::now().time_since_epoch()).count();
+namespace ERasterizerState {
+	enum Type {
+		E_CullBack,	
+		E_CullFront,
+		E_CullNone,  
+		E_Wireframe, 
+		Count,
+	};
 }
 
-static wstring MakeUniqueName(const wstring& name) {
-	return std::format(L"{}##{}", name, GetTImeStamp());
+namespace EDepthStencilState {
+	enum Type {
+		E_Less,
+		E_LessEqual,
+		E_Never,
+		E_NeverWrite,
+		Count
+	};
 }
 
-static UINT CeilDivide(UINT value, UINT divisor) { 
-	return (value + divisor - 1) / divisor; 
+namespace EBlendState {
+	enum Type {
+		E_Default,
+		E_AlphaBlend,
+		E_Additive,
+		Count
+	};
 }
+
+enum class SHADER_PARAM {
+	INT,
+	FLOAT,
+	VEC2,
+	VEC4,
+	MAT,
+	TEX,
+};
 
 enum class CB_TYPE
 {
 	TRANSFORM,	// b0
 	MATERIAL,	// b1
 	GLOBAL,		// b2
-
-	END,
-};
-
-
-enum class RS_TYPE
-{
-	CULL_BACK,	// 뒷면( 정점 반시계방향으로.. )
-	CULL_FRONT, // 앞면
-	CULL_NONE,  // Culling X
-	WIRE_FRAME, // 정점과 정점 사이를 잇는 부분을 제외
-
-	END,
-};
-
-enum class DS_TYPE
-{
-	LESS,				// 깊이판정 LESS,		 성공 시 - 깊이쓰기 O
-	LESS_EQUL,			// 깊이판정 LESS_EQUAL
-	NO_TEST,			// 깊이판정 X(무조건 성공) 성공 시 - 깊이쓰기 O
-	NO_TEST_NO_WRITE,	// 깊이판정 X(무조건 성공) 성공 시 - 깊이쓰기 X
-
-	END,
-};
-
-enum class BS_TYPE
-{
-	DEFAULT,		// (SrcRGB * 1) + (DestRGB * 0)
-	ALPHABLEND,		// (SrcRGB * SrcA) + (DestRGB * (1 - SrcA))
-	ONE_ONE,		// (SrcRGB * 1) + (DestRGB * 1)
 
 	END,
 };

@@ -25,6 +25,26 @@ namespace {
         ImVec2 d = ImVec2(p.x - c.x, p.y - c.y);
         return (d.x * d.x + d.y * d.y) <= r * r;
     }
+
+    bool HitLine(const ImVec2& p, const ImVec2& a, const ImVec2& b, float thickness) {
+        ImVec2 ab = ImVec2(b.x - a.x, b.y - a.y);
+        ImVec2 ap = ImVec2(p.x - a.x, p.y - a.y);
+
+        float abLenSq = ab.x * ab.x + ab.y * ab.y;
+        if (abLenSq <= 0.000001f)
+            return false;
+
+        float t = (ap.x * ab.x + ap.y * ab.y) / abLenSq;
+        t = min(max(t, 0.0f), 1.0f);
+
+        ImVec2 closest = ImVec2(a.x + ab.x * t, a.y + ab.y * t);
+
+        ImVec2 d = ImVec2(p.x - closest.x, p.y - closest.y);
+        float distSq = d.x * d.x + d.y * d.y;
+
+        float r = thickness * 0.5f;
+        return distSq <= r * r;
+    }
 }
 
 SceneUI::SceneUI() : EditorUI("Scene") {}
@@ -163,6 +183,7 @@ void SceneUI::Draw2DGizmo() {
     const float axisLen = 60.f;
     const float pickR = 12.f;  // 클릭 판정 반경
     const float handleR = 10.f;
+    const float thickness = 4.f;
 
     ImVec2 xEnd = ImVec2(screenPos.x + axisLen, screenPos.y);
     ImVec2 yEnd = ImVec2(screenPos.x, screenPos.y - axisLen);
@@ -174,8 +195,10 @@ void SceneUI::Draw2DGizmo() {
     g.hot = EGizmoAxis::None;
     if (allowGizmoInput && g.active == EGizmoAxis::None) {
         if (HitCircle(io.MousePos, screenPos, pickR)) g.hot = EGizmoAxis::MoveXY;
+        else if (HitLine(io.MousePos, screenPos, xEnd, thickness)) g.hot = EGizmoAxis::MoveX;
         else if (HitCircle(io.MousePos, xEnd, pickR)) g.hot = EGizmoAxis::MoveX;
-        else if (HitCircle(io.MousePos, yEnd, pickR)) g.hot = EGizmoAxis::MoveY;
+        else if (HitLine(io.MousePos, screenPos, yEnd, thickness)) g.hot = EGizmoAxis::MoveY;
+        else if (HitCircle(io.MousePos, yEnd, pickR)) g.hot = EGizmoAxis::MoveY;        
     }                                                         
 
     // --- 클릭 시작 ---
@@ -237,10 +260,10 @@ void SceneUI::Draw2DGizmo() {
         colC = IM_COL32(255, 255, 0, 255);
 
     // Gizmo X-Axis
-    dl->AddLine(screenPos, xEnd, colX, 2.f);
+    dl->AddLine(screenPos, xEnd, colX, thickness);
     dl->AddCircleFilled(xEnd, handleR, colX);
     // Gizmo Y-Axis
-    dl->AddLine(screenPos, yEnd, colY, 2.f);
+    dl->AddLine(screenPos, yEnd, colY, thickness);
     dl->AddCircleFilled(yEnd, handleR, colY);
     // Center
     dl->AddCircleFilled(screenPos, handleR, colC);

@@ -3,38 +3,32 @@
 
 #include "ATexture.h"
 
-TextureUI::TextureUI()
-	: AssetUI(ASSET_TYPE::TEXTURE)
-{
-}
+TextureUI::TextureUI() : AssetUI(ASSET_TYPE::TEXTURE) {}
 
-TextureUI::~TextureUI()
-{
-}
+TextureUI::~TextureUI() {}
 
-void TextureUI::Tick_UI()
-{
+void TextureUI::Tick_UI() {
 	OutputTitle();
 
 	Ptr<ATexture> pTexture = (ATexture*)GetTargetAsset().Get();
 
 	{
 		ImGui::Text("Texture");
-		ImGui::SameLine(100);
+		ImGui::SameLine(100.f);
 
 		// 이미지 샘플		
 		ImGui::ImageWithBg((ImTextureRef)pTexture->GetSRV().Get()
-			, ImVec2(200, 200)
+			, ImVec2(200.f, 200.f)
 			, Vec2(0.f, 0.f), Vec2(1.f, 1.f)
-			, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+			, ImVec4(0.f, 0.f, 0.f, 1.f));
 	}
 	{
 		// 해상도
-		int Width = pTexture->GetWidth();
-		int Height = pTexture->GetHeight();
+		int Width = static_cast<int>(pTexture->GetWidth());
+		int Height = static_cast<int>(pTexture->GetHeight());
 
 		ImGui::Text("Resolution");
-		ImGui::SameLine(100);
+		ImGui::SameLine(100.f);
 
 		// 현재 줄에서 남은 가용 영역
 		float avail = ImGui::GetContentRegionAvail().x;

@@ -16,7 +16,8 @@
 #include "TaskMgr.h"
 #include "RenderMgr.h"
 
-CEnemyScript::CEnemyScript() {}
+CEnemyScript::CEnemyScript() 
+	: CScript(SCRIPT_TYPE::ENEMYSCRIPT) {}
 
 CEnemyScript::~CEnemyScript() {}
 

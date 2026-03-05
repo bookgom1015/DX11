@@ -20,3 +20,9 @@ void SaveAssetRef(FILE* _File, class Asset* _Asset);
 
 // 0 ~ 1 로 제한
 float Saturate(float _Data);
+
+decltype(auto) GetTImeStamp();
+
+wstring MakeUniqueName(const wstring& name);
+
+UINT CeilDivide(UINT value, UINT divisor);

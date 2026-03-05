@@ -22,7 +22,7 @@ void PathMgr::Init()
 	GetCurrentDirectory(255, m_ContentPath);
 	//SetWindowText(Engine::GetInst()->GetMainWndHwnd(), m_ContentPath);
 
-	int Len = wcslen(m_ContentPath);
+	int Len = static_cast<int>(wcslen(m_ContentPath));
 
 	for (int i = Len - 1; 0 <= i; --i)
 	{

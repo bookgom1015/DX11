@@ -15,7 +15,8 @@
 #include "TaskMgr.h"
 #include "RenderMgr.h"
 
-CParticleScript::CParticleScript() {}
+CParticleScript::CParticleScript() 
+	: CScript(SCRIPT_TYPE::PARTICLESCRIPT) {}
 
 CParticleScript::~CParticleScript() {}
 

@@ -28,6 +28,7 @@ public:
 	void AddInfoLog(const std::string& msg);
 
 	HWND GetSceneHWND() { return m_SceneUI->GetSceneHWND(); }
+	bool IsMouseOnScene() { return m_SceneUI->GetSceneHovered(); }
 
 	void SetDpi() { SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); }
 

@@ -11,6 +11,7 @@
 #include "Shadow.h"
 #include "Bloom.h"
 #include "Blur.h"
+#include "Pixelization.h"
 
 #include "EditorMgr.h"
 #include "LevelMgr.h"
@@ -19,9 +20,9 @@ bool RenderMgr::DebugRender = false;
 bool RenderMgr::GammaEnabled = true;
 bool RenderMgr::ToneEnabled = true;
 bool RenderMgr::BloomEnabled = true;
+bool RenderMgr::PixelEnabled = false;
 
 EToneMapper::Type RenderMgr::ToneType = EToneMapper::E_ACES;
-
 
 RenderMgr::RenderMgr() {
 	mGamma = std::make_unique<GammaCorrection>();
@@ -29,6 +30,7 @@ RenderMgr::RenderMgr() {
 	mShadow = std::make_unique<Shadow>();
 	mBloom = std::make_unique<Bloom>();
 	mBlur = std::make_unique<Blur>();
+	mPixelization = std::make_unique<Pixelization>();
 }
 
 RenderMgr::~RenderMgr() {}
@@ -46,6 +48,7 @@ void RenderMgr::Init() {
 	mShadow->Init();
 	mBloom->Init();
 	mBlur->Init();
+	mPixelization->Init();
 
 	mCB = new ConstBuffer();
 	mCB->Create(CB_TYPE::MATERIAL, sizeof(MtrlConst));	
@@ -178,9 +181,11 @@ void RenderMgr::Render_Debug() {
 		m_DbgObj->MeshRender()->GetMaterial()->SetScalar(VEC4_0, (*iter).Color);
 
 		if ((*iter).DepthTest)
-			m_DbgObj->MeshRender()->GetMaterial()->GetShader()->SetDSType(DS_TYPE::LESS);
+			m_DbgObj->MeshRender()->GetMaterial()->GetShader()->SetDSType(
+				EDepthStencilState::E_Less);
 		else
-			m_DbgObj->MeshRender()->GetMaterial()->GetShader()->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
+			m_DbgObj->MeshRender()->GetMaterial()->GetShader()->SetDSType(
+				EDepthStencilState::E_NeverWrite);
 
 		// Render 요청
 		m_DbgObj->Render();
@@ -200,10 +205,11 @@ void RenderMgr::Render_Post() {
 	ApplyBloom();
 	ApplyToneMapping();
 	ApplyGammaCorrection();
+	ApplyPixelization();
 }
 
 void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
-	for (int i = 0, idx = 0, end = m_vecLight2D.size(); i < end; ++i) {
+	for (int i = 0, idx = 0, end = static_cast<int>(m_vecLight2D.size()); i < end; ++i) {
 		auto& light = m_vecLight2D[i];
 		auto type = light->GetLightType();
 
@@ -369,6 +375,12 @@ void RenderMgr::ApplyGammaCorrection() {
 	if (!GammaEnabled) return;
 	
 	mGamma->Apply();
+}
+
+void RenderMgr::ApplyPixelization() {
+	if (!PixelEnabled) return;
+
+	mPixelization->Apply();
 }
 
 void RenderMgr::ApplyShadow() {

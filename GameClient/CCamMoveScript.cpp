@@ -3,10 +3,14 @@
 
 #include "KeyMgr.h"
 #include "TimeMgr.h"
+#include "RenderMgr.h"
+#include "EditorMgr.h"
+
 #include "CTransform.h"
 #include "CCamera.h"
 
-CCamMoveScript::CCamMoveScript() {}
+CCamMoveScript::CCamMoveScript() 
+	: CScript(-1), m_MousePrevPos{} {}
 
 CCamMoveScript::~CCamMoveScript() {}
 
@@ -61,6 +65,44 @@ void CCamMoveScript::MoveOrthographic() {
 		vPos.x -= E_DT * 500.f;
 	if (KEY_PRESSED(KEY::D))
 		vPos.x += E_DT * 500.f;
+
+	if (EditorMgr::GetInst()->IsMouseOnScene()) {
+		if (KEY_TAP(KEY::RBTN)) {
+			auto mpos = KeyMgr::GetInst()->GetMousePosOnScene();
+
+			m_MousePrevPos = mpos;
+		}
+		else if (KEY_PRESSED(KEY::RBTN)) {
+			auto editor = EditorMgr::GetInst()->FindUI("Scene");
+			auto scene = static_cast<SceneUI*>(editor.Get());
+			auto screenSize = scene->GetSceneSize();
+
+			auto mpos = KeyMgr::GetInst()->GetMousePosOnScene();
+
+			auto wpos = RenderMgr::GetInst()->GetEditorCamera()->Camera()->ScreenToWorld(
+				mpos, screenSize);
+			auto prevWPos = RenderMgr::GetInst()->GetEditorCamera()->Camera()->ScreenToWorld(
+				m_MousePrevPos, screenSize);
+
+			auto delta = prevWPos - wpos;
+			vPos += delta;
+
+			m_MousePrevPos = mpos;
+		}
+
+		auto wheel = KeyMgr::GetInst()->GetMouseWheel();
+		if (wheel < 0) {
+			auto scale = Camera()->GetOrthoScale();
+			scale += 0.05f;
+			Camera()->SetOrthoScale(scale);
+		}
+		else if (wheel > 0) {
+			auto scale = Camera()->GetOrthoScale();
+			scale -= 0.05f;
+			scale = max(scale, 1e-6f);
+			Camera()->SetOrthoScale(scale);
+		}
+	}	
 
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRot(Vec3(0.f, 0.f, 0.f));

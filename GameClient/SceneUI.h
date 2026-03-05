@@ -22,6 +22,7 @@ private:
 public:
     GET_SET(Vec2, SceneSize);
     GET(HWND, SceneHWND);
+    GET(bool, SceneHovered);
 
 private:
     Vec2 m_SceneSize{};

@@ -8,7 +8,8 @@
 #include "CTransform.h"
 #include "GameObject.h"
 
-CTrackingCameraScript::CTrackingCameraScript() {}
+CTrackingCameraScript::CTrackingCameraScript() 
+	: CScript(SCRIPT_TYPE::TRACKINGCAMERASCRIPT) {}
 
 CTrackingCameraScript::~CTrackingCameraScript() {}
 

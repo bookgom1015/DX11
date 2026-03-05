@@ -19,7 +19,7 @@ void FlipbookUI::Tick_UI()
 
 	Ptr<AFlipbook> pFlipbook = (AFlipbook*)GetTargetAsset().Get();
 
-	mElapsedTime += DT;
+	mElapsedTime += E_DT;
 
 	{
 		ImGui::Text("Flipbook");

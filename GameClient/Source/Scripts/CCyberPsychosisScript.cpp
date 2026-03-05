@@ -14,7 +14,8 @@
 #include "TaskMgr.h"
 #include "RenderMgr.h"
 
-CCyberPsychosisScript::CCyberPsychosisScript() {}
+CCyberPsychosisScript::CCyberPsychosisScript() 
+	: CScript(SCRIPT_TYPE::CYBERPSYCHOSISSCRIPT) {}
 
 CCyberPsychosisScript::~CCyberPsychosisScript() {}
 

@@ -45,8 +45,8 @@ void CBillboardRender::CreateMaterial() {
 			pShader->SetName(L"BillboardShader");
 			pShader->CreateVertexShader(L"Shader\\billboard.fx", "VS_Billboard");
 			pShader->CreatePixelShader(L"Shader\\billboard.fx", "PS_Billboard");
-			pShader->SetBSType(BS_TYPE::DEFAULT);
-			pShader->SetRSType(RS_TYPE::CULL_NONE);
+			pShader->SetBSType(EBlendState::E_Default);
+			pShader->SetRSType(ERasterizerState::E_CullNone);
 			AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
 		}
 

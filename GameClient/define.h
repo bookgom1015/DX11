@@ -15,7 +15,7 @@
 #define SET(Type, MemName) void Set##MemName(Type _Data){ m_##MemName = _Data;}
 #define GET_SET(Type, MemName) GET(Type, MemName) SET(Type, MemName)
 
-#define ClientWidth 1600
-#define ClientHeight 900
+#define ClientWidth 1920
+#define ClientHeight 1080
 
 #define CLONE(Type) Type* Clone() { return new Type(*this); }

@@ -4,17 +4,17 @@
 
 #include "GameObject.h"
 
-class CPlatfomerPlayerScript : public CScript {
+class CPlatformerPlayerScript : public CScript {
 public:
-    CPlatfomerPlayerScript();
-    virtual ~CPlatfomerPlayerScript();
+    CPlatformerPlayerScript();
+    virtual ~CPlatformerPlayerScript();
 
 public:
     virtual void Begin() override;
     virtual void Tick() override;
 
 public:
-    CLONE(CPlatfomerPlayerScript);
+    CLONE(CPlatformerPlayerScript);
 
 private:
     void Move();

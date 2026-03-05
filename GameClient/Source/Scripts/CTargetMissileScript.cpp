@@ -9,7 +9,8 @@
 #include "LevelMgr.h"
 #include "AssetMgr.h"
 
-CTargetMissileScript::CTargetMissileScript() {}
+CTargetMissileScript::CTargetMissileScript() 
+	: CScript(SCRIPT_TYPE::TARGETMISSILESCRIPT) {}
 
 CTargetMissileScript::~CTargetMissileScript() {}
 

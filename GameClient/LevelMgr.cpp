@@ -7,11 +7,11 @@
 #include "Device.h"
 #include "CollisionMgr.h"
 
-#include "CTrackingCameraScript.h"
-#include "CPlatformerPlayerScript.h"
-#include "CEnemyScript.h"
-#include "CFlashLightScript.h"
-#include "CElevationScript.h"
+#include "Source/Scripts/CTrackingCameraScript.h"
+#include "Source/Scripts/CPlatformerPlayerScript.h"
+#include "Source/Scripts/CEnemyScript.h"
+#include "Source/Scripts/CFlashLightScript.h"
+#include "Source/Scripts/CElevationScript.h"
 
 LevelMgr::LevelMgr() 
 	: m_CurLevel{ nullptr }
@@ -135,7 +135,7 @@ void LevelMgr::CreatePlayer(Ptr<ALevel> level) {
 	player->AddComponent(new CFlipbookRender);
 	player->AddComponent(new CCollider2D);
 	player->AddComponent(new CRigidBody);
-	player->AddComponent(new CPlatfomerPlayerScript);
+	player->AddComponent(new CPlatformerPlayerScript);
 	player->AddComponent(new CFlashLightScript);
 
 	player->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 1.f));
@@ -450,6 +450,24 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 }
 
 void LevelMgr::CreateEnemies(Ptr<ALevel> level) {
+	//{
+	//	auto pEnemy = new GameObject;
+	//	pEnemy->AddComponent(new CTransform);
+	//	pEnemy->AddComponent(new CMeshRender);
+	//	pEnemy->AddComponent(new CCollider2D);
+	//	pEnemy->AddComponent(new CRigidBody);
+	//	pEnemy->AddComponent(new CEnemyScript);
+	//
+	//	pEnemy->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+	//
+	//	pEnemy->Collider2D()->SetScale(Vec2(0.65f, 0.75f));
+	//
+	//	pEnemy->MeshRender()->SetMesh(AssetMgr::GetInst()->Find<AMesh>(L"RectMesh"));
+	//	pEnemy->MeshRender()->SetMaterial(FIND(AMaterial, L"EnemyMtrl"));
+	//	pEnemy->MeshRender()->SetAlbedo(Vec4(-0.5f, -0.5f, -0.5f, 0.95f));
+	//
+	//	AssetMgr::GetInst()->AddAsset(L"Enemy");
+	//}
 	{
 		auto pEnemy = new GameObject;
 		pEnemy->SetName(L"Enemy1");

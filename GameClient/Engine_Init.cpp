@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Engine.h"
 
-#include "Device.h"
 #include "PathMgr.h"
 #include "TimeMgr.h"
 #include "KeyMgr.h"
@@ -10,10 +9,11 @@
 #include "RenderMgr.h"
 #include "EditorMgr.h"
 
+#include "Device.h"
+
 LRESULT CALLBACK  WndProc(HWND, UINT, WPARAM, LPARAM);
 
-int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
-{
+int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode) {
     EditorMgr::GetInst()->SetDpi();
 
     m_hInst = _hInst;
@@ -21,7 +21,7 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
     m_EditorMode = _EditorMode;
 
     // 생성시킬 윈도우(창) 옵션 설정
-    WNDCLASSEXW wcex = {};
+    WNDCLASSEXW wcex{};
     wcex.lpszClassName = L"MyGame";
     wcex.cbSize = sizeof(WNDCLASSEX);
     wcex.style = CS_HREDRAW | CS_VREDRAW;
@@ -54,12 +54,8 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
         clientPosX, clientPosY, ClientWidth, ClientHeight, 
         nullptr, nullptr, m_hInst, nullptr);
 
-
     // 윈도우 생성 실패시 프로그램 종료
-    if (!m_hWnd)
-    {
-        return E_FAIL;
-    }
+    if (!m_hWnd) return E_FAIL;
 
     // 생성한 윈도우를 화면에 보이도록 설정
     ShowWindow(m_hWnd, true);
@@ -80,13 +76,9 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
     //SelectObject(dc, hBrush); // dc 에 검은색 Brush 를 전달
     //Rectangle(dc, 0, 0, m_Resolution.x, m_Resolution.y); // dc 를 이용해서 윈도우에 검은색 사각형 그리기
 
-
     // GPU 를 제어할 수 있는 Directx11 함수를 사용하기 위한 매니저
     // ID3D11Device, ID3D11DeviceContext
-    if (FAILED(Device::GetInst()->Init(m_hWnd, m_Resolution)))
-    {
-        return E_FAIL;
-    }
+    if (FAILED(Device::GetInst()->Init(m_hWnd, m_Resolution))) return E_FAIL;
 
     // 실행파일과 같이 있는 Content 폴더의 경로를 찾아내기 위함
     PathMgr::GetInst()->Init();
@@ -107,10 +99,7 @@ int Engine::Init(HINSTANCE _hInst, UINT _Width, UINT _Height, bool _EditorMode)
     RenderMgr::GetInst()->Init();
 
     // Editor 매니저 초기화
-    if (m_EditorMode)
-    {
-        EditorMgr::GetInst()->Init();
-    }     
+    if (m_EditorMode) EditorMgr::GetInst()->Init();
 
     return S_OK;
 }

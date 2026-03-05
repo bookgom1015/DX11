@@ -8,18 +8,14 @@ AMesh::AMesh()
 	, m_VBDesc{}
 	, m_IBDesc{}
 	, m_VtxSysMem(nullptr)
-	, m_IdxSysMem(nullptr)
-{
-}
+	, m_IdxSysMem(nullptr) {}
 
-AMesh::~AMesh()
-{
+AMesh::~AMesh() {
 	delete[] m_VtxSysMem;
 	delete[] m_IdxSysMem;
 }
 
-int AMesh::Create(Vtx* _VtxSysMem, UINT _VtxCount, UINT* _IdxSysMem, UINT _IdxCount)
-{		
+int AMesh::Create(Vtx* _VtxSysMem, UINT _VtxCount, UINT* _IdxSysMem, UINT _IdxCount) {		
 	m_VtxCount = _VtxCount;
 	m_IdxCount = _IdxCount;
 
@@ -28,21 +24,16 @@ int AMesh::Create(Vtx* _VtxSysMem, UINT _VtxCount, UINT* _IdxSysMem, UINT _IdxCo
 	m_VBDesc.CPUAccessFlags = 0;
 	m_VBDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	
-	D3D11_SUBRESOURCE_DATA tSub = {};
+	D3D11_SUBRESOURCE_DATA tSub{};
 	tSub.pSysMem = _VtxSysMem;
 
 	if (FAILED(DEVICE->CreateBuffer(&m_VBDesc, &tSub, m_VB.GetAddressOf())))
-	{
 		return E_FAIL;
-	}
 
 	// 버텍스 데이터를 동적할당 해서 따로 저장해둔다.
 	m_VtxSysMem = new Vtx[_VtxCount];
-	for (int i = 0; i < _VtxCount; ++i)
-	{
-		m_VtxSysMem[i] = _VtxSysMem[i];
-	}
-	
+	for (UINT i = 0; i < _VtxCount; ++i)
+		m_VtxSysMem[i] = _VtxSysMem[i];	
 	
 	// 버퍼의 크기
 	m_IBDesc.ByteWidth = sizeof(UINT) * m_IdxCount;
@@ -58,22 +49,17 @@ int AMesh::Create(Vtx* _VtxSysMem, UINT _VtxCount, UINT* _IdxSysMem, UINT _IdxCo
 	tSub.pSysMem = _IdxSysMem;
 
 	if (FAILED(DEVICE->CreateBuffer(&m_IBDesc, &tSub, m_IB.GetAddressOf())))
-	{
 		return E_FAIL;
-	}
 
 	// 인덱스 데이터를 동적할당 해서 따로 저장해둔다.
 	m_IdxSysMem = new UINT[_IdxCount];
-	for (int i = 0; i < _IdxCount; ++i)
-	{
+	for (UINT i = 0; i < _IdxCount; ++i)
 		m_IdxSysMem[i] = _IdxSysMem[i];
-	}
 
 	return S_OK;
 }
 
-void AMesh::Binding()
-{
+void AMesh::Binding() {
 	// 정점을 프로그래머가 설계하기 때문에, 전달 한 버텍스 버퍼안에서, 하나의 정점의 단위크기를 알려줘야 한다.
 	UINT Stride = sizeof(Vtx);
 	UINT Offset = 0;
@@ -84,8 +70,7 @@ void AMesh::Binding()
 	CONTEXT->IASetIndexBuffer(m_IB.Get(), DXGI_FORMAT_R32_UINT, 0);
 }
 
-void AMesh::Render()
-{
+void AMesh::Render() {
 	Binding();
 
 	// 렌더링 파이프라인 시작

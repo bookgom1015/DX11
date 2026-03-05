@@ -200,13 +200,19 @@ void Menu::Render() {
 				"##Type",
 				reinterpret_cast<int*>(&RenderMgr::ToneType),
 				EToneMapper::TypeNames,
-				EToneMapper::Count));
+				EToneMapper::Count)) {}
 
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Bloom")) {
 			ImGui::MenuItem("Enabled", NULL, &RenderMgr::BloomEnabled);
+
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Pixel")) {
+			ImGui::MenuItem("Enabled", NULL, &RenderMgr::PixelEnabled);
 
 			ImGui::EndMenu();
 		}

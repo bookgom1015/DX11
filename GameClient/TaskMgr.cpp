@@ -20,7 +20,7 @@ void TaskMgr::Progress() {
 			Ptr<GameObject> pNewObj = (GameObject*)m_vecTask[i].Param_0;
 
 			Ptr<ALevel> pCurLevel = LevelMgr::GetInst()->GetCurLevel();
-			pCurLevel->AddObject(m_vecTask[i].Param_1, pNewObj);
+			pCurLevel->AddObject(static_cast<int>(m_vecTask[i].Param_1), pNewObj);
 			pCurLevel->SetChanged();
 
 			if (LevelMgr::GetInst()->GetLevelState() == ELevelState::E_Playing)

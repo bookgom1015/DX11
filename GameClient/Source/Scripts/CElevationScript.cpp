@@ -3,7 +3,8 @@
 
 #include "TimeMgr.h"
 
-CElevationScript::CElevationScript() {}
+CElevationScript::CElevationScript()
+	: CScript(SCRIPT_TYPE::ELEVATIONSCRIPT) {}
 
 CElevationScript::~CElevationScript() {}
 

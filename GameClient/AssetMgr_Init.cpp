@@ -3,27 +3,21 @@
 
 #include "PathMgr.h"
 
-void AssetMgr::Init()
-{
+void AssetMgr::Init() {
 	CreateEngineMesh();
-
 	CreateEngineShader();
-
 	CreateEngineTexture();
-
 	CreateEngineMaterial();
-
 	CreateEngineSprite();
 }
 
-void AssetMgr::CreateEngineMesh()
-{
-	Ptr<AMesh> pMesh = nullptr;
+void AssetMgr::CreateEngineMesh() {
+	Ptr<AMesh> pMesh{};
 
 	// ========
 	// RectMesh
 	// ========
-	Vtx arrVtx[4] = {};
+	Vtx arrVtx[4]{};
 
 	arrVtx[0].vPos = Vec3(-0.5f, 0.5f, 0.f);
 	arrVtx[0].vUV = Vec2(0.f, 0.f);
@@ -48,7 +42,6 @@ void AssetMgr::CreateEngineMesh()
 	pMesh->Create(arrVtx, 4, arrIdx, 6);	
 	AddAsset(L"RectMesh", pMesh.Get());
 
-
 	// ==================
 	// RectMesh_LineStrip
 	// ==================
@@ -56,7 +49,6 @@ void AssetMgr::CreateEngineMesh()
 	pMesh = new AMesh;
 	pMesh->Create(arrVtx, 4, arrIdx, 5);
 	AddAsset(L"RectMesh_LineStrip", pMesh.Get());
-
 
 	// ==========
 	// 삼각형 메쉬
@@ -77,7 +69,6 @@ void AssetMgr::CreateEngineMesh()
 	pMesh->Create(arr, 3, idx, 3);
 	AddAsset(L"TriMesh", pMesh.Get());
 
-
 	// ===============
 	// 원 (CircleMesh)
 	// ===============
@@ -96,8 +87,7 @@ void AssetMgr::CreateEngineMesh()
 	float Slice = 40.f;
 
 	// 원의 테두리 정점 추가
-	for (int i = 0; i < (int)Slice + 1; ++i)
-	{
+	for (int i = 0, end = static_cast<int>(Slice + 1); i < end; ++i) {
 		v.vPos = Vec3(Radius * cosf(Theta), Radius * sinf(Theta), 0.f);
 		//v.vUV = Vec2(0.5f, 0.5f);
 		v.vColor = Vec4(1.f, 1.f, 1.f, 1.f);
@@ -107,15 +97,16 @@ void AssetMgr::CreateEngineMesh()
 	}	
 
 	// 인덱스
-	for (int i = 0; i < (int)Slice; ++i)
-	{
+	for (int i = 0, end = static_cast<int>(Slice); i < end; ++i) {
 		vecIdx.push_back(0);
 		vecIdx.push_back(i + 2);
 		vecIdx.push_back(i + 1);
 	}
 
 	pMesh = new AMesh;
-	pMesh->Create(vecVtx.data(), vecVtx.size(), vecIdx.data(), vecIdx.size());
+	pMesh->Create(
+		vecVtx.data(), static_cast<UINT>(vecVtx.size()), 
+		vecIdx.data(), static_cast<UINT>(vecIdx.size()));
 	AddAsset(L"CircleMesh", pMesh.Get());
 
 
@@ -123,20 +114,18 @@ void AssetMgr::CreateEngineMesh()
 	// CircleMesh_LineStrip
 	// ====================
 	vecIdx.clear();
-	for (int i = 0; i < (int)Slice + 1; ++i)
-	{
+	for (int i = 0, end = static_cast<int>(Slice + 1); i < end; ++i)
 		vecIdx.push_back(i + 1);
-	}
 
 	pMesh = new AMesh;
-	pMesh->Create(vecVtx.data(), vecVtx.size(), vecIdx.data(), vecIdx.size());
+	pMesh->Create(
+		vecVtx.data(), static_cast<UINT>(vecVtx.size()),
+		vecIdx.data(), static_cast<UINT>(vecIdx.size()));
 	AddAsset(L"CircleMesh_LineStrip", pMesh.Get());
 }
 
-
-void AssetMgr::CreateEngineShader()
-{	
-	Ptr<AGraphicShader> pShader = nullptr;
+void AssetMgr::CreateEngineShader() {	
+	Ptr<AGraphicShader> pShader{};
 
 	// ===========
 	// Std2DShader
@@ -144,13 +133,12 @@ void AssetMgr::CreateEngineShader()
 	pShader = new AGraphicShader;
 	pShader->CreateVertexShader(L"Shader\\std2d.fx", "VS_Std2D");
 	pShader->CreatePixelShader(L"Shader\\std2d.fx", "PS_Std2D");
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
 
 	pShader->AddShaderParam(SHADER_PARAM::VEC4, 0, L"TintColor");
 	pShader->AddShaderParam(SHADER_PARAM::TEX, 0, L"OutColor");
 
 	AddAsset(L"Std2DShader", pShader.Get());
-
 	
 	// ===============
 	// BillboardShader
@@ -159,10 +147,9 @@ void AssetMgr::CreateEngineShader()
 	pShader->SetName(L"BillboardShader");
 	pShader->CreateVertexShader(L"Shader\\billboard.fx", "VS_Billboard");
 	pShader->CreatePixelShader(L"Shader\\billboard.fx", "PS_Billboard");
-	pShader->SetBSType(BS_TYPE::DEFAULT);
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetBSType(EBlendState::E_Default);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
 	AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
-
 
 	// ============
 	// SpriteShader
@@ -171,8 +158,8 @@ void AssetMgr::CreateEngineShader()
 	pShader->SetName(L"SpriteShader");
 	pShader->CreateVertexShader(L"Shader\\sprite.fx", "VS_Sprite");
 	pShader->CreatePixelShader(L"Shader\\sprite.fx", "PS_Sprite");
-	pShader->SetBSType(BS_TYPE::DEFAULT);
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetBSType(EBlendState::E_Default);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
 
 	AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
 
@@ -183,8 +170,8 @@ void AssetMgr::CreateEngineShader()
 	pShader->SetName(L"FlipbookShader");
 	pShader->CreateVertexShader(L"Shader\\flipbook.fx","VS_Flipbook");
 	pShader->CreatePixelShader(L"Shader\\flipbook.fx", "PS_Flipbook");
-	pShader->SetBSType(BS_TYPE::DEFAULT);
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetBSType(EBlendState::E_Default);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
 	AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
 
 	// =============
@@ -196,11 +183,9 @@ void AssetMgr::CreateEngineShader()
 	pShader->SetName(L"TileShader");
 	pShader->CreateVertexShader(L"Shader\\tile.fx", "VS_Tile");
 	pShader->CreatePixelShader(L"Shader\\tile.fx",  "PS_Tile");
-	pShader->SetBSType(BS_TYPE::DEFAULT);
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetBSType(EBlendState::E_Default);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
 	AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
-
-
 
 	// ===============
 	// DbgRenderShader
@@ -209,31 +194,24 @@ void AssetMgr::CreateEngineShader()
 	pShader->CreateVertexShader(L"Shader\\dbg.fx", "VS_Debug");
 	pShader->CreatePixelShader(L"Shader\\dbg.fx", "PS_Debug");
 	pShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
-	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
-	pShader->SetBSType(BS_TYPE::DEFAULT);
+	pShader->SetRSType(ERasterizerState::E_CullNone);
+	pShader->SetDSType(EDepthStencilState::E_NeverWrite);
+	pShader->SetBSType(EBlendState::E_Default);
 
 	AddAsset(L"DbgShader", pShader.Get());
 }
 
-void AssetMgr::CreateEngineTexture()
-{
+void AssetMgr::CreateEngineTexture() {
 	Load<ATexture>(L"PlayerImage", L"Texture\\Character.png");
-
 	Load<ATexture>(L"Fighter", L"Texture\\Fighter.bmp");
-
 	Load<ATexture>(L"Missile", L"Texture\\missile.png");
-
 	Load<ATexture>(L"Link", L"Texture\\link.png");
-
 	Load<ATexture>(L"TileAtlas", L"Texture\\TILE.bmp");
-
 	Load<ATexture>(L"Ghost", L"Texture\\ghost.png");
 }
 
-void AssetMgr::CreateEngineMaterial()
-{
-	Ptr<AMaterial> pMtrl = nullptr;
+void AssetMgr::CreateEngineMaterial() {
+	Ptr<AMaterial> pMtrl{};
 
 	// =========
 	// Std2DMtrl
@@ -263,7 +241,6 @@ void AssetMgr::CreateEngineMaterial()
 	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
-
 	// =======
 	// DbgMtrl 
 	// =======
@@ -285,8 +262,7 @@ void AssetMgr::CreateEngineMaterial()
 	//Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");
 }
 
-void AssetMgr::CreateEngineSprite()
-{			
+void AssetMgr::CreateEngineSprite() {			
 	// =======
 	// TileMap
 	// =======

@@ -10,6 +10,7 @@ class ToneMapping;
 class Shadow;
 class Bloom;
 class Blur;
+class Pixelization;
 
 class RenderMgr
 	: public singleton<RenderMgr>
@@ -49,6 +50,7 @@ private:
 	void ApplyBloom();
 	void ApplyToneMapping();
 	void ApplyGammaCorrection();
+	void ApplyPixelization();
 
 	void ApplyShadow();
 
@@ -66,12 +68,15 @@ public:
 
 	static bool BloomEnabled;
 
+	static bool PixelEnabled;
+
 private:
 	std::unique_ptr<Shadow> mShadow{};
 	std::unique_ptr<GammaCorrection> mGamma{};
 	std::unique_ptr<ToneMapping> mTone{};
 	std::unique_ptr<Bloom> mBloom{};
 	std::unique_ptr<Blur> mBlur{};
+	std::unique_ptr<Pixelization> mPixelization{};
 
 	Ptr<ConstBuffer> mCB;
 };

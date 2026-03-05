@@ -123,6 +123,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +134,9 @@
       <Command>cd $(SolutionDir)
 call CopyShader.bat
 cd $(SolutionDir)
-call ComponentAuto.exe</Command>
+call ComponentAuto.exe
+cd $(SolutionDir)
+call CodeGen.exe</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,7 +149,9 @@ call ComponentAuto.exe</Command>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -157,7 +163,9 @@ call ComponentAuto.exe</Command>
       <Command>cd $(SolutionDir)
 call CopyShader.bat
 cd $(SolutionDir)
-call ComponentAuto.exe</Command>
+call ComponentAuto.exe
+cd $(SolutionDir)
+call CodeGen.exe</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -179,10 +187,6 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCamMoveScript.h" />
     <ClInclude Include="CCollider2D.h" />
-    <ClInclude Include="CCyberPsychosisScript.h" />
-    <ClInclude Include="CElevationScript.h" />
-    <ClInclude Include="CEnemyScript.h" />
-    <ClInclude Include="CFlashLightScript.h" />
     <ClInclude Include="CFlipbookRender.h" />
     <ClInclude Include="CLight2D.h" />
     <ClInclude Include="CMeshRender.h" />
@@ -194,15 +198,9 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="ComputeShaderUI.h" />
     <ClInclude Include="ConstBuffer.h" />
     <ClInclude Include="ContentUI.h" />
-    <ClInclude Include="CParticleScript.h" />
-    <ClInclude Include="CPlatformerPlayerScript.h" />
-    <ClInclude Include="CRelicScript.h" />
     <ClInclude Include="CRenderComponent.h" />
     <ClInclude Include="CRigidBody.h" />
-    <ClInclude Include="CSandevistanScript.h" />
     <ClInclude Include="CScript.h" />
-    <ClInclude Include="CTargetMissileScript.h" />
-    <ClInclude Include="CTrackingCameraScript.h" />
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Device.h" />
@@ -245,6 +243,7 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="Outliner.h" />
     <ClInclude Include="PathMgr.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Pixelization.h" />
     <ClInclude Include="PrefabUI.h" />
     <ClInclude Include="Profiler.h" />
     <ClInclude Include="Ptr.h" />
@@ -258,6 +257,17 @@ call ComponentAuto.exe</Command>
     <ClInclude Include="single.h" />
     <ClInclude Include="CSpriteRender.h" />
     <ClInclude Include="SoundUI.h" />
+    <ClInclude Include="Source\ScriptMgr.h" />
+    <ClInclude Include="Source\Scripts\CCyberPsychosisScript.h" />
+    <ClInclude Include="Source\Scripts\CElevationScript.h" />
+    <ClInclude Include="Source\Scripts\CEnemyScript.h" />
+    <ClInclude Include="Source\Scripts\CFlashLightScript.h" />
+    <ClInclude Include="Source\Scripts\CParticleScript.h" />
+    <ClInclude Include="Source\Scripts\CPlatformerPlayerScript.h" />
+    <ClInclude Include="Source\Scripts\CRelicScript.h" />
+    <ClInclude Include="Source\Scripts\CSandevistanScript.h" />
+    <ClInclude Include="Source\Scripts\CTargetMissileScript.h" />
+    <ClInclude Include="Source\Scripts\CTrackingCameraScript.h" />
     <ClInclude Include="SpriteRenderUI.h" />
     <ClInclude Include="SpriteUI.h" />
     <ClInclude Include="struct.h" />
@@ -292,10 +302,6 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCamMoveScript.cpp" />
     <ClCompile Include="CCollider2D.cpp" />
-    <ClCompile Include="CCyberPsychosisScript.cpp" />
-    <ClCompile Include="CElevationScript.cpp" />
-    <ClCompile Include="CEnemyScript.cpp" />
-    <ClCompile Include="CFlashLightScript.cpp" />
     <ClCompile Include="CFlipbookRender.cpp" />
     <ClCompile Include="CLight2D.cpp" />
     <ClCompile Include="CMeshRender.cpp" />
@@ -306,15 +312,9 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="ComputeShaderUI.cpp" />
     <ClCompile Include="ConstBuffer.cpp" />
     <ClCompile Include="ContentUI.cpp" />
-    <ClCompile Include="CParticleScript.cpp" />
-    <ClCompile Include="CPlatformerPlayerScript.cpp" />
-    <ClCompile Include="CRelicScript.cpp" />
     <ClCompile Include="CRenderComponent.cpp" />
     <ClCompile Include="CRigidBody.cpp" />
-    <ClCompile Include="CSandevistanScript.cpp" />
     <ClCompile Include="CScript.cpp" />
-    <ClCompile Include="CTargetMissileScript.cpp" />
-    <ClCompile Include="CTrackingCameraScript.cpp" />
     <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="EditorMgr.cpp" />
@@ -359,10 +359,12 @@ call ComponentAuto.exe</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Pixelization.cpp" />
     <ClCompile Include="PrefabUI.cpp" />
     <ClCompile Include="Profiler.cpp" />
     <ClCompile Include="Random.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RenderMgr.cpp" />
     <ClCompile Include="CSpriteRender.cpp" />
@@ -370,6 +372,17 @@ call ComponentAuto.exe</Command>
     <ClCompile Include="SceneUI.cpp" />
     <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="SoundUI.cpp" />
+    <ClCompile Include="Source\ScriptMgr.cpp" />
+    <ClCompile Include="Source\Scripts\CCyberPsychosisScript.cpp" />
+    <ClCompile Include="Source\Scripts\CElevationScript.cpp" />
+    <ClCompile Include="Source\Scripts\CEnemyScript.cpp" />
+    <ClCompile Include="Source\Scripts\CFlashLightScript.cpp" />
+    <ClCompile Include="Source\Scripts\CParticleScript.cpp" />
+    <ClCompile Include="Source\Scripts\CPlatformerPlayerScript.cpp" />
+    <ClCompile Include="Source\Scripts\CRelicScript.cpp" />
+    <ClCompile Include="Source\Scripts\CSandevistanScript.cpp" />
+    <ClCompile Include="Source\Scripts\CTargetMissileScript.cpp" />
+    <ClCompile Include="Source\Scripts\CTrackingCameraScript.cpp" />
     <ClCompile Include="SpriteRenderUI.cpp" />
     <ClCompile Include="SpriteUI.cpp" />
     <ClCompile Include="StructuredBuffer.cpp" />
@@ -391,12 +404,17 @@ call ComponentAuto.exe</Command>
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AMesh.inl" />
+    <None Include="Device.inl" />
+    <None Include="Engine.inl" />
     <None Include="SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="apply_bloom.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="billboard.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -407,10 +425,14 @@ call ComponentAuto.exe</Command>
     <FxCompile Include="blend_bloom.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="blur.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="dbg.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -421,6 +443,8 @@ call ComponentAuto.exe</Command>
     <FxCompile Include="downscale.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="flipbook.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -437,10 +461,20 @@ call ComponentAuto.exe</Command>
     <FxCompile Include="gamma.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="pixelization.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="shadow.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="sprite.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -469,6 +503,8 @@ call ComponentAuto.exe</Command>
     <FxCompile Include="tone.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="value.fx">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>

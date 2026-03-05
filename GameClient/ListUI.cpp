@@ -33,7 +33,7 @@ void ListUI::Tick_UI()
 			if (ImGui::IsItemClicked())
 			{
 				// 선택된 상태로 인덱스를 기억
-				m_SelectedIdx = i;
+				m_SelectedIdx = static_cast<int>(i);
 				m_SelectedString = m_vecList[i];
 			}
 

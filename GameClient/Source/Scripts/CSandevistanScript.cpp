@@ -15,7 +15,8 @@
 #include "TaskMgr.h"
 #include "RenderMgr.h"
 
-CSandevistanScript::CSandevistanScript() {}
+CSandevistanScript::CSandevistanScript() 
+	: CScript(SCRIPT_TYPE::SANDEVISTANSCRIPT) {}
 
 CSandevistanScript::~CSandevistanScript() {}
 

@@ -7,9 +7,8 @@ namespace {
 	wchar_t Buff[255]{};
 }
 
-void CreateObject(GameObject* _Object, int LayerIdx)
-{
-    TaskInfo info = {};
+void CreateObject(GameObject* _Object, int LayerIdx) {
+    TaskInfo info{};
 
     info.Type = TASK_TYPE::CREATE_OBJECT;
     info.Param_0 = (DWORD_PTR)_Object;
@@ -18,9 +17,8 @@ void CreateObject(GameObject* _Object, int LayerIdx)
     TaskMgr::GetInst()->AddTask(info);
 }
 
-void Util::ChangeLevel(const wstring& _NextLevelName)
-{
-	TaskInfo info = {};
+void Util::ChangeLevel(const wstring& _NextLevelName) {
+	TaskInfo info{};
 
 	wcscpy_s(Buff, 255, _NextLevelName.c_str());
 	
@@ -31,7 +29,7 @@ void Util::ChangeLevel(const wstring& _NextLevelName)
 }
 
 void ChangeLevelState(ELevelState::Type _NextState) {
-	TaskInfo info = {};
+    TaskInfo info{};
 
 	info.Type = TASK_TYPE::CHANGE_LEVEL_STATE;
 	info.Param_0 = (DWORD_PTR)_NextState;
@@ -39,9 +37,10 @@ void ChangeLevelState(ELevelState::Type _NextState) {
 	TaskMgr::GetInst()->AddTask(info);
 }
 
-void DrawDebugRect(Vec3 _Pos, Vec3 _Scale, Vec3 _Rot, Vec4 _Color, float _Duration, bool _DepthTest)
-{
-    DbgInfo info = {};
+void DrawDebugRect(
+    Vec3 _Pos, Vec3 _Scale, Vec3 _Rot, Vec4 _Color
+    , float _Duration, bool _DepthTest) {
+    DbgInfo info{};
 
     info.Shape = DBG_SHAPE::RECT;
 
@@ -60,9 +59,11 @@ void DrawDebugRect(Vec3 _Pos, Vec3 _Scale, Vec3 _Rot, Vec4 _Color, float _Durati
     RenderMgr::GetInst()->AddDebugInfo(info);
 }
 
-void DrawDebugRect(const Matrix& _matWorld, Vec4 _Color, float _Duration, bool _DepthTest)
-{
-    DbgInfo info = {};
+void DrawDebugRect(
+    const Matrix& _matWorld
+    , Vec4 _Color
+    , float _Duration, bool _DepthTest) {
+    DbgInfo info{};
 
     info.Shape = DBG_SHAPE::RECT;
 
@@ -77,10 +78,11 @@ void DrawDebugRect(const Matrix& _matWorld, Vec4 _Color, float _Duration, bool _
     RenderMgr::GetInst()->AddDebugInfo(info);
 }
 
-void DrawDebugCircle(Vec3 _Pos, float _Radius, Vec4 _Color, float _Duration, bool _DepthTest)
-{
-    DbgInfo info = {};
-
+void DrawDebugCircle(
+    Vec3 _Pos
+    , float _Radius, Vec4 _Color
+    , float _Duration, bool _DepthTest) {
+    DbgInfo info{};
     info.Shape = DBG_SHAPE::CIRCLE;
     info.Pos = _Pos;
     info.Scale = Vec3(_Radius * 2.f, _Radius * 2.f, 0.f);
@@ -93,15 +95,13 @@ void DrawDebugCircle(Vec3 _Pos, float _Radius, Vec4 _Color, float _Duration, boo
     RenderMgr::GetInst()->AddDebugInfo(info);
 }
 
-void SaveWString(FILE* _File, const wstring& _String)
-{   
-    int Len = _String.length();
+void SaveWString(FILE* _File, const wstring& _String) {   
+    int Len = static_cast<int>(_String.length());
     fwrite(&Len, sizeof(int), 1, _File);        
     fwrite(_String.data(), sizeof(wchar_t), Len, _File);
 }
 
-wstring LoadWString(FILE* _File)
-{
+wstring LoadWString(FILE* _File) {
     int Len = 0;
     fread(&Len, sizeof(int), 1, _File);
 
@@ -111,28 +111,20 @@ wstring LoadWString(FILE* _File)
     return buff;
 }
 
-void SaveAssetRef(FILE* _File, Asset* _Asset)
-{
+void SaveAssetRef(FILE* _File, Asset* _Asset) {
     // Asset 이 Null 인지 아닌지 저장
     bool IsNull = _Asset;
     fwrite(&IsNull, sizeof(bool), 1, _File);
      
     // Asset 의 Key, RelativePath 저장
-    if (nullptr != _Asset)
-    {
+    if (nullptr != _Asset) {
         SaveWString(_File, _Asset->GetKey());
         SaveWString(_File, _Asset->GetRelativePath());
     }
 }
 
-
-
-
-
-bool IsValid(Ptr<GameObject>& _Object)
-{
-    if (nullptr == _Object || _Object->IsDead())
-    {
+bool IsValid(Ptr<GameObject>& _Object) {
+    if (nullptr == _Object || _Object->IsDead()) {
         _Object = nullptr;
         return false;
     }     
@@ -140,12 +132,21 @@ bool IsValid(Ptr<GameObject>& _Object)
     return true;
 }
 
-float Saturate(float _Data)
-{
-    if (1.f < _Data)
-        return 1.f;
-    else if (_Data < 0.f)
-        return 0.f;
-    else
-        return _Data;
+float Saturate(float _Data) {
+    if (1.f < _Data) return 1.f;
+    else if (_Data < 0.f) return 0.f;
+    else return _Data;
+}
+
+decltype(auto) GetTImeStamp() {
+    return chrono::duration_cast<chrono::milliseconds>(
+        chrono::high_resolution_clock::now().time_since_epoch()).count();
+}
+
+wstring MakeUniqueName(const wstring& name) {
+    return std::format(L"{}##{}", name, GetTImeStamp());
+}
+
+UINT CeilDivide(UINT value, UINT divisor) {
+    return (value + divisor - 1) / divisor;
 }

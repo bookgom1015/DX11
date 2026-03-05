@@ -19,11 +19,12 @@
 
 #include "SceneUI.h"
 
-CPlatfomerPlayerScript::CPlatfomerPlayerScript() {}
+CPlatformerPlayerScript::CPlatformerPlayerScript() 
+	: CScript(SCRIPT_TYPE::PLATFORMERPLAYERSCRIPT) {}
 
-CPlatfomerPlayerScript::~CPlatfomerPlayerScript() {}
+CPlatformerPlayerScript::~CPlatformerPlayerScript() {}
 
-void CPlatfomerPlayerScript::Begin() {
+void CPlatformerPlayerScript::Begin() {
 	// Muzzle flash
 	mLight = new GameObject;
 	mLight->SetName(L"MuzzleFlash");
@@ -40,7 +41,7 @@ void CPlatfomerPlayerScript::Begin() {
 	CreateObject(mLight.Get(), ELevelLayer::E_Light);
 }
 
-void CPlatfomerPlayerScript::Tick() {
+void CPlatformerPlayerScript::Tick() {
 	auto editor = EditorMgr::GetInst()->FindUI("Scene");
 	auto scene = static_cast<SceneUI*>(editor.Get());
 
@@ -98,7 +99,7 @@ void CPlatfomerPlayerScript::Tick() {
 	}
 }
 
-void CPlatfomerPlayerScript::Move() {
+void CPlatformerPlayerScript::Move() {
 	if (KEY_PRESSED(KEY::LSHIFT))
 		mSpeed = SprintSpeed;
 	else
@@ -117,7 +118,7 @@ void CPlatfomerPlayerScript::Move() {
 	RigidBody()->SetVelocity(velocity);
 }
 
-void CPlatfomerPlayerScript::Jump() {
+void CPlatformerPlayerScript::Jump() {
 	if (RigidBody()->IsOnGround()) {
 		mbCanDoubleJump = TRUE;
 		RigidBody()->AddImpulse(Vec3(0.f, 1000.f, 0.f));
@@ -129,7 +130,7 @@ void CPlatfomerPlayerScript::Jump() {
 	}
 }
 
-void CPlatfomerPlayerScript::Shoot(Vec3 pos, Vec3 rot, Vec3 dir) {
+void CPlatformerPlayerScript::Shoot(Vec3 pos, Vec3 rot, Vec3 dir) {
 	static const float interval = 0.25f;
 	static const float fInterval = 0.05f;
 
@@ -174,7 +175,7 @@ void CPlatfomerPlayerScript::Shoot(Vec3 pos, Vec3 rot, Vec3 dir) {
 	}
 }
 
-void CPlatfomerPlayerScript::Aim(Vec3 rot) {
+void CPlatformerPlayerScript::Aim(Vec3 rot) {
 	auto arm = GetOwner()->GetChild(0);
 	arm->Transform()->SetRelativeRot(rot);
 
@@ -188,7 +189,7 @@ void CPlatfomerPlayerScript::Aim(Vec3 rot) {
 	mLight->Transform()->SetRelativePos(handPos + offset);
 }
 
-void CPlatfomerPlayerScript::Sandevistan() {
+void CPlatformerPlayerScript::Sandevistan() {
 	GameObject* pEffect = new GameObject;
 	pEffect->SetName(MakeUniqueName(L"SandevistanEffect"));
 	pEffect->AddComponent(new CTransform);
@@ -218,7 +219,7 @@ void CPlatfomerPlayerScript::Sandevistan() {
 	}
 }
 
-void CPlatfomerPlayerScript::CyberPsychosis() {
+void CPlatformerPlayerScript::CyberPsychosis() {
 	if (KEY_TAP(KEY::Z)) mbCyberPsychosis = !mbCyberPsychosis;
 	if (!mbCyberPsychosis) return;
 
@@ -253,7 +254,7 @@ void CPlatfomerPlayerScript::CyberPsychosis() {
 	}
 }
 
-void CPlatfomerPlayerScript::Relic() {
+void CPlatformerPlayerScript::Relic() {
 	if (KEY_TAP(KEY::X)) {
 		if (mbRelic) {
 			mbRelic = false;
@@ -330,7 +331,7 @@ void CPlatfomerPlayerScript::Relic() {
 	}
 }
 
-void CPlatfomerPlayerScript::Animation() {
+void CPlatformerPlayerScript::Animation() {
 	static bool bRateChanged{};
 	static float prevRate{ WalkSpeed };
 
@@ -362,7 +363,7 @@ void CPlatfomerPlayerScript::Animation() {
 	bRateChanged = true;
 }
 
-void CPlatfomerPlayerScript::Relocate() {
+void CPlatformerPlayerScript::Relocate() {
 	if (Transform()->GetRelativePos().y < -10000.f)
 		Transform()->SetRelativePos({});
 }

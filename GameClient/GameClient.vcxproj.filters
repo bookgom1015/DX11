@@ -73,14 +73,8 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameEngine\05. GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClInclude>
     <ClInclude Include="CTransform.h">
       <Filter>GameEngine\06. Component\01. Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="CScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="AssetMgr.h">
       <Filter>GameEngine\03. Manager\04. AssetMgr</Filter>
@@ -105,9 +99,6 @@
     </ClInclude>
     <ClInclude Include="CCamera.h">
       <Filter>GameEngine\06. Component\02. Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="CCamMoveScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="RenderMgr.h">
       <Filter>GameEngine\03. Manager\06. RenderMgr</Filter>
@@ -277,53 +268,11 @@
     <ClInclude Include="CRigidBody.h">
       <Filter>GameEngine\06. Component\05. Rigidbody</Filter>
     </ClInclude>
-    <ClInclude Include="GammaCorrection.h">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="ToneMapping.h">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Shadow.h">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClInclude>
     <ClInclude Include="Profiler.h">
       <Filter>GameEngine\07. EditorUI\09. Profiler</Filter>
     </ClInclude>
-    <ClInclude Include="CCyberPsychosisScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CElevationScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CEnemyScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CFlashLightScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CParticleScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlatformerPlayerScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CRelicScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CSandevistanScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CTargetMissileScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="CTrackingCameraScript.h">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClInclude>
     <ClInclude Include="Blur.h">
       <Filter>GameEngine\06. Component\RenderComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Bloom.h">
-      <Filter>GameEngine\06. Component</Filter>
     </ClInclude>
     <ClInclude Include="SceneUI.h">
       <Filter>GameEngine\07. EditorUI\10. SceneUI</Filter>
@@ -333,6 +282,63 @@
     </ClInclude>
     <ClInclude Include="RigidbodyUI.h">
       <Filter>GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamMoveScript.h">
+      <Filter>GameEngine\03. Manager\09. EditorMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Bloom.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="GammaCorrection.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="ToneMapping.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixelization.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CCyberPsychosisScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CElevationScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CEnemyScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CFlashLightScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CParticleScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CPlatformerPlayerScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CRelicScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CSandevistanScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CTargetMissileScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scripts\CTrackingCameraScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScriptMgr.h">
+      <Filter>Source\ScriptMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -400,9 +406,6 @@
     </Filter>
     <Filter Include="GameEngine\02. Device\ConstBuffer">
       <UniqueIdentifier>{3898aced-167e-44b8-8418-fb0a8b43c28e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\06. Component\Script">
-      <UniqueIdentifier>{0ac73ff1-9766-40f3-b7a9-3884f9a6a867}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\03. Manager\04. AssetMgr">
       <UniqueIdentifier>{9c561041-4c2a-4e3f-bd6c-1cc6709fa3ae}</UniqueIdentifier>
@@ -602,6 +605,21 @@
     <Filter Include="GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI">
       <UniqueIdentifier>{5bdde204-4970-4bb0-a831-46dbeb75abf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{2138245b-ae90-4652-9b4f-1e4868adcc8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\06. Component\Script">
+      <UniqueIdentifier>{0441aacd-80a1-4111-927f-309ae17dda89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scripts">
+      <UniqueIdentifier>{b5f7e4ee-5a18-4e05-92ac-5c5edb19e527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ScriptMgr">
+      <UniqueIdentifier>{ff5b1d4f-033d-42ca-88c7-c6a3bf12adcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderProcess">
+      <UniqueIdentifier>{e88d6aaf-4bf2-41dd-9322-8f7c0282cc27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameClient.rc">
@@ -648,14 +666,8 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameEngine\05. GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClCompile>
     <ClCompile Include="CTransform.cpp">
       <Filter>GameEngine\06. Component\01. Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="CScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="AssetMgr.cpp">
       <Filter>GameEngine\03. Manager\04. AssetMgr</Filter>
@@ -674,9 +686,6 @@
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>GameEngine\06. Component\02. Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="CCamMoveScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="RenderMgr.cpp">
       <Filter>GameEngine\03. Manager\06. RenderMgr</Filter>
@@ -853,53 +862,11 @@
     <ClCompile Include="CRigidBody.cpp">
       <Filter>GameEngine\06. Component\05. Rigidbody</Filter>
     </ClCompile>
-    <ClCompile Include="GammaCorrection.cpp">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="ToneMapping.cpp">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Shadow.cpp">
-      <Filter>GameEngine\06. Component</Filter>
-    </ClCompile>
     <ClCompile Include="Profiler.cpp">
       <Filter>GameEngine\07. EditorUI\09. Profiler</Filter>
     </ClCompile>
-    <ClCompile Include="CCyberPsychosisScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CElevationScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CEnemyScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CFlashLightScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CParticleScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlatformerPlayerScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CRelicScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CSandevistanScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CTargetMissileScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="CTrackingCameraScript.cpp">
-      <Filter>GameEngine\06. Component\Script</Filter>
-    </ClCompile>
     <ClCompile Include="Blur.cpp">
       <Filter>GameEngine\06. Component\RenderComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Bloom.cpp">
-      <Filter>GameEngine\06. Component</Filter>
     </ClCompile>
     <ClCompile Include="SceneUI.cpp">
       <Filter>GameEngine\07. EditorUI\10. SceneUI</Filter>
@@ -910,10 +877,76 @@
     <ClCompile Include="RigidbodyUI.cpp">
       <Filter>GameEngine\07. EditorUI\02. ComponentUI\05. RigidbodyUI</Filter>
     </ClCompile>
+    <ClCompile Include="CCamMoveScript.cpp">
+      <Filter>GameEngine\03. Manager\09. EditorMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>GameEngine\06. Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Bloom.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="GammaCorrection.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Shadow.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="ToneMapping.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixelization.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CCyberPsychosisScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CElevationScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CEnemyScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CFlashLightScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CParticleScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CPlatformerPlayerScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CRelicScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CSandevistanScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CTargetMissileScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scripts\CTrackingCameraScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScriptMgr.cpp">
+      <Filter>Source\ScriptMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
       <Filter>GameEngine\Module</Filter>
+    </None>
+    <None Include="Device.inl">
+      <Filter>GameEngine\02. Device</Filter>
+    </None>
+    <None Include="Engine.inl">
+      <Filter>GameEngine\01. Engine</Filter>
+    </None>
+    <None Include="AMesh.inl">
+      <Filter>GameEngine\04. Asset\01. Mesh</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -964,6 +997,9 @@
     </FxCompile>
     <FxCompile Include="blur.fx">
       <Filter>HLSL\2. Render\PostProcess\Blur</Filter>
+    </FxCompile>
+    <FxCompile Include="pixelization.fx">
+      <Filter>HLSL\2. Render\PostProcess</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

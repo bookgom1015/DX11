@@ -78,8 +78,8 @@ void CFlipbookRender::CreateMaterial() {
 			pShader->SetName(ShaderName);
 			pShader->CreateVertexShader(FilePath, VS);
 			pShader->CreatePixelShader(FilePath, PS);
-			pShader->SetBSType(BS_TYPE::DEFAULT);
-			pShader->SetRSType(RS_TYPE::CULL_NONE);
+			pShader->SetBSType(EBlendState::E_Default);
+			pShader->SetRSType(ERasterizerState::E_CullNone);
 			AssetMgr::GetInst()->AddAsset(pShader->GetName(), pShader.Get());
 		}
 
