@@ -3,7 +3,7 @@
 
 #include "ATexture.h"
 
-TextureUI::TextureUI() : AssetUI(ASSET_TYPE::TEXTURE) {}
+TextureUI::TextureUI() : AssetUI(EAsset::E_Texture) {}
 
 TextureUI::~TextureUI() {}
 
@@ -21,6 +21,9 @@ void TextureUI::Tick_UI() {
 			, ImVec2(200.f, 200.f)
 			, Vec2(0.f, 0.f), Vec2(1.f, 1.f)
 			, ImVec4(0.f, 0.f, 0.f, 1.f));
+
+		string Key = string(pTexture->GetKey().begin(), pTexture->GetKey().end());
+		ImGui::InputText("##TextureName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 	}
 	{
 		// 해상도

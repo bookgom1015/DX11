@@ -1,17 +1,10 @@
 #include "pch.h"
 #include "GraphicShaderUI.h"
 
+GraphicShaderUI::GraphicShaderUI() : AssetUI(EAsset::E_GraphicShader) {}
 
-GraphicShaderUI::GraphicShaderUI()
-	: AssetUI(ASSET_TYPE::GRAPHICSHADER)
-{
-}
+GraphicShaderUI::~GraphicShaderUI() {}
 
-GraphicShaderUI::~GraphicShaderUI()
-{
-}
-
-void GraphicShaderUI::Tick_UI()
-{
+void GraphicShaderUI::Tick_UI() {
 	OutputTitle();
 }

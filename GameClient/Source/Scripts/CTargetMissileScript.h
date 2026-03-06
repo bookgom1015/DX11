@@ -25,7 +25,6 @@ public:
     void SetTarget(Ptr<GameObject> target) { mTarget = target; }
 
 private:
-    void SelfDestruct();
     void CreateParticles(Vec3 pos, bool blood);
 
 private:

@@ -1,17 +1,10 @@
 #include "pch.h"
 #include "LevelUI.h"
 
+LevelUI::LevelUI() : AssetUI(EAsset::E_Level) {}
 
-LevelUI::LevelUI()
-	: AssetUI(ASSET_TYPE::LEVEL)
-{
-}
+LevelUI::~LevelUI() {}
 
-LevelUI::~LevelUI()
-{
-}
-
-void LevelUI::Tick_UI()
-{
+void LevelUI::Tick_UI() {
 	OutputTitle();
 }

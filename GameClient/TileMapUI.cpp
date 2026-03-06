@@ -2,16 +2,10 @@
 #include "TileMapUI.h"
 
 
-TileMapUI::TileMapUI()
-	: AssetUI(ASSET_TYPE::TILEMAP)
-{
-}
+TileMapUI::TileMapUI()	: AssetUI(EAsset::E_TileMap) {}
 
-TileMapUI::~TileMapUI()
-{
-}
+TileMapUI::~TileMapUI() {}
 
-void TileMapUI::Tick_UI()
-{
+void TileMapUI::Tick_UI() {
 	OutputTitle();
 }

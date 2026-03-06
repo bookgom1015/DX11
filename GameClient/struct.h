@@ -10,7 +10,7 @@ typedef Vertex Vtx;
 
 // DebugInfo : 디버그 렌더링 요청사항 정보
 struct DbgInfo {
-	DBG_SHAPE	Shape;
+	EDebugShape::Type Shape;
 
 	Vec3		Pos;
 	Vec3		Scale;
@@ -27,28 +27,28 @@ struct DbgInfo {
 
 // TaskMgr 가 처리할 작업 단위
 struct TaskInfo {
-	TASK_TYPE Type;
-	DWORD_PTR Param_0;
-	DWORD_PTR Param_1;
-	DWORD_PTR Param_2;
+	ETask::Type	Type;
+	DWORD_PTR	Param_0;
+	DWORD_PTR	Param_1;
+	DWORD_PTR	Param_2;
 };
 
 // Light2D 정보
 struct Light2DInfo {
-	LIGHT_TYPE	Type;
-	Vec3		Color;		// 빛의 색상
-	Vec3		Ambient;	// 환경광, 광원이 존재하면서 최소한으로 발생하는 빛의 세기
-	Vec3		LightDir;	// 광원의 빛이 향하는 방향
-	Vec3		WorldPos;	// 광원의 위치 (포인트, 스포트)
-	float		Radius;		// 빛의 영향 반경(포인트, 스포트)
-	float		Angle;		// SpotLight 범위 각
-	float		Length;
-	float		Intensity;
-	int			Disabled;
-	Matrix		Views[4];
-	Matrix		Projs[4];
-	int			BaseIndex;
-	int			Size;
+	ELight::Type	Type;
+	Vec3			Color;		// 빛의 색상
+	Vec3			Ambient;	// 환경광, 광원이 존재하면서 최소한으로 발생하는 빛의 세기
+	Vec3			LightDir;	// 광원의 빛이 향하는 방향
+	Vec3			WorldPos;	// 광원의 위치 (포인트, 스포트)
+	float			Radius;		// 빛의 영향 반경(포인트, 스포트)
+	float			Angle;		// SpotLight 범위 각
+	float			Length;
+	float			Intensity;
+	int				Disabled;
+	Matrix			Views[4];
+	Matrix			Projs[4];
+	int				BaseIndex;
+	int				Size;
 };
 
 struct TransformMatrix {

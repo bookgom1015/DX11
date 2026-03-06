@@ -10,7 +10,6 @@
 #include "FlipbookRenderUI.h"
 #include "TileRenderUI.h"
 #include "RigidbodyUI.h"
-
 #include "MeshUI.h"
 #include "MaterialUI.h"
 #include "TextureUI.h"
@@ -22,6 +21,7 @@
 #include "FlipbookUI.h"
 #include "TileMapUI.h"
 #include "PrefabUI.h"
+#include "AddComponentButton.h"
 
 #define ADD_COMPONENT_UI(ComponentType, type, Size) m_arrComUI[(UINT)ComponentType] = new type;\
 													m_arrComUI[(UINT)ComponentType]->SetSizeAsChild(Size);\
@@ -30,29 +30,29 @@
 #define ADD_ASSET_UI(AssetType, type) m_arrAssetUI[(UINT)AssetType] = new type;\
 									  AddChildUI(m_arrAssetUI[(UINT)AssetType].Get());
 
+void Inspector::CreateChildUI() {
+	ADD_COMPONENT_UI(EComponent::E_Transform,		TransformUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_Collider2D,		Collider2DUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_Camera,			CameraUI,			Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_Light2D,			Light2DUI,			Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_MeshRender,		MeshRenderUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_SpriteRender,	SpriteRenderUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_FlipbookRender,	FlipbookRenderUI,	Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_TileRender,		TileRenderUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_Rigidbody,		RigidbodyUI,		Vec2(0.f, 50.f));
 
+	m_AddCompBtn = new AddComponentButton;
+	AddChildUI(m_AddCompBtn.Get());
 
-void Inspector::CreateChildUI()
-{
-	ADD_COMPONENT_UI(COMPONENT_TYPE::TRANSFORM,			TransformUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::COLLIDER2D,		Collider2DUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::CAMERA,			CameraUI,			Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::LIGHT2D,			Light2DUI,			Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::MESHRENDER,		MeshRenderUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::SPRITE_RENDER,		SpriteRenderUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::FLIPBOOK_RENDER,	FlipbookRenderUI,	Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::TILE_RENDER,		TileRenderUI,		Vec2(0.f, 200.f));
-	ADD_COMPONENT_UI(COMPONENT_TYPE::RIGIDBODY,			RigidbodyUI,		Vec2(0.f, 200.f));
-
-	ADD_ASSET_UI(ASSET_TYPE::MESH, MeshUI);
-	ADD_ASSET_UI(ASSET_TYPE::MATERIAL, MaterialUI);
-	ADD_ASSET_UI(ASSET_TYPE::TEXTURE, TextureUI);
-	ADD_ASSET_UI(ASSET_TYPE::SOUND, SoundUI);
-	ADD_ASSET_UI(ASSET_TYPE::GRAPHICSHADER, GraphicShaderUI);
-	ADD_ASSET_UI(ASSET_TYPE::COMPUTESHADER, ComputeShaderUI);
-	ADD_ASSET_UI(ASSET_TYPE::LEVEL, LevelUI);
-	ADD_ASSET_UI(ASSET_TYPE::SPRITE, SpriteUI);
-	ADD_ASSET_UI(ASSET_TYPE::FLIPBOOK, FlipbookUI);
-	ADD_ASSET_UI(ASSET_TYPE::TILEMAP, TileMapUI);
-	ADD_ASSET_UI(ASSET_TYPE::PREFAB, PrefabUI);
+	ADD_ASSET_UI(EAsset::E_Mesh, MeshUI);
+	ADD_ASSET_UI(EAsset::E_Material, MaterialUI);
+	ADD_ASSET_UI(EAsset::E_Texture, TextureUI);
+	ADD_ASSET_UI(EAsset::E_Sound, SoundUI);
+	ADD_ASSET_UI(EAsset::E_GraphicShader, GraphicShaderUI);
+	ADD_ASSET_UI(EAsset::E_ComputeShader, ComputeShaderUI);
+	ADD_ASSET_UI(EAsset::E_Level, LevelUI);
+	ADD_ASSET_UI(EAsset::E_Sprite, SpriteUI);
+	ADD_ASSET_UI(EAsset::E_Flipbook, FlipbookUI);
+	ADD_ASSET_UI(EAsset::E_TileMap, TileMapUI);
+	ADD_ASSET_UI(EAsset::E_Prefab, PrefabUI);
 }

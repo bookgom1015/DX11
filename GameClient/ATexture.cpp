@@ -4,18 +4,13 @@
 #include "Device.h"
 
 ATexture::ATexture()
-	: Asset(ASSET_TYPE::TEXTURE)
+	: Asset(EAsset::E_Texture)
 	, m_Desc{}
-	, m_RecentNum(-1)
-{
-}
+	, m_RecentNum(-1) {}
 
-ATexture::~ATexture()
-{
-}
+ATexture::~ATexture() {}
 
-void ATexture::Binding(UINT _RegisterNum)
-{
+void ATexture::Binding(UINT _RegisterNum) {
 	m_RecentNum = _RegisterNum;
 
 	CONTEXT->VSSetShaderResources(m_RecentNum, 1, m_SRV.GetAddressOf());
@@ -25,12 +20,10 @@ void ATexture::Binding(UINT _RegisterNum)
 	CONTEXT->PSSetShaderResources(m_RecentNum, 1, m_SRV.GetAddressOf());
 }
 
-void ATexture::Clear()
-{
-	if (-1 == m_RecentNum)
-		return;
+void ATexture::Clear() {
+	if (-1 == m_RecentNum) return;
 
-	ID3D11ShaderResourceView* pSRV = nullptr;
+	ID3D11ShaderResourceView* pSRV{};
 
 	CONTEXT->VSSetShaderResources(m_RecentNum, 1, &pSRV);
 	CONTEXT->GSSetShaderResources(m_RecentNum, 1, &pSRV);
@@ -41,9 +34,8 @@ void ATexture::Clear()
 	m_RecentNum = -1;
 }
 
-int ATexture::Load(const wstring& _FilePath)
-{	
-	wchar_t szExt[10] = {};
+int ATexture::Load(const wstring& _FilePath) {	
+	wchar_t szExt[10]{};
 	_wsplitpath_s(_FilePath.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExt, 10);
 	wstring strExt = szExt;
 
@@ -51,22 +43,15 @@ int ATexture::Load(const wstring& _FilePath)
 
 	// .dds
 	if (L".dds" == strExt)
-	{	
 		hr = LoadFromDDSFile(_FilePath.c_str(), DDS_FLAGS_NONE, nullptr, m_Image);
-	}
 	// .tga
 	else if (L".tga" == strExt)
-	{	
 		hr = LoadFromTGAFile(_FilePath.c_str(), nullptr, m_Image);
-	}
 	// WIC(Window Image Component) .png, .jpg, .jpeg, .bmp
 	else
-	{
 		hr = LoadFromWICFile(_FilePath.c_str(), WIC_FLAGS_NONE, nullptr, m_Image);
-	}
 
-	if (FAILED(hr))
-	{
+	if (FAILED(hr)) {
 		MessageBox(nullptr, L"텍스쳐 시스템메모리 로딩 실패", L"텍스쳐 로딩 실패", MB_OK);
 		return E_FAIL;
 	}	
@@ -84,8 +69,7 @@ int ATexture::Load(const wstring& _FilePath)
 	// 다시 이걸로 ShaderResourceView 까지 만들어서 ShaderResourceView 주소를 알려줌
 	if(FAILED(CreateShaderResourceView(DEVICE, m_Image.GetImages()
 							, m_Image.GetImageCount(), m_Image.GetMetadata()
-							, m_SRV.GetAddressOf())))
-	{
+							, m_SRV.GetAddressOf()))) {
 		MessageBox(nullptr, L"ShaderResourveView 생성 실패", L"텍스쳐 로딩 실패", MB_OK);
 		return E_FAIL;
 	}

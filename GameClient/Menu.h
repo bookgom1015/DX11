@@ -1,9 +1,16 @@
 #pragma once
+
 #include "EditorUI.h"
 
-class Menu :
-    public EditorUI
-{
+class Menu : public EditorUI {
+public:
+    Menu();
+    virtual ~Menu();
+
+public:
+    virtual void Tick() override;
+    virtual void Tick_UI() override;
+
 private:
     void File();
     void View();
@@ -11,17 +18,9 @@ private:
     void Asset();
     void Render();
 
-public:
-    virtual void Tick() override;
-    virtual void Tick_UI() override;
-
 private:
-    wstring GetAssetName(ASSET_TYPE _Type, const wstring& _Name);
+    wstring GetAssetName(EAsset::Type _Type, const wstring& _Name);
 
     void CloseButton();
-
-public:
-    Menu();
-    virtual ~Menu();
 };
 

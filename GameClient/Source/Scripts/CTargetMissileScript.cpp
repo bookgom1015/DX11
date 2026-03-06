@@ -23,7 +23,7 @@ void CTargetMissileScript::Begin() {
 void CTargetMissileScript::Tick() {
 	mElapsedTime += DT;
 	if (mElapsedTime > 2.f) {
-		SelfDestruct();
+		Destroy();
 		return;
 	}
 
@@ -41,7 +41,7 @@ void CTargetMissileScript::BeginOverlap(CollisionData pOwner, CollisionData pOth
 		auto origin = Transform()->GetRelativePos();
 
 		Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
-		SelfDestruct();
+		Destroy();
 
 		CreateParticles(origin, false);
 	}
@@ -49,7 +49,7 @@ void CTargetMissileScript::BeginOverlap(CollisionData pOwner, CollisionData pOth
 		auto origin = Transform()->GetRelativePos();
 
 		Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
-		SelfDestruct();
+		Destroy();
 
 		CreateParticles(origin, true);
 
@@ -64,13 +64,6 @@ void CTargetMissileScript::Overlap(CollisionData pOwner, CollisionData pOther) {
 
 void CTargetMissileScript::EndOverlap(CollisionData pOwner, CollisionData pOther) {
 
-}
-
-void CTargetMissileScript::SelfDestruct() {
-	TaskInfo info{};
-	info.Type = TASK_TYPE::DESTROY_OBJECT;
-	info.Param_0 = (DWORD_PTR)GetOwner();
-	TaskMgr::GetInst()->AddTask(info);
 }
 
 void CTargetMissileScript::CreateParticles(Vec3 pos, bool blood) {

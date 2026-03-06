@@ -25,9 +25,6 @@ public:
     void SetToColor(const Vec3& color) { mToColor = color; }
 
 private:
-    void SelfDestruct();
-
-private:
     float mElapsedTime{};
 
     Vec3 mFromColor{};

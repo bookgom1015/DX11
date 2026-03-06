@@ -13,7 +13,7 @@
 #include "CTransform.h"
 
 
-CCamera::CCamera() : Component(COMPONENT_TYPE::CAMERA)
+CCamera::CCamera() : Component(EComponent::E_Camera)
 	, m_LayerCheck(0)
 	, m_OrthoScale(1.f) {}
 
@@ -74,7 +74,7 @@ void CCamera::FinalTick() {
 	m_matView = matTrans * matRot;
 
 	// 투영행렬
-	if (PROJ_TYPE::ORTHOGRAPHIC == m_ProjType) {
+	if (m_ProjType == EProjection::E_Orthographic) {
 		// 직교투영(Orthographic) 행렬 계산	
 		m_matProj = XMMatrixOrthographicLH(m_Width * m_OrthoScale, (m_Width / m_AspectRatio) * m_OrthoScale, 1.f, m_Far);
 	}
@@ -107,19 +107,19 @@ void CCamera::SortObject() {
 				|| nullptr == vecObjects[j]->GetRenderCom()->GetMaterial())
 				continue;
 
-			RENDER_DOMAIN domain = vecObjects[j]->GetRenderCom()->GetMaterial()->GetDomain();
+			auto domain = vecObjects[j]->GetRenderCom()->GetMaterial()->GetDomain();
 
 			switch (domain) {
-			case RENDER_DOMAIN::DOMAIN_OPAQUE:
+			case ERenderDomain::E_Opaque:
 				m_vecOpaque.push_back(vecObjects[j].Get());
 				break;
-			case RENDER_DOMAIN::DOMAIN_MASKED:
+			case ERenderDomain::E_Masked:
 				m_vecMasked.push_back(vecObjects[j].Get());
 				break;
-			case RENDER_DOMAIN::DOMAIN_TRANSPARENT:
+			case ERenderDomain::E_Transparent:
 				m_vecTrapsnarent.push_back(vecObjects[j].Get());
 				break;			
-			case RENDER_DOMAIN::DOMAIN_POSTPROCESS:
+			case ERenderDomain::E_PostProcess:
 				m_vecPostProcess.push_back(vecObjects[j].Get());
 				break;
 

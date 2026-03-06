@@ -1,21 +1,14 @@
 #include "pch.h"
 #include "ASprite.h"
 
-
 #include "AssetMgr.h"
 
-ASprite::ASprite()
-	: Asset(ASSET_TYPE::SPRITE)
-{
-}
+ASprite::ASprite() : Asset(EAsset::E_Sprite) {}
 
-ASprite::~ASprite()
-{
-}
+ASprite::~ASprite() {}
 
-int ASprite::Save(const wstring& _FilePath)
-{
-	FILE* pFile = nullptr;
+int ASprite::Save(const wstring& _FilePath) {
+	FILE* pFile{};
 	_wfopen_s(&pFile, _FilePath.c_str(), L"wb");
 
 	// 가리키고 있던 텍스쳐가 누군지 저장
@@ -32,9 +25,8 @@ int ASprite::Save(const wstring& _FilePath)
 	return 0;
 }
 
-int ASprite::Load(const wstring& _FilePath)
-{
-	FILE* pFile = nullptr;
+int ASprite::Load(const wstring& _FilePath) {
+	FILE* pFile{};
 	_wfopen_s(&pFile, _FilePath.c_str(), L"rb");
 
 	// 저장할때 가리키던 텍스쳐를 다시 가리키기

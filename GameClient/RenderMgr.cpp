@@ -149,16 +149,16 @@ void RenderMgr::Render_Debug() {
 		// Mesh 설정
 		switch ((*iter).Shape)
 		{
-		case DBG_SHAPE::RECT:
+		case EDebugShape::E_Rect:
 			m_DbgObj->MeshRender()->SetMesh(FIND(AMesh, L"RectMesh_LineStrip"));
 			break;
-		case DBG_SHAPE::CIRCLE:
+		case EDebugShape::E_Circle:
 			m_DbgObj->MeshRender()->SetMesh(FIND(AMesh, L"CircleMesh_LineStrip"));
 			break;
-		case DBG_SHAPE::CUBE:
+		case EDebugShape::E_Cube:
 			m_DbgObj->MeshRender()->SetMesh(FIND(AMesh, L"CubeMesh"));
 			break;
-		case DBG_SHAPE::SPHERE:
+		case EDebugShape::E_Sphere:
 			m_DbgObj->MeshRender()->SetMesh(FIND(AMesh, L"SphereMesh"));
 			break;
 		}
@@ -213,9 +213,9 @@ void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
 		auto& light = m_vecLight2D[i];
 		auto type = light->GetLightType();
 
-		if (type == LIGHT_TYPE::SPOT 
-			|| type == LIGHT_TYPE::LINE 
-			|| type == LIGHT_TYPE::POINT) {
+		if (type == ELight::E_Spot
+			|| type == ELight::E_Line
+			|| type == ELight::E_Point) {
 			auto pos = light->Transform()->GetRelativePos();
 			auto dir = light->Light2D()->GetLightDir();
 
@@ -225,7 +225,7 @@ void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
 
 			auto radius = light->Light2D()->GetRadius();
 
-			if (type == LIGHT_TYPE::SPOT) {
+			if (type == ELight::E_Spot) {
 				{
 					auto focus = pos + dir;
 
@@ -244,7 +244,7 @@ void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
 
 				idx += 1;
 			}
-			else if (type == LIGHT_TYPE::LINE) {
+			else if (type == ELight::E_Line) {
 				{
 					auto halfL = light->GetLength() * 0.5f;
 					Vec3 right = XMVector3Cross(dir, Vec3(0.f, 0.f, -1.f));

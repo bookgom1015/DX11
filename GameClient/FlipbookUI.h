@@ -1,18 +1,18 @@
 #pragma once
-#include "AssetUI.h"
-class FlipbookUI :
-    public AssetUI
-{
-public:
-    virtual void Tick_UI() override;
 
+#include "AssetUI.h"
+
+class FlipbookUI : public AssetUI {
 public:
     FlipbookUI();
     virtual ~FlipbookUI();
 
+public:
+    virtual void Tick_UI() override;
+
 private:
-    float mElapsedTime{};
-    float mFPS{ 15.f };
-    UINT mIndex{};
+    float mElapsedTime;
+    float mFPS;
+    UINT mIndex;
 };
 

@@ -1,17 +1,10 @@
 #include "pch.h"
 #include "ComputeShaderUI.h"
 
+ComputeShaderUI::ComputeShaderUI() : AssetUI(EAsset::E_ComputeShader) {}
 
-ComputeShaderUI::ComputeShaderUI()
-	: AssetUI(ASSET_TYPE::COMPUTESHADER)
-{
-}
+ComputeShaderUI::~ComputeShaderUI() {}
 
-ComputeShaderUI::~ComputeShaderUI()
-{
-}
-
-void ComputeShaderUI::Tick_UI()
-{
+void ComputeShaderUI::Tick_UI() {
 	OutputTitle();
 }

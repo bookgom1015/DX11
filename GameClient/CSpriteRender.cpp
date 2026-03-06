@@ -8,7 +8,7 @@
 #include "Shadow.h"
 #include "Device.h"
 
-CSpriteRender::CSpriteRender() : CRenderComponent(COMPONENT_TYPE::SPRITE_RENDER) {}
+CSpriteRender::CSpriteRender() : CRenderComponent(EComponent::E_SpriteRender) {}
 
 CSpriteRender::~CSpriteRender() {}
 
@@ -74,7 +74,7 @@ void CSpriteRender::CreateMaterial() {
 
 		// 찾은 or 생성한 쉐이더를 재질에 설정해주고, 재질도 에셋매니저에 등록한다.
 		pMtrl->SetShader(pShader);
-		pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+		pMtrl->SetDomain(ERenderDomain::E_Masked);
 		AssetMgr::GetInst()->AddAsset(pMtrl->GetName(), pMtrl.Get());
 	}
 

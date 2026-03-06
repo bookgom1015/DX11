@@ -4,7 +4,7 @@
 #include "RenderMgr.h"
 #include "CScript.h"
 
-CCollider2D::CCollider2D() : Component(COMPONENT_TYPE::COLLIDER2D)
+CCollider2D::CCollider2D() : Component(EComponent::E_Collider2D)
 	, m_Scale(Vec2(1.f, 1.f))
 	, m_OverlapCount(0) {}
 

@@ -1,17 +1,11 @@
 #include "pch.h"
+
 #include "MeshUI.h"
 
+MeshUI::MeshUI() : AssetUI(EAsset::E_Mesh) {}
 
-MeshUI::MeshUI()
-	: AssetUI(ASSET_TYPE::MESH)
-{
-}
+MeshUI::~MeshUI() {}
 
-MeshUI::~MeshUI()
-{
-}
-
-void MeshUI::Tick_UI()
-{
+void MeshUI::Tick_UI() {
 	OutputTitle();
 }

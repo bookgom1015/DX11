@@ -31,18 +31,11 @@ void CCyberPsychosisScript::Begin() {
 
 void CCyberPsychosisScript::Tick() {
 	mElapsedTime += DT;
-	if (mElapsedTime >= mLifeTime) SelfDestruct();
+	if (mElapsedTime >= mLifeTime) Destroy();
 
 	SpriteRender()->SetAlbedo(mColor);
 	SpriteRender()->SetGlitchEffect(true);
 
 	auto dest = mTarget->Transform()->GetRelativePos() + mOffset;
 	Transform()->SetRelativePos(dest);
-}
-
-void CCyberPsychosisScript::SelfDestruct() {
-	TaskInfo info{};
-	info.Type = TASK_TYPE::DESTROY_OBJECT;
-	info.Param_0 = (DWORD_PTR)GetOwner();
-	TaskMgr::GetInst()->AddTask(info);
 }

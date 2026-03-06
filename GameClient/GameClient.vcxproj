@@ -169,6 +169,7 @@ call CodeGen.exe</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddComponentButton.h" />
     <ClInclude Include="AFlipbook.h" />
     <ClInclude Include="ALevel.h" />
     <ClInclude Include="AMaterial.h" />
@@ -284,6 +285,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="TreeUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddComponentButton.cpp" />
     <ClCompile Include="AFlipbook.cpp" />
     <ClCompile Include="ALevel.cpp" />
     <ClCompile Include="AMaterial.cpp" />
@@ -404,9 +406,22 @@ call CodeGen.exe</Command>
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AFlipbook.inl" />
+    <None Include="AMaterial.inl" />
     <None Include="AMesh.inl" />
+    <None Include="AssetMgr.inl" />
+    <None Include="AssetUI.inl" />
+    <None Include="ATexture.inl" />
+    <None Include="ATileMap.inl" />
+    <None Include="CLight2D.inl" />
+    <None Include="Component.inl" />
+    <None Include="ComponentUI.inl" />
     <None Include="Device.inl" />
+    <None Include="EditorUI.inl" />
     <None Include="Engine.inl" />
+    <None Include="GameObject.inl" />
+    <None Include="Inspector.inl" />
+    <None Include="ListUI.inl" />
     <None Include="SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>

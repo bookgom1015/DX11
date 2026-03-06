@@ -1,15 +1,11 @@
 #include "pch.h"
 #include "SpriteRenderUI.h"
 
-void SpriteRenderUI::Tick_UI()
-{
-}
-
 SpriteRenderUI::SpriteRenderUI()
-	: ComponentUI(COMPONENT_TYPE::SPRITE_RENDER, "SpriteRenderUI")
-{
-}
+	: ComponentUI(EComponent::E_SpriteRender, "SpriteRenderUI") {}
 
-SpriteRenderUI::~SpriteRenderUI()
-{
+SpriteRenderUI::~SpriteRenderUI() {}
+
+void SpriteRenderUI::Tick_UI() {
+	OutputTitle("SpriteRender");
 }

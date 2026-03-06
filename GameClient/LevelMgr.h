@@ -30,5 +30,7 @@ private:
 	Ptr<ALevel> m_SharedLevel;
 
 	ELevelState::Type m_LevelState;
+
+	bool m_LevelResetRequested;
 };
 

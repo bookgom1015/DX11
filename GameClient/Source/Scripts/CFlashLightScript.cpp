@@ -28,7 +28,7 @@ void CFlashLightScript::Begin() {
 	mFlashLight->AddComponent(new CTransform);
 	mFlashLight->AddComponent(new CLight2D);
 	
-	mFlashLight->Light2D()->SetLightType(LIGHT_TYPE::POINT);
+	mFlashLight->Light2D()->SetLightType(ELight::E_Point);
 	mFlashLight->Light2D()->SetLightColor(Vec3(1.f));
 	mFlashLight->Light2D()->SetIntensity(0.08f);
 	mFlashLight->Light2D()->SetRadius(250.f);
@@ -41,7 +41,7 @@ void CFlashLightScript::Begin() {
 	mFlashLight2->AddComponent(new CTransform);
 	mFlashLight2->AddComponent(new CLight2D);
 
-	mFlashLight2->Light2D()->SetLightType(LIGHT_TYPE::SPOT);
+	mFlashLight2->Light2D()->SetLightType(ELight::E_Spot);
 	mFlashLight2->Light2D()->SetLightColor(Vec3(1.f));
 	mFlashLight2->Light2D()->SetIntensity(0.35f);
 	mFlashLight2->Light2D()->SetLightDir(Vec3(1.f, 0.f, 0.f));

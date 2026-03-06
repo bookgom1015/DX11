@@ -6,7 +6,7 @@
 #include "Shadow.h"
 #include "Device.h"
 
-CMeshRender::CMeshRender() : CRenderComponent(COMPONENT_TYPE::MESHRENDER) {}
+CMeshRender::CMeshRender() : CRenderComponent(EComponent::E_MeshRender) {}
 
 CMeshRender::~CMeshRender() {}
 

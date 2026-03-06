@@ -5,19 +5,12 @@
 
 #include "CTransform.h"
 
-CLight2D::CLight2D()
-	: Component(COMPONENT_TYPE::LIGHT2D)
-{
-}
+CLight2D::CLight2D() : Component(EComponent::E_Light2D) {}
 
-CLight2D::~CLight2D()
-{
-}
+CLight2D::~CLight2D() {}
 
-void CLight2D::FinalTick()
-{
+void CLight2D::FinalTick() {
 	m_Info.WorldPos = Transform()->GetWorldPos();
-
 
 	RenderMgr::GetInst()->RegisterLight2D(this);
 }

@@ -1,12 +1,9 @@
 #include "pch.h"
 
 TransformMatrix g_Trans = {};
-
 GlobalData		g_Global = {};
 
-
-const char* ASSET_TYPE_STR[(UINT)ASSET_TYPE::END] =
-{
+const char* ASSET_TYPE_STR[EAsset::Count] = {
 	"MESH",
 	"MATERIAL",
 	"TEXTURE",
@@ -20,7 +17,4 @@ const char* ASSET_TYPE_STR[(UINT)ASSET_TYPE::END] =
 	"PREFAB"
 };
 
-const char* ToString(ASSET_TYPE _Type)
-{
-	return ASSET_TYPE_STR[(UINT)_Type];
-}
+const char* ToString(EAsset::Type _Type) { return ASSET_TYPE_STR[_Type]; }

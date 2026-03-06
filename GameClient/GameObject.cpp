@@ -16,7 +16,7 @@ GameObject::GameObject(const GameObject& _Origin)
 	, m_Parent{}
 	, m_LayerIdx{ -1 }
 	, m_Dead{} {
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i) {
+	for (UINT i = 0; i < EComponent::Count; ++i) {
 		if (_Origin.m_Com[i] == nullptr) continue;
 		AddComponent(_Origin.m_Com[i]->Clone());
 	}
@@ -34,7 +34,7 @@ void GameObject::Begin() {
 	for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i)
 		m_vecScripts[i]->Begin();
 
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+	for (UINT i = 0; i < EComponent::Count; ++i)
 		if (nullptr != m_Com[i]) m_Com[i]->Begin();
 
 	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
@@ -56,12 +56,12 @@ void GameObject::LateTick() {
 	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
 		m_vecChild[i]->LateTick();
 
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+	for (UINT i = 0; i < EComponent::Count; ++i)
 		if (nullptr != m_Com[i]) m_Com[i]->LateTick();
 }
 
 void GameObject::FinalTick() {
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i) 
+	for (UINT i = 0; i < EComponent::Count; ++i)
 		if (nullptr != m_Com[i]) m_Com[i]->FinalTick();
 
 	// 자신이 소속된 Layer 에 자기자신을 알림(등록)
@@ -79,7 +79,7 @@ void GameObject::FinalTick() {
 }
 
 void GameObject::FinalTick_Editor() {
-	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i) {
+	for (UINT i = 0; i < EComponent::Count; ++i) {
 		if (nullptr != m_Com[i]) m_Com[i]->FinalTick();
 	}
 
@@ -120,7 +120,7 @@ void GameObject::AddComponent(Ptr<Component> _Com) {
 	}
 	
 	// 입력으로 들어온 컴포넌트가 스크립트면, vector 로 관리
-	if (_Com->GetType() == COMPONENT_TYPE::SCRIPT) {
+	if (_Com->GetType() == EComponent::E_Script) {
 		m_vecScripts.push_back((CScript*)_Com.Get());
 	}
 	// 입력으로 들어온 컴포넌트가 스크립트가 아니면, 알맞은 배열 포인터로 가리킴
@@ -143,8 +143,7 @@ void GameObject::AddChild(Ptr<GameObject> _Child) {
 	// 최상위 부모 오브젝트 였다면
 	else {
 		// 레벨 내부에 있던 오브젝트 라면
-		if (_Child->m_LayerIdx != -1)
-		{
+		if (_Child->m_LayerIdx != -1) {
 			// Layer 에서 최상위 부모로 가리키던 포인터를 제거
 			_Child->DeregisterAsParent();
 		}		
@@ -202,7 +201,7 @@ void GameObject::Destroy() {
 	if (m_Dead) return;
 
 	TaskInfo info{};
-	info.Type = TASK_TYPE::DESTROY_OBJECT;
+	info.Type = ETask::E_DestroyObject;
 	info.Param_0 = (DWORD_PTR)this;
 
 	TaskMgr::GetInst()->AddTask(info);

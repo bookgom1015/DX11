@@ -4,20 +4,15 @@
 #include "PathMgr.h"
 #include "AMaterial.h"
 #include "EditorMgr.h"
-#include "ListUI.h"
 #include "AssetMgr.h"
 
-MaterialUI::MaterialUI()
-	: AssetUI(ASSET_TYPE::MATERIAL)
-{
-}
+#include "ListUI.h"
 
-MaterialUI::~MaterialUI()
-{
-}
+MaterialUI::MaterialUI() : AssetUI(EAsset::E_Material) {}
 
-void MaterialUI::Tick_UI()
-{
+MaterialUI::~MaterialUI() {}
+
+void MaterialUI::Tick_UI() {
 	OutputTitle();
 
 	Ptr<AMaterial> pMtrl = (AMaterial*)GetTargetAsset().Get();
@@ -37,34 +32,26 @@ void MaterialUI::Tick_UI()
 	Ptr<AGraphicShader> pShader = pMtrl->GetShader();
 
 	wstring ShaderKey = L"None";
-	if (nullptr != pShader)
-	{
-		ShaderKey = pShader->GetKey();
-	}
+	if (pShader != nullptr)	ShaderKey = pShader->GetKey();
 	
 	ImGui::InputText("##ShaderName", string(ShaderKey.begin(), ShaderKey.end()).data(), ShaderKey.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
 	// 특정 위젯에서 드래그가 발생했고, 해당 위젯 위에 마우스가 호버링 중인지
-	if (ImGui::BeginDragDropTarget())
-	{
+	if (ImGui::BeginDragDropTarget()) {
 		const ImGuiPayload* PayLoad = ImGui::AcceptDragDropPayload("Content");
-		if (PayLoad)
-		{
+		if (PayLoad) {
 			DWORD_PTR data = *((DWORD_PTR*)PayLoad->Data);
 			Ptr<Asset> pAsset = (Asset*)data;
 
-			if (ASSET_TYPE::GRAPHICSHADER == pAsset->GetType())
-			{
+			if (pAsset->GetType() == EAsset::E_GraphicShader)
 				pMtrl->SetShader((AGraphicShader*)pAsset.Get());
-			}
 		}
 
 		ImGui::EndDragDropTarget();
 	}
 
 	ImGui::SameLine();
-	if (ImGui::Button("##ShaderBtn", Vec2(20.f, 20.f)))
-	{
+	if (ImGui::Button("##ShaderBtn", Vec2(20.f, 20.f)))	{
 		// 버튼이 눌리면, 리스트UI 를 찾아서 활성화 시키고, 출력시키고 싶은 문자열을 ListUI 에 등록시킨다.
 		Ptr<ListUI> pUI = dynamic_cast<ListUI*>(EditorMgr::GetInst()->FindUI("ListUI").Get());
 		assert(pUI.Get());
@@ -72,7 +59,7 @@ void MaterialUI::Tick_UI()
 		pUI->SetUIName("Shader List");
 
 		vector<wstring> vecShaderNames;
-		AssetMgr::GetInst()->GetAssetNames(ASSET_TYPE::GRAPHICSHADER, vecShaderNames);
+		AssetMgr::GetInst()->GetAssetNames(EAsset::E_GraphicShader, vecShaderNames);
 		pUI->AddString(vecShaderNames);
 		pUI->AddDelegate(this, (DELEGATE_1)&MaterialUI::SelectShader);
 		pUI->SetActive(true);
@@ -80,25 +67,20 @@ void MaterialUI::Tick_UI()
 
 	// Render Domain
 
-
-
 	// Shader Param
 	ShaderParameter();
 
 	// Save Button
 	ImGui::Spacing(); ImGui::Spacing(); ImGui::Spacing();
-	if (ImGui::Button("Save##MtrlSaveBtn"))
-	{
+	if (ImGui::Button("Save##MtrlSaveBtn"))	{
 		wstring FilePath = CONTENT_PATH + pMtrl->GetKey();
 		pMtrl->Save(FilePath);
 	}
 }
 
-void MaterialUI::ShaderParameter()
-{
+void MaterialUI::ShaderParameter() {
 	Ptr<AMaterial> pMtrl = (AMaterial*)GetTargetAsset().Get();
-	if (nullptr == pMtrl->GetShader())
-		return;
+	if (nullptr == pMtrl->GetShader()) return;
 
 	ImGui::Spacing(); ImGui::Spacing(); ImGui::Spacing();
 	ImGui::Text("Shader Parameter");
@@ -106,18 +88,12 @@ void MaterialUI::ShaderParameter()
 
 	const vector<ShaderParam>& vecParam = pMtrl->GetShader()->GetShaderParam();
 
-	for (size_t i = 0; i < vecParam.size(); ++i)
-	{
-		switch (vecParam[i].Type)
-		{
-		case SHADER_PARAM::INT:
-			break;
-		case SHADER_PARAM::FLOAT:
-			break;
-		case SHADER_PARAM::VEC2:
-			break;
-		case SHADER_PARAM::VEC4:
-		{
+	for (size_t i = 0, end = vecParam.size(); i < end; ++i) {
+		switch (vecParam[i].Type) {
+		case SHADER_PARAM::INT: break;
+		case SHADER_PARAM::FLOAT: break;
+		case SHADER_PARAM::VEC2: break;
+		case SHADER_PARAM::VEC4: {
 			ImGui::Text(string(vecParam[i].Desc.begin(), vecParam[i].Desc.end()).c_str());
 			ImGui::SameLine();
 
@@ -126,20 +102,14 @@ void MaterialUI::ShaderParameter()
 			ImGui::InputFloat4("##InputFloat4", Data);
 		}
 			break;
-		case SHADER_PARAM::MAT:
-			break;
-		case SHADER_PARAM::TEX:
-		{
+		case SHADER_PARAM::MAT: break;
+		case SHADER_PARAM::TEX: {
 			ImGui::Text(string(vecParam[i].Desc.begin(), vecParam[i].Desc.end()).c_str());
 					
-
 			Ptr<ATexture> pTex = pMtrl->GetTexture((TEX_PARAM)vecParam[i].Index);
-			ImTextureRef SRV = nullptr;
 
-			if (nullptr != pTex)
-			{
-				SRV = pTex->GetSRV().Get();
-			}
+			ImTextureRef SRV{};
+			if (pTex != nullptr) SRV = pTex->GetSRV().Get();
 
 			// 이미지 샘플
 			ImGui::ImageWithBg(SRV , ImVec2(100, 100)
@@ -147,18 +117,15 @@ void MaterialUI::ShaderParameter()
 							, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
 
 			// 특정 위젯에서 드래그가 발생했고, 해당 위젯 위에 마우스가 호버링 중인지
-			if (ImGui::BeginDragDropTarget())
-			{
+			if (ImGui::BeginDragDropTarget()) {
 				const ImGuiPayload* PayLoad = ImGui::AcceptDragDropPayload("Content");
-				if (PayLoad)
-				{
+				if (PayLoad) {
 					DWORD_PTR data = *((DWORD_PTR*)PayLoad->Data);
 					Ptr<Asset> pAsset = (Asset*)data;
 
-					if (ASSET_TYPE::TEXTURE == pAsset->GetType())
-					{
-						pMtrl->SetTexture((TEX_PARAM)vecParam[i].Index, (ATexture*)pAsset.Get());
-					}
+					if (pAsset->GetType() == EAsset::E_Texture)
+						pMtrl->SetTexture(
+							(TEX_PARAM)vecParam[i].Index, (ATexture*)pAsset.Get());
 				}
 
 				ImGui::EndDragDropTarget();
@@ -169,8 +136,7 @@ void MaterialUI::ShaderParameter()
 	}	
 }
 
-void MaterialUI::SelectShader(DWORD_PTR _ListUI)
-{
+void MaterialUI::SelectShader(DWORD_PTR _ListUI) {
 	Ptr<ListUI> pListUI = ((ListUI*)_ListUI);
 
 	wstring key = wstring(pListUI->GetSelectedString().begin(), pListUI->GetSelectedString().end());

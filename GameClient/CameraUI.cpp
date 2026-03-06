@@ -3,14 +3,14 @@
 
 #include "LevelMgr.h"
 
-CameraUI::CameraUI() : ComponentUI(COMPONENT_TYPE::CAMERA, "CameraUI") {}
+CameraUI::CameraUI() : ComponentUI(EComponent::E_Camera, "CameraUI") {}
 
 CameraUI::~CameraUI() {}
 
 void CameraUI::Tick_UI() {
 	OutputTitle("Camera");
 
-    float SameLine = 180.f;
+    float SameLine = 100.f;
 
     // ==========
     // LayerCheck
@@ -62,10 +62,10 @@ void CameraUI::Tick_UI() {
     // ==============
     // ProjectionType
     // ==============
-    ImGui::Text("ProjectionType");
+    ImGui::Text("Projection");
     ImGui::SameLine(SameLine);
 
-    PROJ_TYPE ProjType = GetTarget()->Camera()->GetProjType();
+    EProjection::Type ProjType = GetTarget()->Camera()->GetProjType();
     const char* items[] = { "ORTHOGRAPHIC", "PERSPECTIVE"};  
     ImGui::SetNextItemWidth(200.f);
     if (ImGui::Combo("##ProjType", (int*)&ProjType, items, 2))
@@ -74,7 +74,7 @@ void CameraUI::Tick_UI() {
     // ===
     // FOV
     // ===
-    ImGui::BeginDisabled(ProjType == PROJ_TYPE::ORTHOGRAPHIC);
+    ImGui::BeginDisabled(ProjType == EProjection::E_Orthographic);
 
     ImGui::Text("FOV");
     ImGui::SameLine(SameLine);

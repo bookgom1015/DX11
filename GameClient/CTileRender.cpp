@@ -8,7 +8,7 @@
 #include "Device.h"
 #include "Shadow.h"
 
-CTileRender::CTileRender() : CRenderComponent(COMPONENT_TYPE::TILE_RENDER) {
+CTileRender::CTileRender() : CRenderComponent(EComponent::E_TileRender) {
 	m_Buffer = new StructuredBuffer;
 }
 
@@ -131,7 +131,7 @@ void CTileRender::CreateMaterial() {
 
 		// 찾은 or 생성한 쉐이더를 재질에 설정해주고, 재질도 에셋매니저에 등록한다.
 		pMtrl->SetShader(pShader);
-		pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+		pMtrl->SetDomain(ERenderDomain::E_Masked);
 		AssetMgr::GetInst()->AddAsset(pMtrl->GetName(), pMtrl.Get());
 	}
 

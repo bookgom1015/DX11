@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 CTransform::CTransform()
-	: Component(COMPONENT_TYPE::TRANSFORM)
+	: Component(EComponent::E_Transform)
 	, m_RelativeScale(Vec3(1.f, 1.f, 1.f))
 	, m_Dir{}
 	, m_IndependentScale(false) {

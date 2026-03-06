@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "EditorUI.h"
 
-#include "ImGui/imgui.h"
 #include "EditorMgr.h"
+
+#include "ImGui/imgui.h"
 
 
 EditorUI::EditorUI(const string& _Name)
@@ -10,33 +11,26 @@ EditorUI::EditorUI(const string& _Name)
 	, m_IsModal(false)
 	, m_Separator(true)
 	, m_Active(true)
-	, m_Parent(nullptr)
-{
-}
+	, m_Parent(nullptr) {}
 
-EditorUI::~EditorUI()
-{
-}
+EditorUI::~EditorUI() {}
 
-void EditorUI::Tick()
-{
-	if (m_IsModal)
-	{
+void EditorUI::Tick() {
+	if (m_IsModal) {
 		string StrKey = m_UIName + m_UIKey;
 		ImGui::OpenPopup(StrKey.c_str());
 
 		bool Active = m_Active;
 		
-		if (ImGui::BeginPopupModal(StrKey.c_str(), &Active, ImGuiWindowFlags_AlwaysAutoResize))
-		{
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(30.f, 20.f));
+		if (ImGui::BeginPopupModal(
+			StrKey.c_str(), &Active, ImGuiWindowFlags_AlwaysAutoResize)) {
 			CheckFocus();
 
 			Tick_UI();
 
-			for (size_t i = 0; i < m_ChildUI.size(); ++i)
-			{
-				if (m_ChildUI[i]->IsActive())
-				{
+			for (size_t i = 0, end = m_ChildUI.size(); i < end; ++i) {
+				if (m_ChildUI[i]->IsActive()) {
 					m_ChildUI[i]->Tick();
 					ImGui::Separator();
 				}
@@ -44,70 +38,52 @@ void EditorUI::Tick()
 
 			ImGui::EndPopup();
 		}
-		else
-		{			
+		else {			
 			SetActive(Active);
 		}
+		ImGui::PopStyleVar();
 	}
-
-	else if (nullptr == m_Parent)
-	{
+	else if (m_Parent == nullptr) {
 		bool Active = m_Active;
 
 		string StrKey = m_UIName + m_UIKey;
 
 		ImGui::Begin(StrKey.c_str(), &Active);
 
-		if (m_Active != Active)
-		{
-			SetActive(Active);
-		}
+		if (m_Active != Active) SetActive(Active);
 
 		CheckFocus();
 
 		Tick_UI();
 
-		for (size_t i = 0; i < m_ChildUI.size(); ++i)
-		{
-			if (m_ChildUI[i]->IsActive())
-			{
-				m_ChildUI[i]->Tick();				
-			}			
-		}
+		for (size_t i = 0, end = m_ChildUI.size(); i < end; ++i) 
+			if (m_ChildUI[i]->IsActive()) m_ChildUI[i]->Tick();
 
-		ImGui::End();
-
-		
+		ImGui::End();		
 	}
-
-	else
-	{
-		ImGui::BeginChild(m_UIName.c_str(), m_SizeAsChild);
+	else {
+		//ImGui::BeginChild(m_UIName.c_str(), m_SizeAsChild);
 
 		CheckFocus();
 
 		Tick_UI();
 
-		for (size_t i = 0; i < m_ChildUI.size(); ++i)
-		{
-			if (m_ChildUI[i]->IsActive())
-			{
+		for (size_t i = 0, end = m_ChildUI.size(); i < end; ++i) {
+			if (m_ChildUI[i]->IsActive()) {
 				m_ChildUI[i]->Tick();
 				ImGui::Separator();
 			}				
 		}
 
-		ImGui::EndChild();
+		//ImGui::EndChild();
 
-		if (m_Separator)
-		{
-			ImGui::Separator();
-		}		
+		ImGui::Dummy(m_SizeAsChild);
+
+		if (m_Separator) ImGui::Separator();
 	}	
 }
 
-void EditorUI::CheckFocus()
-{
+void EditorUI::CheckFocus() {
 	if (ImGui::IsWindowFocused())
 		EditorMgr::GetInst()->RegisterFocusedUI(this);
 
@@ -115,12 +91,10 @@ void EditorUI::CheckFocus()
 		EditorMgr::GetInst()->RegisterFocusedUI(this);
 }
 
-Vec2::operator ImVec2() const
-{
+Vec2::operator ImVec2() const {
 	return ImVec2(x, y);
 }
 
-Vec4::operator ImVec4() const
-{
+Vec4::operator ImVec4() const {
 	return ImVec4(x, y, z, w);
 }

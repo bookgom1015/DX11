@@ -1,35 +1,39 @@
 #pragma once
+
 #include "EditorUI.h"
 
 #include "GameObject.h"
+
 #include "ComponentUI.h"
 #include "AssetUI.h"
 
-class Inspector :
-    public EditorUI
-{
-private:
-    Ptr<GameObject>     m_TargetObject;
-    Ptr<ComponentUI>    m_arrComUI[(UINT)COMPONENT_TYPE::END];
-
-    Ptr<Asset>          m_TargetAsset;
-    Ptr<AssetUI>        m_arrAssetUI[(UINT)ASSET_TYPE::END];
+class Inspector : public EditorUI {
+public:
+    Inspector();
+    virtual ~Inspector();
 
 public:
     virtual void Tick_UI() override;
 
 public:
     void SetTargetObject(Ptr<GameObject> _Object);
-    Ptr<GameObject> GetTargetObject() { return m_TargetObject; }
+    __forceinline Ptr<GameObject> GetTargetObject() const;
 
     void SetTargetAsset(Ptr<Asset> _Asset);
+
+    void NeedToResetTarget();
 
 private:
     void CreateChildUI();
 
-public:
-    Inspector();
-    virtual ~Inspector();
+private:
+    Ptr<GameObject> m_TargetObject;
+    Ptr<ComponentUI> m_arrComUI[EComponent::Count];
+    Ptr<ComponentUI> m_AddCompBtn;
+
+    Ptr<Asset> m_TargetAsset;
+    Ptr<AssetUI> m_arrAssetUI[EAsset::Count];
 };
 
 
+#include "Inspector.inl"

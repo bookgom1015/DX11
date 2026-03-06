@@ -16,7 +16,7 @@ void TaskMgr::Progress() {
 	// Task 처리
 	for (size_t i = 0; i < m_vecTask.size(); ++i) {
 		switch (m_vecTask[i].Type) {
-		case TASK_TYPE::CREATE_OBJECT: {
+		case ETask::E_CreateObject: {
 			Ptr<GameObject> pNewObj = (GameObject*)m_vecTask[i].Param_0;
 
 			Ptr<ALevel> pCurLevel = LevelMgr::GetInst()->GetCurLevel();
@@ -27,7 +27,7 @@ void TaskMgr::Progress() {
 				pNewObj->Begin();
 		}		
 			break;
-		case TASK_TYPE::DESTROY_OBJECT: {
+		case ETask::E_DestroyObject: {
 			Ptr<GameObject> pObj = (GameObject*)m_vecTask[i].Param_0;
 
 			if (!pObj->m_Dead) {
@@ -38,17 +38,21 @@ void TaskMgr::Progress() {
 			}
 		}
 			break;
-		case TASK_TYPE::CHANGE_LEVEL:
-		{
+		case ETask::E_ChangeLevel: {
 			const wchar_t* pLevelName = (const wchar_t*)m_vecTask[i].Param_0;
 			Ptr<ALevel> pLevel = AssetMgr::GetInst()->Find<ALevel>(pLevelName);
 			LevelMgr::GetInst()->ChangeLevel(pLevel);
 		}
 		break;
-		case TASK_TYPE::CHANGE_LEVEL_STATE:
-		{
+		case ETask::E_ChangeLevelState: {
 			ELevelState::Type NextState = (ELevelState::Type)m_vecTask[i].Param_0;
 			LevelMgr::GetInst()->ChangeLevelState(NextState);
+		}
+		break;
+		case ETask::E_DeferredProcessing: {
+			auto* func = reinterpret_cast<std::function<void()>*>(m_vecTask[i].Param_0);
+			(*func)();
+			delete func;
 		}
 		break;
 		}

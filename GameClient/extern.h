@@ -1,5 +1,4 @@
 #pragma once
 
-
-extern const char* ASSET_TYPE_STR[(UINT)ASSET_TYPE::END];
-const char* ToString(ASSET_TYPE _Type);
+extern const char* ASSET_TYPE_STR[EAsset::Count];
+const char* ToString(EAsset::Type _Type);

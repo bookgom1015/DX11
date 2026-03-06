@@ -40,7 +40,7 @@ void CParticleScript::Tick() {
 
 	if (mElapsedTime > lifeTime) {
 		//Transform()->SetRelativePos(Vec3(0.f, -10000.f, 0.f));
-		SelfDestruct();
+		Destroy();
 	}
 }
 
@@ -66,11 +66,4 @@ void CParticleScript::Overlap(CollisionData pOwner, CollisionData pOther) {
 
 void CParticleScript::EndOverlap(CollisionData pOwner, CollisionData pOther) {
 
-}
-
-void CParticleScript::SelfDestruct() {
-	TaskInfo info{};
-	info.Type = TASK_TYPE::DESTROY_OBJECT;
-	info.Param_0 = (DWORD_PTR)GetOwner();
-	TaskMgr::GetInst()->AddTask(info);
 }

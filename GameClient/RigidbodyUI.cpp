@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RigidbodyUI.h"
 
-RigidbodyUI::RigidbodyUI() : ComponentUI(COMPONENT_TYPE::RIGIDBODY, "RigidbodyUI") {}
+RigidbodyUI::RigidbodyUI() : ComponentUI(EComponent::E_Rigidbody, "RigidbodyUI") {}
 
 RigidbodyUI::~RigidbodyUI() {}
 

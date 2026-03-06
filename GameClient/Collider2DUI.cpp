@@ -1,19 +1,12 @@
 #include "pch.h"
 #include "Collider2DUI.h"
 
-Collider2DUI::Collider2DUI()
-	: ComponentUI(COMPONENT_TYPE::COLLIDER2D, "Collider2D")
-{
-}
+Collider2DUI::Collider2DUI() : ComponentUI(EComponent::E_Collider2D, "Collider2D") {}
 
-Collider2DUI::~Collider2DUI()
-{
-}
+Collider2DUI::~Collider2DUI() {}
 
-void Collider2DUI::Tick_UI()
-{
+void Collider2DUI::Tick_UI() {
 	OutputTitle("Collider2D");
-
 
 	ImGui::Text("Offset");
 	ImGui::SameLine(100);

@@ -32,6 +32,8 @@ public:
 
 	void SetDpi() { SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2); }
 
+	void SetGizmoState(EGizmoState::Type type) { m_SceneUI->SetGizmoState(type); }
+
 private:
 	void CreateEditorUI();
 	void CreateEditorObject();
@@ -47,3 +49,6 @@ private:
 	vector<Ptr<GameObject>> m_EditorObject;
 };
 
+#ifndef LOG_INFO
+#define LOG_INFO(__msg) EditorMgr::GetInst()->AddInfoLog((__msg))
+#endif // LOG_INFO

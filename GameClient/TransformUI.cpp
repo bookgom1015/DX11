@@ -3,23 +3,16 @@
 
 #include "GameObject.h"
 
-TransformUI::TransformUI()
-	: ComponentUI(COMPONENT_TYPE::TRANSFORM, "TransformUI")
-{
-}
+TransformUI::TransformUI() : ComponentUI(EComponent::E_Transform, "TransformUI") {}
 
-TransformUI::~TransformUI()
-{
-}
+TransformUI::~TransformUI() {}
 
-void TransformUI::Tick_UI()
-{
+void TransformUI::Tick_UI() {
 	OutputTitle("Transform");
 	
 	Vec3 vPos = GetTarget()->Transform()->GetRelativePos();
 	Vec3 vScale = GetTarget()->Transform()->GetRelativeScale();
 	Vec3 vRot = GetTarget()->Transform()->GetRelativeRot();
-
 
 	ImGui::Text("Position");
 	ImGui::SameLine(100);
@@ -34,21 +27,18 @@ void TransformUI::Tick_UI()
 	ImGui::Text("Rotation");
 	ImGui::SameLine(100);
 	Vec3 vDegree = vRot * 180 / XM_PI;
-	if (ImGui::DragFloat3("##ROTATION", vDegree))
-	{
+	if (ImGui::DragFloat3("##ROTATION", vDegree)) {
 		vRot = vDegree * (XM_PI / 180.f);
 		GetTarget()->Transform()->SetRelativeRot(vRot);
 	}
-
-	bool Independent = GetTarget()->Transform()->IsIndependentScale();
 
 	ImGui::Spacing(); 
 	ImGui::Spacing();
 
 	ImGui::Text("Independent Scale");
 	ImGui::SameLine();
+
+	bool Independent = GetTarget()->Transform()->IsIndependentScale();
 	if (ImGui::Checkbox("##Independent", &Independent))
-	{
 		GetTarget()->Transform()->SetIndependentScale(Independent);
-	}
 }

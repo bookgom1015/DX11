@@ -26,3 +26,29 @@ decltype(auto) GetTImeStamp();
 wstring MakeUniqueName(const wstring& name);
 
 UINT CeilDivide(UINT value, UINT divisor);
+
+inline std::wstring StringToWString(const std::string& str) {
+    if (str.empty()) return std::wstring();
+
+    int size = MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), nullptr, 0);
+    std::wstring result(size, 0);
+
+    MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), &result[0], size);
+    return result;
+}
+#ifndef StrToWStr
+#define StrToWStr(x) StringToWString(x)
+#endif // StrToWStr
+
+inline std::string WStringToString(const std::wstring& wstr) {
+    if (wstr.empty()) return std::string();
+
+    int size = WideCharToMultiByte(CP_UTF8, 0, wstr.data(), (int)wstr.size(), nullptr, 0, nullptr, nullptr);
+    std::string result(size, 0);
+
+    WideCharToMultiByte(CP_UTF8, 0, wstr.data(), (int)wstr.size(), &result[0], size, nullptr, nullptr);
+    return result;
+}
+#ifndef WStrToStr
+#define WStrToStr(x) WStringToString(x)
+#endif // WStrToStr

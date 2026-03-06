@@ -21,9 +21,6 @@ public:
     void SetTarget(Ptr<GameObject> target) { mTarget = target; }
 
 private:
-    void SelfDestruct();
-
-private:
     float mElapsedTime{};
     float mLifeTime{};
 

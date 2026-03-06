@@ -4,7 +4,7 @@
 #include "components.h"
 
 #define GET_COMPONENT(COM_NAME, COM_TYPE) Ptr<C##COM_NAME> COM_NAME() { \
-    return (C##COM_NAME*)m_Com[(UINT)COMPONENT_TYPE::COM_TYPE].Get();   \
+    return (C##COM_NAME*)m_Com[EComponent::COM_TYPE].Get();   \
 }
 
 class GameObject : public Entity {
@@ -33,7 +33,7 @@ public:
 
 public:
     void AddComponent(Ptr<Component> _Com);
-    Ptr<Component> GetComponent(COMPONENT_TYPE _Type) { return m_Com[(UINT)_Type]; }
+    __forceinline Ptr<Component> GetComponent(EComponent::Type _Type) const;
 
     template<typename T>
     Ptr<T> GetScript();
@@ -43,36 +43,37 @@ public:
     void RegisterAsParent();
     void DeregisterAsParent();
 
-    Ptr<GameObject> GetParent() { return m_Parent; }
-    Ptr<GameObject> GetChild(int _idx) { return m_vecChild[_idx]; }
-    const vector<Ptr<GameObject>>& GetChild() { return m_vecChild; }
+    __forceinline Ptr<GameObject> GetParent() const;
+    __forceinline Ptr<GameObject> GetChild(int _idx) const;
+    __forceinline const vector<Ptr<GameObject>>& GetChild() const;
 
-    bool IsDead() { return m_Dead; }
+    __forceinline bool IsDead() const;
     void Destroy();
 
-    // 특정 컴포넌트를 다운캐스팅해서 바로 리턴
-    GET_COMPONENT(Light2D, LIGHT2D);
-    GET_COMPONENT(TileRender, TILE_RENDER);
-    GET_COMPONENT(FlipbookRender, FLIPBOOK_RENDER);
-    GET_COMPONENT(SpriteRender, SPRITE_RENDER);
-    GET_COMPONENT(Transform, TRANSFORM);
-    GET_COMPONENT(MeshRender, MESHRENDER);
-    GET_COMPONENT(BillboardRender, BILLBOARD_RENDER);
-    GET_COMPONENT(Camera, CAMERA);
-    GET_COMPONENT(Collider2D, COLLIDER2D);
-    GET_COMPONENT(RigidBody, RIGIDBODY);
+    __forceinline Ptr<CRenderComponent> GetRenderCom() const;
 
-    Ptr<CRenderComponent> GetRenderCom() { return m_RenderCom; }
+    __forceinline constexpr int GetLayerIndex() const noexcept;
 
-    constexpr int GetLayerIndex() const noexcept { return m_LayerIdx; }
-
+public:
     CLONE(GameObject);
+
+    // 특정 컴포넌트를 다운캐스팅해서 바로 리턴
+    GET_COMPONENT(Light2D, E_Light2D);
+    GET_COMPONENT(TileRender, E_TileRender);
+    GET_COMPONENT(FlipbookRender, E_FlipbookRender);
+    GET_COMPONENT(SpriteRender, E_SpriteRender);
+    GET_COMPONENT(Transform, E_Transform);
+    GET_COMPONENT(MeshRender, E_MeshRender);
+    GET_COMPONENT(BillboardRender, E_BillboardRender);
+    GET_COMPONENT(Camera, E_Camera);
+    GET_COMPONENT(Collider2D, E_Collider2D);
+    GET_COMPONENT(RigidBody, E_Rigidbody);
 
 private:
     void RegisterLayer();
 
 private:
-    Ptr<Component> m_Com[(UINT)COMPONENT_TYPE::END];
+    Ptr<Component> m_Com[EComponent::Type::Count];
     Ptr<CRenderComponent> m_RenderCom;
     vector<Ptr<CScript>> m_vecScripts;
 
@@ -85,16 +86,4 @@ private:
     bool m_Dead;
 };
 
-bool IsValid(Ptr<GameObject>& _Object);
-
-template<typename T>
-inline Ptr<T> GameObject::GetScript() {
-    for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i) {
-        T* pScript = dynamic_cast<T*>(m_vecScripts[i].Get());
-        if (nullptr == pScript) continue;
-
-        return pScript;
-    }
-
-    return nullptr;
-}
+#include "GameObject.inl"

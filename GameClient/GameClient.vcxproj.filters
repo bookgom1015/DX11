@@ -292,9 +292,6 @@
     <ClInclude Include="Bloom.h">
       <Filter>RenderProcess</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>RenderProcess</Filter>
-    </ClInclude>
     <ClInclude Include="GammaCorrection.h">
       <Filter>RenderProcess</Filter>
     </ClInclude>
@@ -339,6 +336,12 @@
     </ClInclude>
     <ClInclude Include="Source\ScriptMgr.h">
       <Filter>Source\ScriptMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="AddComponentButton.h">
+      <Filter>GameEngine\07. EditorUI\02. ComponentUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>GameEngine\06. Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -886,9 +889,6 @@
     <ClCompile Include="Bloom.cpp">
       <Filter>RenderProcess</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>RenderProcess</Filter>
-    </ClCompile>
     <ClCompile Include="GammaCorrection.cpp">
       <Filter>RenderProcess</Filter>
     </ClCompile>
@@ -934,6 +934,12 @@
     <ClCompile Include="Source\ScriptMgr.cpp">
       <Filter>Source\ScriptMgr</Filter>
     </ClCompile>
+    <ClCompile Include="AddComponentButton.cpp">
+      <Filter>GameEngine\07. EditorUI\02. ComponentUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>GameEngine\06. Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -947,6 +953,45 @@
     </None>
     <None Include="AMesh.inl">
       <Filter>GameEngine\04. Asset\01. Mesh</Filter>
+    </None>
+    <None Include="ATexture.inl">
+      <Filter>GameEngine\04. Asset\02. Texture</Filter>
+    </None>
+    <None Include="Inspector.inl">
+      <Filter>GameEngine\07. EditorUI\01. Inspector</Filter>
+    </None>
+    <None Include="EditorUI.inl">
+      <Filter>GameEngine\07. EditorUI</Filter>
+    </None>
+    <None Include="ATileMap.inl">
+      <Filter>GameEngine\04. Asset\08. TileMap</Filter>
+    </None>
+    <None Include="ComponentUI.inl">
+      <Filter>GameEngine\07. EditorUI\02. ComponentUI</Filter>
+    </None>
+    <None Include="ListUI.inl">
+      <Filter>GameEngine\07. EditorUI\07. ListUI</Filter>
+    </None>
+    <None Include="AMaterial.inl">
+      <Filter>GameEngine\04. Asset\05. Material</Filter>
+    </None>
+    <None Include="AssetMgr.inl">
+      <Filter>GameEngine\03. Manager\04. AssetMgr</Filter>
+    </None>
+    <None Include="AssetUI.inl">
+      <Filter>GameEngine\07. EditorUI\03. AssetUI</Filter>
+    </None>
+    <None Include="AFlipbook.inl">
+      <Filter>GameEngine\04. Asset\07. Flipbook</Filter>
+    </None>
+    <None Include="Component.inl">
+      <Filter>GameEngine\06. Component</Filter>
+    </None>
+    <None Include="GameObject.inl">
+      <Filter>GameEngine\05. GameObject</Filter>
+    </None>
+    <None Include="CLight2D.inl">
+      <Filter>GameEngine\06. Component\04. Light2D</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

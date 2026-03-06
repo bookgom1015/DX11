@@ -49,11 +49,11 @@ void Shadow::Apply(const vector<Ptr<CLight2D>>& lights) {
 	for (size_t i = 0, end = lights.size(); i < end; ++i) {
 		auto& light = lights[i];
 
-		if (light->GetLightType() == LIGHT_TYPE::SPOT) 
+		if (light->GetLightType() == ELight::E_Spot)
 			CalcSpotLight(light, objects);
-		else if (light->GetLightType() == LIGHT_TYPE::LINE) 
+		else if (light->GetLightType() == ELight::E_Line)
 			CalcLineLight(light, objects);
-		else if (light->GetLightType() == LIGHT_TYPE::POINT)
+		else if (light->GetLightType() == ELight::E_Point)
 			CalcPointLight(light, objects);
 	}
 

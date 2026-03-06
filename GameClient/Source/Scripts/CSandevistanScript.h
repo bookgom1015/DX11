@@ -17,9 +17,6 @@ public:
     CLONE(CSandevistanScript);
 
 private:
-    void SelfDestruct();
-
-private:
     float mElapsedTime{};
 };
 

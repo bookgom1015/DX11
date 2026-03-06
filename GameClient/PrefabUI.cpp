@@ -1,17 +1,8 @@
 #include "pch.h"
 #include "PrefabUI.h"
 
+PrefabUI::PrefabUI() : AssetUI(EAsset::E_Prefab) {}
 
-PrefabUI::PrefabUI()
-	: AssetUI(ASSET_TYPE::PREFAB)
-{
-}
+PrefabUI::~PrefabUI() {}
 
-PrefabUI::~PrefabUI()
-{
-}
-
-
-void PrefabUI::Tick_UI()
-{
-}
+void PrefabUI::Tick_UI() {}

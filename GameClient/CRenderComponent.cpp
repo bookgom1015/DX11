@@ -3,7 +3,7 @@
 
 #include "LevelMgr.h"
 
-CRenderComponent::CRenderComponent(COMPONENT_TYPE _Type) : Component(_Type) {}
+CRenderComponent::CRenderComponent(EComponent::Type _Type) : Component(_Type) {}
 
 CRenderComponent::CRenderComponent(const CRenderComponent& _Origin) 
 	: Component{ _Origin }

@@ -4,7 +4,7 @@
 #include "AssetMgr.h"
 
 CBillboardRender::CBillboardRender()
-	: CRenderComponent(COMPONENT_TYPE::BILLBOARD_RENDER) {}
+	: CRenderComponent(EComponent::E_BillboardRender) {}
 
 CBillboardRender::~CBillboardRender() {}
 
@@ -52,7 +52,7 @@ void CBillboardRender::CreateMaterial() {
 
 		// 찾은 or 생성한 쉐이더를 재질에 설정해주고, 재질도 에셋매니저에 등록한다.
 		pMtrl->SetShader(pShader);
-		pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_OPAQUE);
+		pMtrl->SetDomain(ERenderDomain::E_Opaque);
 		AssetMgr::GetInst()->AddAsset(pMtrl->GetName(), pMtrl.Get());
 	}
 

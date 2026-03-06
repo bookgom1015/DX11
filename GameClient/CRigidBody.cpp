@@ -20,7 +20,7 @@ namespace {
 	const int gMaxSteps = 8; // 폭주 방지
 }
 
-CRigidBody::CRigidBody() : Component(COMPONENT_TYPE::RIGIDBODY) {}
+CRigidBody::CRigidBody() : Component(EComponent::E_Rigidbody) {}
 
 CRigidBody::~CRigidBody() {}
 

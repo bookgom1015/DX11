@@ -11,12 +11,26 @@ public:
     virtual void Tick_UI() override;
 
 public:
+    void SetGizmoState(EGizmoState::Type type) { m_GizmoState = type; }
+
+private:
+    void ControlButtons();
+    void GizmoButtons();
+    void Scene();
+
     void PickUpTarget();
-    void Draw2DGizmo();
+
+    void DrawGizmo();
+    void DrawTransGizmo(
+        Ptr<GameObject> target, ImVec2 screenPos, bool allowGizmoInput);
+    void DrawRotateGizmo(
+        Ptr<GameObject> target, ImVec2 screenPos, bool allowGizmoInput);
+    void DrawScaleGizmo(
+        Ptr<GameObject> target, ImVec2 screenPos, bool allowGizmoInput);
 
 private:
     void OnGizmoBegin(EGizmoAxis::Type axis, Ptr<GameObject> target);
-    void OnGizmoDrag(EGizmoAxis::Type axis, Ptr<GameObject> target, Vec3 pos);
+    void OnGizmoDrag(EGizmoAxis::Type axis, Ptr<GameObject> target, Vec3 delta);
     void OnGizmoEnd(EGizmoAxis::Type axis, Ptr<GameObject> target);
 
 public:
@@ -32,5 +46,7 @@ private:
     bool m_SceneHovered{};
 
     HWND m_SceneHWND{};
+
+    EGizmoState::Type m_GizmoState;
 };
 

@@ -4,7 +4,7 @@
 #include "Device.h"
 
 AMesh::AMesh()
-	: Asset(ASSET_TYPE::MESH)
+	: Asset(EAsset::E_Mesh)
 	, m_VBDesc{}
 	, m_IBDesc{}
 	, m_VtxSysMem(nullptr)

@@ -2,42 +2,33 @@
 
 #include "EditorUI.h"
 
-class ListUI :
-    public EditorUI
-{
-private:
-    vector<string>      m_vecList;
-    int                 m_SelectedIdx;
-    string              m_SelectedString;
-
-    EditorUI*           m_Inst;
-    DELEGATE_1          m_MemFunc;
-
-
+class ListUI : public EditorUI {
 public:
-    void AddString(const string& _Str) { m_vecList.push_back(_Str); }
-    void AddString(const wstring& _WStr) { m_vecList.push_back(string(_WStr.begin(), _WStr.end())); }
-    void AddString(const vector<string>& _vecStr) { m_vecList.insert(m_vecList.end(), _vecStr.begin(), _vecStr.end()); }
-    void AddString(const vector<wstring>& _vecWStr)
-    {
-        for (size_t i = 0; i < _vecWStr.size(); ++i)
-        {
-            AddString(_vecWStr[i]);
-        }
-    }
-
-    void AddDelegate(EditorUI* _Inst, DELEGATE_1 _MemFunc) { m_Inst = _Inst; m_MemFunc = _MemFunc; }
-
-    const string& GetSelectedString() { return m_SelectedString; }
+    ListUI();
+    virtual ~ListUI();
 
 public:
     virtual void Tick_UI() override;
     virtual void Activate() override;
     virtual void Deactivate() override;
 
-
 public:
-    ListUI();
-    virtual ~ListUI();
+    __forceinline void AddString(const string& _Str);
+    __forceinline void AddString(const wstring& _WStr);
+    __forceinline void AddString(const vector<string>& _vecStr);
+    __forceinline void AddString(const vector<wstring>& _vecWStr);
+
+    __forceinline void AddDelegate(EditorUI* _Inst, DELEGATE_1 _MemFunc);
+
+    __forceinline const string& GetSelectedString() const;
+
+private:
+    vector<string> m_vecList;
+    int m_SelectedIdx;
+    string m_SelectedString;
+
+    EditorUI* m_Inst;
+    DELEGATE_1 m_MemFunc;
 };
 
+#include "ListUI.inl"

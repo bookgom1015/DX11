@@ -1,20 +1,19 @@
 #include "pch.h"
 #include "FlipbookUI.h"
 
-#include "AFlipbook.h"
 #include "TimeMgr.h"
 
+#include "AFlipbook.h"
+
 FlipbookUI::FlipbookUI()
-	: AssetUI(ASSET_TYPE::FLIPBOOK)
-{
-}
+	: AssetUI(EAsset::E_Flipbook)
+	, mElapsedTime{}
+	, mFPS{ 15.f }
+	, mIndex{} {}
 
-FlipbookUI::~FlipbookUI()
-{
-}
+FlipbookUI::~FlipbookUI() {}
 
-void FlipbookUI::Tick_UI()
-{
+void FlipbookUI::Tick_UI() {
 	OutputTitle();
 
 	Ptr<AFlipbook> pFlipbook = (AFlipbook*)GetTargetAsset().Get();

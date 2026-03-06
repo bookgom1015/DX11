@@ -7,7 +7,7 @@
 	return GetOwner()->COM_NAME().Get();										\
 }
 
-Component::Component(COMPONENT_TYPE _Type)
+Component::Component(EComponent::Type _Type)
 	: m_Owner(nullptr), m_Type(_Type) {}
 
 Component::Component(const Component& _Origin) 

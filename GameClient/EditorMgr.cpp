@@ -189,7 +189,7 @@ void EditorMgr::CreateEditorObject() {
 
     pObject->Camera()->LayerCheckAll();
 
-    pObject->Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
+    pObject->Camera()->SetProjType(EProjection::E_Orthographic);
     pObject->Camera()->SetFar(10000.f);
     pObject->Camera()->SetFOV(90.f);
     pObject->Camera()->SetOrthoScale(1.f);

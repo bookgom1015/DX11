@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ALevel.h"
 
-ALevel::ALevel() : Asset(ASSET_TYPE::LEVEL), m_Matrix{} , m_Changed(false) {
+ALevel::ALevel() : Asset(EAsset::E_Level), m_Matrix{} , m_Changed(false) {
 	for (int i = 0; i < MAX_LAYER; ++i)
 		m_arrLayer[i].m_LayerIdx = i;
 }

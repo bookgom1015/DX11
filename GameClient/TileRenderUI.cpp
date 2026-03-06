@@ -1,16 +1,12 @@
 #include "pch.h"
 #include "TileRenderUI.h"
 
-TileRenderUI::TileRenderUI()
-	: ComponentUI(COMPONENT_TYPE::TILE_RENDER, "TileRenderUI")
-{
-}
+TileRenderUI::TileRenderUI() 
+	: ComponentUI(EComponent::E_TileRender, "TileRenderUI") {}
 
-TileRenderUI::~TileRenderUI()
-{
-}
+TileRenderUI::~TileRenderUI() {}
 
 
-void TileRenderUI::Tick_UI()
-{
+void TileRenderUI::Tick_UI() {
+	OutputTitle("TileRender");
 }

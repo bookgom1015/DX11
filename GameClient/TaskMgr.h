@@ -15,4 +15,3 @@ private:
 	vector<TaskInfo>		m_vecTask;
 	vector<Ptr<GameObject>> m_Garbage;
 };
-

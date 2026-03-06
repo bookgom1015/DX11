@@ -1,11 +1,15 @@
 #include "pch.h"
 #include "LevelMgr.h"
 
+#include "AssetMgr.h"
+#include "EditorMgr.h"
+#include "CollisionMgr.h"
+
+#include "Device.h"
+
 #include "GameObject.h"
 
-#include "AssetMgr.h"
-#include "Device.h"
-#include "CollisionMgr.h"
+#include "Inspector.h"
 
 #include "Source/Scripts/CTrackingCameraScript.h"
 #include "Source/Scripts/CPlatformerPlayerScript.h"
@@ -16,7 +20,8 @@
 LevelMgr::LevelMgr() 
 	: m_CurLevel{ nullptr }
 	, m_SharedLevel{ nullptr }
-	, m_LevelState{ ELevelState::E_Playing } { }
+	, m_LevelState{ ELevelState::E_Playing }
+	, m_LevelResetRequested{ true } {}
 
 LevelMgr::~LevelMgr() {}
 
@@ -112,16 +117,27 @@ void LevelMgr::ChangeLevelState(ELevelState::Type state) {
 	if (m_LevelState == state) return;
 
 	// Stop -> Play
-	if (m_LevelState == ELevelState::E_Stopped && state == ELevelState::E_Playing) {
+	if (state == ELevelState::E_Playing && m_LevelResetRequested) {
+		m_LevelResetRequested = false;
+
 		// 원본 에셋 레벨의 복제본 레벨을 만들어서 현재 레벨로 가리킨다.
 		m_CurLevel = m_SharedLevel->Clone();
 		m_CurLevel->SetChanged();
 		m_CurLevel->Begin();
+
+		auto ui = EditorMgr::GetInst()->FindUI("Inspector");
+		auto inspector = static_cast<Inspector*>(ui.Get());
+		inspector->NeedToResetTarget();
 	}
-	else if ((m_LevelState == ELevelState::E_Playing || m_LevelState == ELevelState::E_Paused)
-		&& state == ELevelState::E_Stopped) {
+	else if (state == ELevelState::E_Stopped) {
+		m_LevelResetRequested = true;
+
 		m_CurLevel = m_SharedLevel;
 		m_CurLevel->SetChanged();
+
+		auto ui = EditorMgr::GetInst()->FindUI("Inspector");
+		auto inspector = static_cast<Inspector*>(ui.Get());
+		inspector->NeedToResetTarget();
 	}
 
 	m_LevelState = state;
@@ -188,7 +204,7 @@ void LevelMgr::CreatePlayer(Ptr<ALevel> level) {
 
 		camera->Camera()->LayerCheckAll();
 
-		camera->Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
+		camera->Camera()->SetProjType(EProjection::E_Orthographic);
 		camera->Camera()->SetFar(10000.f);
 		camera->Camera()->SetFOV(90.f);
 		camera->Camera()->SetOrthoScale(1.f);
@@ -348,7 +364,7 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 		pObject->AddComponent(new CTransform);
 		pObject->AddComponent(new CLight2D);
 
-		pObject->Light2D()->SetLightType(LIGHT_TYPE::DIRECTIONAL);
+		pObject->Light2D()->SetLightType(ELight::E_Directional);
 		pObject->Light2D()->SetLightColor(Vec3(0.f));
 		pObject->Light2D()->SetAmbient(Vec3(1.f) * 0.025f);
 
@@ -361,7 +377,7 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 		pObject->AddComponent(new CLight2D);
 		pObject->AddComponent(new CCollider2D);
 
-		pObject->Light2D()->SetLightType(LIGHT_TYPE::LINE);
+		pObject->Light2D()->SetLightType(ELight::E_Line);
 		pObject->Light2D()->SetLightColor(Vec3(1.f));
 		pObject->Light2D()->SetIntensity(0.19f);
 		pObject->Light2D()->SetLength(600.f);
@@ -380,7 +396,7 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 		pObject->AddComponent(new CLight2D);
 		pObject->AddComponent(new CCollider2D);
 
-		pObject->Light2D()->SetLightType(LIGHT_TYPE::RECT);
+		pObject->Light2D()->SetLightType(ELight::E_Rect);
 		pObject->Light2D()->SetLightColor(Vec3(1.f));
 		pObject->Light2D()->SetIntensity(0.75f);
 		pObject->Light2D()->SetLightDir(Vec3(1.f, 0.f, 0.f));
@@ -399,7 +415,7 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 		pObject->AddComponent(new CLight2D);
 		pObject->AddComponent(new CCollider2D);
 
-		pObject->Light2D()->SetLightType(LIGHT_TYPE::LINE);
+		pObject->Light2D()->SetLightType(ELight::E_Line);
 		pObject->Light2D()->SetLightColor(Vec3(1.f));
 		pObject->Light2D()->SetIntensity(0.19f);
 		pObject->Light2D()->SetLength(500.f);
@@ -418,7 +434,7 @@ void LevelMgr::CreateLights(Ptr<ALevel> level) {
 		pObject->AddComponent(new CLight2D);
 		pObject->AddComponent(new CCollider2D);
 
-		pObject->Light2D()->SetLightType(LIGHT_TYPE::RECT);
+		pObject->Light2D()->SetLightType(ELight::E_Rect);
 		pObject->Light2D()->SetLightColor(Vec3(1.f));
 		pObject->Light2D()->SetIntensity(0.75f);
 		pObject->Light2D()->SetLightDir(Vec3(1.f, 0.f, 0.f));

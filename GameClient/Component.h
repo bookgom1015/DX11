@@ -10,7 +10,7 @@ class Component : public Entity {
     friend class GameObject;
 
 public:
-    Component(COMPONENT_TYPE _Type);
+    Component(EComponent::Type _Type);
     Component(const Component& _Origin);
     virtual ~Component();
 
@@ -23,8 +23,8 @@ public:
     virtual Component* Clone() = 0;
 
 public:
-    COMPONENT_TYPE GetType() { return m_Type; }
-    GameObject* GetOwner() { return m_Owner; }
+    __forceinline EComponent::Type GetType() const;
+    __forceinline GameObject* GetOwner() const;
 
     GET_OTHER_COMPONENT(Light2D);
     GET_OTHER_COMPONENT(TileRender);
@@ -39,7 +39,8 @@ public:
     GET_OTHER_COMPONENT(RigidBody);
 
 private:
-    const COMPONENT_TYPE m_Type;    // 컴포넌트 타입
+    const EComponent::Type m_Type;    // 컴포넌트 타입
     GameObject* m_Owner;            // 컴포넌트를 소유한 게임오브젝트
 };
 
+#include "Component.inl"

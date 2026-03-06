@@ -224,7 +224,7 @@ void AssetMgr::CreateEngineMaterial() {
 	pMtrl->SetScalar(VEC4_0, Vec4(1.f, 1.f, 1.f, 1.f));
 	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Fighter"));
 
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
 	// ===========
@@ -238,7 +238,7 @@ void AssetMgr::CreateEngineMaterial() {
 	pMtrl->SetScalar(VEC4_0, Vec4(1.f, 1.f, 1.f, 1.f));
 	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"PlayerImage"));
 
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
 	// =======
@@ -247,7 +247,7 @@ void AssetMgr::CreateEngineMaterial() {
 	pMtrl = new AMaterial;
 	pMtrl->SetName(L"DbgMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"DbgShader"));
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_DEBUG);
+	pMtrl->SetDomain(ERenderDomain::E_Debug);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
 	///////////////////
@@ -256,7 +256,7 @@ void AssetMgr::CreateEngineMaterial() {
 	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
 	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Ghost"));
 
-	pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
 	//Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");

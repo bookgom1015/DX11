@@ -1,13 +1,13 @@
 #pragma once
-#include "AssetUI.h"
-class MeshUI :
-    public AssetUI
-{
-public:
-    virtual void Tick_UI() override;
 
+#include "AssetUI.h"
+
+class MeshUI : public AssetUI {
 public:
     MeshUI();
     virtual ~MeshUI();
+
+public:
+    virtual void Tick_UI() override;
 };
 

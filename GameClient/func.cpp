@@ -10,7 +10,7 @@ namespace {
 void CreateObject(GameObject* _Object, int LayerIdx) {
     TaskInfo info{};
 
-    info.Type = TASK_TYPE::CREATE_OBJECT;
+    info.Type = ETask::E_CreateObject;
     info.Param_0 = (DWORD_PTR)_Object;
     info.Param_1 = LayerIdx;
 
@@ -22,7 +22,7 @@ void Util::ChangeLevel(const wstring& _NextLevelName) {
 
 	wcscpy_s(Buff, 255, _NextLevelName.c_str());
 	
-	info.Type = TASK_TYPE::CHANGE_LEVEL;
+	info.Type = ETask::E_ChangeLevel;
 	info.Param_0 = (DWORD_PTR)Buff;	
 
 	TaskMgr::GetInst()->AddTask(info);
@@ -31,7 +31,7 @@ void Util::ChangeLevel(const wstring& _NextLevelName) {
 void ChangeLevelState(ELevelState::Type _NextState) {
     TaskInfo info{};
 
-	info.Type = TASK_TYPE::CHANGE_LEVEL_STATE;
+	info.Type = ETask::E_ChangeLevelState;
 	info.Param_0 = (DWORD_PTR)_NextState;
 
 	TaskMgr::GetInst()->AddTask(info);
@@ -42,7 +42,7 @@ void DrawDebugRect(
     , float _Duration, bool _DepthTest) {
     DbgInfo info{};
 
-    info.Shape = DBG_SHAPE::RECT;
+    info.Shape = EDebugShape::E_Rect;
 
     info.Pos = _Pos;
     info.Scale = _Scale;
@@ -65,7 +65,7 @@ void DrawDebugRect(
     , float _Duration, bool _DepthTest) {
     DbgInfo info{};
 
-    info.Shape = DBG_SHAPE::RECT;
+    info.Shape = EDebugShape::E_Rect;
 
     info.matWorld = _matWorld;
 
@@ -83,7 +83,7 @@ void DrawDebugCircle(
     , float _Radius, Vec4 _Color
     , float _Duration, bool _DepthTest) {
     DbgInfo info{};
-    info.Shape = DBG_SHAPE::CIRCLE;
+    info.Shape = EDebugShape::E_Circle;
     info.Pos = _Pos;
     info.Scale = Vec3(_Radius * 2.f, _Radius * 2.f, 0.f);
     info.Rotation = Vec3(0.f, 0.f, 0.f);

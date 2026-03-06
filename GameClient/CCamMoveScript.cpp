@@ -15,7 +15,7 @@ CCamMoveScript::CCamMoveScript()
 CCamMoveScript::~CCamMoveScript() {}
 
 void CCamMoveScript::Tick() {
-	if (PROJ_TYPE::PERSPECTIVE == Camera()->GetProjType())
+	if (EProjection::E_Perspective == Camera()->GetProjType())
 		MovePerspective();
 	else
 		MoveOrthographic();
@@ -58,13 +58,11 @@ void CCamMoveScript::MoveOrthographic() {
 	Vec3 vPos = Transform()->GetRelativePos();	
 
 	if (KEY_PRESSED(KEY::W))
-		vPos.y += E_DT * 500.f;
-	if (KEY_PRESSED(KEY::S))
-		vPos.y -= E_DT * 500.f;
-	if (KEY_PRESSED(KEY::A))
-		vPos.x -= E_DT * 500.f;
-	if (KEY_PRESSED(KEY::D))
-		vPos.x += E_DT * 500.f;
+		EditorMgr::GetInst()->SetGizmoState(EGizmoState::E_Trans);
+	else if (KEY_PRESSED(KEY::E))
+		EditorMgr::GetInst()->SetGizmoState(EGizmoState::E_Rotate);
+	else if (KEY_PRESSED(KEY::R)) 
+		EditorMgr::GetInst()->SetGizmoState(EGizmoState::E_Scale);
 
 	if (EditorMgr::GetInst()->IsMouseOnScene()) {
 		if (KEY_TAP(KEY::RBTN)) {

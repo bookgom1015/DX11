@@ -1,11 +1,13 @@
 #include "pch.h"
 #include "Menu.h"
 
+#include "Engine.h"
+
 #include "AssetMgr.h"
 #include "EditorMgr.h"
-#include "ContentUI.h"
 #include "RenderMgr.h"
-#include "Engine.h"
+
+#include "ContentUI.h"
 
 namespace {
 	void HandleBorderlessWindowDragFromMenuBar(HWND hwnd) {
@@ -36,40 +38,24 @@ namespace {
 	}
 }
 
-Menu::Menu()
-	: EditorUI("Menu")
-{
-}
+Menu::Menu() : EditorUI("Menu") {}
 
-Menu::~Menu()
-{
-}
+Menu::~Menu() {}
 
-void Menu::Tick_UI()
-{
-}
+void Menu::Tick_UI() {}
 
-
-void Menu::Tick()
-{
-	if (ImGui::BeginMainMenuBar())
-	{
-		File();
-		
+void Menu::Tick() {
+	if (ImGui::BeginMainMenuBar()) {
+		File();		
 		View();
-
 		GameObject();
-
-		Asset();		
-
+		Asset();
 		Render();
 
 		bool emptySpaceHovered = ImGui::IsWindowHovered() && !ImGui::IsAnyItemHovered();
-
 		if (emptySpaceHovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
 			ReleaseCapture();
-			SendMessage(
-				Engine::GetInst()->GetMainWndHwnd(), WM_NCLBUTTONDOWN, HTCAPTION, 0);
+			SendMessage(Engine::GetInst()->GetMainWndHwnd(), WM_NCLBUTTONDOWN, HTCAPTION, 0);
 		}
 
 		CloseButton();
@@ -78,17 +64,12 @@ void Menu::Tick()
 	}
 }
 
-void Menu::File()
-{
-	if (ImGui::BeginMenu("File"))
-	{
-		if (ImGui::MenuItem("Level Save"))
-		{
-		}
+void Menu::File() {
+	if (ImGui::BeginMenu("File")) {
+		if (ImGui::MenuItem("Level Save")) {}
 
-		if (ImGui::MenuItem("Level Load"))
-		{
-		}
+		if (ImGui::MenuItem("Level Load")) {}
+
 		if (ImGui::MenuItem("Exit")) {
 			PostQuitMessage(0);
 		}
@@ -97,15 +78,11 @@ void Menu::File()
 	}
 }
 
-void Menu::View()
-{
-	if (ImGui::BeginMenu("View"))
-	{
+void Menu::View() {
+	if (ImGui::BeginMenu("View")) {
 		bool ShowDemo = EditorMgr::GetInst()->IsShowDemo();
 		if (ImGui::MenuItem("Demo", nullptr, &ShowDemo, true))
-		{
 			EditorMgr::GetInst()->ShowDemo(ShowDemo);
-		}
 
 		Ptr<EditorUI> pScene = EditorMgr::GetInst()->FindUI("Scene");
 		bool SceneActive = pScene->IsActive();
@@ -136,42 +113,32 @@ void Menu::View()
 	}
 }
 
-void Menu::GameObject()
-{
-	if (ImGui::BeginMenu("GameObject"))
-	{
-		
+void Menu::GameObject() {
+	if (ImGui::BeginMenu("GameObject"))	
 		ImGui::EndMenu();
-	}
 }
 
-void Menu::Asset()
-{
-	if (ImGui::BeginMenu("Asset"))
-	{
-		if (ImGui::BeginMenu("Create Asset"))
-		{
-			if (ImGui::MenuItem("Create Material"))
-			{
+void Menu::Asset() {
+	if (ImGui::BeginMenu("Asset")) {
+		if (ImGui::BeginMenu("Create Asset")) {
+			if (ImGui::MenuItem("Create Material")) {
 				Ptr<AMaterial> pMtrl = new AMaterial;
-				wstring Key = GetAssetName(ASSET_TYPE::MATERIAL, L"Material\\Default Material");
+				wstring Key = GetAssetName(EAsset::E_Material, L"Material\\Default Material");
 				AssetMgr::GetInst()->AddAsset(Key, pMtrl.Get());				
 			}
 
-			if (ImGui::MenuItem("Create Sprite"))
-			{
+			if (ImGui::MenuItem("Create Sprite")) {
 
 			}
 
-			if (ImGui::MenuItem("Create Flipbook"))
-			{
+			if (ImGui::MenuItem("Create Flipbook")) {
 
 			}
 
-			if (ImGui::MenuItem("Create TileMap"))
-			{
+			if (ImGui::MenuItem("Create TileMap")) {
 
 			}
+
 			ImGui::EndMenu();
 		}	
 
@@ -221,49 +188,44 @@ void Menu::Render() {
 	}
 }
 
-wstring Menu::GetAssetName(ASSET_TYPE _Type, const wstring& _Name)
-{
-	wstring Ext;
+wstring Menu::GetAssetName(EAsset::Type _Type, const wstring& _Name) {
+	wstring Ext{};
 
-	switch (_Type)
-	{
-	case ASSET_TYPE::MESH:
+	switch (_Type) {
+	case EAsset::E_Mesh:
 		Ext = L".mesh";
 		break;
-	case ASSET_TYPE::MATERIAL:
+	case EAsset::E_Material:
 		Ext = L".mtrl";
 		break;
-	case ASSET_TYPE::TEXTURE:
-	case ASSET_TYPE::SOUND:
-	case ASSET_TYPE::GRAPHICSHADER:
-	case ASSET_TYPE::COMPUTESHADER:
+	case EAsset::E_Texture:
+	case EAsset::E_Sound:
+	case EAsset::E_GraphicShader:
+	case EAsset::E_ComputeShader:
 		assert(nullptr);
 		break;
-	case ASSET_TYPE::SPRITE:
+	case EAsset::E_Sprite:
 		Ext = L".sprite";
 		break;
-	case ASSET_TYPE::FLIPBOOK:
+	case EAsset::E_Flipbook:
 		Ext = L".flip";
 		break;
-	case ASSET_TYPE::PREFAB:
+	case EAsset::E_Prefab:
 		Ext = L".pref";
 		break;
-	case ASSET_TYPE::LEVEL:
+	case EAsset::E_Level:
 		Ext = L".lv";
 		break;
 	}
 
 	int i = 0;
-	while (true)
-	{
+	while (true) {
 		wchar_t Num[50] = {};
 		swprintf_s(Num, 50, L"_%d", i);
 
 		wstring AssetName = wstring(_Name + Num + Ext);
-		if (nullptr == AssetMgr::GetInst()->FindAsset(_Type, AssetName))
-		{
+		if (AssetMgr::GetInst()->FindAsset(_Type, AssetName) == nullptr)
 			return AssetName;
-		}
 
 		i++;
 	}

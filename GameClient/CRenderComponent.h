@@ -7,7 +7,7 @@
 
 class CRenderComponent : public Component {
 public:
-    CRenderComponent(COMPONENT_TYPE _Type);
+    CRenderComponent(EComponent::Type _Type);
     CRenderComponent(const CRenderComponent& _Origin);
     virtual ~CRenderComponent();
 

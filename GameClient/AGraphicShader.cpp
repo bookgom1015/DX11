@@ -6,7 +6,7 @@
 #include "Device.h"
 
 AGraphicShader::AGraphicShader()
-	: Asset(ASSET_TYPE::GRAPHICSHADER)
+	: Asset(EAsset::E_GraphicShader)
 	, m_Topology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 	, m_RSType(ERasterizerState::E_CullBack)
 	, m_DSType(EDepthStencilState::E_Less)

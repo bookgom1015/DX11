@@ -1,17 +1,10 @@
 #include "pch.h"
 #include "SoundUI.h"
 
+SoundUI::SoundUI() : AssetUI(EAsset::E_Sound) {}
 
-SoundUI::SoundUI()
-	: AssetUI(ASSET_TYPE::SOUND)
-{
-}
+SoundUI::~SoundUI() {}
 
-SoundUI::~SoundUI()
-{
-}
-
-void SoundUI::Tick_UI()
-{
+void SoundUI::Tick_UI() {
 	OutputTitle();
 }

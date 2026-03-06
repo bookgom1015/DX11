@@ -13,48 +13,49 @@ public:
     CLONE(CLight2D);
 
 public:
-    const Light2DInfo& GetInfo() { return m_Info; }
+    __forceinline const Light2DInfo& GetInfo() const;
 
-    int IsDisabled() { return m_Info.Disabled; }
-    void Disable(bool status) { m_Info.Disabled = (int)status; }
+    __forceinline int IsDisabled() const;
+    __forceinline void Disable(bool status);
 
-    LIGHT_TYPE GetLightType() { return m_Info.Type; }
-    void SetLightType(LIGHT_TYPE _Type) { m_Info.Type = _Type; }
+    __forceinline ELight::Type GetLightType() const;
+    __forceinline void SetLightType(ELight::Type _Type);
 
-    Vec3 GetLightColor() { return m_Info.Color; }
-    void SetLightColor(Vec3 _Color) { m_Info.Color = _Color; }
+    __forceinline Vec3 GetLightColor() const;
+    __forceinline void SetLightColor(Vec3 _Color);
 
-    Vec3 GetLightDir() { return m_Info.LightDir; }
-    void SetLightDir(Vec3 _Dir) { m_Info.LightDir = _Dir; }
+    __forceinline Vec3 GetLightDir() const;
+    __forceinline void SetLightDir(Vec3 _Dir);
     
-    Vec3 GetAmbient() { return m_Info.Ambient; }
-    void SetAmbient(Vec3 _Ambient) { m_Info.Ambient = _Ambient; }
+    __forceinline Vec3 GetAmbient() const;
+    __forceinline void SetAmbient(Vec3 _Ambient);
 
-    float GetRadius() { return m_Info.Radius; }
-    void SetRadius(float _R) { m_Info.Radius = _R; }
+    __forceinline float GetRadius() const;
+    __forceinline void SetRadius(float _R);
 
-    float GetAngle() { return m_Info.Angle; }
-    void SetAngle(float _Angle) { m_Info.Angle = _Angle; }
+    __forceinline float GetAngle() const;
+    __forceinline void SetAngle(float _Angle);
 
-    float GetLength() { return m_Info.Length; }
-    void SetLength(float _Length) { m_Info.Length = _Length; }
+    __forceinline float GetLength() const;
+    __forceinline void SetLength(float _Length);
 
-    float GetIntensity() { return m_Info.Intensity; }
-    void SetIntensity(float _Intensity) { m_Info.Intensity = _Intensity; }
+    __forceinline void SetIntensity(float _Intensity);
+    __forceinline float GetIntensity() const;
 
-    Matrix GetView(int idx = 0) { return m_Info.Views[idx]; }
-    void SetView(Matrix mat, int idx = 0) { m_Info.Views[idx] = mat; }
+    __forceinline Matrix GetView(int idx = 0) const;
+    __forceinline void SetView(Matrix mat, int idx = 0);
 
-    Matrix GetProj(int idx = 0) { return m_Info.Projs[idx]; }
-    void SetProj(Matrix mat, int idx = 0) { m_Info.Projs[idx] = mat; }
+    __forceinline Matrix GetProj(int idx = 0) const;
+    __forceinline void SetProj(Matrix mat, int idx = 0);
 
-    int GetBaseIndex() { return m_Info.BaseIndex; }
-    void SetBaseIndex(int idx) { m_Info.BaseIndex = idx; }
+    __forceinline int GetBaseIndex() const;
+    __forceinline void SetBaseIndex(int idx);
 
-    int GetSize() { return m_Info.Size; }
-    void SetSize(int idx) { m_Info.Size = idx; }
+    __forceinline int GetSize() const;
+    __forceinline void SetSize(int idx);
 
 private:
     Light2DInfo m_Info;
 };
 
+#include "CLight2D.inl"

@@ -1,23 +1,24 @@
 #pragma once
-#include "EditorUI.h"
+
 #include "Asset.h"
 
-class AssetUI :
-    public EditorUI
-{
-private:
-    const ASSET_TYPE  m_AssetType;
-    Ptr<Asset>        m_TargetAsset;
+#include "EditorUI.h"
+
+class AssetUI : public EditorUI {
+public:
+    AssetUI(EAsset::Type _Type);
+    virtual ~AssetUI();
 
 public:
-    void SetTargetAsset(Ptr<Asset> _Asset) { m_TargetAsset = _Asset; }
-    Ptr<Asset> GetTargetAsset() { return  m_TargetAsset; }
+    __forceinline void SetTargetAsset(Ptr<Asset> _Asset);
+    __forceinline Ptr<Asset> GetTargetAsset() const;
 
 protected:
     void OutputTitle();
 
-public:
-    AssetUI(ASSET_TYPE _Type);
-    virtual ~AssetUI();
+private:
+    const EAsset::Type m_AssetType;
+    Ptr<Asset> m_TargetAsset;
 };
 
+#include "AssetUI.inl"

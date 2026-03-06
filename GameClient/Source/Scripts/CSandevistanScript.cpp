@@ -42,7 +42,7 @@ void CSandevistanScript::Tick() {
 	};
 
 	mElapsedTime += DT;
-	if (mElapsedTime >= lifeTime) SelfDestruct();
+	if (mElapsedTime >= lifeTime) Destroy();
 
 	float weight = mElapsedTime / lifeTime;
 
@@ -71,11 +71,4 @@ void CSandevistanScript::Tick() {
 	}
 
 	SpriteRender()->SetAlbedo(finalColor);
-}
-
-void CSandevistanScript::SelfDestruct() {
-	TaskInfo info{};
-	info.Type = TASK_TYPE::DESTROY_OBJECT;
-	info.Param_0 = (DWORD_PTR)GetOwner();
-	TaskMgr::GetInst()->AddTask(info);
 }

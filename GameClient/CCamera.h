@@ -24,7 +24,7 @@ public:
 public:
     CLONE(CCamera);
 
-    GET_SET(PROJ_TYPE, ProjType);
+    GET_SET(EProjection::Type, ProjType);
     GET_SET(float, Far);
     GET_SET(float, Width);
     GET_SET(float, AspectRatio);    
@@ -41,7 +41,7 @@ public:
 
 private:
     UINT m_LayerCheck;      // 어떤 레이어만 화면에 렌더링 할 것인지 비트체크
-    PROJ_TYPE m_ProjType;   // 투영 방식
+    EProjection::Type m_ProjType;   // 투영 방식
 
     float m_Far;            // 카메라 시야 최대거리
     float m_Width;          // 직교투영 가로길이

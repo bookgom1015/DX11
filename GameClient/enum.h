@@ -90,6 +90,105 @@ namespace EBlendState {
 	};
 }
 
+namespace ETask {
+	enum Type {
+		E_CreateObject,
+		E_DestroyObject,
+		E_ChangeLevel,
+		E_ChangeLevelState,
+		E_DeferredProcessing,
+		Count
+	};
+}
+
+namespace ELight {
+	enum Type {
+		E_Directional,
+		E_Point,
+		E_Spot,
+		E_Line,
+		E_Rect,
+		Count
+	};
+}
+
+namespace ERenderDomain {
+	enum Type {
+		E_Opaque,
+		E_Masked,
+		E_Transparent,
+		E_PostProcess,
+		E_Debug,
+		E_None,
+		Count
+	};
+}
+
+namespace EDebugShape {
+	enum Type {
+		E_Rect,
+		E_Circle,
+		E_Cube,
+		E_Sphere,
+		Count
+	};
+}
+
+namespace EProjection {
+	enum Type {
+		E_Orthographic,
+		E_Perspective,
+		Count
+	};
+}
+
+namespace EAsset {
+	enum Type {
+		E_Mesh,
+		E_Material,
+		E_Texture,
+		E_Sound,
+		E_GraphicShader,
+		E_ComputeShader,
+		E_Level,
+		E_Sprite,
+		E_Flipbook,
+		E_TileMap,
+		E_Prefab,
+		Count
+	};
+}
+
+namespace EComponent {
+	enum Type {
+		E_None = -1,
+		E_Transform = 0,
+		E_Camera,
+		E_Collider2D,
+		E_Collider3D,
+		E_Light2D,
+		E_Light3D,
+		E_MeshRender,
+		E_BillboardRender,
+		E_SpriteRender,
+		E_FlipbookRender,
+		E_ParticleRender,
+		E_TileRender,
+		E_Rigidbody,
+		Count,
+		E_Script
+	};
+}
+
+namespace EGizmoState {
+	enum Type {
+		E_Trans,
+		E_Rotate,
+		E_Scale,
+		Count
+	};
+}
+
 enum class SHADER_PARAM {
 	INT,
 	FLOAT,
@@ -99,8 +198,7 @@ enum class SHADER_PARAM {
 	TEX,
 };
 
-enum class CB_TYPE
-{
+enum class CB_TYPE {
 	TRANSFORM,	// b0
 	MATERIAL,	// b1
 	GLOBAL,		// b2
@@ -108,50 +206,7 @@ enum class CB_TYPE
 	END,
 };
 
-enum class ASSET_TYPE
-{
-	MESH,
-	MATERIAL,
-	TEXTURE,
-	SOUND,
-	GRAPHICSHADER,
-	COMPUTESHADER,
-	LEVEL,
-	SPRITE,
-	FLIPBOOK,
-	TILEMAP,
-	PREFAB,
-
-	END,
-};
-
-
-
-enum class COMPONENT_TYPE
-{
-	TRANSFORM,
-	CAMERA,	
-	COLLIDER2D,
-	COLLIDER3D,
-	LIGHT2D,
-	LIGHT3D,
-
-	MESHRENDER,
-	BILLBOARD_RENDER,
-	SPRITE_RENDER,
-	FLIPBOOK_RENDER,
-	PARTICLE_RENDER,	
-	TILE_RENDER,
-
-	RIGIDBODY,
-
-	END,
-
-	SCRIPT,	 
-};
-
-enum class DIR
-{
+enum class DIR {
 	RIGHT,
 	UP,
 	FRONT,
@@ -159,9 +214,7 @@ enum class DIR
 	END,
 };
 
-
-enum TEX_PARAM
-{
+enum TEX_PARAM {
 	TEX_0, // t0
 	TEX_1,
 	TEX_2,
@@ -172,8 +225,7 @@ enum TEX_PARAM
 	TEX_END,
 };
 
-enum SCALAR_PARAM
-{
+enum SCALAR_PARAM {
 	INT_0,
 	INT_1,
 	INT_2,
@@ -196,59 +248,4 @@ enum SCALAR_PARAM
 
 	MAT_0,
 	MAT_1,
-};
-
-
-enum class DBG_SHAPE
-{
-	RECT,
-	CIRCLE,
-	CUBE,
-	SPHERE,
-};
-
-
-enum class TASK_TYPE
-{
-	CREATE_OBJECT,
-	DESTROY_OBJECT,
-	CHANGE_LEVEL,
-	CHANGE_LEVEL_STATE
-};
-
-enum class LIGHT_TYPE
-{
-	DIRECTIONAL,	// 방향성 - 멀리서부터 오는 광원에게 설정, 주로 전역광원(빛이 월드로 오는 방향이 모두 같다고 본다)
-	POINT,			// 점광원 - 기본적인 광원, 한 점으로부터 주변으로 빛이 뻗어나감
-	SPOT,			// 스포트 - 특수한 광원, 빛을 특정 방향으로 모아서 보내는 것으로 봄
-	LINE,
-	RECT
-};
-
-// 재질이 렌더링 되는 시점
-enum class RENDER_DOMAIN
-{
-	DOMAIN_OPAQUE,		// 불투명
-	DOMAIN_MASKED,		// 불투명 + 완전 투명
-	DOMAIN_TRANSPARENT, // 반투명
-	DOMAIN_POSTPROCESS, // 후처리 - 가장 마지막에 동작, 기존에 그려진 장면을 재 가공
-	DOMAIN_DEBUG,		// 디버그 렌더링에 사용하는 재질
-	DOMAIN_NONE,		// 미지정
-};
-
-static string GetRenderDomainName(RENDER_DOMAIN domain) {
-	switch (domain) {
-	case RENDER_DOMAIN::DOMAIN_OPAQUE: return "Opaque";
-	case RENDER_DOMAIN::DOMAIN_MASKED: return "Masked";
-	case RENDER_DOMAIN::DOMAIN_TRANSPARENT: return "Transparent";
-	case RENDER_DOMAIN::DOMAIN_POSTPROCESS: return "Post Process";
-	case RENDER_DOMAIN::DOMAIN_DEBUG: return "Debug";
-	case RENDER_DOMAIN::DOMAIN_NONE: return "None";
-	default: return "Unknown";
-	}
-}
-
-enum class PROJ_TYPE {
-	ORTHOGRAPHIC,   // 직교투영
-	PERSPECTIVE,    // 원근투영
 };

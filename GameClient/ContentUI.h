@@ -1,13 +1,12 @@
 #pragma once
-#include "EditorUI.h"
 
+#include "EditorUI.h"
 #include "TreeUI.h"
 
-class ContentUI :
-    public EditorUI
-{
-private:
-    Ptr<TreeUI> m_Tree;
+class ContentUI : public EditorUI {
+public:
+    ContentUI();
+    virtual ~ContentUI();
 
 public:
     virtual void Tick_UI() override;
@@ -18,8 +17,7 @@ public:
 private:
     void SelectAsset(DWORD_PTR _Asset);
 
-public:
-    ContentUI();
-    virtual ~ContentUI();
+private:
+    Ptr<TreeUI> m_Tree;
 };
 

@@ -32,7 +32,7 @@ void CPlatformerPlayerScript::Begin() {
 	mLight->AddComponent(new CLight2D);
 
 	decltype(auto) light = mLight->Light2D();
-	light->SetLightType(LIGHT_TYPE::POINT);
+	light->SetLightType(ELight::E_Point);
 	light->SetLightColor(Vec3(255.f / 255.f, 81.f / 255.f, 13.f / 255.f));
 	light->SetIntensity(5.f);
 	light->SetRadius(80.f);
@@ -259,18 +259,8 @@ void CPlatformerPlayerScript::Relic() {
 		if (mbRelic) {
 			mbRelic = false;
 
-			if (mpRelic != nullptr) {
-				TaskInfo info{};
-				info.Type = TASK_TYPE::DESTROY_OBJECT;
-				info.Param_0 = (DWORD_PTR)mpRelic;
-				TaskMgr::GetInst()->AddTask(info);
-			}
-			if (mpRelic2 != nullptr) {
-				TaskInfo info{};
-				info.Type = TASK_TYPE::DESTROY_OBJECT;
-				info.Param_0 = (DWORD_PTR)mpRelic2;
-				TaskMgr::GetInst()->AddTask(info);
-			}
+			if (mpRelic != nullptr) mpRelic->Destroy();
+			if (mpRelic2 != nullptr) mpRelic2->Destroy();
 		}
 		else {
 			mbRelic = true;

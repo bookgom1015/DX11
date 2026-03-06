@@ -6,7 +6,7 @@
 #include "TimeMgr.h"
 
 CFlipbookRender::CFlipbookRender()
-	: CRenderComponent(COMPONENT_TYPE::FLIPBOOK_RENDER),
+	: CRenderComponent(EComponent::E_FlipbookRender),
 	m_FPS(0.f),
 	m_AccTime(0.f),
 	m_CurSprite(0),
@@ -44,6 +44,8 @@ void CFlipbookRender::Render() {
 	mtrl->SetTexture(TEX_0, pCurSprite->GetAtlas());
 	mtrl->SetScalar(VEC2_0, pCurSprite->GetLeftTopUV());
 	mtrl->SetScalar(VEC2_1, pCurSprite->GetSliceUV());
+	mtrl->SetScalar(VEC2_2, pCurSprite->GetBackgroundUV());
+	mtrl->SetScalar(VEC2_3, pCurSprite->GetOffsetUV());
 	mtrl->SetScalar(INT_0, RenderMgr::GetInst()->GetLightCount());
 
 	mtrl->Binding();
@@ -85,7 +87,7 @@ void CFlipbookRender::CreateMaterial() {
 
 		// 찾은 or 생성한 쉐이더를 재질에 설정해주고, 재질도 에셋매니저에 등록한다.
 		pMtrl->SetShader(pShader);
-		pMtrl->SetDomain(RENDER_DOMAIN::DOMAIN_MASKED);
+		pMtrl->SetDomain(ERenderDomain::E_Masked);
 		AssetMgr::GetInst()->AddAsset(pMtrl->GetName(), pMtrl.Get());
 	}
 
