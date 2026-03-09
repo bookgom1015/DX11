@@ -81,3 +81,13 @@ void CCollider2D::AddDynamicOverlap(Component* _Inst, COLLISION_EVENT_COMP _MemF
 void CCollider2D::AddDynamicEndOverlap(Component* _Inst, COLLISION_EVENT_COMP _MemFunc) {
 	m_vecEndCompDel.push_back(COLLISION_DELEGATE_COMP{ _Inst , _MemFunc });
 }
+
+void CCollider2D::SaveToLevelFile(FILE* const _FileStream) {
+	fwrite(&m_Offset, sizeof(Vec2), 1, _FileStream);
+	fwrite(&m_Scale, sizeof(Vec2), 1, _FileStream);
+}
+
+void CCollider2D::LoadFromLevelFile(FILE* const _FileStream) {
+	fread(&m_Offset, sizeof(Vec2), 1, _FileStream);
+	fread(&m_Scale, sizeof(Vec2), 1, _FileStream);
+}

@@ -3,6 +3,7 @@
 
 #include "LevelMgr.h"
 #include "TaskMgr.h"
+#include "Source/ScriptMgr.h"
 
 GameObject::GameObject()
 	: m_Com{}
@@ -109,6 +110,121 @@ void GameObject::Render() {
 
 	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
 		m_vecChild[i]->Render();
+}
+
+void GameObject::SaveToLevelFile(FILE* const _FileStream) {
+	auto objectName = GetName();
+	SaveWString(_FileStream, objectName);
+
+	// 컴포넌트 
+	for (UINT i = 0; i < EComponent::Count; ++i) {
+		decltype(auto) comp = m_Com[i];
+		if (comp == nullptr) continue;
+
+		// 컴포넌트 타입
+		fwrite(&i, sizeof(i), 1, _FileStream);
+
+		// 컴포넌트 내용
+		comp->SaveToLevelFile(_FileStream);
+	}
+
+	UINT end = EComponent::Count;
+	fwrite(&end, sizeof(end), 1, _FileStream);
+
+	// 스크립트
+	auto size = m_vecScripts.size();
+	fwrite(&size, sizeof(size), 1, _FileStream);
+
+	for (const auto& script : m_vecScripts) {
+		auto scriptName = ScriptMgr::GetScriptName(script.Get());
+		SaveWString(_FileStream, scriptName);
+
+		script->SaveToLevelFile(_FileStream);
+	}
+
+	// 자식 객체
+	size_t numChildren = m_vecChild.size();
+	fwrite(&numChildren, sizeof(numChildren), 1, _FileStream);
+
+	for (const auto& child : m_vecChild) 
+		child->SaveToLevelFile(_FileStream);
+}
+
+void GameObject::LoadFromLevelFile(FILE* const _FileStream) {
+	auto objectName = LoadWString(_FileStream);
+	SetName(objectName);	
+
+	// 컴포너트
+	while (true) {
+		UINT comType{};
+		fread(&comType, sizeof(comType), 1, _FileStream);
+		if (comType == EComponent::Count) break;
+
+		Component* component{};
+		switch (comType) {
+		case EComponent::E_Transform: 
+			component = new CTransform;
+			break;
+		case EComponent::E_Camera: 
+			component = new CCamera;
+			break;
+		case EComponent::E_Collider2D: 
+			component = new CCollider2D;
+			break;
+		case EComponent::E_Collider3D: 
+			break;
+		case EComponent::E_Light2D: 
+			component = new CLight2D;
+			break;
+		case EComponent::E_Light3D: 
+			break;
+		case EComponent::E_MeshRender: 
+			component = new CMeshRender;
+			break;
+		case EComponent::E_BillboardRender: 
+			component = new CBillboardRender;
+			break;
+		case EComponent::E_SpriteRender: 
+			component = new CSpriteRender;
+			break;
+		case EComponent::E_FlipbookRender:
+			component = new CFlipbookRender;
+			break;
+		case EComponent::E_ParticleRender: 			
+			break;
+		case EComponent::E_TileRender: 
+			component = new CTileRender;
+			break;
+		case EComponent::E_Rigidbody: 
+			component = new CRigidBody;
+			break;
+		}
+
+		AddComponent(component);
+		component->LoadFromLevelFile(_FileStream);
+	}
+
+	// 스크립트
+	size_t numScripts{};
+	fread(&numScripts, sizeof(numScripts), 1, _FileStream);
+
+	for (size_t i = 0; i < numScripts; ++i) {
+		auto scriptName = LoadWString(_FileStream);
+		Ptr<CScript> script = ScriptMgr::GetScript(scriptName);
+		AddComponent(script.Get());
+
+		script->LoadFromLevelFile(_FileStream);
+	}
+
+	// 자식 객체
+	size_t numChildren{};
+	fread(&numChildren, sizeof(numChildren), 1, _FileStream);
+
+	for (size_t i = 0; i < numChildren; ++i) {
+		Ptr<GameObject> child = new GameObject;
+		AddChild(child);
+		child->LoadFromLevelFile(_FileStream);
+	}
 }
 
 void GameObject::AddComponent(Ptr<Component> _Com) {

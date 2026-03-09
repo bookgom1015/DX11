@@ -62,10 +62,29 @@ void CTransform::FinalTick() {
 void CTransform::Binding() {		
 	g_Trans.matWorld = m_matWorld;	
 
+	Matrix invWorld{};
+	m_matWorld.Invert(invWorld);
+
+	g_Trans.matInvWorld = invWorld;
+
 	// 전역변수에 들어있는 오브젝트 위치 정보를 상수버퍼로 복사
 	Device::GetInst()->GetCB(CB_TYPE::TRANSFORM)->SetData(&g_Trans);
 	Device::GetInst()->GetCB(CB_TYPE::TRANSFORM)->Binding();
 } 
+
+void CTransform::SaveToLevelFile(FILE* const _FileStream) {
+	fwrite(&m_RelativePos, sizeof(Vec3), 1, _FileStream);
+	fwrite(&m_RelativeScale, sizeof(Vec3), 1, _FileStream);
+	fwrite(&m_RelativeRot, sizeof(Vec3), 1, _FileStream);
+	fwrite(&m_IndependentScale, sizeof(bool), 1, _FileStream);
+}
+
+void CTransform::LoadFromLevelFile(FILE* const _FileStream) {
+	fread(&m_RelativePos, sizeof(Vec3), 1, _FileStream);
+	fread(&m_RelativeScale, sizeof(Vec3), 1, _FileStream);
+	fread(&m_RelativeRot, sizeof(Vec3), 1, _FileStream);
+	fread(&m_IndependentScale, sizeof(bool), 1, _FileStream);
+}
 
 Vec3 CTransform::GetWorldScale() {
 	Vec3 vWorldScale = m_RelativeScale;	

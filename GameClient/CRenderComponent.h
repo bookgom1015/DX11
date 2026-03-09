@@ -13,6 +13,9 @@ public:
 
 public:
     GET_SET(Ptr<AMesh>, Mesh);
+
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
     
     void SetMaterial(Ptr<AMaterial> _Mtrl);
     Ptr<AMaterial> GetMaterial() { return m_Mtrl; }

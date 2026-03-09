@@ -10,8 +10,11 @@ SamplerState g_sam_1 : register(s1);
 cbuffer TRANSFORM : register(b0)
 {
     row_major matrix g_matWorld; // Local(Model) -> World Space
+    row_major matrix g_matInvWorld; // Local(Model) -> World Space
     row_major matrix g_matView; // World -> Camea(View) Space
+    row_major matrix g_matInvView; // Local(Model) -> World Space
     row_major matrix g_matProj; // Camera(View) -> Projection Space
+    row_major matrix g_matInvProj; // Local(Model) -> World Space
 }
 
 cbuffer MATERIAL : register(b1)

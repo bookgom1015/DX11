@@ -88,6 +88,7 @@ int main()
 		fwprintf_s(pFile, strScriptUpperName.c_str());
 		fwprintf_s(pFile, L",\n");
 	}	
+	fwprintf_s(pFile, L"\tCount\n");
 	fwprintf_s(pFile, L"};\n\n");
 
 	fwprintf_s(pFile, L"using namespace std;\n\n");
@@ -97,7 +98,8 @@ int main()
 	fwprintf_s(pFile, L"public:\n\tstatic void GetScriptInfo(vector<wstring>& _vec);\n");
 	fwprintf_s(pFile, L"\tstatic CScript * GetScript(const wstring& _strScriptName);\n");
 	fwprintf_s(pFile, L"\tstatic CScript * GetScript(UINT _iScriptType);\n");
-	fwprintf_s(pFile, L"\tstatic const wchar_t * GetScriptName(CScript * _pScript);\n};\n");
+	fwprintf_s(pFile, L"\tstatic const wchar_t * GetScriptName(CScript * _pScript);\n");
+	fwprintf_s(pFile, L"\tstatic const wchar_t * GetScriptName(SCRIPT_TYPE type);\n};\n");
 
 
 	fclose(pFile);
@@ -174,6 +176,29 @@ int main()
 	// 네번째 함수
 	fwprintf_s(pFile, L"const wchar_t * ScriptMgr::GetScriptName(CScript * _pScript)\n{\n");
 	fwprintf_s(pFile, L"\tswitch ((SCRIPT_TYPE)_pScript->GetScriptType())\n\t{\n");
+	for (UINT i = 0; i < g_vecName.size(); ++i)
+	{
+		fwprintf_s(pFile, L"\tcase SCRIPT_TYPE::");
+
+		wstring strScriptUpperName = L"";
+		for (UINT j = 1; j < g_vecName[i].size(); ++j)
+		{
+			strScriptUpperName += toupper(g_vecName[i][j]);
+		}
+
+		fwprintf_s(pFile, strScriptUpperName.c_str());
+
+		fwprintf_s(pFile, L":\n\t\treturn ");
+		fwprintf_s(pFile, L"L\"");
+		fwprintf_s(pFile, g_vecName[i].c_str());
+		fwprintf_s(pFile, L"\";\n\t\tbreak;\n\n");
+	}
+
+	fwprintf_s(pFile, L"\t}\n\treturn nullptr;\n}\n\n");
+
+	// 다섯번째 함수
+	fwprintf_s(pFile, L"const wchar_t * ScriptMgr::GetScriptName(SCRIPT_TYPE type)\n{\n");
+	fwprintf_s(pFile, L"\tswitch (type)\n\t{\n");
 	for (UINT i = 0; i < g_vecName.size(); ++i)
 	{
 		fwprintf_s(pFile, L"\tcase SCRIPT_TYPE::");

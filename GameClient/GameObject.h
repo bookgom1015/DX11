@@ -31,12 +31,17 @@ public:
     // 자신을 타겟에 그림
     void Render();
 
+    void SaveToLevelFile(FILE* const _FileStream);
+    void LoadFromLevelFile(FILE* const _FileStream);
+
 public:
     void AddComponent(Ptr<Component> _Com);
     __forceinline Ptr<Component> GetComponent(EComponent::Type _Type) const;
 
     template<typename T>
-    Ptr<T> GetScript();
+    __forceinline Ptr<T> GetScript();
+
+    __forceinline Ptr<CScript> GetScript(SCRIPT_TYPE _Type);
 
     void AddChild(Ptr<GameObject> _Child);
     void DisconnectWithParent();

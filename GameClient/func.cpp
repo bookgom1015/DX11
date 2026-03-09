@@ -150,3 +150,36 @@ wstring MakeUniqueName(const wstring& name) {
 UINT CeilDivide(UINT value, UINT divisor) {
     return (value + divisor - 1) / divisor;
 }
+
+wstring ELevelLayer::GetLevelLayerName(Type type) {
+    switch (type) {
+    case ELevelLayer::E_Default: return L"Default";
+    case ELevelLayer::E_Player: return L"Player";
+    case ELevelLayer::E_Light: return L"Light";
+    case ELevelLayer::E_Enemy: return L"Enemy";
+    case ELevelLayer::E_Ground: return L"Ground";
+    case ELevelLayer::E_Projectile: return L"Projectile";
+    case ELevelLayer::E_Particle: return L"Particle";
+    case ELevelLayer::E_Background: return L"Background";
+    default: assert(false && "Undefined Level Layer");
+    }
+}
+
+wstring EComponent::GetComponentTypeName(Type type) {
+    switch (type) {
+    case E_Transform: return L"CTransform";
+    case E_Camera: return L"CCamera";
+    case E_Collider2D: return L"CCollider2D";
+    case E_Collider3D: return L"CCollider3D";
+    case E_Light2D: return L"CLight2D";
+    case E_Light3D: return L"CLight3D";
+    case E_MeshRender: return L"CMeshRender";
+    case E_BillboardRender: return L"CBillboardRender";
+    case E_SpriteRender: return L"CSpriteRender";
+    case E_FlipbookRender: return L"CFlipbookRender";
+    case E_ParticleRender: return L"CParticleRender";
+    case E_TileRender: return L"CTileRender";
+    case E_Rigidbody: return L"CRigidbody";
+    default: assert(false && "Undefined Component Type");
+    }
+}

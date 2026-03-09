@@ -50,6 +50,9 @@ public:
 public:
     CLONE(CCollider2D);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
     GET_SET(Vec2, Offset);
     GET_SET(Vec2, Scale);
 

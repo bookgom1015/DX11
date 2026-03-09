@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CSpriteRender);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
     GET_SET(Vec4, Albedo);
 
     __forceinline void SetSprite(Ptr<ASprite> _Sprite);

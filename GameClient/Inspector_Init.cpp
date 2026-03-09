@@ -6,6 +6,7 @@
 #include "Collider2DUI.h"
 #include "Light2DUI.h"
 #include "MeshRenderUI.h"
+#include "BillboardRenderUI.h"
 #include "SpriteRenderUI.h"
 #include "FlipbookRenderUI.h"
 #include "TileRenderUI.h"
@@ -30,16 +31,24 @@
 #define ADD_ASSET_UI(AssetType, type) m_arrAssetUI[(UINT)AssetType] = new type;\
 									  AddChildUI(m_arrAssetUI[(UINT)AssetType].Get());
 
+#define ADD_SCRIPT_UI(ScriptType) m_arrScriptUI[(UINT)ScriptType] = new ScriptUI(ScriptType);	\
+										AddChildUI(m_arrScriptUI[ScriptType].Get());
+
 void Inspector::CreateChildUI() {
 	ADD_COMPONENT_UI(EComponent::E_Transform,		TransformUI,		Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_Collider2D,		Collider2DUI,		Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_Camera,			CameraUI,			Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_Light2D,			Light2DUI,			Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_MeshRender,		MeshRenderUI,		Vec2(0.f, 50.f));
+	ADD_COMPONENT_UI(EComponent::E_BillboardRender, BillboardRenderUI,	Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_SpriteRender,	SpriteRenderUI,		Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_FlipbookRender,	FlipbookRenderUI,	Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_TileRender,		TileRenderUI,		Vec2(0.f, 50.f));
 	ADD_COMPONENT_UI(EComponent::E_Rigidbody,		RigidbodyUI,		Vec2(0.f, 50.f));
+
+	for (UINT i = 0; i < SCRIPT_TYPE::Count; ++i) {
+		ADD_SCRIPT_UI((SCRIPT_TYPE)i);
+	}
 
 	m_AddCompBtn = new AddComponentButton;
 	AddChildUI(m_AddCompBtn.Get());

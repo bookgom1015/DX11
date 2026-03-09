@@ -181,6 +181,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="AssetUI.h" />
     <ClInclude Include="ATexture.h" />
     <ClInclude Include="ATileMap.h" />
+    <ClInclude Include="BillboardRenderUI.h" />
     <ClInclude Include="Bloom.h" />
     <ClInclude Include="Blur.h" />
     <ClInclude Include="CameraUI.h" />
@@ -253,6 +254,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RigidbodyUI.h" />
     <ClInclude Include="SceneUI.h" />
+    <ClInclude Include="ScriptUI.h" />
     <ClInclude Include="Shadow.h" />
     <ClInclude Include="SimpleMath.h" />
     <ClInclude Include="single.h" />
@@ -297,6 +299,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="AssetUI.cpp" />
     <ClCompile Include="ATexture.cpp" />
     <ClCompile Include="ATileMap.cpp" />
+    <ClCompile Include="BillboardRenderUI.cpp" />
     <ClCompile Include="Bloom.cpp" />
     <ClCompile Include="Blur.cpp" />
     <ClCompile Include="CameraUI.cpp" />
@@ -372,6 +375,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CSpriteRender.cpp" />
     <ClCompile Include="RigidbodyUI.cpp" />
     <ClCompile Include="SceneUI.cpp" />
+    <ClCompile Include="ScriptUI.cpp" />
     <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="SoundUI.cpp" />
     <ClCompile Include="Source\ScriptMgr.cpp" />

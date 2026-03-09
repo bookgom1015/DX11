@@ -14,5 +14,8 @@ public:
 
 public:
     CLONE(CEnemyScript);
+
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
 };
 

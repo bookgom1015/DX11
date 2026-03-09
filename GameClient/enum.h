@@ -12,20 +12,6 @@ namespace ELevelLayer {
 		E_Background,
 		Count
 	};
-
-	static string GetName(ELevelLayer::Type type) {
-		switch (type) {
-		case ELevelLayer::E_Default: return "Default";
-		case ELevelLayer::E_Player: return "Player";
-		case ELevelLayer::E_Light: return "Light";
-		case ELevelLayer::E_Enemy: return "Enemy";
-		case ELevelLayer::E_Ground: return "Ground";
-		case ELevelLayer::E_Projectile: return "Projectile";
-		case ELevelLayer::E_Particle: return "Particle";
-		case ELevelLayer::E_Background: return "Background";
-		default: return "Undefined";
-		}
-	}
 }
 
 namespace EToneMapper {

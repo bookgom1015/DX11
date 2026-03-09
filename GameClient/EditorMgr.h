@@ -11,6 +11,12 @@ public:
 	void Init();
 	void Progress();
 
+public:
+	static void RightAlignNextItem(float width) {
+		float avail = ImGui::GetContentRegionAvail().x;
+		ImGui::SameLine(ImGui::GetCursorPosX() + avail - width);
+	}
+
 private:
 	void Tick();
 	void Render();

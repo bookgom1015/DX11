@@ -20,7 +20,10 @@
 #include "SceneUI.h"
 
 CPlatformerPlayerScript::CPlatformerPlayerScript() 
-	: CScript(SCRIPT_TYPE::PLATFORMERPLAYERSCRIPT) {}
+	: CScript(SCRIPT_TYPE::PLATFORMERPLAYERSCRIPT) {
+	ADD_PROPERTY(CPlatformerPlayerScript, "Speed", mSpeed, Property::Float);
+	ADD_PROPERTY(CPlatformerPlayerScript, "CanDoubleJump", mbCanDoubleJump, Property::Bool);
+}
 
 CPlatformerPlayerScript::~CPlatformerPlayerScript() {}
 

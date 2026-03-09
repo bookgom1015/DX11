@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CTargetMissileScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 public:
     void BeginOverlap(CollisionData pOwner, CollisionData pOther);
     void Overlap(CollisionData pOwner, CollisionData pOther);

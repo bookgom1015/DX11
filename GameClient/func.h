@@ -52,3 +52,11 @@ inline std::string WStringToString(const std::wstring& wstr) {
 #ifndef WStrToStr
 #define WStrToStr(x) WStringToString(x)
 #endif // WStrToStr
+
+namespace ELevelLayer {
+    wstring GetLevelLayerName(ELevelLayer::Type type);
+}
+
+namespace EComponent {
+    wstring GetComponentTypeName(Type type);
+}

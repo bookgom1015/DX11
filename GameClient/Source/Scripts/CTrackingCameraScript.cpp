@@ -9,7 +9,9 @@
 #include "GameObject.h"
 
 CTrackingCameraScript::CTrackingCameraScript() 
-	: CScript(SCRIPT_TYPE::TRACKINGCAMERASCRIPT) {}
+	: CScript(SCRIPT_TYPE::TRACKINGCAMERASCRIPT) {
+	ADD_PROPERTY(CTrackingCameraScript, "Target", mTarget, Property::Object);
+}
 
 CTrackingCameraScript::~CTrackingCameraScript() {}
 

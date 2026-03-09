@@ -17,7 +17,10 @@
 #include "SceneUI.h"
 
 CFlashLightScript::CFlashLightScript() 
-	: CScript(SCRIPT_TYPE::FLASHLIGHTSCRIPT) {}
+	: CScript(SCRIPT_TYPE::FLASHLIGHTSCRIPT) {
+	ADD_PROPERTY(CFlashLightScript, "Flashlight", mFlashLight, Property::Object);
+	ADD_PROPERTY(CFlashLightScript, "Flashlight2", mFlashLight2, Property::Object);
+}
 
 CFlashLightScript::~CFlashLightScript() {}
 

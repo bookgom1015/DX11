@@ -12,6 +12,9 @@ public:
 public:
     CLONE(CLight2D);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
 public:
     __forceinline const Light2DInfo& GetInfo() const;
 

@@ -11,6 +11,7 @@ public:
     virtual void Tick_UI() override;
 
 public:
+    void SelectComponent(DWORD_PTR _ListUI);
     void SelectScript(DWORD_PTR _ListUI);
 
 private:

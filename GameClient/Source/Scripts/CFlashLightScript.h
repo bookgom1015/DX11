@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CFlashLightScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 private:
     Ptr<GameObject> mFlashLight{};
     Ptr<GameObject> mFlashLight2{};

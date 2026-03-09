@@ -48,13 +48,9 @@ void CameraUI::Tick_UI() {
             ImGui::EndTable();
         }
 
-        SetSizeAsChild(Vec2(0.f, 1100.f));
-
         ImGui::TreePop();
     }
-    else {
-        SetSizeAsChild(Vec2(0.f, 300.f));
-    }
+    else {}
 
     ImGui::Spacing();
     ImGui::Spacing();

@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CFlipbookRender);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
     GET_SET(Vec4, Albedo);
 
     void SetFlipbook(int _Idx, Ptr<AFlipbook> _Flipbook) {

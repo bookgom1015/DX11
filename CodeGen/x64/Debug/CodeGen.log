@@ -1,0 +1,385 @@
+﻿빌드 시작: 2026-03-09 오전 10:48:19
+로깅의 세부 정보 표시가 Detailed(으)로 설정되었습니다.     1>2 노드의 "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트(Build 대상)입니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CheckForInvalidConfigurationAndPlatform" 대상("SetTelemetryEnvironmentVariables" 대상이 종속됨):
+     1>"Message" 작업
+       "Message" 작업을 실행했습니다.
+       "Message" 작업
+       "Message" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "_CheckForInvalidConfigurationAndPlatform" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.Cpp.DesignTime.targets" 파일에 있는 "SetTelemetryEnvironmentVariables" 대상("Build" 대상이 종속됨):
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "SetTelemetryEnvironmentVariables" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "_PrepareForBuild" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_PrepareForBuild" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_PrepareForReferenceResolution" 대상("ResolveReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_PrepareForReferenceResolution" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BeforeResolveReferences" 대상("ResolveReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BeforeResolveReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "IgnoreJavaScriptOutputAssembly" 대상("AssignProjectConfiguration" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "IgnoreJavaScriptOutputAssembly" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AssignProjectConfiguration" 대상("ResolveReferences" 대상이 종속됨):
+       "AssignProjectConfiguration" 작업
+       "AssignProjectConfiguration" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "AssignProjectConfiguration" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_SplitProjectReferencesByFileExistence" 대상("PrepareProjectReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_SplitProjectReferencesByFileExistence" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_AddOutputPathToGlobalPropertiesToRemove" 대상("_GetProjectReferenceTargetFrameworkProperties" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_AddOutputPathToGlobalPropertiesToRemove" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetProjectReferenceTargetFrameworkProperties" 대상("PrepareProjectReferences" 대상이 종속됨):
+       "MSBuild" 작업
+       "MSBuild" 작업을 실행했습니다.
+       "SetRidAgnosticValueForProjects" 작업
+       "SetRidAgnosticValueForProjects" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "_GetProjectReferenceTargetFrameworkProperties" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareProjectReferences" 대상("ResolveProjectReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PrepareProjectReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveProjectReferences" 대상("ResolveReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ResolveProjectReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetFrameworkPaths" 대상("ResolveAssemblyReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "GetFrameworkPaths" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetReferenceAssemblyPaths" 대상("ResolveAssemblyReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "GetReferenceAssemblyPaths" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" 파일에 있는 "AddExternalIncludDirectoriesToPaths" 대상("SetBuildDefaultEnvironmentVariables" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AddExternalIncludDirectoriesToPaths" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" 파일에 있는 "SetBuildDefaultEnvironmentVariables" 대상("PrepareForBuild" 대상이 종속됨):
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "SetBuildDefaultEnvironmentVariables" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "GetResolvedWinMD" 대상("PrepareForBuild" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "GetResolvedWinMD" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.targets" 파일에 있는 "_CheckWindowsSDKInstalled" 대상("PrepareForBuild" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_CheckWindowsSDKInstalled" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\v18.0\CodeAnalysis\Microsoft.CodeAnalysis.targets" 파일에 있는 "SetCABuildNativeEnvironmentVariables" 대상("PrepareForBuild" 대상이 종속됨):
+       "SetEnv" 작업
+       "SetEnv" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "SetCABuildNativeEnvironmentVariables" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "PrepareForBuild" 대상("ResolveAssemblyReferences" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+       "CheckVCToolsetVersion" 작업
+       "CheckVCToolsetVersion" 작업을 실행했습니다.
+       "VCMessage" 작업
+       "VCMessage" 작업을 실행했습니다.
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "PrepareForBuild" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveSDKReferences" 대상("ResolveAssemblyReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ResolveSDKReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ExpandSDKReferences" 대상("ResolveAssemblyReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ExpandSDKReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveAssemblyReferences" 대상("ResolveReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ResolveAssemblyReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AfterResolveReferences" 대상("ResolveReferences" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterResolveReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveReferences" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ResolveReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "InitializeBuildStatus" 대상("Build" 대상이 종속됨):
+       "ReadLinesFromFile" 작업
+       "ReadLinesFromFile" 작업을 실행했습니다.
+       "WriteLinesToFile" 작업
+       "WriteLinesToFile" 작업을 실행했습니다.
+       "Touch" 작업
+       "Touch" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "InitializeBuildStatus" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildGenerateSourcesTraverse" 대상("BuildGenerateSources" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildGenerateSourcesTraverse" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "BeforeBuildGenerateSources" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BeforeBuildGenerateSources" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PreBuildEvent" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PreBuildEvent" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_SelectedFiles" 대상("SelectCustomBuild" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_SelectedFiles" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "SelectCustomBuild" 대상("CustomBuild" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "SelectCustomBuild" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCustomBuildOutput" 대상("CustomBuild" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCustomBuildOutput" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "CustomBuild" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+       "GetOutOfDateItems" 작업
+       "GetOutOfDateItems" 작업을 실행했습니다.
+       "GetOutOfDateItems" 작업
+       "GetOutOfDateItems" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "CustomBuild" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "CopyFileToFolders" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+       "GetOutOfDateItems" 작업
+       "GetOutOfDateItems" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "CopyFileToFolders" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Xsd" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Xsd" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForMidl" 대상("_Midl" 대상이 종속됨):
+       "Makedir" 작업
+       "Makedir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForMidl" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeMIDLGeneratedCompileInputs" 대상("_Midl" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeMIDLGeneratedCompileInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterMidl" 대상("_Midl" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterMidl" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Midl" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Midl" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "AfterBuildGenerateSources" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildGenerateSources" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterBuildGenerateSourcesEvent" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildGenerateSourcesEvent" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildGenerateSourcesAction" 대상("BuildGenerateSources" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_BuildGenerateSourcesAction" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildGenerateSources" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildGenerateSources" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildCompileTraverse" 대상("BuildCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildCompileTraverse" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeClCompile" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BeforeClCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLInputPDBName" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLInputPDBName" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "FindReferenceAssembliesForReferences" 대상("ComputeReferenceCLInput" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "FindReferenceAssembliesForReferences" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "GetReferencedVCProjectsInfo" 대상("ComputeReferenceCLInput" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "GetReferencedVCProjectsInfo" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeReferenceCLInput" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeReferenceCLInput" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "WarnCompileDuplicatedFilename" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "WarnCompileDuplicatedFilename" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "SetCppLanguageStandardCapabilities" 대상("ComputeStdModulesCompileInputs" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "SetCppLanguageStandardCapabilities" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ComputeStdModulesCompileInputs" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeStdModulesCompileInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "FixupCLCompileOptions" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "FixupCLCompileOptions" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForCl" 대상("_ClCompile" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForCl" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "SelectClCompile" 대상("ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "SelectClCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ClCompile" 대상("_ClCompile" 대상이 종속됨):
+       "CL" 작업
+       "CL" 작업을 실행했습니다.
+       "CL" 작업
+         C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yu"pch.h" /Fp"x64\Debug\CodeGen.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt main.cpp
+         main.cpp
+       "CL" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "ClCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterClCompile" 대상("_ClCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterClCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ClCompile" 대상("_BuildCompileAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_ClCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BeforeResourceCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForResourceCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterResourceCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ResourceCompile" 대상("_BuildCompileAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_ResourceCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterBuildCompileEvent" 대상("_BuildCompileAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildCompileEvent" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildCompileAction" 대상("BuildCompile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_BuildCompileAction" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildCompile" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildCompile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildLinkTraverse" 대상("BuildLink" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildLinkTraverse" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeLegacyManifestEmbedding" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLegacyManifestEmbedding" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeLink" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BeforeLink" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeRCOutputs" 대상("ComputeRCGeneratedLinkInputs" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeRCOutputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeRCGeneratedLinkInputs" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeRCGeneratedLinkInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeManifestGeneratedLinkerInputs" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeManifestGeneratedLinkerInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLOutputs" 대상("ComputeCLGeneratedLinkInputs" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLOutputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLGeneratedLinkInputs" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLGeneratedLinkInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeLinkInputsFromProject" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLinkInputsFromProject" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeManifestInputsTargets" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeManifestInputsTargets" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AssignTargetPaths" 대상("PrepareResourceNames" 대상이 종속됨):
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "AssignTargetPaths" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "SplitResourcesByCulture" 대상("PrepareResourceNames" 대상이 종속됨):
+       "AssignCulture" 작업
+       "AssignCulture" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "SplitResourcesByCulture" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CreateCustomManifestResourceNames" 대상("PrepareResourceNames" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "CreateCustomManifestResourceNames" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareResourceNames" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PrepareResourceNames" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForLink" 대상("_Link" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForLink" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "DoLinkOutputFilesMatch" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "DoLinkOutputFilesMatch" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PreLinkEvent" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PreLinkEvent" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ComputeLinkSwitches" 대상("Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLinkSwitches" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "Link" 대상("_Link" 대상이 종속됨):
+       "Link" 작업
+         C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.exe" /INCREMENTAL /ILK:"x64\Debug\CodeGen.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\PathMgr.obj
+         x64\Debug\pch.obj
+       "Link" 작업을 실행했습니다.
+       "Message" 작업
+         CodeGen.vcxproj -> C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.exe
+       "Message" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "Link" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterLink" 대상("_Link" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterLink" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Link" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Link" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ALink" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_ALink" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Manifest" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Manifest" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "RegisterOutput" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "RegisterOutput" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ResolvedXDCMake" 대상("_XdcMake" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ResolvedXDCMake" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLCompileGeneratedXDCFiles" 대상("_XdcMake" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLCompileGeneratedXDCFiles" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForXdcMake" 대상("_XdcMake" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForXdcMake" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_XdcMake" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_XdcMake" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLCompileGeneratedSbrFiles" 대상("_BscMake" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLCompileGeneratedSbrFiles" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForBscMake" 대상("_BscMake" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForBscMake" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BscMake" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_BscMake" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BuiltProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuiltProjectOutputGroup" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "SatelliteDllsProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "SatelliteDllsProjectOutputGroup" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForFxc" 대상("ContentFilesProjectOutputGroup" 대상이 종속됨):
+       "MakeDir" 작업
+       "MakeDir" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForFxc" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ContentFilesProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "ContentFilesProjectOutputGroup" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "CreateRecipeFile" 대상("_BuildLinkAction" 대상이 종속됨):
+       "GenerateDesktopDeployRecipe" 작업
+       "GenerateDesktopDeployRecipe" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "CreateRecipeFile" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GenerateSatelliteAssemblyInputs" 대상("CreateSatelliteAssemblies" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_GenerateSatelliteAssemblyInputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CreateSatelliteAssemblies" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "CreateSatelliteAssemblies" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Appverifier" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Appverifier" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Deploy" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_Deploy" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_PopulateCommonStateForGetCopyToOutputDirectoryItems" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_PopulateCommonStateForGetCopyToOutputDirectoryItems" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets" 파일에 있는 "GetCopyToOutputDirectoryXamlAppDefs" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "GetCopyToOutputDirectoryXamlAppDefs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetCopyToOutputDirectoryItems" 대상("_CopySourceItemsToOutputDirectory" 대상이 종속됨):
+       "CallTarget" 작업
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" 대상을 빌드했습니다.
+       "CallTarget" 작업을 실행했습니다.
+       "CallTarget" 작업
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetCopyToOutputDirectoryItemsFromThisProject" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
+       "AssignTargetPath" 작업
+       "AssignTargetPath" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "_GetCopyToOutputDirectoryItemsFromThisProject" 대상을 빌드했습니다.
+       "CallTarget" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "GetCopyToOutputDirectoryItems" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CopySourceItemsToOutputDirectory" 대상("CopyFilesToOutputDirectory" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_CopySourceItemsToOutputDirectory" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CheckForCompileOutputs" 대상("CopyFilesToOutputDirectory" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_CheckForCompileOutputs" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CopyFilesToOutputDirectory" 대상("PrepareForRun" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "CopyFilesToOutputDirectory" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareForRun" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PrepareForRun" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PostBuildEvent" 대상("_BuildLinkAction" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "PostBuildEvent" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildLinkAction" 대상("BuildLink" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "_BuildLinkAction" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildLink" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "BuildLink" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "AfterBuild" 대상("Build" 대상이 종속됨):
+     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuild" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CleanGetCurrentAndPriorFileWrites" 대상("IncrementalClean" 대상이 종속됨):
+       "ReadLinesFromFile" 작업
+       "ReadLinesFromFile" 작업을 실행했습니다.
+       "ConvertToAbsolutePath" 작업
+       "ConvertToAbsolutePath" 작업을 실행했습니다.
+       "FindUnderPath" 작업
+       "FindUnderPath" 작업을 실행했습니다.
+       "FindUnderPath" 작업
+       "FindUnderPath" 작업을 실행했습니다.
+       "FindUnderPath" 작업
+       "FindUnderPath" 작업을 실행했습니다.
+       "RemoveDuplicates" 작업
+       "RemoveDuplicates" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "_CleanGetCurrentAndPriorFileWrites" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "IncrementalClean" 대상("Build" 대상이 종속됨):
+       "FindUnderPath" 작업
+       "FindUnderPath" 작업을 실행했습니다.
+       "FindUnderPath" 작업
+       "FindUnderPath" 작업을 실행했습니다.
+       "Delete" 작업
+       "Delete" 작업을 실행했습니다.
+       "RemoveDuplicates" 작업
+       "RemoveDuplicates" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "IncrementalClean" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "TlogCleanup" 대상("Build" 대상이 종속됨):
+       "CleanupStaleTlogItems" 작업
+       "CleanupStaleTlogItems" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "TlogCleanup" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "FinalizeBuildStatus" 대상("Build" 대상이 종속됨):
+       "Delete" 작업
+       "Delete" 작업을 실행했습니다.
+       "Touch" 작업
+       "Touch" 작업을 실행했습니다.
+     1>"CodeGen.vcxproj" 프로젝트에 "FinalizeBuildStatus" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "Build" 대상(진입점):
+     1>"CodeGen.vcxproj" 프로젝트에 "Build" 대상을 빌드했습니다.
+     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+    경고 0개
+    오류 0개
+
+경과 시간: 00:00:00.16

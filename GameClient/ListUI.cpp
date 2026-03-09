@@ -15,10 +15,9 @@ void ListUI::Tick_UI() {
 	ImGui::Separator();
 
 	// ListUI 에 등록된 문자열들을 TreeNode 위젯으로 출력
-	for (size_t i = 0, end = m_vecList.size(); i < end; ++i) {
+	for (size_t i = 0; i < m_vecList.size(); ++i) {
 		// TreeNode Flag 설정
-		UINT Flags = ImGuiTreeNodeFlags_Leaf
-			| ImGuiTreeNodeFlags_Bullet;
+		UINT Flags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_Bullet;
 
 		// 선택된 문자열은 Selected 플래그 추가
 		if (i == m_SelectedIdx) Flags |= ImGuiTreeNodeFlags_Selected;

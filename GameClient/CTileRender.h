@@ -25,6 +25,9 @@ public:
 public:
     CLONE(CTileRender);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
 public:
     void SetTileMap(Ptr<ATileMap> _TileMap);
 

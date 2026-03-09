@@ -20,12 +20,21 @@ constexpr int GameObject::GetLayerIndex() const noexcept { return m_LayerIdx; }
 bool IsValid(Ptr<GameObject>& _Object);
 
 template<typename T>
-inline Ptr<T> GameObject::GetScript() {
+Ptr<T> GameObject::GetScript() {
     for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i) {
         T* pScript = dynamic_cast<T*>(m_vecScripts[i].Get());
         if (nullptr == pScript) continue;
 
         return pScript;
+    }
+
+    return nullptr;
+}
+
+Ptr<CScript> GameObject::GetScript(SCRIPT_TYPE _Type) {
+    for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i) {
+        auto script = m_vecScripts[i].Get();
+        if (script->GetScriptType() == _Type) return script;
     }
 
     return nullptr;

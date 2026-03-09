@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CSandevistanScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 private:
     float mElapsedTime{};
 };

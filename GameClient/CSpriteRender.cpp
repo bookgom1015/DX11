@@ -80,3 +80,15 @@ void CSpriteRender::CreateMaterial() {
 
 	SetMaterial(pMtrl);
 }
+
+void CSpriteRender::SaveToLevelFile(FILE* const _FileStream) {
+	CRenderComponent::SaveToLevelFile(_FileStream);
+
+	SaveAssetRef(_FileStream, m_Sprite.Get());
+}
+
+void CSpriteRender::LoadFromLevelFile(FILE* const _FileStream) {
+	CRenderComponent::LoadFromLevelFile(_FileStream);
+
+	m_Sprite = LoadAssetRef<ASprite>(_FileStream);
+}

@@ -24,6 +24,9 @@ public:
 public:
     CLONE(CCamera);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
     GET_SET(EProjection::Type, ProjType);
     GET_SET(float, Far);
     GET_SET(float, Width);

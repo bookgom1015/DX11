@@ -13,7 +13,7 @@ protected:
 	void OutputTitle(const string& _Title);
 
 public:
-	void SetTarget(Ptr<GameObject> _Object);	
+	virtual void SetTarget(Ptr<GameObject> _Object);	
 	__forceinline Ptr<GameObject> GetTarget() const;
 
 private:

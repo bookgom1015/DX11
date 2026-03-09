@@ -53,8 +53,11 @@ struct Light2DInfo {
 
 struct TransformMatrix {
 	Matrix matWorld;
+	Matrix matInvWorld;
 	Matrix matView;
+	Matrix matInvView;
 	Matrix matProj;
+	Matrix matInvProj;
 };
 // extern, 전방선언, 유일한 전역변수, 모든파일(cpp) 에서 접근 가능
 extern TransformMatrix g_Trans;

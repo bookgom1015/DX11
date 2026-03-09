@@ -10,7 +10,7 @@ CScript::~CScript() {}
 
 void CScript::Destroy() {
 	if (GetOwner()->IsDead()) return;
-
+	
 	TaskInfo info{};
 	info.Type = ETask::E_DestroyObject;
 	info.Param_0 = (DWORD_PTR)GetOwner();

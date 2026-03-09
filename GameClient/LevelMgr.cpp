@@ -3,6 +3,7 @@
 
 #include "AssetMgr.h"
 #include "EditorMgr.h"
+#include "PathMgr.h"
 #include "CollisionMgr.h"
 
 #include "Device.h"
@@ -26,17 +27,33 @@ LevelMgr::LevelMgr()
 LevelMgr::~LevelMgr() {}
 
 void LevelMgr::Init() {
+	if (false) {
+		Ptr<ALevel> pLevel = LOAD(ALevel, L"Level\\Level01.lv");	
+		Util::ChangeLevel(L"Level\\Level01.lv");
+
+		return;
+	}
+
 	// Level 생성
 	Ptr<ALevel> level = new ALevel;
 	level->SetName(L"Current Level");
 
-	level->GetLayer(0)->SetName(L"Default");
-	level->GetLayer(1)->SetName(L"Background");
-	level->GetLayer(2)->SetName(L"Tile");
-	level->GetLayer(3)->SetName(L"Player");
-	level->GetLayer(4)->SetName(L"PlayerProjectile");
-	level->GetLayer(5)->SetName(L"Enermy");
-	level->GetLayer(6)->SetName(L"EnermyProjectile");
+	level->GetLayer(ELevelLayer::E_Default)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Default));
+	level->GetLayer(ELevelLayer::E_Light)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Light));
+	level->GetLayer(ELevelLayer::E_Player)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Player));
+	level->GetLayer(ELevelLayer::E_Enemy)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Enemy));
+	level->GetLayer(ELevelLayer::E_Ground)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Ground));
+	level->GetLayer(ELevelLayer::E_Projectile)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Projectile));
+	level->GetLayer(ELevelLayer::E_Particle)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Particle));
+	level->GetLayer(ELevelLayer::E_Background)->SetName(
+		ELevelLayer::GetLevelLayerName(ELevelLayer::E_Background));
 
 	CreateGrounds(level);
 	CreateLights(level);
@@ -52,15 +69,20 @@ void LevelMgr::Init() {
 
 	pTileObj->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 1.f));
 
-	auto pTileMap = new ATileMap;
-	pTileMap->SetName(L"BackgroundTileMap");
-	pTileMap->SetTileSize(Vec2(64.f, 64.f));
-	pTileMap->SetAtlas(FIND(ATexture, L"TileAtlas"));
-	pTileMap->SetRowCol(100, 100);
-
-	for (int i = 0; i < 100; ++i)
-		for (int j = 0; j < 100; ++j)
-			pTileMap->SetSprite(i, j, LOAD(ASprite, L"Sprite\\TileSprite_1.sprite"));
+	auto pTileMap = LOAD(ATileMap, L"TileMap\\TestTileMap.tile");
+	//pTileMap->SetName(L"BackgroundTileMap");
+	//pTileMap->SetTileSize(Vec2(64.f, 64.f));
+	//pTileMap->SetAtlas(FIND(ATexture, L"TileAtlas"));
+	//pTileMap->SetRowCol(100, 100);
+	//
+	//for (int i = 0; i < 100; ++i)
+	//	for (int j = 0; j < 100; ++j)
+	//		pTileMap->SetSprite(i, j, LOAD(ASprite, L"Sprite\\TileSprite_1.sprite"));
+	//
+	//{
+	//	wstring contentPath = CONTENT_PATH;
+	//	pTileMap->Save(contentPath + L"TileMap\\TestTileMap.tile");
+	//}
 
 	auto tileSize = pTileMap->GetTileSize();
 	pTileObj->TileRender()->SetTileMap(pTileMap);
@@ -83,6 +105,9 @@ void LevelMgr::Init() {
 	level->SetChanged();
 
 	AssetMgr::GetInst()->AddAsset(L"Level01", level.Get());
+
+	wstring contentPath = CONTENT_PATH;
+	level->Save(contentPath + L"Level\\Level01.lv");
 
 	// 레벨을 변경
 	Util::ChangeLevel(L"Level01");
@@ -111,6 +136,7 @@ Ptr<GameObject> LevelMgr::FindObjectByName(const wstring& _name) {
 void LevelMgr::ChangeLevel(Ptr<ALevel> level) {
 	m_CurLevel = m_SharedLevel = level;
 	m_LevelState = ELevelState::E_Stopped;
+	level->SetChanged();
 }
 
 void LevelMgr::ChangeLevelState(ELevelState::Type state) {
@@ -227,7 +253,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(0.f, -400.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(3000.f, 500.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(3000.f, 500.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -242,7 +268,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(600.f, 200.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(500.f, 100.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(500.f, 100.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -263,7 +289,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(210.f, 200.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(100.f, 100.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -284,7 +310,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(-120.f, 250.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(100.f, 100.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -299,7 +325,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(-500.f, 400.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(500.f, 100.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(500.f, 100.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -320,7 +346,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(0.f, 650.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(50.f, 50.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -335,7 +361,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3(-(1000.f + 250.f), 450.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(500.f, 1500.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(500.f, 1500.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);
@@ -350,7 +376,7 @@ void LevelMgr::CreateGrounds(Ptr<ALevel> level) {
 
 		pGround->Transform()->SetRelativePos(Vec3((1000.f + 250.f), 450.f, 0.f));
 		pGround->Transform()->SetRelativeScale(Vec3(500.f, 1500.f, 0.f));
-		pGround->BillboardRender()->SetBillboardScale(Vec2(500.f, 1500.f));
+		pGround->BillboardRender()->SetBillboardScale(Vec2(1.f));
 		pGround->BillboardRender()->SetAlbedo(Vec3(0.075f));
 
 		level->AddObject(ELevelLayer::E_Ground, pGround);

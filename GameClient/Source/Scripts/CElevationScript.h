@@ -15,6 +15,9 @@ public:
 public:
     CLONE(CElevationScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 public:
     void SetStopOverPos(const Vec3& pos) { mStopOverPos = pos; }
 

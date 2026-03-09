@@ -8,6 +8,22 @@ CBillboardRender::CBillboardRender()
 
 CBillboardRender::~CBillboardRender() {}
 
+void CBillboardRender::SaveToLevelFile(FILE* const _FileStream) {
+	CRenderComponent::SaveToLevelFile(_FileStream);
+
+	fwrite(&m_BillboardScale, sizeof(Vec2), 1, _FileStream);
+	fwrite(&m_Albedo, sizeof(m_Albedo), 1, _FileStream);
+	SaveAssetRef(_FileStream, m_Tex.Get());
+}
+
+void CBillboardRender::LoadFromLevelFile(FILE* const _FileStream) {
+	CRenderComponent::LoadFromLevelFile(_FileStream);
+
+	fread(&m_BillboardScale, sizeof(Vec2), 1, _FileStream);
+	fread(&m_Albedo, sizeof(m_Albedo), 1, _FileStream);
+	m_Tex = LoadAssetRef<ATexture>(_FileStream);
+}
+
 void CBillboardRender::FinalTick() {}
 
 void CBillboardRender::Render() {
@@ -15,7 +31,13 @@ void CBillboardRender::Render() {
 	decltype(auto) mtrl = GetMaterial();
 	if (GetMesh() == nullptr || mtrl == nullptr) return;
 
-	mtrl->SetScalar(VEC2_0, m_BillboardScale);
+	auto scale = Transform()->GetRelativeScale();
+	scale *= Vec3(m_BillboardScale.x, m_BillboardScale.y, 1.f);
+
+	auto rot = Transform()->GetRelativeRot();
+
+	mtrl->SetScalar(FLOAT_0, rot.z);
+	mtrl->SetScalar(VEC2_0, Vec2(scale.x, scale.y));
 	mtrl->SetScalar(VEC4_0, Vec4(m_Albedo.x, m_Albedo.y, m_Albedo.z, 1.f));
 	mtrl->Binding();
 

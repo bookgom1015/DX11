@@ -13,11 +13,12 @@ void ComponentUI::SetTarget(Ptr<GameObject> _Object) {
 		SetActive(m_Target != nullptr);
 		return;
 	}
-
-	if (m_Target == nullptr || m_Target->GetComponent(m_ComType) == nullptr)
-		SetActive(false);
-	else
-		SetActive(true);
+	else if (m_ComType != EComponent::E_Script) {
+		if (m_Target == nullptr || m_Target->GetComponent(m_ComType) == nullptr)
+			SetActive(false);
+		else
+			SetActive(true);
+	}
 }
 
 void ComponentUI::OutputTitle(const string& _Title) {

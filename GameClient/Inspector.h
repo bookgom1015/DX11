@@ -6,6 +6,7 @@
 
 #include "ComponentUI.h"
 #include "AssetUI.h"
+#include "ScriptUI.h"
 
 class Inspector : public EditorUI {
 public:
@@ -33,7 +34,8 @@ private:
 
     Ptr<Asset> m_TargetAsset;
     Ptr<AssetUI> m_arrAssetUI[EAsset::Count];
-};
 
+    Ptr<ScriptUI> m_arrScriptUI[SCRIPT_TYPE::Count];
+};
 
 #include "Inspector.inl"

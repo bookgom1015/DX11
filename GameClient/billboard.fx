@@ -3,7 +3,7 @@
 
 #include "value.fx"
 
-
+#define Rotation g_float_0
 #define BILLBOARD_SCALE g_vec2_0
 
 struct VS_IN
@@ -23,11 +23,11 @@ struct VS_OUT
 VS_OUT VS_Billboard(VS_IN _input)
 {
     VS_OUT output = (VS_OUT) 0.f;
-             
-    float4 vWorld = mul(float4(0.f, 0.f, 0.f, 1.f), g_matWorld);
+                     
+    float2 p = _input.vPos.xy * BILLBOARD_SCALE;
+
+    float4 vWorld = mul(float4(_input.vPos, 1.f), g_matWorld);
     float4 vView = mul(vWorld, g_matView);
-    
-    vView.xy += _input.vPos.xy * BILLBOARD_SCALE;    
     float4 vProj = mul(vView, g_matProj);
     
     output.vPosition = vProj;

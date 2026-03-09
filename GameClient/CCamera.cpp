@@ -170,7 +170,16 @@ Vec2 CCamera::WorldToScreen(const Vec3& wpos, Vec2 screenSize) {
 
 void CCamera::Render() {
 	g_Trans.matView = m_matView;
+
+	Matrix invView{};
+	m_matView.Invert(invView);
+	g_Trans.matInvView = invView;
+
 	g_Trans.matProj = m_matProj;
+
+	Matrix invProj{};
+	m_matProj.Invert(invProj);
+	g_Trans.matInvProj = invProj;
 
 	// Domain 순서대로 렌더링 진행
 	for (size_t i = 0, end = m_vecOpaque.size(); i < end; ++i)
@@ -185,6 +194,27 @@ void CCamera::Render() {
 	for (size_t i = 0, end = m_vecPostProcess.size(); i < end; ++i)
 		m_vecPostProcess[i]->Render();
 }
+
+void CCamera::SaveToLevelFile(FILE* const _FileStream) {
+	fwrite(&m_LayerCheck, sizeof(UINT), 1, _FileStream);
+	fwrite(&m_ProjType, sizeof(EProjection::Type), 1, _FileStream);
+	fwrite(&m_Far, sizeof(float), 1, _FileStream);
+	fwrite(&m_Width, sizeof(float), 1, _FileStream);
+	fwrite(&m_AspectRatio, sizeof(float), 1, _FileStream);
+	fwrite(&m_FOV, sizeof(float), 1, _FileStream);
+	fwrite(&m_OrthoScale, sizeof(float), 1, _FileStream);
+}
+
+void CCamera::LoadFromLevelFile(FILE* const _FileStream) {
+	fread(&m_LayerCheck, sizeof(UINT), 1, _FileStream);
+	fread(&m_ProjType, sizeof(EProjection::Type), 1, _FileStream);
+	fread(&m_Far, sizeof(float), 1, _FileStream);
+	fread(&m_Width, sizeof(float), 1, _FileStream);
+	fread(&m_AspectRatio, sizeof(float), 1, _FileStream);
+	fread(&m_FOV, sizeof(float), 1, _FileStream);
+	fread(&m_OrthoScale, sizeof(float), 1, _FileStream);
+}
+
 void CCamera::LayerCheck(int _Idx) {
 	m_LayerCheck ^= (1 << _Idx);
 }

@@ -2,6 +2,7 @@
 #include "CRenderComponent.h"
 
 #include "LevelMgr.h"
+#include "AssetMgr.h"
 
 CRenderComponent::CRenderComponent(EComponent::Type _Type) : Component(_Type) {}
 
@@ -16,6 +17,18 @@ CRenderComponent::CRenderComponent(const CRenderComponent& _Origin)
 }
 
 CRenderComponent::~CRenderComponent() {}
+
+void CRenderComponent::SaveToLevelFile(FILE* const _FileStream) {
+	SaveAssetRef(_FileStream, m_Mesh.Get());
+	SaveAssetRef(_FileStream, m_Mtrl.Get());
+	SaveAssetRef(_FileStream, m_SharedMtrl.Get());
+}
+
+void CRenderComponent::LoadFromLevelFile(FILE* const _FileStream) {
+	m_Mesh = LoadAssetRef<AMesh>(_FileStream);
+	m_Mtrl = LoadAssetRef<AMaterial>(_FileStream);
+	m_SharedMtrl = LoadAssetRef<AMaterial>(_FileStream);
+}
 
 void CRenderComponent::Init() {
 	CreateMaterial();

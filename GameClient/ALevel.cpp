@@ -37,6 +37,71 @@ void ALevel::FinalTick() {
 		m_arrLayer[i].FinalTick();
 }
 
+int ALevel::Save(const wstring& _FilePath) {
+	FILE* file{};
+	_wfopen_s(&file, _FilePath.c_str(), L"wb");
+
+	// 레벨 이름
+	auto levelName = GetName();
+	SaveWString(file, levelName);
+
+	// 충돌 체크 정보
+	fwrite(m_Matrix, sizeof(UINT), MAX_LAYER, file);
+
+	// 레이어 정보
+	for (UINT i = 0; i < MAX_LAYER; ++i) {
+		// 레이어 이름 저장
+		auto layerName = m_arrLayer[i].GetName();
+		SaveWString(file, layerName);
+
+		// 레이어 내 최상위 개체를 계층 구조로 저장
+		decltype(auto) parents = m_arrLayer[i].GetParentObjects();
+
+		auto numParents = parents.size();
+		fwrite(&numParents, sizeof(numParents), 1, file);
+
+		for (const auto& object : parents) 
+			object->SaveToLevelFile(file);
+	}
+
+	fclose(file);
+
+	return S_OK;
+}
+
+int ALevel::Load(const wstring& _FilePath) {
+	FILE* file{};
+	_wfopen_s(&file, _FilePath.c_str(), L"rb");
+
+	// 레벨 이름
+	auto levelName = LoadWString(file);
+	SetName(levelName);
+
+	// 충돌 체크 정보
+	fread(m_Matrix, sizeof(UINT), MAX_LAYER, file);
+
+	// 레이어 정보
+	for (UINT i = 0; i < MAX_LAYER; ++i) {
+		// 레이어 이름 불러오기
+		auto layerName = LoadWString(file);
+		m_arrLayer[i].SetName(layerName);
+
+		size_t numParents{};
+		fread(&numParents, sizeof(numParents), 1, file);
+
+		for (size_t j = 0; j < numParents; ++j) {
+			Ptr<GameObject> object = new GameObject;
+			object->LoadFromLevelFile(file);
+			AddObject(i, object);
+		}
+	}
+
+
+	fclose(file);
+
+	return S_OK;
+}
+
 void ALevel::CheckCollisionLayer(UINT _LayerIdx1, UINT _LayerIdx2) {
 	UINT Row = _LayerIdx1;
 	UINT Col = _LayerIdx2;

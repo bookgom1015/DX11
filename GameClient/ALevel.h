@@ -14,6 +14,9 @@ public:
     void LateTick();
     void FinalTick();
 
+    virtual int Save(const wstring& _FilePath) override;
+    virtual int Load(const wstring& _FilePath) override;
+
 public:
     void AddObject(int _LayerIdx, Ptr<GameObject> _Object);
     Layer* GetLayer(int _Idx) { assert(0 <= _Idx && _Idx < MAX_LAYER); return &m_arrLayer[_Idx]; }

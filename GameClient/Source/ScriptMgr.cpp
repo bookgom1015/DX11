@@ -136,3 +136,51 @@ const wchar_t * ScriptMgr::GetScriptName(CScript * _pScript)
 	}
 	return nullptr;
 }
+
+const wchar_t * ScriptMgr::GetScriptName(SCRIPT_TYPE type)
+{
+	switch (type)
+	{
+	case SCRIPT_TYPE::CYBERPSYCHOSISSCRIPT:
+		return L"CCyberPsychosisScript";
+		break;
+
+	case SCRIPT_TYPE::ELEVATIONSCRIPT:
+		return L"CElevationScript";
+		break;
+
+	case SCRIPT_TYPE::ENEMYSCRIPT:
+		return L"CEnemyScript";
+		break;
+
+	case SCRIPT_TYPE::FLASHLIGHTSCRIPT:
+		return L"CFlashLightScript";
+		break;
+
+	case SCRIPT_TYPE::PARTICLESCRIPT:
+		return L"CParticleScript";
+		break;
+
+	case SCRIPT_TYPE::PLATFORMERPLAYERSCRIPT:
+		return L"CPlatformerPlayerScript";
+		break;
+
+	case SCRIPT_TYPE::RELICSCRIPT:
+		return L"CRelicScript";
+		break;
+
+	case SCRIPT_TYPE::SANDEVISTANSCRIPT:
+		return L"CSandevistanScript";
+		break;
+
+	case SCRIPT_TYPE::TARGETMISSILESCRIPT:
+		return L"CTargetMissileScript";
+		break;
+
+	case SCRIPT_TYPE::TRACKINGCAMERASCRIPT:
+		return L"CTrackingCameraScript";
+		break;
+
+	}
+	return nullptr;
+}

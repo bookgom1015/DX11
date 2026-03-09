@@ -88,6 +88,7 @@ inline T& AMaterial::GetScalar(SCALAR_PARAM _Param) {
         if constexpr (std::is_same_v<T, Matrix>)
             return m_Const.mat[_Param - MAT_0];
         break;
+    default: assert(false && "Invalid Parameter Type");
     }
 }
 

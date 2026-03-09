@@ -94,6 +94,34 @@ void CFlipbookRender::CreateMaterial() {
 	SetMaterial(pMtrl);
 }
 
+void CFlipbookRender::SaveToLevelFile(FILE* const _FileStream) {
+	CRenderComponent::SaveToLevelFile(_FileStream);
+
+	auto size = m_vecFlipbook.size();
+	fwrite(&size, sizeof(size), 1, _FileStream);
+
+	for (const auto& flipbook : m_vecFlipbook) 
+		SaveAssetRef(_FileStream, flipbook.Get());
+
+	fwrite(&m_CurFlipbook, sizeof(int), 1, _FileStream);
+	fwrite(&m_FPS, sizeof(float), 1, _FileStream);
+	fwrite(&m_Albedo, sizeof(Vec4), 1, _FileStream);
+}
+
+void CFlipbookRender::LoadFromLevelFile(FILE* const _FileStream) {
+	CRenderComponent::LoadFromLevelFile(_FileStream);
+
+	size_t size{};
+	fread(&size, sizeof(size), 1, _FileStream);
+
+	for (size_t i = 0; i < size; ++i) 
+		m_vecFlipbook.push_back(LoadAssetRef<AFlipbook>(_FileStream));
+
+	fread(&m_CurFlipbook, sizeof(int), 1, _FileStream);
+	fread(&m_FPS, sizeof(float), 1, _FileStream);
+	fread(&m_Albedo, sizeof(Vec4), 1, _FileStream);
+}
+
 Ptr<ASprite> CFlipbookRender::GetCurrentSprite() {
 	Ptr<AFlipbook> pCurFlipbook = m_vecFlipbook[m_CurFlipbook];
 	return pCurFlipbook->GetSprite(m_CurSprite);

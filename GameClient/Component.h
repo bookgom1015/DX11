@@ -22,6 +22,9 @@ public:
 
     virtual Component* Clone() = 0;
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) = 0;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) = 0;
+
 public:
     __forceinline EComponent::Type GetType() const;
     __forceinline GameObject* GetOwner() const;

@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CRelicScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 public:
     void SetTarget(Ptr<GameObject> target) { mTarget = target; }
     void SetAlbedo(const Vec4& color);

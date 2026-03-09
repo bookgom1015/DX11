@@ -10,6 +10,9 @@ public:
 public:
     CLONE(CBillboardRender);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
     GET_SET(Vec2, BillboardScale);
     GET_SET(Vec3, Albedo);
 

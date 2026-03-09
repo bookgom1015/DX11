@@ -16,7 +16,10 @@
 #include "RenderMgr.h"
 
 CParticleScript::CParticleScript() 
-	: CScript(SCRIPT_TYPE::PARTICLESCRIPT) {}
+	: CScript(SCRIPT_TYPE::PARTICLESCRIPT) {
+	ADD_PROPERTY(CParticleScript, "FromColor", mFromColor, Property::Vec3);
+	ADD_PROPERTY(CParticleScript, "ToColor", mToColor, Property::Vec3);
+}
 
 CParticleScript::~CParticleScript() {}
 

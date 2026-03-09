@@ -99,8 +99,8 @@ void CTargetMissileScript::CreateParticles(Vec3 pos, bool blood) {
 
 		pParticle->Transform()->SetRelativePos(pos);
 		pParticle->Transform()->SetRelativeRot(rot);
-		pParticle->Transform()->SetRelativeScale(Vec3(10.f, 10.f, 0.f));
-		pParticle->BillboardRender()->SetBillboardScale(Vec2(10.f, 10.f));
+		pParticle->Transform()->SetRelativeScale(Vec3(10.f, 10.f, 1.f));
+		pParticle->BillboardRender()->SetBillboardScale(Vec2(1.f));
 
 		pParticle->RigidBody()->AddImpulse(dir * 1000.f);
 

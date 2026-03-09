@@ -14,6 +14,9 @@ public:
 public:
     CLONE(CTrackingCameraScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 private:
     Ptr<GameObject> mTarget{};
 };

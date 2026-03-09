@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CRigidBody);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
 public:
     void AddForce(const Vec3& force);
     void AddImpulse(const Vec3& force);

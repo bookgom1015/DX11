@@ -39,6 +39,22 @@ void CRigidBody::LateTick() {
 
 void CRigidBody::FinalTick() {}
 
+void CRigidBody::SaveToLevelFile(FILE* const _FileStream) {
+	fwrite(&mVelocity, sizeof(Vec3), 1, _FileStream);
+	fwrite(&mAccleration, sizeof(Vec3), 1, _FileStream);
+	fwrite(&mDamping, sizeof(float), 1, _FileStream);
+	fwrite(&mGravityCoeff, sizeof(float), 1, _FileStream);
+	fwrite(&mbKinematic, sizeof(bool), 1, _FileStream);
+}
+
+void CRigidBody::LoadFromLevelFile(FILE* const _FileStream) {
+	fread(&mVelocity, sizeof(Vec3), 1, _FileStream);
+	fread(&mAccleration, sizeof(Vec3), 1, _FileStream);
+	fread(&mDamping, sizeof(float), 1, _FileStream);
+	fread(&mGravityCoeff, sizeof(float), 1, _FileStream);
+	fread(&mbKinematic, sizeof(bool), 1, _FileStream);
+}
+
 void CRigidBody::AddForce(const Vec3& force) {
 	mAccleration += force;
 }

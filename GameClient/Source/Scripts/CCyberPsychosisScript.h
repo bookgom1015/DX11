@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CCyberPsychosisScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 public:
     void SetOffset(const Vec3& offset) { mOffset = offset; }
     void SetTarget(Ptr<GameObject> target) { mTarget = target; }

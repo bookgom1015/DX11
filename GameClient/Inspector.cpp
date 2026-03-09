@@ -25,6 +25,12 @@ void Inspector::SetTargetObject(Ptr<GameObject> _Object) {
 
 		m_arrComUI[i]->SetTarget(m_TargetObject);
 	}
+
+	for (UINT i = 0; i < SCRIPT_TYPE::Count; ++i) {
+		if (m_arrScriptUI[i] == nullptr) continue;
+
+		m_arrScriptUI[i]->SetTarget(m_TargetObject);
+	}
 		
 	// AssetUI 를 비활성화한다.
 	m_TargetAsset = nullptr;

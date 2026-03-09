@@ -91,9 +91,8 @@ void SceneUI::Tick_UI() {
     GizmoButtons();    	
     Scene();
 
-    PickUpTarget();
-    
     DrawGizmo();
+    PickUpTarget();    
 }
 
 void SceneUI::ControlButtons() {
@@ -509,6 +508,9 @@ void SceneUI::DrawScaleGizmo(
         Vec3 wCurr = RenderMgr::GetInst()->GetEditorCamera()->Camera()->ScreenToWorld(currLocal, m_SceneSize);
 
         Vec3 delta = wCurr - wStart;
+
+        float maxValue = max(delta.x, delta.y);
+        delta = Vec3(maxValue);
 
         // 드래그 중 실행
         OnGizmoDrag(g.active, target, delta);

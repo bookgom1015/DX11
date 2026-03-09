@@ -16,6 +16,9 @@ public:
 public:
     CLONE(CPlatformerPlayerScript);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override {}
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
+
 private:
     void Move();
     void Jump();

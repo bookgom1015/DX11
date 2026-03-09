@@ -17,6 +17,9 @@ public:
 public:
     CLONE(CTransform);
 
+    virtual void SaveToLevelFile(FILE* const _FileStream) override;
+    virtual void LoadFromLevelFile(FILE* const _FileStream) override;
+
 public:
     Vec3 GetRelativePos() { return m_RelativePos; }
     Vec3 GetRelativeScale() { return m_RelativeScale; }

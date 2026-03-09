@@ -33,3 +33,15 @@ void CMeshRender::Render() {
 	ID3D11ShaderResourceView* nullSrvs[1] = {};
 	CONTEXT->PSSetShaderResources(6, _countof(nullSrvs), nullSrvs);
 }
+
+void CMeshRender::SaveToLevelFile(FILE* const _FileStream) {
+	CRenderComponent::SaveToLevelFile(_FileStream);
+
+	fwrite(&m_Albedo, sizeof(m_Albedo), 1, _FileStream);
+}
+
+void CMeshRender::LoadFromLevelFile(FILE* const _FileStream) {
+	CRenderComponent::LoadFromLevelFile(_FileStream);
+
+	fread(&m_Albedo, sizeof(m_Albedo), 1, _FileStream);
+}

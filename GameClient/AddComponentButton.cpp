@@ -31,6 +31,15 @@ void AddComponentButton::Tick_UI() {
 	ImGui::EndChild();
 }
 
+void AddComponentButton::SelectComponent(DWORD_PTR _ListUI) {
+	Ptr<ListUI> pListUI = ((ListUI*)_ListUI);
+
+	wstring key = wstring(pListUI->GetSelectedString().begin(), pListUI->GetSelectedString().end());
+
+	string msg = format("{} 선택", WStrToStr(key));
+	LOG_INFO(msg);
+}
+
 void AddComponentButton::SelectScript(DWORD_PTR _ListUI) {
 	Ptr<ListUI> pListUI = ((ListUI*)_ListUI);
 
@@ -41,7 +50,20 @@ void AddComponentButton::SelectScript(DWORD_PTR _ListUI) {
 }
 
 void AddComponentButton::AddComponent() {
-	
+	Ptr<ListUI> pUI = dynamic_cast<ListUI*>(EditorMgr::GetInst()->FindUI("ListUI").Get());
+	assert(pUI.Get());
+
+	pUI->SetUIName("Components");
+
+	vector<wstring> components{};
+
+	for (int i = 0; i < EComponent::Count; ++i)
+		components.push_back(EComponent::GetComponentTypeName(
+			static_cast<EComponent::Type>(i)));
+
+	pUI->AddString(components);
+	pUI->AddDelegate(this, (DELEGATE_1)&AddComponentButton::SelectComponent);
+	pUI->SetActive(true);
 }
 
 void AddComponentButton::AddScript() {
@@ -50,7 +72,7 @@ void AddComponentButton::AddScript() {
 
 	pUI->SetUIName("Scripts");
 
-	vector<wstring> scripts;
+	vector<wstring> scripts{};
 	ScriptMgr::GetScriptInfo(scripts);
 
 	pUI->AddString(scripts);
