@@ -61,14 +61,17 @@ void Inspector::NeedToResetTarget() {
 
 	auto name = m_TargetObject->GetName();
 
-	auto func = new function<void()>([&, name]() {
-		auto target = LevelMgr::GetInst()->FindObjectByName(name);
-		SetTargetObject(target);
-	});
+	//auto func = MAKE_DEFERRED_TASK({
+	//	auto target = LevelMgr::GetInst()->FindObjectByName(name);
+	//	SetTargetObject(target);
+	//}, &, name);
 
 	TaskInfo info{};
 	info.Type = ETask::E_DeferredProcessing;
-	info.Param_0 = reinterpret_cast<DWORD_PTR>(func);
+	info.Param_0 = DWORD_PTR_DEFERRED_TASK({
+		auto target = LevelMgr::GetInst()->FindObjectByName(name);
+		SetTargetObject(target);
+	}, &, name);
 
 	TaskMgr::GetInst()->AddTask(info);
 }

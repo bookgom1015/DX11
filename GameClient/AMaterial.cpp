@@ -46,7 +46,7 @@ void AMaterial::Clear() {
 	}
 }
 
-AMaterial* AMaterial::Clone() { return new AMaterial(*this); }
+AMaterial* AMaterial::Clone() { return NEW AMaterial(*this); }
 
 int AMaterial::Save(const wstring& _FilePath) {
 	// 파일 스트림 커널

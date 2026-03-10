@@ -24,6 +24,14 @@ public:
 
     void NeedToResetTarget();
 
+    Ptr<ComponentUI> GetComponentUI(EComponent::Type _Type) {
+        return m_arrComUI[_Type];
+    }
+
+    Ptr<ScriptUI> GetScriptUI(SCRIPT_TYPE _Type) {
+        return m_arrScriptUI[_Type];
+    }
+
 private:
     void CreateChildUI();
 

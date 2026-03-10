@@ -36,12 +36,12 @@ RenderMgr::RenderMgr() {
 RenderMgr::~RenderMgr() {}
 
 void RenderMgr::Init() {
-	m_DbgObj = new GameObject;
-	m_DbgObj->AddComponent(new CTransform);
-	m_DbgObj->AddComponent(new CMeshRender);
+	m_DbgObj = NEW GameObject;
+	m_DbgObj->AddComponent(NEW CTransform);
+	m_DbgObj->AddComponent(NEW CMeshRender);
 	m_DbgObj->MeshRender()->SetMaterial(FIND(AMaterial, L"DbgMtrl"));
 
-	m_Light2DBuffer = new StructuredBuffer;
+	m_Light2DBuffer = NEW StructuredBuffer;
 
 	mGamma->Init();
 	mTone->Init();
@@ -50,7 +50,7 @@ void RenderMgr::Init() {
 	mBlur->Init();
 	mPixelization->Init();
 
-	mCB = new ConstBuffer();
+	mCB = NEW ConstBuffer();
 	mCB->Create(CB_TYPE::MATERIAL, sizeof(MtrlConst));	
 }
 

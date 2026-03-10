@@ -4,6 +4,7 @@
 #include "EditorMgr.h"
 #include "Source/ScriptMgr.h"
 
+#include "Inspector.h"
 #include "ListUI.h"
 
 AddComponentButton::AddComponentButton() 
@@ -18,13 +19,13 @@ void AddComponentButton::Tick_UI() {
 	ImGui::BeginChild("AddCompButtons", Vec2(mLastButtonsWidth, 0.f));
 
 	mLastButtonsWidth = 0.f;
-
+	
 	if (ImGui::Button("Add Component")) AddComponent();
 	mLastButtonsWidth += ImGui::GetItemRectSize().x;
-
+	
 	ImGui::SameLine(0.f, 10.f);
 	mLastButtonsWidth += 10.f;
-
+	
 	if (ImGui::Button("Add Script")) AddScript();
 	mLastButtonsWidth += ImGui::GetItemRectSize().x;
 
@@ -35,18 +36,38 @@ void AddComponentButton::SelectComponent(DWORD_PTR _ListUI) {
 	Ptr<ListUI> pListUI = ((ListUI*)_ListUI);
 
 	wstring key = wstring(pListUI->GetSelectedString().begin(), pListUI->GetSelectedString().end());
+	LOG_INFO(format("{} 선택", WStrToStr(key)));
 
-	string msg = format("{} 선택", WStrToStr(key));
-	LOG_INFO(msg);
+	auto type = EComponent::GetComponentType(key);
+	auto component= EComponent::GetComponent(type);
+
+	auto ui = EditorMgr::GetInst()->FindUI("Inspector");
+	auto inspector = static_cast<Inspector*>(ui.Get());
+
+	auto target = inspector->GetTargetObject();
+	target->AddComponent(component);
+
+	auto compUI = inspector->GetComponentUI(type);
+	compUI->SetActive(true);
 }
 
 void AddComponentButton::SelectScript(DWORD_PTR _ListUI) {
 	Ptr<ListUI> pListUI = ((ListUI*)_ListUI);
 
 	wstring key = wstring(pListUI->GetSelectedString().begin(), pListUI->GetSelectedString().end());
+	LOG_INFO(format("{} 선택", WStrToStr(key)));
 
-	string msg = format("{} 선택", WStrToStr(key));
-	LOG_INFO(msg);
+	auto script = ScriptMgr::GetScript(key);
+	
+	auto ui = EditorMgr::GetInst()->FindUI("Inspector");
+	auto inspector = static_cast<Inspector*>(ui.Get());
+
+	auto target = inspector->GetTargetObject();
+	target->AddComponent(script);
+
+	auto scriptUI = inspector->GetScriptUI(static_cast<SCRIPT_TYPE>(
+		script->GetScriptType()));
+	scriptUI->SetActive(true);
 }
 
 void AddComponentButton::AddComponent() {

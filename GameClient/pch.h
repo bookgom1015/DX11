@@ -9,6 +9,11 @@
 #include <memory.h>
 #include <tchar.h>
 
+#ifdef _DEBUG
+#define CRTDBG_MAP_ALLOC 
+#include <crtdbg.h>
+#endif // _DEBUG
+
 // Directx11 객체들을 가리킬 수 있는 스마트포인터
 #include "wrl.h"
 using namespace Microsoft::WRL;

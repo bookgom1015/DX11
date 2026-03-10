@@ -212,6 +212,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="extern.h" />
+    <ClInclude Include="FlipbookEditorUI.h" />
     <ClInclude Include="FlipbookRenderUI.h" />
     <ClInclude Include="FlipbookUI.h" />
     <ClInclude Include="framework.h" />
@@ -263,6 +264,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="Source\ScriptMgr.h" />
     <ClInclude Include="Source\Scripts\CCyberPsychosisScript.h" />
     <ClInclude Include="Source\Scripts\CElevationScript.h" />
+    <ClInclude Include="Source\Scripts\CEmptyScript.h" />
     <ClInclude Include="Source\Scripts\CEnemyScript.h" />
     <ClInclude Include="Source\Scripts\CFlashLightScript.h" />
     <ClInclude Include="Source\Scripts\CParticleScript.h" />
@@ -329,6 +331,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="AGraphicShader.cpp" />
     <ClCompile Include="extern.cpp" />
+    <ClCompile Include="FlipbookEditorUI.cpp" />
     <ClCompile Include="FlipbookRenderUI.cpp" />
     <ClCompile Include="FlipbookUI.cpp" />
     <ClCompile Include="func.cpp" />
@@ -381,6 +384,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="Source\ScriptMgr.cpp" />
     <ClCompile Include="Source\Scripts\CCyberPsychosisScript.cpp" />
     <ClCompile Include="Source\Scripts\CElevationScript.cpp" />
+    <ClCompile Include="Source\Scripts\CEmptyScript.cpp" />
     <ClCompile Include="Source\Scripts\CEnemyScript.cpp" />
     <ClCompile Include="Source\Scripts\CFlashLightScript.cpp" />
     <ClCompile Include="Source\Scripts\CParticleScript.cpp" />

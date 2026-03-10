@@ -3,6 +3,7 @@
 
 #include "Scripts/CCyberPsychosisScript.h"
 #include "Scripts/CElevationScript.h"
+#include "Scripts/CEmptyScript.h"
 #include "Scripts/CEnemyScript.h"
 #include "Scripts/CFlashLightScript.h"
 #include "Scripts/CParticleScript.h"
@@ -16,6 +17,7 @@ void ScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CCyberPsychosisScript");
 	_vec.push_back(L"CElevationScript");
+	_vec.push_back(L"CEmptyScript");
 	_vec.push_back(L"CEnemyScript");
 	_vec.push_back(L"CFlashLightScript");
 	_vec.push_back(L"CParticleScript");
@@ -32,6 +34,8 @@ CScript * ScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CCyberPsychosisScript;
 	if (L"CElevationScript" == _strScriptName)
 		return new CElevationScript;
+	if (L"CEmptyScript" == _strScriptName)
+		return new CEmptyScript;
 	if (L"CEnemyScript" == _strScriptName)
 		return new CEnemyScript;
 	if (L"CFlashLightScript" == _strScriptName)
@@ -60,6 +64,9 @@ CScript * ScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::ELEVATIONSCRIPT:
 		return new CElevationScript;
+		break;
+	case (UINT)SCRIPT_TYPE::EMPTYSCRIPT:
+		return new CEmptyScript;
 		break;
 	case (UINT)SCRIPT_TYPE::ENEMYSCRIPT:
 		return new CEnemyScript;
@@ -99,6 +106,10 @@ const wchar_t * ScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::ELEVATIONSCRIPT:
 		return L"CElevationScript";
+		break;
+
+	case SCRIPT_TYPE::EMPTYSCRIPT:
+		return L"CEmptyScript";
 		break;
 
 	case SCRIPT_TYPE::ENEMYSCRIPT:
@@ -147,6 +158,10 @@ const wchar_t * ScriptMgr::GetScriptName(SCRIPT_TYPE type)
 
 	case SCRIPT_TYPE::ELEVATIONSCRIPT:
 		return L"CElevationScript";
+		break;
+
+	case SCRIPT_TYPE::EMPTYSCRIPT:
+		return L"CEmptyScript";
 		break;
 
 	case SCRIPT_TYPE::ENEMYSCRIPT:

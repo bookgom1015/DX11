@@ -24,14 +24,14 @@
 #include "PrefabUI.h"
 #include "AddComponentButton.h"
 
-#define ADD_COMPONENT_UI(ComponentType, type, Size) m_arrComUI[(UINT)ComponentType] = new type;\
+#define ADD_COMPONENT_UI(ComponentType, type, Size) m_arrComUI[(UINT)ComponentType] = NEW type;\
 													m_arrComUI[(UINT)ComponentType]->SetSizeAsChild(Size);\
 													AddChildUI(m_arrComUI[(UINT)ComponentType].Get());
 
-#define ADD_ASSET_UI(AssetType, type) m_arrAssetUI[(UINT)AssetType] = new type;\
+#define ADD_ASSET_UI(AssetType, type) m_arrAssetUI[(UINT)AssetType] = NEW type;\
 									  AddChildUI(m_arrAssetUI[(UINT)AssetType].Get());
 
-#define ADD_SCRIPT_UI(ScriptType) m_arrScriptUI[(UINT)ScriptType] = new ScriptUI(ScriptType);	\
+#define ADD_SCRIPT_UI(ScriptType) m_arrScriptUI[(UINT)ScriptType] = NEW ScriptUI(ScriptType);	\
 										AddChildUI(m_arrScriptUI[ScriptType].Get());
 
 void Inspector::CreateChildUI() {
@@ -50,7 +50,7 @@ void Inspector::CreateChildUI() {
 		ADD_SCRIPT_UI((SCRIPT_TYPE)i);
 	}
 
-	m_AddCompBtn = new AddComponentButton;
+	m_AddCompBtn = NEW AddComponentButton;
 	AddChildUI(m_AddCompBtn.Get());
 
 	ADD_ASSET_UI(EAsset::E_Mesh, MeshUI);

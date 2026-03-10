@@ -454,12 +454,12 @@ int Device::CreateBlendState() {
 
 void Device::CreateConstBuffer() {
 	// 앞으로 사용할 상수버퍼 미리 생성	
-	m_CB[(UINT)CB_TYPE::TRANSFORM] = new ConstBuffer;
+	m_CB[(UINT)CB_TYPE::TRANSFORM] = NEW ConstBuffer;
 	m_CB[(UINT)CB_TYPE::TRANSFORM]->Create(CB_TYPE::TRANSFORM, sizeof(TransformMatrix));
 
-	m_CB[(UINT)CB_TYPE::MATERIAL] = new ConstBuffer;
+	m_CB[(UINT)CB_TYPE::MATERIAL] = NEW ConstBuffer;
 	m_CB[(UINT)CB_TYPE::MATERIAL]->Create(CB_TYPE::MATERIAL, sizeof(MtrlConst));
 
-	m_CB[(UINT)CB_TYPE::GLOBAL] = new ConstBuffer;
+	m_CB[(UINT)CB_TYPE::GLOBAL] = NEW ConstBuffer;
 	m_CB[(UINT)CB_TYPE::GLOBAL]->Create(CB_TYPE::GLOBAL, sizeof(GlobalData));	
 }

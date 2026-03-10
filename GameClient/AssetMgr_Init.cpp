@@ -38,7 +38,7 @@ void AssetMgr::CreateEngineMesh() {
 	UINT arrIdx[6] = { 0, 2, 3, 0, 1, 2 };
 
 	// 사각형 메쉬 생성
-	pMesh = new AMesh;
+	pMesh = NEW AMesh;
 	pMesh->Create(arrVtx, 4, arrIdx, 6);	
 	AddAsset(L"RectMesh", pMesh.Get());
 
@@ -46,7 +46,7 @@ void AssetMgr::CreateEngineMesh() {
 	// RectMesh_LineStrip
 	// ==================
 	arrIdx[0] = 0; 	arrIdx[1] = 1;	arrIdx[2] = 2;	arrIdx[3] = 3; arrIdx[4] = 0;
-	pMesh = new AMesh;
+	pMesh = NEW AMesh;
 	pMesh->Create(arrVtx, 4, arrIdx, 5);
 	AddAsset(L"RectMesh_LineStrip", pMesh.Get());
 
@@ -65,7 +65,7 @@ void AssetMgr::CreateEngineMesh() {
 
 	UINT idx[3] = { 0 , 1 , 2 };
 
-	pMesh = new AMesh;
+	pMesh = NEW AMesh;
 	pMesh->Create(arr, 3, idx, 3);
 	AddAsset(L"TriMesh", pMesh.Get());
 
@@ -103,7 +103,7 @@ void AssetMgr::CreateEngineMesh() {
 		vecIdx.push_back(i + 1);
 	}
 
-	pMesh = new AMesh;
+	pMesh = NEW AMesh;
 	pMesh->Create(
 		vecVtx.data(), static_cast<UINT>(vecVtx.size()), 
 		vecIdx.data(), static_cast<UINT>(vecIdx.size()));
@@ -117,7 +117,7 @@ void AssetMgr::CreateEngineMesh() {
 	for (int i = 0, end = static_cast<int>(Slice + 1); i < end; ++i)
 		vecIdx.push_back(i + 1);
 
-	pMesh = new AMesh;
+	pMesh = NEW AMesh;
 	pMesh->Create(
 		vecVtx.data(), static_cast<UINT>(vecVtx.size()),
 		vecIdx.data(), static_cast<UINT>(vecIdx.size()));
@@ -130,7 +130,7 @@ void AssetMgr::CreateEngineShader() {
 	// ===========
 	// Std2DShader
 	// ===========
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->CreateVertexShader(L"Shader\\std2d.fx", "VS_Std2D");
 	pShader->CreatePixelShader(L"Shader\\std2d.fx", "PS_Std2D");
 	pShader->SetRSType(ERasterizerState::E_CullNone);
@@ -143,7 +143,7 @@ void AssetMgr::CreateEngineShader() {
 	// ===============
 	// BillboardShader
 	// ===============
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->SetName(L"BillboardShader");
 	pShader->CreateVertexShader(L"Shader\\billboard.fx", "VS_Billboard");
 	pShader->CreatePixelShader(L"Shader\\billboard.fx", "PS_Billboard");
@@ -154,7 +154,7 @@ void AssetMgr::CreateEngineShader() {
 	// ============
 	// SpriteShader
 	// ============
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->SetName(L"SpriteShader");
 	pShader->CreateVertexShader(L"Shader\\sprite.fx", "VS_Sprite");
 	pShader->CreatePixelShader(L"Shader\\sprite.fx", "PS_Sprite");
@@ -166,7 +166,7 @@ void AssetMgr::CreateEngineShader() {
 	// ==============
 	// FlipbookShader
 	// ==============
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->SetName(L"FlipbookShader");
 	pShader->CreateVertexShader(L"Shader\\flipbook.fx","VS_Flipbook");
 	pShader->CreatePixelShader(L"Shader\\flipbook.fx", "PS_Flipbook");
@@ -179,7 +179,7 @@ void AssetMgr::CreateEngineShader() {
 	// =============
 	// 찾는 쉐이더가 없으면 만들어서 에셋매니저에 등록해둔다
 
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->SetName(L"TileShader");
 	pShader->CreateVertexShader(L"Shader\\tile.fx", "VS_Tile");
 	pShader->CreatePixelShader(L"Shader\\tile.fx",  "PS_Tile");
@@ -190,7 +190,7 @@ void AssetMgr::CreateEngineShader() {
 	// ===============
 	// DbgRenderShader
 	// ===============
-	pShader = new AGraphicShader;
+	pShader = NEW AGraphicShader;
 	pShader->CreateVertexShader(L"Shader\\dbg.fx", "VS_Debug");
 	pShader->CreatePixelShader(L"Shader\\dbg.fx", "PS_Debug");
 	pShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
@@ -216,7 +216,7 @@ void AssetMgr::CreateEngineMaterial() {
 	// =========
 	// Std2DMtrl
 	// =========
-	pMtrl = new AMaterial;
+	pMtrl = NEW AMaterial;
 	pMtrl->SetName(L"Std2DMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
 
@@ -230,7 +230,7 @@ void AssetMgr::CreateEngineMaterial() {
 	// ===========
 	// MonsterMtrl
 	// ===========
-	pMtrl = new AMaterial;
+	pMtrl = NEW AMaterial;
 	pMtrl->SetName(L"MonsterMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
 
@@ -244,14 +244,14 @@ void AssetMgr::CreateEngineMaterial() {
 	// =======
 	// DbgMtrl 
 	// =======
-	pMtrl = new AMaterial;
+	pMtrl = NEW AMaterial;
 	pMtrl->SetName(L"DbgMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"DbgShader"));
 	pMtrl->SetDomain(ERenderDomain::E_Debug);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 
 	///////////////////
-	pMtrl = new AMaterial;
+	pMtrl = NEW AMaterial;
 	pMtrl->SetName(L"EnemyMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
 	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Ghost"));
@@ -268,7 +268,7 @@ void AssetMgr::CreateEngineSprite() {
 	// =======
 	//Ptr<ATileMap> pTileMap = nullptr;
 
-	//pTileMap = new ATileMap;
+	//pTileMap = NEW ATileMap;
 	//pTileMap->SetName(L"TileMap\\TestTileMap.tile");
 	//pTileMap->SetRowCol(20, 20);
 	//pTileMap->SetTileSize(Vec2(64.f, 64.f));

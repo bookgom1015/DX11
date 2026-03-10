@@ -29,10 +29,10 @@ CPlatformerPlayerScript::~CPlatformerPlayerScript() {}
 
 void CPlatformerPlayerScript::Begin() {
 	// Muzzle flash
-	mLight = new GameObject;
+	mLight = NEW GameObject;
 	mLight->SetName(L"MuzzleFlash");
-	mLight->AddComponent(new CTransform);
-	mLight->AddComponent(new CLight2D);
+	mLight->AddComponent(NEW CTransform);
+	mLight->AddComponent(NEW CLight2D);
 
 	decltype(auto) light = mLight->Light2D();
 	light->SetLightType(ELight::E_Point);
@@ -154,13 +154,13 @@ void CPlatformerPlayerScript::Shoot(Vec3 pos, Vec3 rot, Vec3 dir) {
 		mFireElapsedTime = 0.f;
 
 		// 미사일 생성
-		GameObject* pObject = new GameObject;
+		GameObject* pObject = NEW GameObject;
 		pObject->SetName(MakeUniqueName(L"Missile"));
 
-		pObject->AddComponent(new CTransform);
-		pObject->AddComponent(new CMeshRender);
-		pObject->AddComponent(new CCollider2D);
-		pObject->AddComponent(new CTargetMissileScript);
+		pObject->AddComponent(NEW CTransform);
+		pObject->AddComponent(NEW CMeshRender);
+		pObject->AddComponent(NEW CCollider2D);
+		pObject->AddComponent(NEW CTargetMissileScript);
 
 		decltype(auto) trans = pObject->Transform();
 		trans->SetRelativeScale(Vec3(10.f, 30.f, 1.f));
@@ -193,11 +193,11 @@ void CPlatformerPlayerScript::Aim(Vec3 rot) {
 }
 
 void CPlatformerPlayerScript::Sandevistan() {
-	GameObject* pEffect = new GameObject;
+	GameObject* pEffect = NEW GameObject;
 	pEffect->SetName(MakeUniqueName(L"SandevistanEffect"));
-	pEffect->AddComponent(new CTransform);
-	pEffect->AddComponent(new CSpriteRender);
-	pEffect->AddComponent(new CSandevistanScript);
+	pEffect->AddComponent(NEW CTransform);
+	pEffect->AddComponent(NEW CSpriteRender);
+	pEffect->AddComponent(NEW CSandevistanScript);
 
 	decltype(auto) trans = pEffect->Transform();
 	trans->SetRelativePos(Transform()->GetRelativePos());
@@ -231,12 +231,12 @@ void CPlatformerPlayerScript::CyberPsychosis() {
 		mCyberPsychosisInterval = min(Random::Rand01() + 0.025f, 1.f) * 0.1f;
 		mCyberPsychosisElapsedTime = 0.f;
 
-		GameObject* pEffect = new GameObject;
+		GameObject* pEffect = NEW GameObject;
 		pEffect->SetName(MakeUniqueName(L"CyberPyschosisEffect"));
-		pEffect->AddComponent(new CTransform);
-		pEffect->AddComponent(new CSpriteRender);
+		pEffect->AddComponent(NEW CTransform);
+		pEffect->AddComponent(NEW CSpriteRender);
 
-		auto script = new CCyberPsychosisScript;
+		auto script = NEW CCyberPsychosisScript;
 		pEffect->AddComponent(script);
 
 		auto pos = Transform()->GetRelativePos();
@@ -269,13 +269,13 @@ void CPlatformerPlayerScript::Relic() {
 			mbRelic = true;
 
 			{
-				mpRelic = new GameObject;
+				mpRelic = NEW GameObject;
 
 				mpRelic->SetName(MakeUniqueName(L"RelicEffect1"));
-				mpRelic->AddComponent(new CTransform);
-				mpRelic->AddComponent(new CSpriteRender);
+				mpRelic->AddComponent(NEW CTransform);
+				mpRelic->AddComponent(NEW CSpriteRender);
 
-				auto script = new CRelicScript;
+				auto script = NEW CRelicScript;
 				mpRelic->AddComponent(script);
 
 				script->SetAlbedo(Vec4(16.f / 255.f, 52.f / 255.f, 255.f / 255.f, 0.f));
@@ -289,13 +289,13 @@ void CPlatformerPlayerScript::Relic() {
 				CreateObject(mpRelic, ELevelLayer::E_Particle);
 			}
 			{
-				mpRelic2 = new GameObject;
+				mpRelic2 = NEW GameObject;
 
 				mpRelic2->SetName(MakeUniqueName(L"RelicEffect2"));
-				mpRelic2->AddComponent(new CTransform);
-				mpRelic2->AddComponent(new CSpriteRender);
+				mpRelic2->AddComponent(NEW CTransform);
+				mpRelic2->AddComponent(NEW CSpriteRender);
 
-				auto script = new CRelicScript;
+				auto script = NEW CRelicScript;
 				mpRelic2->AddComponent(script);
 
 				script->SetAlbedo(Vec4(7.f / 255.f, 225.5f / 255.f, 255.f / 255.f, 0.f));

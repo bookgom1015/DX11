@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "EditorMgr.h"
 
-#include "Imgui/imgui.h"
-#include "ImGui/imgui_impl_win32.h"
-#include "ImGui/imgui_impl_dx11.h"
-
 #include "Engine.h"
 #include "Device.h"
 #include "KeyMgr.h"
@@ -18,6 +14,7 @@
 #include "ListUI.h"
 #include "TreeUI.h"
 #include "Profiler.h"
+#include "FlipbookEditorUI.h"
 
 #include "CCamMoveScript.h"
 
@@ -149,30 +146,33 @@ void EditorMgr::Render() {
 void EditorMgr::CreateEditorUI() {
     Ptr<EditorUI> pUI{};
 
-    pUI = new Menu;
+    pUI = NEW Menu;
     AddUI(pUI->GetUIName(), pUI);
 
-    m_SceneUI = new SceneUI;
+    m_SceneUI = NEW SceneUI;
     pUI = m_SceneUI.Get();
     AddUI(pUI->GetUIName(), pUI);
 
-    pUI = new Inspector;
+    pUI = NEW Inspector;
     AddUI(pUI->GetUIName(), pUI);
 
-    pUI = new Outliner;
+    pUI = NEW Outliner;
     AddUI(pUI->GetUIName(), pUI);
 
-    pUI = new ContentUI;
+    pUI = NEW ContentUI;
     AddUI(pUI->GetUIName(), pUI);
 
-    pUI = new Profiler;
+    pUI = NEW Profiler;
     AddUI(pUI->GetUIName(), pUI);
 
-    m_LogUI = new LogUI;
+    m_LogUI = NEW LogUI;
     pUI = m_LogUI.Get();
     AddUI(pUI->GetUIName(), pUI);
+
+    pUI = NEW FlipbookEditorUI;
+    AddUI(pUI->GetUIName(), pUI);
     
-    pUI = new ListUI;
+    pUI = NEW ListUI;
     pUI->SetModal(true);
     pUI->SetActive(false);
     AddUI(pUI->GetUIName(), pUI);
@@ -180,12 +180,12 @@ void EditorMgr::CreateEditorUI() {
 
 void EditorMgr::CreateEditorObject() {
     // Editor Camera Object 생성
-    Ptr<GameObject> pObject = new GameObject;
+    Ptr<GameObject> pObject = NEW GameObject;
     pObject->SetName(L"EditorCamera");
 
-    pObject->AddComponent(new CTransform);
-    pObject->AddComponent(new CCamera);
-    pObject->AddComponent(new CCamMoveScript);
+    pObject->AddComponent(NEW CTransform);
+    pObject->AddComponent(NEW CCamera);
+    pObject->AddComponent(NEW CCamMoveScript);
 
     pObject->Camera()->LayerCheckAll();
 

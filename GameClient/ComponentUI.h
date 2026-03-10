@@ -17,6 +17,9 @@ public:
 	__forceinline Ptr<GameObject> GetTarget() const;
 
 private:
+	void RemoveComponent();
+
+private:
 	Ptr<GameObject> m_Target;
 	const EComponent::Type m_ComType;
 };

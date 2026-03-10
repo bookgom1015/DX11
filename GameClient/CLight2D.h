@@ -16,7 +16,7 @@ public:
     virtual void LoadFromLevelFile(FILE* const _FileStream) override;
 
 public:
-    __forceinline const Light2DInfo& GetInfo() const;
+    __forceinline Light2DInfo GetInfo() const;
 
     __forceinline int IsDisabled() const;
     __forceinline void Disable(bool status);

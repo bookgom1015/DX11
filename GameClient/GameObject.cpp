@@ -163,40 +163,40 @@ void GameObject::LoadFromLevelFile(FILE* const _FileStream) {
 		Component* component{};
 		switch (comType) {
 		case EComponent::E_Transform: 
-			component = new CTransform;
+			component = NEW CTransform;
 			break;
 		case EComponent::E_Camera: 
-			component = new CCamera;
+			component = NEW CCamera;
 			break;
 		case EComponent::E_Collider2D: 
-			component = new CCollider2D;
+			component = NEW CCollider2D;
 			break;
 		case EComponent::E_Collider3D: 
 			break;
 		case EComponent::E_Light2D: 
-			component = new CLight2D;
+			component = NEW CLight2D;
 			break;
 		case EComponent::E_Light3D: 
 			break;
 		case EComponent::E_MeshRender: 
-			component = new CMeshRender;
+			component = NEW CMeshRender;
 			break;
 		case EComponent::E_BillboardRender: 
-			component = new CBillboardRender;
+			component = NEW CBillboardRender;
 			break;
 		case EComponent::E_SpriteRender: 
-			component = new CSpriteRender;
+			component = NEW CSpriteRender;
 			break;
 		case EComponent::E_FlipbookRender:
-			component = new CFlipbookRender;
+			component = NEW CFlipbookRender;
 			break;
 		case EComponent::E_ParticleRender: 			
 			break;
 		case EComponent::E_TileRender: 
-			component = new CTileRender;
+			component = NEW CTileRender;
 			break;
 		case EComponent::E_Rigidbody: 
-			component = new CRigidBody;
+			component = NEW CRigidBody;
 			break;
 		}
 
@@ -221,7 +221,7 @@ void GameObject::LoadFromLevelFile(FILE* const _FileStream) {
 	fread(&numChildren, sizeof(numChildren), 1, _FileStream);
 
 	for (size_t i = 0; i < numChildren; ++i) {
-		Ptr<GameObject> child = new GameObject;
+		Ptr<GameObject> child = NEW GameObject;
 		AddChild(child);
 		child->LoadFromLevelFile(_FileStream);
 	}
@@ -243,11 +243,31 @@ void GameObject::AddComponent(Ptr<Component> _Com) {
 	else {
 		// 해당 컴포넌트를 이미 가지고 있지 않아야 한다.
 		assert(nullptr == m_Com[(UINT)_Com->GetType()]);
-		m_Com[(UINT)_Com->GetType()] = _Com;
+		m_Com[_Com->GetType()] = _Com;
 	}
 		
 	_Com->m_Owner = this;
 	_Com->Init();
+}
+
+void GameObject::RemoveComponent(EComponent::Type _Type, SCRIPT_TYPE _ScriptType) {
+	if (_Type == EComponent::E_Script) {
+		const auto begin = m_vecScripts.begin();
+		const auto end = m_vecScripts.end();
+		const auto iter = std::find_if(begin, end, [&, _ScriptType](Ptr<CScript>& s) {
+			return s->GetScriptType() == _ScriptType;
+		});
+		assert(iter != end);
+
+		std::iter_swap(iter, end - 1);
+		m_vecScripts.pop_back();
+	}
+	else {
+		auto& comp = m_Com[_Type];
+		assert(comp != nullptr);
+
+		comp = nullptr;
+	}
 }
 
 void GameObject::AddChild(Ptr<GameObject> _Child) {

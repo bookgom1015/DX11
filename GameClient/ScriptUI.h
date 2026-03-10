@@ -11,6 +11,9 @@ public:
     virtual void SetTarget(Ptr<GameObject> _Object) override;
     virtual void Tick_UI() override;
 
+public:
+    SCRIPT_TYPE GetScriptType() { return m_ScriptType; }
+
 private:
     void PropertyBool(CScript* const script, const Property& prop);
     void PropertyInt(CScript* const script, const Property& prop);

@@ -26,10 +26,10 @@ CFlashLightScript::~CFlashLightScript() {}
 
 void CFlashLightScript::Begin() {
 	// 점광원
-	mFlashLight = new GameObject;
+	mFlashLight = NEW GameObject;
 	mFlashLight->SetName(L"Player_PointLight");
-	mFlashLight->AddComponent(new CTransform);
-	mFlashLight->AddComponent(new CLight2D);
+	mFlashLight->AddComponent(NEW CTransform);
+	mFlashLight->AddComponent(NEW CLight2D);
 	
 	mFlashLight->Light2D()->SetLightType(ELight::E_Point);
 	mFlashLight->Light2D()->SetLightColor(Vec3(1.f));
@@ -39,10 +39,10 @@ void CFlashLightScript::Begin() {
 	CreateObject(mFlashLight.Get(), ELevelLayer::E_Light);
 
 	// Spot light
-	mFlashLight2 = new GameObject;
+	mFlashLight2 = NEW GameObject;
 	mFlashLight2->SetName(L"Player_SpotLight");
-	mFlashLight2->AddComponent(new CTransform);
-	mFlashLight2->AddComponent(new CLight2D);
+	mFlashLight2->AddComponent(NEW CTransform);
+	mFlashLight2->AddComponent(NEW CLight2D);
 
 	mFlashLight2->Light2D()->SetLightType(ELight::E_Spot);
 	mFlashLight2->Light2D()->SetLightColor(Vec3(1.f));

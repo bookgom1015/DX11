@@ -36,6 +36,7 @@ public:
 
 public:
     void AddComponent(Ptr<Component> _Com);
+    void RemoveComponent(EComponent::Type _Type, SCRIPT_TYPE _ScriptType = SCRIPT_TYPE::Count);
     __forceinline Ptr<Component> GetComponent(EComponent::Type _Type) const;
 
     template<typename T>

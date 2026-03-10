@@ -1,13 +1,16 @@
 #include "pch.h"
 #include "CTargetMissileScript.h"
-#include "CParticleScript.h"
+
+#include "AssetMgr.h"
+#include "LevelMgr.h"
+#include "TaskMgr.h"
+#include "TimeMgr.h"
 
 #include "GameObject.h"
-#include "TimeMgr.h"
+
 #include "CCollider2D.h"
-#include "TaskMgr.h"
-#include "LevelMgr.h"
-#include "AssetMgr.h"
+
+#include "CParticleScript.h"
 
 CTargetMissileScript::CTargetMissileScript() 
 	: CScript(SCRIPT_TYPE::TARGETMISSILESCRIPT) {}
@@ -68,17 +71,17 @@ void CTargetMissileScript::EndOverlap(CollisionData pOwner, CollisionData pOther
 
 void CTargetMissileScript::CreateParticles(Vec3 pos, bool blood) {
 	for (unsigned i = 0; i < 10; ++i) {
-		GameObject* pParticle = new GameObject;
+		GameObject* pParticle = NEW GameObject;
 
 		auto name = std::format(L"Particle_{}", i);
 		pParticle->SetName(MakeUniqueName(name));
 
-		pParticle->AddComponent(new CTransform);
-		pParticle->AddComponent(new CBillboardRender);
-		pParticle->AddComponent(new CCollider2D);
-		pParticle->AddComponent(new CRigidBody);
+		pParticle->AddComponent(NEW CTransform);
+		pParticle->AddComponent(NEW CBillboardRender);
+		pParticle->AddComponent(NEW CCollider2D);
+		pParticle->AddComponent(NEW CRigidBody);
 
-		auto particle = new CParticleScript;
+		auto particle = NEW CParticleScript;
 		if (blood) {
 			particle->SetFromColor(Vec3(1.f, 0.f, 0.f));
 			particle->SetToColor(Vec3(0.15f, 0.f, 0.f));

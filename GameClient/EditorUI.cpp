@@ -3,9 +3,6 @@
 
 #include "EditorMgr.h"
 
-#include "ImGui/imgui.h"
-
-
 EditorUI::EditorUI(const string& _Name)
 	: m_UIName(_Name)
 	, m_IsModal(false)

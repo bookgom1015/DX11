@@ -1,7 +1,7 @@
 #ifndef __CLIGHT2D_INL__
 #define __CLIGHT2D_INL__
 
-const Light2DInfo& CLight2D::GetInfo() const { return m_Info; }
+Light2DInfo CLight2D::GetInfo() const { return m_Info; }
 
 int CLight2D::IsDisabled()const { return m_Info.Disabled; }
 void CLight2D::Disable(bool status) { m_Info.Disabled = (int)status; }

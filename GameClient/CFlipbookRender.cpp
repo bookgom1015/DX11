@@ -68,7 +68,7 @@ void CFlipbookRender::CreateMaterial() {
 
 	// 찾는 재질이 없으면 생성한다.
 	if (pMtrl == nullptr) {
-		pMtrl = new AMaterial;
+		pMtrl = NEW AMaterial;
 		pMtrl->SetName(MtrlName);
 
 		// 쉐이더를 찾아서 재질에 세팅해준다.
@@ -76,7 +76,7 @@ void CFlipbookRender::CreateMaterial() {
 
 		// 찾는 쉐이더가 없으면 만들어서 에셋매니저에 등록해둔다
 		if (pShader == nullptr) {
-			pShader = new AGraphicShader;
+			pShader = NEW AGraphicShader;
 			pShader->SetName(ShaderName);
 			pShader->CreateVertexShader(FilePath, VS);
 			pShader->CreatePixelShader(FilePath, PS);

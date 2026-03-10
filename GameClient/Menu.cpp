@@ -122,7 +122,7 @@ void Menu::Asset() {
 	if (ImGui::BeginMenu("Asset")) {
 		if (ImGui::BeginMenu("Create Asset")) {
 			if (ImGui::MenuItem("Create Material")) {
-				Ptr<AMaterial> pMtrl = new AMaterial;
+				Ptr<AMaterial> pMtrl = NEW AMaterial;
 				wstring Key = GetAssetName(EAsset::E_Material, L"Material\\Default Material");
 				AssetMgr::GetInst()->AddAsset(Key, pMtrl.Get());				
 			}

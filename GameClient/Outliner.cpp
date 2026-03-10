@@ -11,7 +11,7 @@
 #include "TreeUI.h"
 
 Outliner::Outliner() : EditorUI("Outliner") {
-	m_Tree = new TreeUI;
+	m_Tree = NEW TreeUI;
 	m_Tree->SetSaperator(false);
 	m_Tree->AddDynamicSelect(this, (DELEGATE_1)&Outliner::SelectGameObject);
 

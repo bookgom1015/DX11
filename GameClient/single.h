@@ -12,7 +12,7 @@ public:
 	{
 		if (nullptr == m_This)
 		{
-			m_This = new T;
+			m_This = NEW T;
 		}
 
 		return m_This;

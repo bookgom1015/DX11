@@ -35,7 +35,7 @@ public:
 
     void SetChanged() { m_Changed = true; }
 
-    ALevel* Clone() { return new ALevel(*this); }
+    ALevel* Clone() { return NEW ALevel(*this); }
 
 private:
     // 하나의 레벨안에 총 32개의 레이어가 존재

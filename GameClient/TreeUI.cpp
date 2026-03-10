@@ -154,7 +154,7 @@ void TreeUI::Tick_UI()
 
 Ptr<TreeNode> TreeUI::AddItem(Ptr<TreeNode> _ParentNode, string _String, DWORD_PTR _Data)
 {
-	Ptr<TreeNode> pNewNode = new TreeNode;
+	Ptr<TreeNode> pNewNode = NEW TreeNode;
 	pNewNode->Str = _String;
 	pNewNode->m_Owner = this;
 	pNewNode->Data = _Data;

@@ -5,32 +5,35 @@ template<typename T>
 EAsset::Type GetAssetType() {
 	if constexpr (std::is_same_v<T, AMesh>)
 		return EAsset::E_Mesh;
-	else if constexpr (std::is_same_v<T, AMaterial>)
+	else if constexpr (is_same_v<T, AMaterial>)
 		return EAsset::E_Material;
-	else if constexpr (std::is_same_v<T, AGraphicShader>)
+	else if constexpr (is_same_v<T, AGraphicShader>)
 		return EAsset::E_GraphicShader;
-	else if constexpr (std::is_same_v<T, ATexture>)
+	else if constexpr (is_same_v<T, ATexture>)
 		return EAsset::E_Texture;
-	else if constexpr (std::is_same_v<T, ASprite>)
+	else if constexpr (is_same_v<T, ASprite>)
 		return EAsset::E_Sprite;
-	else if constexpr (std::is_same_v<T, AFlipbook>)
+	else if constexpr (is_same_v<T, AFlipbook>)
 		return EAsset::E_Flipbook;
-	else if constexpr (std::is_same_v<T, ATileMap>)
+	else if constexpr (is_same_v<T, ATileMap>)
 		return EAsset::E_TileMap;
-	else if constexpr (std::is_same_v<T, ALevel>)
+	else if constexpr (is_same_v<T, ALevel>)
 		return EAsset::E_Level;
-
-	return EAsset::Count;
+	else
+		static_assert(false, "Unexpected Asset Type");
 }
 
 template<typename T>
 Ptr<T> AssetMgr::Find(const wstring& _Key) {
-	EAsset::Type Type = GetAssetType<T>();
+	const EAsset::Type type = GetAssetType<T>();
+	const int idx = static_cast<int>(type);
+	assert(idx >= 0 && idx < EAsset::Count);
 
-	auto iter = m_mapAsset[Type].find(_Key);
-	if (iter == m_mapAsset[Type].end()) return nullptr;
+	auto iter = m_mapAsset[idx].find(_Key);
+	if (iter == m_mapAsset[idx].end())
+		return nullptr;
 
-	return (T*)iter->second.Get();
+	return static_cast<T*>(iter->second.Get());
 }
 
 template<typename T>
@@ -42,7 +45,7 @@ Ptr<T> AssetMgr::Load(const wstring& _Key, const wstring& _RelativePath) {
 	if (pAsset != nullptr) return pAsset;
 
 	// 에셋 객체 생성
-	pAsset = new T;
+	pAsset = NEW T;
 
 	// 입력된 경로로부터 에셋 로딩작업 진행	
 	pAsset->Load(CONTENT_PATH + _RelativePath);

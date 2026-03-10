@@ -9,7 +9,7 @@
 #include "Shadow.h"
 
 CTileRender::CTileRender() : CRenderComponent(EComponent::E_TileRender) {
-	m_Buffer = new StructuredBuffer;
+	m_Buffer = NEW StructuredBuffer;
 }
 
 CTileRender::CTileRender(const CTileRender& _Origin) 
@@ -17,7 +17,7 @@ CTileRender::CTileRender(const CTileRender& _Origin)
 	, m_TileMap { _Origin.m_TileMap }
 	, m_vecSpriteInfo{ _Origin.m_vecSpriteInfo }
 	, m_Buffer{} {
-	m_Buffer = new StructuredBuffer;
+	m_Buffer = NEW StructuredBuffer;
 }
 
 CTileRender::~CTileRender() {}
@@ -112,7 +112,7 @@ void CTileRender::CreateMaterial() {
 
 	// 찾는 재질이 없으면 생성한다.
 	if (pMtrl == nullptr) {
-		pMtrl = new AMaterial;
+		pMtrl = NEW AMaterial;
 		pMtrl->SetName(MtrlName);
 
 		// 쉐이더를 찾아서 재질에 세팅해준다.
@@ -120,7 +120,7 @@ void CTileRender::CreateMaterial() {
 
 		// 찾는 쉐이더가 없으면 만들어서 에셋매니저에 등록해둔다
 		if (pShader == nullptr) {
-			pShader = new AGraphicShader;
+			pShader = NEW AGraphicShader;
 			pShader->SetName(ShaderName);
 			pShader->CreateVertexShader(FilePath, VS);
 			pShader->CreatePixelShader(FilePath, PS);

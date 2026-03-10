@@ -22,6 +22,9 @@ void TextureUI::Tick_UI() {
 			, Vec2(0.f, 0.f), Vec2(1.f, 1.f)
 			, ImVec4(0.f, 0.f, 0.f, 1.f));
 
+		ImGui::Dummy(Vec2(0.f));
+		ImGui::SameLine(100.0f);
+
 		string Key = string(pTexture->GetKey().begin(), pTexture->GetKey().end());
 		ImGui::InputText("##TextureName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 	}

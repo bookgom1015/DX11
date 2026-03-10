@@ -17,15 +17,37 @@ void CreateObject(GameObject* _Object, int LayerIdx) {
     TaskMgr::GetInst()->AddTask(info);
 }
 
-void Util::ChangeLevel(const wstring& _NextLevelName) {
-	TaskInfo info{};
+namespace Util {
+    void ChangeLevel(const wstring& _NextLevelName) {
+        TaskInfo info{};
 
-	wcscpy_s(Buff, 255, _NextLevelName.c_str());
-	
-	info.Type = ETask::E_ChangeLevel;
-	info.Param_0 = (DWORD_PTR)Buff;	
+        wcscpy_s(Buff, 255, _NextLevelName.c_str());
 
-	TaskMgr::GetInst()->AddTask(info);
+        info.Type = ETask::E_ChangeLevel;
+        info.Param_0 = (DWORD_PTR)Buff;
+
+        TaskMgr::GetInst()->AddTask(info);
+    }
+
+    // 64-bit FNV-1a
+    constexpr uint64_t HashString(std::string_view str) {
+        uint64_t hash = 14695981039346656037ull; // offset basis
+        for (char c : str) {
+            hash ^= static_cast<uint64_t>(static_cast<unsigned char>(c));
+            hash *= 1099511628211ull; // prime
+        }
+        return hash;
+    }
+
+    // wchar_t 버전
+    constexpr uint64_t HashWString(std::wstring_view str) {
+        uint64_t hash = 14695981039346656037ull;
+        for (wchar_t c : str) {
+            hash ^= static_cast<uint64_t>(c);
+            hash *= 1099511628211ull;
+        }
+        return hash;
+    }
 }
 
 void ChangeLevelState(ELevelState::Type _NextState) {
@@ -165,21 +187,61 @@ wstring ELevelLayer::GetLevelLayerName(Type type) {
     }
 }
 
-wstring EComponent::GetComponentTypeName(Type type) {
-    switch (type) {
-    case E_Transform: return L"CTransform";
-    case E_Camera: return L"CCamera";
-    case E_Collider2D: return L"CCollider2D";
-    case E_Collider3D: return L"CCollider3D";
-    case E_Light2D: return L"CLight2D";
-    case E_Light3D: return L"CLight3D";
-    case E_MeshRender: return L"CMeshRender";
-    case E_BillboardRender: return L"CBillboardRender";
-    case E_SpriteRender: return L"CSpriteRender";
-    case E_FlipbookRender: return L"CFlipbookRender";
-    case E_ParticleRender: return L"CParticleRender";
-    case E_TileRender: return L"CTileRender";
-    case E_Rigidbody: return L"CRigidbody";
-    default: assert(false && "Undefined Component Type");
+namespace EComponent {
+    wstring GetComponentTypeName(Type _Type) {
+        switch (_Type) {
+        case E_Transform: return L"CTransform";
+        case E_Camera: return L"CCamera";
+        case E_Collider2D: return L"CCollider2D";
+        case E_Collider3D: return L"CCollider3D";
+        case E_Light2D: return L"CLight2D";
+        case E_Light3D: return L"CLight3D";
+        case E_MeshRender: return L"CMeshRender";
+        case E_BillboardRender: return L"CBillboardRender";
+        case E_SpriteRender: return L"CSpriteRender";
+        case E_FlipbookRender: return L"CFlipbookRender";
+        case E_ParticleRender: return L"CParticleRender";
+        case E_TileRender: return L"CTileRender";
+        case E_Rigidbody: return L"CRigidbody";
+        default: assert(false && "Undefined Component Type");
+        }
+    }
+
+    Type GetComponentType(const wstring& _Name) {
+        switch (Util::HashWString(_Name)) {
+        case Util::HashWString(L"CTransform"): return EComponent::E_Transform;
+        case Util::HashWString(L"CCamera"): return EComponent::E_Camera;
+        case Util::HashWString(L"CCollider2D"): return EComponent::E_Collider2D;
+        case Util::HashWString(L"CCollider3D"): return EComponent::E_Collider3D;
+        case Util::HashWString(L"CLight2D"): return EComponent::E_Light2D;
+        case Util::HashWString(L"CLight3D"): return EComponent::E_Light3D;
+        case Util::HashWString(L"CMeshRender"): return EComponent::E_MeshRender;
+        case Util::HashWString(L"CBillboardRender"): return EComponent::E_BillboardRender;
+        case Util::HashWString(L"CSpriteRender"): return EComponent::E_SpriteRender;
+        case Util::HashWString(L"CFlipbookRender"): return EComponent::E_FlipbookRender;
+        case Util::HashWString(L"CParticleRender"): return EComponent::E_ParticleRender;
+        case Util::HashWString(L"CTileRender"): return EComponent::E_TileRender;
+        case Util::HashWString(L"CRigidbody"): return EComponent::E_Rigidbody;
+        default: assert(false && "Undefined Component Type");
+        }
+    }
+
+    Component* GetComponent(Type _Type) {
+        switch (_Type) {
+        case E_Transform: return NEW CTransform;
+        case E_Camera: return NEW CCamera;
+        case E_Collider2D: return NEW CCollider2D;
+        case E_Collider3D: assert(false && "Not Implemented Component");
+        case E_Light2D: return NEW CLight2D;
+        case E_Light3D: assert(false && "Not Implemented Component");
+        case E_MeshRender: return NEW CMeshRender;
+        case E_BillboardRender: return NEW CBillboardRender;
+        case E_SpriteRender: return NEW CSpriteRender;
+        case E_FlipbookRender: return NEW CFlipbookRender;
+        case E_ParticleRender: assert(false && "Not Implemented Component");
+        case E_TileRender: return NEW CTileRender;
+        case E_Rigidbody: return NEW CRigidBody;
+        default: assert(false && "Undefined Component Type");
+        }
     }
 }

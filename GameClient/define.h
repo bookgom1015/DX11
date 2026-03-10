@@ -1,6 +1,10 @@
 #pragma once
 
-
+#ifdef _DEBUG
+#define NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define NEW new
+#endif
 
 // Singleton 매크로
 #define SINGLE(Type) private:\
@@ -18,4 +22,4 @@
 #define ClientWidth 1920
 #define ClientHeight 1080
 
-#define CLONE(Type) Type* Clone() { return new Type(*this); }
+#define CLONE(Type) Type* Clone() { return NEW Type(*this); }

@@ -1,10 +1,19 @@
 #pragma once
 
+class Component;
+
 // Task
 void CreateObject(class GameObject* _Object, int LayerIdx);
+
 namespace Util {
 	void ChangeLevel(const wstring& _NextLevelName);
+
+    // 64-bit FNV-1a
+    constexpr uint64_t HashString(string_view str);
+    // wchar_t 버전
+    constexpr uint64_t HashWString(wstring_view str);
 }
+
 void ChangeLevelState(ELevelState::Type _NextState);
 
 
@@ -58,5 +67,8 @@ namespace ELevelLayer {
 }
 
 namespace EComponent {
-    wstring GetComponentTypeName(Type type);
+    wstring GetComponentTypeName(Type _Type);
+    Type GetComponentType(const wstring& _Name);
+
+    Component* GetComponent(Type _Type);
 }
