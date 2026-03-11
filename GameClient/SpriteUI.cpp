@@ -14,8 +14,19 @@ void SpriteUI::Tick_UI() {
 
 	string Key = string(pSprite->GetKey().begin(), pSprite->GetKey().end());
 
+	auto leftTopUV = pSprite->GetLeftTopUV();
+	auto sliceUV = pSprite->GetSliceUV();
+
+	ImGui::Text("Sprite");
+	ImGui::SameLine(100.f);
+	ImGui::ImageWithBg(
+		(ImTextureRef)pSprite->GetAtlas()->GetSRV().Get()
+		, ImVec2(200.f, 200.f)
+		, leftTopUV, leftTopUV + sliceUV
+		, ImVec4(0.f, 0.f, 0.f, 1.f));
+
 	ImGui::Text("Name");
-	ImGui::SameLine(120);
+	ImGui::SameLine(100.f);
 	ImGui::InputText("##SpriteName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
 	ImGui::Spacing();
@@ -33,7 +44,7 @@ void SpriteUI::Tick_UI() {
 		AtlasName = string(pAtlas->GetKey().begin(), pAtlas->GetKey().end());
 
 	ImGui::Text("Atlas Name");
-	ImGui::SameLine(120);
+	ImGui::SameLine(100.f);
 	ImGui::InputText("##AtlasName", AtlasName.data(), AtlasName.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
 

@@ -1,95 +1,129 @@
 #include "pch.h"
 #include "TreeUI.h"
 
+namespace {
+	bool NaturalLess(const Ptr<TreeNode>& _a, const Ptr<TreeNode>& _b) {
+		size_t ia = 0;
+		size_t ib = 0;
+
+		auto a = _a->GetStr();
+		auto b = _b->GetStr();
+
+		while (ia < a.size() && ib < b.size()) {
+			const unsigned char ca = static_cast<unsigned char>(a[ia]);
+			const unsigned char cb = static_cast<unsigned char>(b[ib]);
+
+			const bool aIsDigit = std::isdigit(ca) != 0;
+			const bool bIsDigit = std::isdigit(cb) != 0;
+
+			if (aIsDigit && bIsDigit) {
+				size_t ja = ia;
+				size_t jb = ib;
+
+				while (ja < a.size() && std::isdigit(static_cast<unsigned char>(a[ja])))
+					++ja;
+				while (jb < b.size() && std::isdigit(static_cast<unsigned char>(b[jb])))
+					++jb;
+
+				// 앞쪽 0 무시한 숫자 구간 비교
+				size_t na = ia;
+				size_t nb = ib;
+
+				while (na < ja && a[na] == '0') ++na;
+				while (nb < jb && b[nb] == '0') ++nb;
+
+				const size_t lenA = ja - na;
+				const size_t lenB = jb - nb;
+
+				// 유효 숫자 길이가 더 긴 쪽이 더 큰 수
+				if (lenA != lenB) return lenA < lenB;
+
+				// 길이가 같으면 자리수별 비교
+				for (size_t k = 0; k < lenA; ++k)
+					if (a[na + k] != b[nb + k]) return a[na + k] < b[nb + k];
+
+				// 숫자값이 같으면 원래 숫자 길이 짧은 쪽 우선 (예: 3 < 03)
+				if ((ja - ia) != (jb - ib)) return (ja - ia) < (jb - ib);
+
+				ia = ja;
+				ib = jb;
+				continue;
+			}
+
+			if (ca != cb) return ca < cb;
+
+			++ia;
+			++ib;
+		}
+
+		return a.size() < b.size();
+	}
+}
+
 // ========
 // TreeNode
 // ========
 TreeNode::TreeNode()
 	: Parent(nullptr)
 	, m_Owner(nullptr)
-	, Framed(false)	
-{
+	, Framed(false)	{
 	// 각 노드가 표기하려는 이름이 같을 수가 있기 때문에, 보여주려는 이름 뒤에 붙을 고유 문자열을 미리 생성해둔다.
 	char szKey[50] = {};
 	sprintf_s(szKey, 50, "##TreeNode%d", GetID());	
 	Key = szKey;
 }
 
-TreeNode::~TreeNode()
-{
-}
+TreeNode::~TreeNode() {}
 
-
-void TreeNode::Tick()
-{
+void TreeNode::Tick() {
 	// TreeNode Flag 설정
 	UINT Flags = ImGuiTreeNodeFlags_SpanFullWidth		// 클릭 판정범위 확장
 			   | ImGuiTreeNodeFlags_OpenOnDoubleClick	// 더블 클릭으로만 열리기
 			   | ImGuiTreeNodeFlags_OpenOnArrow;		// 화살표 누르면 열리기			   
 			  
-
 	// 노드가 자식노드를 보유하고 있지 않으면 Leaf 플래그 추가
-	if (vecChildNode.empty())
-		Flags |= ImGuiTreeNodeFlags_Leaf;
+	if (vecChildNode.empty()) Flags |= ImGuiTreeNodeFlags_Leaf;
 
-	if(m_Owner->GetSelected() == this)
-		Flags |= ImGuiTreeNodeFlags_Selected;
+	if(m_Owner->GetSelected() == this) Flags |= ImGuiTreeNodeFlags_Selected;
 
-	if (Framed)
-		Flags |= ImGuiTreeNodeFlags_Framed;
+	if (Framed) Flags |= ImGuiTreeNodeFlags_Framed;
 
 	string NodeName = Str + Key;
-
-	if (Framed && vecChildNode.empty())
-		NodeName = "   " + NodeName;
+	if (Framed && vecChildNode.empty()) NodeName = "      " + NodeName;
 
 	// 트리노드에 등록한 문자열을 Key 로 해서 출력
-	if (ImGui::TreeNodeEx(NodeName.c_str(), Flags))
-	{
+	if (ImGui::TreeNodeEx(NodeName.c_str(), Flags))	{
 		ClickCheck();
-
 		DragCheck();
-
 		DropCheck();
 
 		for (size_t i = 0; i < vecChildNode.size(); ++i)
-		{
 			vecChildNode[i]->Tick();
-		}
 
 		ImGui::TreePop();
 	}
-	else
-	{
+	else {
 		ClickCheck();
-
 		DragCheck();
-
 		DropCheck();
 	}
 }
 
-void TreeNode::ClickCheck()
-{
+void TreeNode::ClickCheck() {
 	if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))
-	{
 		m_Owner->RegisterSelected(this);
-	}
 }
 
-void TreeNode::DragCheck()
-{
+void TreeNode::DragCheck() {
 	// 드래그
-	if (ImGui::BeginDragDropSource())
-	{		
+	if (ImGui::BeginDragDropSource()) {		
 		// Drag 사이에 Text 를 넣어주면, 드래그중인 마우스 위치에 Text 가 따라다니면서 렌더링된다.
 		ImGui::Text(Str.c_str());
 
-		if (0 != Data)
-		{
-			ImGui::SetDragDropPayload(m_Owner->GetParentUI()->GetUIName().c_str()
-									, &Data, sizeof(DWORD_PTR));
-		}
+		if (0 != Data) 
+			ImGui::SetDragDropPayload(
+				m_Owner->GetParentUI()->GetUIName().c_str()
+				, &Data, sizeof(DWORD_PTR));
 
 		m_Owner->RegisterDragged(this);
 
@@ -97,23 +131,24 @@ void TreeNode::DragCheck()
 	}
 }
 
-void TreeNode::DropCheck()
-{
-	if (ImGui::BeginDragDropTarget())
-	{
+void TreeNode::DropCheck() {
+	if (ImGui::BeginDragDropTarget()) {
 		const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload(m_Owner->GetDropKey().c_str());
 
 		if (Payload)
-		{
 			// Drag Drop 성공
 			m_Owner->RegisterDropped(this);
-		}
 
 		ImGui::EndDragDropTarget();
 	}
 }
 
+void TreeNode::AddChildNode(Ptr<TreeNode> _Node) {
+	vecChildNode.push_back(_Node);
+	_Node->Parent = this;
 
+	sort(vecChildNode.begin(), vecChildNode.end(), NaturalLess);
+}
 
 // ======
 // TreeUI
@@ -123,63 +158,43 @@ TreeUI::TreeUI()
 	, m_Inst(nullptr)
 	, m_MemFunc(nullptr)
 	, m_DDInst(nullptr)
-	, m_DDMemFunc(nullptr)
-{
-}
+	, m_DDMemFunc(nullptr) {}
 
-TreeUI::~TreeUI()
-{
-}
+TreeUI::~TreeUI() {}
 
-void TreeUI::Tick_UI()
-{
+void TreeUI::Tick_UI() {
 	for (size_t i = 0; i < m_vecNode.size(); ++i)
-	{
 		m_vecNode[i]->Tick();
-	}
 
 	// Drag 하던 노드를 특정 노드에 Drop 함
-	if (   (m_DragNode.Get() && m_DropNode.Get()) 
-		|| (m_DragNode.Get() && ImGui::IsMouseReleased(ImGuiMouseButton_Left)))
-	{
+	if ((m_DragNode.Get() && m_DropNode.Get()) 
+		|| (m_DragNode.Get() && ImGui::IsMouseReleased(ImGuiMouseButton_Left))) {
 		if (m_DDInst && m_DDMemFunc)
-		{
 			(m_DDInst->*m_DDMemFunc)((DWORD_PTR)m_DragNode.Get(), (DWORD_PTR)m_DropNode.Get());
-		}
 
 		m_DragNode = nullptr;
 		m_DropNode = nullptr;
 	}
 }
 
-Ptr<TreeNode> TreeUI::AddItem(Ptr<TreeNode> _ParentNode, string _String, DWORD_PTR _Data)
-{
+Ptr<TreeNode> TreeUI::AddItem(Ptr<TreeNode> _ParentNode, string _String, DWORD_PTR _Data) {
 	Ptr<TreeNode> pNewNode = NEW TreeNode;
 	pNewNode->Str = _String;
 	pNewNode->m_Owner = this;
 	pNewNode->Data = _Data;
 
 	// 최상위 부모노드로 추가
-	if (nullptr == _ParentNode)
-	{
+	if (_ParentNode == nullptr)
 		m_vecNode.push_back(pNewNode);
-	}
-
 	// 특정 노드 및에 자식으로 추가
 	else
-	{
 		_ParentNode->AddChildNode(pNewNode);
-	}
 
 	return pNewNode;
 }
 
-void TreeUI::RegisterSelected(Ptr<TreeNode> _Node)
-{
+void TreeUI::RegisterSelected(Ptr<TreeNode> _Node) {
 	m_Selected = _Node;
-	
-	if (m_Inst && m_MemFunc)
-	{
-		(m_Inst->*m_MemFunc)(_Node->Data);
-	}	
+
+	if (m_Inst && m_MemFunc) (m_Inst->*m_MemFunc)(_Node->Data);
 }

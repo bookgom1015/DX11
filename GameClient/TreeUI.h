@@ -1,20 +1,22 @@
 #pragma once
+
 #include "EditorUI.h"
 
-struct TreeNode
-    : public Entity
-{
+struct TreeNode : public Entity {
 public:
-    string                  Str;
-    string                  Key;
-    DWORD_PTR               Data;
+    void Tick();
 
-    TreeNode*               Parent;
-    vector<Ptr<TreeNode>>   vecChildNode;
+public:
+    TreeNode();
+    virtual ~TreeNode();
 
-    bool                    Framed;
+public:
+    void AddChildNode(Ptr<TreeNode> _Node);
 
-    class TreeUI*           m_Owner; // 노드를 소유하고 있는 TreeUI
+    void SetFramed(bool _Frame) { Framed = _Frame; }
+
+    string GetKey() { return Key; }
+    string GetStr() { return Str; }
 
 private:
     void ClickCheck();
@@ -22,40 +24,23 @@ private:
     void DropCheck();
 
 public:
-    void AddChildNode(Ptr<TreeNode> _Node)
-    {
-        vecChildNode.push_back(_Node);
-        _Node->Parent = this;
-    }
+    string Str;
+    string Key;
+    DWORD_PTR Data;
 
-    void SetFramed(bool _Frame) { Framed = _Frame; }
+    TreeNode* Parent;
+    vector<Ptr<TreeNode>> vecChildNode;
 
-public:
-    void Tick();
+    bool Framed;
 
-public:
-    TreeNode();
-    virtual ~TreeNode();
+    class TreeUI* m_Owner; // 노드를 소유하고 있는 TreeUI
 };
 
 
-class TreeUI :
-    public EditorUI
-{
-private:
-    vector<Ptr<TreeNode>>   m_vecNode;
-    Ptr<TreeNode>           m_Selected; // 트리 소속 노드들 중에서 선택된 노드
-    Ptr<TreeNode>           m_DragNode; // 트리 소속 노드들 중에서 드래그 중인 노드
-    Ptr<TreeNode>           m_DropNode; // 트리 소속 노드들 중에서 드랍 당한 노드
-
-    EditorUI*               m_Inst;
-    DELEGATE_1              m_MemFunc;
-
-    string                  m_DropKey;
-
-    EditorUI*               m_DDInst;
-    DELEGATE_2              m_DDMemFunc;
-
+class TreeUI : public EditorUI {
+public:
+    TreeUI();
+    virtual ~TreeUI();
 
 public:
     virtual void Tick_UI() override;
@@ -76,7 +61,17 @@ public:
     void SetDropKey(const string& _DropKey) { m_DropKey = _DropKey; }
     const string& GetDropKey() { return m_DropKey; }
 
-public:
-    TreeUI();
-    virtual ~TreeUI();
+private:
+    vector<Ptr<TreeNode>> m_vecNode;
+    Ptr<TreeNode> m_Selected; // 트리 소속 노드들 중에서 선택된 노드
+    Ptr<TreeNode> m_DragNode; // 트리 소속 노드들 중에서 드래그 중인 노드
+    Ptr<TreeNode> m_DropNode; // 트리 소속 노드들 중에서 드랍 당한 노드
+
+    EditorUI* m_Inst;
+    DELEGATE_1 m_MemFunc;
+
+    string m_DropKey;
+
+    EditorUI* m_DDInst;
+    DELEGATE_2 m_DDMemFunc;
 };

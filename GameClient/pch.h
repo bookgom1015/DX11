@@ -59,6 +59,7 @@ inline Vec3 Reflect(const Vec3& v, const Vec3& normal) {
 #include <vector>
 #include <list>
 #include <map>
+#include <unordered_set>
 
 #include <string>
 #include <format>
@@ -67,6 +68,9 @@ using namespace std;
 #include <functional>
 
 #include <chrono>
+
+// 파일 시스템
+#include <filesystem>
 
 // 상대경로
 #include "resource.h"

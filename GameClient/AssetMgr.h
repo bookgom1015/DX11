@@ -16,7 +16,9 @@ private:
 	void CreateEngineShader();
 	void CreateEngineTexture();
 	void CreateEngineMaterial();
-	void CreateEngineSprite();
+
+	void LoadTextures();
+	void LoadSprites();
 
 public:
 	void AddAsset(const wstring& _Key, Ptr<Asset> _Asset);

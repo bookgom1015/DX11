@@ -14,7 +14,7 @@
 #include "ListUI.h"
 #include "TreeUI.h"
 #include "Profiler.h"
-#include "FlipbookEditorUI.h"
+#include "AtlasEditorUI.h"
 
 #include "CCamMoveScript.h"
 
@@ -169,7 +169,7 @@ void EditorMgr::CreateEditorUI() {
     pUI = m_LogUI.Get();
     AddUI(pUI->GetUIName(), pUI);
 
-    pUI = NEW FlipbookEditorUI;
+    pUI = NEW AtlasEditorUI;
     AddUI(pUI->GetUIName(), pUI);
     
     pUI = NEW ListUI;

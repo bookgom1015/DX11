@@ -2,13 +2,16 @@
 #include "AssetMgr.h"
 
 #include "PathMgr.h"
+#include "EditorMgr.h"
 
 void AssetMgr::Init() {
 	CreateEngineMesh();
 	CreateEngineShader();
 	CreateEngineTexture();
 	CreateEngineMaterial();
-	CreateEngineSprite();
+
+	LoadTextures();
+	LoadSprites();
 }
 
 void AssetMgr::CreateEngineMesh() {
@@ -258,30 +261,53 @@ void AssetMgr::CreateEngineMaterial() {
 
 	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
-
-	//Load<AMaterial>(L"Material\\Default Material_0.mtrl", L"Material\\Default Material_0.mtrl");
 }
 
-void AssetMgr::CreateEngineSprite() {			
-	// =======
-	// TileMap
-	// =======
-	//Ptr<ATileMap> pTileMap = nullptr;
+void AssetMgr::LoadTextures() {
+	auto contentPath = wstring(CONTENT_PATH);
+	auto folderPath = format(L"{}{}", contentPath, L"Texture\\");
+	auto root = filesystem::path(folderPath);
+	if (!filesystem::exists(root)) return;
 
-	//pTileMap = NEW ATileMap;
-	//pTileMap->SetName(L"TileMap\\TestTileMap.tile");
-	//pTileMap->SetRowCol(20, 20);
-	//pTileMap->SetTileSize(Vec2(64.f, 64.f));
-	//pTileMap->SetAtlas(FIND(ATexture, L"TileAtlas"));
+	unordered_set<string> extensions = {
+		".png",
+		".jpg",
+		".jpeg",
+		".bmp"
+	};
 
-	//for (int i = 0; i < 20; ++i)
-	//{
-	//	for (int j = 0; j < 20; ++j)
-	//	{
-	//		pTileMap->SetSprite(i, j, LOAD(ASprite, L"Sprite\\TileSprite_1.sprite"));
-	//	}		
-	//}		
+	for (const auto& entry : filesystem::recursive_directory_iterator(root)) {
+		if (!entry.is_regular_file()) continue;
 
-	//AddAsset(pTileMap->GetName(), pTileMap.Get());
-	//pTileMap->Save(CONTENT_PATH + pTileMap->GetKey());
+		std::string ext = entry.path().extension().string();
+
+		if (extensions.contains(ext)) {
+			auto filePath = StrToWStr(entry.path().string());
+			auto filePathAfterConent = filePath.substr(contentPath.size());
+
+			auto texture = LOAD(ATexture, filePathAfterConent.c_str());
+			AddAsset(texture->GetKey(), texture.Get());
+		}
+	}
+}
+
+void AssetMgr::LoadSprites() {
+	auto contentPath = wstring(CONTENT_PATH);
+	auto folderPath = format(L"{}{}", contentPath, L"Sprite\\");
+	auto root = filesystem::path(folderPath);	
+	if (!filesystem::exists(root)) return;
+
+	for (const auto& entry : filesystem::recursive_directory_iterator(root)) {
+		if (!entry.is_regular_file()) continue;
+
+		std::string ext = entry.path().extension().string();
+
+		if (ext == ".sprite") {
+			auto filePath = StrToWStr(entry.path().string());
+			auto filePathAfterConent = filePath.substr(contentPath.size());
+
+			auto sprite = LOAD(ASprite, filePathAfterConent.c_str());
+			AddAsset(sprite->GetKey(), sprite.Get());
+		}
+	}
 }

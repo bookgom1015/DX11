@@ -26,8 +26,11 @@ Ptr<Asset> AssetMgr::FindAsset(EAsset::Type _Type, const wstring& _Key) {
 }
 
 void AssetMgr::AddAsset(const wstring& _Key, Ptr<Asset> _Asset) {	
-	// 동일한 Key 로 등록된 적이 없어야 한다.
-	assert(m_mapAsset[(UINT)_Asset->GetType()].find(_Key) == m_mapAsset[(UINT)_Asset->GetType()].end());
+	auto iter = m_mapAsset[_Asset->GetType()].find(_Key);
+	auto end = m_mapAsset[_Asset->GetType()].end();
+	// 동일한 Key가 이미 있어도 경로가 같은 파일이면 동일 파일로 인식하여 무시
+	assert(iter == end || (iter->second->GetRelativePath() == _Asset->GetRelativePath()));
+	if (iter != end) return;
 
 	_Asset->SetKey(_Key);
 	m_mapAsset[(UINT)_Asset->GetType()].insert(make_pair(_Key, _Asset));

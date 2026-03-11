@@ -212,7 +212,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="extern.h" />
-    <ClInclude Include="FlipbookEditorUI.h" />
+    <ClInclude Include="AtlasEditorUI.h" />
     <ClInclude Include="FlipbookRenderUI.h" />
     <ClInclude Include="FlipbookUI.h" />
     <ClInclude Include="framework.h" />
@@ -228,6 +228,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="ImGui\imgui_impl_dx11.h" />
     <ClInclude Include="ImGui\imgui_impl_win32.h" />
     <ClInclude Include="ImGui\imgui_internal.h" />
+    <ClInclude Include="ImGui\imgui_stdlib.h" />
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
@@ -331,7 +332,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="AGraphicShader.cpp" />
     <ClCompile Include="extern.cpp" />
-    <ClCompile Include="FlipbookEditorUI.cpp" />
+    <ClCompile Include="AtlasEditorUI.cpp" />
     <ClCompile Include="FlipbookRenderUI.cpp" />
     <ClCompile Include="FlipbookUI.cpp" />
     <ClCompile Include="func.cpp" />
@@ -343,6 +344,10 @@ call CodeGen.exe</Command>
     <ClCompile Include="ImGui\imgui_draw.cpp" />
     <ClCompile Include="ImGui\imgui_impl_dx11.cpp" />
     <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="ImGui\imgui_stdlib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Inspector.cpp" />

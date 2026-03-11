@@ -352,8 +352,11 @@
     <ClInclude Include="Source\Scripts\CEmptyScript.h">
       <Filter>Source\Scripts</Filter>
     </ClInclude>
-    <ClInclude Include="FlipbookEditorUI.h">
-      <Filter>GameEngine\07. EditorUI\12. FlipbookEditorUI</Filter>
+    <ClInclude Include="AtlasEditorUI.h">
+      <Filter>GameEngine\07. EditorUI\12. AtlasEditorUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_stdlib.h">
+      <Filter>ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -644,7 +647,7 @@
     <Filter Include="GameEngine\07. EditorUI\02. ComponentUI\RenderComponent\05. TileRenderUI">
       <UniqueIdentifier>{a8686ceb-0ec5-4782-a2a8-43c623166bf8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameEngine\07. EditorUI\12. FlipbookEditorUI">
+    <Filter Include="GameEngine\07. EditorUI\12. AtlasEditorUI">
       <UniqueIdentifier>{c10de7cb-3611-4786-ac14-962cf4f0fcb6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -973,8 +976,11 @@
     <ClCompile Include="Source\Scripts\CEmptyScript.cpp">
       <Filter>Source\Scripts</Filter>
     </ClCompile>
-    <ClCompile Include="FlipbookEditorUI.cpp">
-      <Filter>GameEngine\07. EditorUI\12. FlipbookEditorUI</Filter>
+    <ClCompile Include="AtlasEditorUI.cpp">
+      <Filter>GameEngine\07. EditorUI\12. AtlasEditorUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_stdlib.cpp">
+      <Filter>ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
