@@ -99,6 +99,19 @@ void SceneUI::ControlButtons() {
     float windowWidth = ImGui::GetContentRegionAvail().x;
     float childWidth = 200.0f;
 
+    auto level = LevelMgr::GetInst()->GetCurLevel();
+    
+    string levelName{};
+    if (level != nullptr) levelName = WStrToStr(level->GetName());
+
+    ImGui::SetNextItemWidth(100.f);
+
+    if (ImGui::InputText("##LEVEL_NAME", &levelName
+        , level != nullptr ? 0 : ImGuiInputTextFlags_ReadOnly)) 
+        level->SetName(StrToWStr(levelName));
+
+    ImGui::SameLine();
+
     ImGui::SetCursorPosX((windowWidth - childWidth) * 0.5f);
     ImGui::BeginChild("Buttons", Vec2(childWidth, 36.f));
 
@@ -108,7 +121,7 @@ void SceneUI::ControlButtons() {
     if (playing) ImGui::PushStyleColor(
         ImGuiCol_Button, ImGui::GetStyleColorVec4(ImGuiCol_ButtonActive));
     if (ImGui::Button("Play", Vec2(48.f, 32.f)))
-        ChangeLevelState(ELevelState::E_Playing);
+        if (level != nullptr) ChangeLevelState(ELevelState::E_Playing);
     if (playing) ImGui::PopStyleColor();
     ImGui::SameLine();
 
@@ -116,7 +129,7 @@ void SceneUI::ControlButtons() {
     if (paused) ImGui::PushStyleColor(
         ImGuiCol_Button, ImGui::GetStyleColorVec4(ImGuiCol_ButtonActive));
     if (ImGui::Button("Pause", Vec2(48.f, 32.f)))
-        ChangeLevelState(ELevelState::E_Paused);
+        if (level != nullptr) ChangeLevelState(ELevelState::E_Paused);
     if (paused) ImGui::PopStyleColor();
     ImGui::SameLine();
 
@@ -124,7 +137,7 @@ void SceneUI::ControlButtons() {
     if (stopped) ImGui::PushStyleColor(
         ImGuiCol_Button, ImGui::GetStyleColorVec4(ImGuiCol_ButtonActive));
     if (ImGui::Button("Stop", Vec2(48.f, 32.f)))
-        ChangeLevelState(ELevelState::E_Stopped);
+        if (level != nullptr) ChangeLevelState(ELevelState::E_Stopped);
     if (stopped) ImGui::PopStyleColor();
 
     ImGui::EndChild();
@@ -176,6 +189,15 @@ void SceneUI::Scene() {
 
     auto srv = Device::GetInst()->GetScene_Srv();
     ImGui::Image((ImTextureID)srv, avail);
+
+    if (ImGui::BeginDragDropTarget()) {
+        EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Level, [&](Ptr<Asset> asset) {
+            auto level = static_cast<ALevel*>(asset.Get());
+            Util::ChangeLevel(level->GetKey());
+        });
+
+        ImGui::EndDragDropTarget();
+    }
 
     // 씬 이미지의 absolute 좌상단(스크린 좌표) 저장
     m_SceneMin = ImGui::GetItemRectMin();;

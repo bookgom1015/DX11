@@ -3,6 +3,7 @@
 
 #include "TimeMgr.h"
 #include "KeyMgr.h"
+#include "AssetMgr.h"
 #include "LevelMgr.h"
 #include "RenderMgr.h"
 #include "TaskMgr.h"
@@ -24,6 +25,9 @@ int Engine::Progress() {
 
     // Key 상태 계산
     KeyMgr::GetInst()->Tick();
+
+    // 파일 상태 갱신
+    AssetMgr::GetInst()->Tick();
       
     // LevelMgr 업데이트
     LevelMgr::GetInst()->Progress();
@@ -42,4 +46,3 @@ int Engine::Progress() {
 
     return S_OK;
 }
-

@@ -358,6 +358,9 @@
     <ClInclude Include="ImGui\imgui_stdlib.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="TileMapEditorUI.h">
+      <Filter>GameEngine\07. EditorUI\13. TileMapEditorUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="GameClient.ico">
@@ -649,6 +652,9 @@
     </Filter>
     <Filter Include="GameEngine\07. EditorUI\12. AtlasEditorUI">
       <UniqueIdentifier>{c10de7cb-3611-4786-ac14-962cf4f0fcb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\07. EditorUI\13. TileMapEditorUI">
+      <UniqueIdentifier>{6cf522df-0036-4242-9322-c7438bcbf780}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -981,6 +987,9 @@
     </ClCompile>
     <ClCompile Include="ImGui\imgui_stdlib.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapEditorUI.cpp">
+      <Filter>GameEngine\07. EditorUI\13. TileMapEditorUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

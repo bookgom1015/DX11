@@ -15,6 +15,7 @@
 #include "TreeUI.h"
 #include "Profiler.h"
 #include "AtlasEditorUI.h"
+#include "TileMapEditorUI.h"
 
 #include "CCamMoveScript.h"
 
@@ -83,6 +84,41 @@ void EditorMgr::Init() {
 void EditorMgr::Progress() {
     Tick();
     Render();
+}
+
+float EditorMgr::CalcItemSize(string_view text) {
+    float spacing = ImGui::GetStyle().ItemSpacing.x;
+    float padding = ImGui::GetStyle().FramePadding.x;
+    return ImGui::CalcTextSize(text.data()).x + padding * 2.f + spacing;
+}
+
+void EditorMgr::RightAlignNextItem(const initializer_list<string_view>& text) {
+    float spacing = ImGui::GetStyle().ItemSpacing.x;
+    float padding = ImGui::GetStyle().FramePadding.x;
+
+    float totalWidth{};
+    for (const auto& txt : text) {
+        totalWidth += ImGui::CalcTextSize(txt.data()).x + padding * 2.0f;
+        totalWidth += spacing;
+    }
+
+    totalWidth -= spacing;
+
+    // 오른쪽으로 커서 이동
+    ImGui::SetCursorPosX(ImGui::GetContentRegionAvail().x - totalWidth + ImGui::GetCursorPosX());
+}
+
+void EditorMgr::AcceptAssetDragDrop(
+    string_view _Sender
+    , EAsset::Type _Type
+    , const std::function<void(Ptr<Asset>)>& func) {
+    decltype(auto) PayLoad = ImGui::AcceptDragDropPayload(_Sender.data());
+    if (PayLoad) {
+        auto data = *(static_cast<DWORD_PTR*>(PayLoad->Data));
+        Ptr<Asset> asset = reinterpret_cast<Asset*>(data);
+
+        if (asset->GetType() == _Type) func(asset);
+    }
 }
 
 void EditorMgr::Tick() {
@@ -170,6 +206,9 @@ void EditorMgr::CreateEditorUI() {
     AddUI(pUI->GetUIName(), pUI);
 
     pUI = NEW AtlasEditorUI;
+    AddUI(pUI->GetUIName(), pUI);
+
+    pUI = NEW TileMapEditorUI;
     AddUI(pUI->GetUIName(), pUI);
     
     pUI = NEW ListUI;

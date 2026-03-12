@@ -67,6 +67,31 @@ Ptr<T> AssetMgr::Load(const wstring& _Key, const wstring& _RelativePath) {
 }
 
 template<typename T>
+Ptr<T> AssetMgr::LoadForcefully(const wstring& _Key, const wstring& _RelativePath) {
+	// 에셋 객체 생성
+	Ptr<T> pAsset = NEW T;
+
+	// 입력된 경로로부터 에셋 로딩작업 진행	
+	pAsset->Load(CONTENT_PATH + _RelativePath);
+
+	// T 타입에 해당하는 실제 AssetType 확인
+	EAsset::Type type = GetAssetType<T>();
+
+	// 맵에 에셋등록
+	m_mapAsset[type].insert(make_pair(_Key, pAsset.Get()));
+
+	// 에셋이 자신이 매니저에 등롣될때 상요된 Key 와, 
+	// 자신이 어떤 경로에 있는 파일로부터 로딩된 에셋인지 스스로 알 수 있도록 해줌
+	pAsset->SetKey(_Key);
+	pAsset->SetRelativePath(_RelativePath);
+
+	m_Changed = true;
+
+	return pAsset;
+}
+
+
+template<typename T>
 Ptr<T> LoadAssetRef(FILE* _File) {
 	// Asset 이 Null 인지 아닌지 저장
 	bool IsNull = false;
@@ -84,5 +109,6 @@ Ptr<T> LoadAssetRef(FILE* _File) {
 
 #define FIND(Type, Key) AssetMgr::GetInst()->Find<Type>(Key)
 #define LOAD(Type, AssetPath) AssetMgr::GetInst()->Load<Type>(AssetPath, AssetPath)
+#define FORCE_LOAD(Type, AssetPath) AssetMgr::GetInst()->LoadForcefully<Type>(AssetPath, AssetPath)
 
 #endif // __ASSETMGR_INL__

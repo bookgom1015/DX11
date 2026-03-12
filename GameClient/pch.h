@@ -60,6 +60,7 @@ inline Vec3 Reflect(const Vec3& v, const Vec3& normal) {
 #include <list>
 #include <map>
 #include <unordered_set>
+#include <initializer_list>
 
 #include <string>
 #include <format>
@@ -71,6 +72,10 @@ using namespace std;
 
 // 파일 시스템
 #include <filesystem>
+
+// 쓰레딩
+#include <mutex>
+#include <thread>
 
 // 상대경로
 #include "resource.h"

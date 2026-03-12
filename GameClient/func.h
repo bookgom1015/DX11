@@ -9,9 +9,43 @@ namespace Util {
 	void ChangeLevel(const wstring& _NextLevelName);
 
     // 64-bit FNV-1a
-    constexpr uint64_t HashString(string_view str);
+    constexpr uint64_t HashString(string_view str) {
+        uint64_t hash = 14695981039346656037ull; // offset basis
+        for (char c : str) {
+            hash ^= static_cast<uint64_t>(static_cast<unsigned char>(c));
+            hash *= 1099511628211ull; // prime
+        }
+        return hash;
+    }
+
     // wchar_t 버전
-    constexpr uint64_t HashWString(wstring_view str);
+    constexpr uint64_t HashWString(wstring_view str) {
+        uint64_t hash = 14695981039346656037ull;
+        for (wchar_t c : str) {
+            hash ^= static_cast<uint64_t>(c);
+            hash *= 1099511628211ull;
+        }
+        return hash;
+    }
+
+    static SimpleRect MakeRect(const Vec2& a, const Vec2& b) {
+        SimpleRect r;
+        r.Min.x = min(a.x, b.x);
+        r.Min.y = min(a.y, b.y);
+        r.Max.x = max(a.x, b.x);
+        r.Max.y = max(a.y, b.y);
+        return r;
+    }
+
+    static bool Intersects(const SimpleRect& a, const SimpleRect& b) {
+        if (a.Max.x <= b.Min.x || a.Min.x >= b.Max.x) return false;
+        if (a.Max.y <= b.Min.y || a.Min.y >= b.Max.y) return false;
+        return true;
+    }
+
+    static float LengthSq(const Vec2& v) {
+        return v.x * v.x + v.y * v.y;
+    }
 }
 
 void ChangeLevelState(ELevelState::Type _NextState);

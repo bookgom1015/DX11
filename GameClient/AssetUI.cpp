@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "AssetUI.h"
 
+#include "AssetMgr.h"
+#include "PathMgr.h"
+#include "EditorMgr.h"
+
 AssetUI::AssetUI(EAsset::Type _Type) : EditorUI(ToString(_Type)), m_AssetType(_Type) {
 	SetActive(false);
 	SetSaperator(false);
@@ -16,6 +20,65 @@ void AssetUI::OutputTitle() {
 	ImGui::Button(ToString(m_AssetType));
 	ImGui::PopStyleColor(3);
 	ImGui::PopID();
+
+	ImGui::SameLine();
+
+	// 오른쪽으로 커서 이동
+	EditorMgr::RightAlignNextItem({ "Revert", "Save" });
+
+	auto asset = GetTargetAsset();
+	if (ImGui::Button("Revert"))  {
+		auto key = asset->GetKey();
+		switch (asset->GetType()) {
+		case EAsset::E_Mesh: {
+			auto loadedAsset = LOAD(AMesh, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Material: {
+			auto loadedAsset = LOAD(AMaterial, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Texture: {
+			auto loadedAsset = LOAD(ATexture, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Sound: 
+			break;
+		case EAsset::E_GraphicShader:
+			break;
+		case EAsset::E_ComputeShader:
+			break;
+		case EAsset::E_Level: {
+			auto loadedAsset = LOAD(ALevel, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Sprite: {
+			auto loadedAsset = FORCE_LOAD(ASprite, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Flipbook: {
+			auto loadedAsset = LOAD(AFlipbook, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_TileMap: {
+			auto loadedAsset = LOAD(ATileMap, key);
+			SetTargetAsset(loadedAsset.Get());
+		}
+			break;
+		case EAsset::E_Prefab:
+			break;
+		}
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Save")) 
+		asset->Save(format(L"{}{}", CONTENT_PATH, asset->GetKey()));
+
 
 	ImGui::Spacing();
 	ImGui::Spacing();

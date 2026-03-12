@@ -6,6 +6,7 @@
 #include "AssetMgr.h"
 #include "EditorMgr.h"
 #include "RenderMgr.h"
+#include "LevelMgr.h"
 
 #include "ContentUI.h"
 
@@ -66,13 +67,15 @@ void Menu::Tick() {
 
 void Menu::File() {
 	if (ImGui::BeginMenu("File")) {
-		if (ImGui::MenuItem("Level Save")) {}
-
-		if (ImGui::MenuItem("Level Load")) {}
-
-		if (ImGui::MenuItem("Exit")) {
-			PostQuitMessage(0);
+		if (ImGui::MenuItem("Save Level")) {
+			auto level = LevelMgr::GetInst()->GetCurLevel();
+			if (level != nullptr) {
+				wstring contentPath = CONTENT_PATH;
+				level->Save(format(L"{}Level\\{}.lv", contentPath, level->GetName()));
+			}
 		}
+
+		if (ImGui::MenuItem("Exit")) PostQuitMessage(0);
 
 		ImGui::EndMenu();
 	}
@@ -108,6 +111,16 @@ void Menu::View() {
 		bool LogActive = pLog->IsActive();
 		if (ImGui::MenuItem("Log", nullptr, &LogActive))
 			pLog->SetActive(LogActive);
+
+		Ptr<EditorUI> pAtlasEditor = EditorMgr::GetInst()->FindUI("Atlas Editor");
+		bool AtlasEditorActive = pAtlasEditor->IsActive();
+		if (ImGui::MenuItem("Atlas Editor", nullptr, &AtlasEditorActive))
+			pAtlasEditor->SetActive(AtlasEditorActive);
+
+		Ptr<EditorUI> pTileMapEditor = EditorMgr::GetInst()->FindUI("TileMap Editor");
+		bool TileMapEditorActive = pTileMapEditor->IsActive();
+		if (ImGui::MenuItem("TileMap Editor", nullptr, &TileMapEditorActive))
+			pTileMapEditor->SetActive(TileMapEditorActive);
 
 		ImGui::EndMenu();
 	}

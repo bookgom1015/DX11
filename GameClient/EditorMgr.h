@@ -12,10 +12,13 @@ public:
 	void Progress();
 
 public:
-	static void RightAlignNextItem(float width) {
-		float avail = ImGui::GetContentRegionAvail().x;
-		ImGui::SameLine(ImGui::GetCursorPosX() + avail - width);
-	}
+	static float CalcItemSize(string_view text);
+	static void RightAlignNextItem(const initializer_list<string_view>& text);
+
+	static void AcceptAssetDragDrop(
+		string_view _Sender,
+		EAsset::Type _Type,
+		const std::function<void(Ptr<Asset>)>& func);
 
 private:
 	void Tick();

@@ -282,6 +282,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="TaskMgr.h" />
     <ClInclude Include="CTileRender.h" />
     <ClInclude Include="TextureUI.h" />
+    <ClInclude Include="TileMapEditorUI.h" />
     <ClInclude Include="TileMapUI.h" />
     <ClInclude Include="TileRenderUI.h" />
     <ClInclude Include="TimeMgr.h" />
@@ -404,6 +405,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="TaskMgr.cpp" />
     <ClCompile Include="CTileRender.cpp" />
     <ClCompile Include="TextureUI.cpp" />
+    <ClCompile Include="TileMapEditorUI.cpp" />
     <ClCompile Include="TileMapUI.cpp" />
     <ClCompile Include="TileRenderUI.cpp" />
     <ClCompile Include="TimeMgr.cpp" />

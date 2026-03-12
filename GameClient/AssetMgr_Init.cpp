@@ -4,16 +4,6 @@
 #include "PathMgr.h"
 #include "EditorMgr.h"
 
-void AssetMgr::Init() {
-	CreateEngineMesh();
-	CreateEngineShader();
-	CreateEngineTexture();
-	CreateEngineMaterial();
-
-	LoadTextures();
-	LoadSprites();
-}
-
 void AssetMgr::CreateEngineMesh() {
 	Ptr<AMesh> pMesh{};
 
@@ -225,7 +215,7 @@ void AssetMgr::CreateEngineMaterial() {
 
 	// Parameter
 	pMtrl->SetScalar(VEC4_0, Vec4(1.f, 1.f, 1.f, 1.f));
-	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Fighter"));
+	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Texture\\Fighter.bmp"));
 
 	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
@@ -239,7 +229,7 @@ void AssetMgr::CreateEngineMaterial() {
 
 	// Parameter
 	pMtrl->SetScalar(VEC4_0, Vec4(1.f, 1.f, 1.f, 1.f));
-	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"PlayerImage"));
+	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Texture\\Character.png"));
 
 	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
@@ -257,57 +247,58 @@ void AssetMgr::CreateEngineMaterial() {
 	pMtrl = NEW AMaterial;
 	pMtrl->SetName(L"EnemyMtrl");
 	pMtrl->SetShader(Find<AGraphicShader>(L"Std2DShader"));
-	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Ghost"));
+	pMtrl->SetTexture(TEX_0, Find<ATexture>(L"Texture\\ghost.png"));
 
 	pMtrl->SetDomain(ERenderDomain::E_Masked);
 	AddAsset(pMtrl->GetName(), pMtrl.Get());
 }
 
 void AssetMgr::LoadTextures() {
+	LoadAssets(L"Texture\\", 
+		{ 
+			".png",
+			".jpg",
+			".jpeg",
+			".bmp" 
+		}
+		, [&](const wstring& path) {
+			auto texture = LOAD(ATexture, path.c_str());
+			AddAsset(texture->GetKey(), texture.Get());
+		});
+}
+
+void AssetMgr::LoadSprites() {
+	LoadAssets(L"Sprite\\", { ".sprite" }, [&](const wstring& path) {
+		auto sprite = LOAD(ASprite, path.c_str());
+		AddAsset(sprite->GetKey(), sprite.Get());
+	});
+}
+
+void AssetMgr::LoadLevels() {
+	LoadAssets(L"Level\\", { ".lv" }, [&](const wstring& path) {
+		auto level = LOAD(ALevel, path.c_str());
+		AddAsset(level->GetKey(), level.Get());
+	});
+}
+
+void AssetMgr::LoadAssets(
+	const wstring& folder
+	, const unordered_set<string>& extensions
+	, const std::function<void(const wstring&)>& func) {
 	auto contentPath = wstring(CONTENT_PATH);
-	auto folderPath = format(L"{}{}", contentPath, L"Texture\\");
+	auto folderPath = format(L"{}{}", contentPath, folder);
 	auto root = filesystem::path(folderPath);
 	if (!filesystem::exists(root)) return;
-
-	unordered_set<string> extensions = {
-		".png",
-		".jpg",
-		".jpeg",
-		".bmp"
-	};
 
 	for (const auto& entry : filesystem::recursive_directory_iterator(root)) {
 		if (!entry.is_regular_file()) continue;
 
 		std::string ext = entry.path().extension().string();
-
 		if (extensions.contains(ext)) {
 			auto filePath = StrToWStr(entry.path().string());
 			auto filePathAfterConent = filePath.substr(contentPath.size());
 
-			auto texture = LOAD(ATexture, filePathAfterConent.c_str());
-			AddAsset(texture->GetKey(), texture.Get());
-		}
-	}
-}
-
-void AssetMgr::LoadSprites() {
-	auto contentPath = wstring(CONTENT_PATH);
-	auto folderPath = format(L"{}{}", contentPath, L"Sprite\\");
-	auto root = filesystem::path(folderPath);	
-	if (!filesystem::exists(root)) return;
-
-	for (const auto& entry : filesystem::recursive_directory_iterator(root)) {
-		if (!entry.is_regular_file()) continue;
-
-		std::string ext = entry.path().extension().string();
-
-		if (ext == ".sprite") {
-			auto filePath = StrToWStr(entry.path().string());
-			auto filePathAfterConent = filePath.substr(contentPath.size());
-
-			auto sprite = LOAD(ASprite, filePathAfterConent.c_str());
-			AddAsset(sprite->GetKey(), sprite.Get());
+			func(filePathAfterConent);
 		}
 	}
 }

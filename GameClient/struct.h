@@ -104,3 +104,15 @@ struct ShaderParam {
 	int             Step;    // ImGui 에서 값의 변화량
 	bool            IsInput; // ImGui 에서 표현할 위젯 스타일
 };
+
+struct DragSelectState {
+	bool Dragging;
+	bool BoxSelecting; // 클릭이 아니라 실제 드래그인지
+	Vec2 Start;
+	Vec2 End;
+};
+
+struct SimpleRect {
+	Vec2 Min;
+	Vec2 Max;
+};

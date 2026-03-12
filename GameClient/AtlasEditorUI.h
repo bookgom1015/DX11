@@ -45,5 +45,6 @@ private:
     Vec2 m_BackgroundUV;
 
     vector<int> m_SelectedTileIndices;
-    //int m_SelectedTileIndex;
+    
+    string m_Prefix;
 };

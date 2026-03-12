@@ -20,14 +20,14 @@ void MaterialUI::Tick_UI() {
 	string Key = string(pMtrl->GetKey().begin(), pMtrl->GetKey().end());
 
 	ImGui::Text("Name");
-	ImGui::SameLine(120);
+	ImGui::SameLine(100.f);
 	ImGui::InputText("##MtrlName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
 	// ======
 	// Shader
 	// ======
 	ImGui::Text("Shader");
-	ImGui::SameLine(100);
+	ImGui::SameLine(100.f);
 
 	Ptr<AGraphicShader> pShader = pMtrl->GetShader();
 

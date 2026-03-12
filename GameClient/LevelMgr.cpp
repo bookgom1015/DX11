@@ -27,6 +27,8 @@ LevelMgr::LevelMgr()
 LevelMgr::~LevelMgr() {}
 
 void LevelMgr::Init() {
+	return;
+
 	if (true) {
 		Ptr<ALevel> pLevel = LOAD(ALevel, L"Level\\Level01.lv");	
 		Util::ChangeLevel(L"Level\\Level01.lv");

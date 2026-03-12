@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "SpriteUI.h"
 
+#include "EditorMgr.h"
+
 #include "ASprite.h"
 
 SpriteUI::SpriteUI() : AssetUI(EAsset::E_Sprite) {}
@@ -27,26 +29,42 @@ void SpriteUI::Tick_UI() {
 
 	ImGui::Text("Name");
 	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
 	ImGui::InputText("##SpriteName", Key.data(), Key.length() + 1, ImGuiInputTextFlags_ReadOnly);
 
-	ImGui::Spacing();
-	ImGui::Spacing();
-	ImGui::Spacing();
+	ImGui::Dummy(Vec2(0.f, 10.f));
 	ImGui::Separator();
+	ImGui::Dummy(Vec2(0.f, 10.f));
 
 	// Sprite 에 Atlas 텍스쳐가 세팅되어있는지 확인
 	Ptr<ATexture> pAtlas = pSprite->GetAtlas();
 	bool IsAtlas = pAtlas.Get();
 
-	// Atlas 이름
-	string AtlasName = "None";
-	if (IsAtlas)
-		AtlasName = string(pAtlas->GetKey().begin(), pAtlas->GetKey().end());
-
-	ImGui::Text("Atlas Name");
+	ImGui::Text("Atlas");
 	ImGui::SameLine(100.f);
-	ImGui::InputText("##AtlasName", AtlasName.data(), AtlasName.length() + 1, ImGuiInputTextFlags_ReadOnly);
+	ImGui::ImageWithBg(
+		pAtlas->GetSRV().Get()
+		, Vec2(200.f)
+		, Vec2(0.f), Vec2(1.f)
+		, Vec4(0.f, 0.f, 0.f, 1.f));
 
+	// Atlas 이름
+	string AtlasName{};
+	if (IsAtlas) AtlasName = WStrToStr(pAtlas->GetKey());
+
+	ImGui::Text("Reference");
+	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
+	ImGui::InputText("##AtlasName", &AtlasName, ImGuiInputTextFlags_ReadOnly);
+
+	if (ImGui::BeginDragDropTarget()) {
+		EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Texture, [&](Ptr<Asset> asset) {
+			auto texture = static_cast<ATexture*>(asset.Get());
+			pSprite->SetAtlas(texture);
+		});
+
+		ImGui::EndDragDropTarget();
+	}
 
 	// Sprite UV 정보
 	Vec2 LeftTopUV = pSprite->GetLeftTopUV();
@@ -55,6 +73,8 @@ void SpriteUI::Tick_UI() {
 	Vec2 OffsetUV = pSprite->GetOffsetUV();
 
 	ImGui::Text("LeftTop");
+	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
 	ImGui::BeginDisabled(!IsAtlas);
 	{
 		if (IsAtlas) {
@@ -74,6 +94,8 @@ void SpriteUI::Tick_UI() {
 	ImGui::EndDisabled();
 
 	ImGui::Text("Slice");
+	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
 	ImGui::BeginDisabled(!IsAtlas);
 	{
 		if (IsAtlas) {
@@ -94,6 +116,8 @@ void SpriteUI::Tick_UI() {
 
 
 	ImGui::Text("Background");
+	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
 	ImGui::BeginDisabled(!IsAtlas);
 	{
 		if (IsAtlas) {
@@ -113,6 +137,8 @@ void SpriteUI::Tick_UI() {
 	ImGui::EndDisabled();
 
 	ImGui::Text("Offset");
+	ImGui::SameLine(100.f);
+	ImGui::SetNextItemWidth(200.f);
 	ImGui::BeginDisabled(!IsAtlas);
 	{
 		if (IsAtlas) {

@@ -71,14 +71,9 @@ void AtlasEditorUI::LeftPanel() {
 	BackgroundUV(imageMin, imageMax);
 
 	if (ImGui::BeginDragDropTarget()) {
-		decltype(auto) PayLoad = ImGui::AcceptDragDropPayload("Content");
-		if (PayLoad) {
-			auto data = *(static_cast<DWORD_PTR*>(PayLoad->Data));
-			Ptr<Asset> asset = reinterpret_cast<Asset*>(data);
-
-			if (asset->GetType() == EAsset::E_Texture)
-				m_Texture = static_cast<ATexture*>(asset.Get());
-		}
+		EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Texture, [&](Ptr<Asset> asset) {
+			m_Texture = static_cast<ATexture*>(asset.Get());
+		});
 
 		ImGui::EndDragDropTarget();
 	}
@@ -98,13 +93,13 @@ void AtlasEditorUI::AtlasImage() {
 void AtlasEditorUI::Grid(ImVec2 imageMin, ImVec2 imageMax) {
 	if (m_Texture == nullptr) return;
 
-	ImDrawList* dl = ImGui::GetWindowDrawList();
-	dl->PushClipRect(imageMin, imageMax, true);
-
 	const ImU32 innerColor = IM_COL32(0, 255, 0, 255);
 	const ImU32 outerColor = IM_COL32(0, 0, 0, 200);
 	const float innerThick = 1.f;
 	const float outerThick = innerThick * 4.f + 1.f;
+
+	ImDrawList* dl = ImGui::GetWindowDrawList();
+	dl->PushClipRect(imageMin, ImVec2(imageMax.x + outerThick, imageMax.y + outerThick), true);
 
 	int gridCols = m_Grid[1];
 	int gridRows = m_Grid[0];
@@ -205,9 +200,10 @@ void AtlasEditorUI::SelectableOnGrid(ImVec2 leftTopPos, ImVec2 imageRectSize) {
 
 	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
 
+	ImGui::BeginGroup();
+
 	int numTiles = m_Grid[0] * m_Grid[1];
 	for (int i = 0; i < numTiles; ++i) {
-		ImGui::BeginGroup();
 
 		auto texWidth = imageRectSize.x;
 		auto texHeight = imageRectSize.y;
@@ -245,9 +241,9 @@ void AtlasEditorUI::SelectableOnGrid(ImVec2 leftTopPos, ImVec2 imageRectSize) {
 			SelectTile(i);
 
 		if (excepted) ImGui::PopStyleColor(3);
-
-		ImGui::EndGroup();
 	}
+
+	ImGui::EndGroup();
 
 	ImGui::PopStyleVar();
 }
@@ -356,6 +352,11 @@ void AtlasEditorUI::GridControl() {
 }
 
 void AtlasEditorUI::SpriteControl() {
+	ImGui::Text("Sprite Prefix");
+	ImGui::SameLine(100.f);
+
+	ImGui::InputText("##SPRITE_PREFIX", &m_Prefix);
+
 	ImGui::Text("Sprite Name");
 	ImGui::SameLine(100.f);
 
@@ -378,28 +379,21 @@ void AtlasEditorUI::SpriteControl() {
 
 	ImGui::Dummy(ImVec2(0.f, 20.f));
 
-	float spacing = ImGui::GetStyle().ItemSpacing.x;
-
-	float includeWidth = ImGui::CalcTextSize("Include").x + ImGui::GetStyle().FramePadding.x * 2.0f;
-	float exceptWidth = ImGui::CalcTextSize("Except").x + ImGui::GetStyle().FramePadding.x * 2.0f;
-
-	float totalWidth = includeWidth + spacing + exceptWidth;
-
 	// 오른쪽으로 커서 이동
-	ImGui::SetCursorPosX(ImGui::GetContentRegionAvail().x - totalWidth + ImGui::GetCursorPosX());
+	EditorMgr::RightAlignNextItem({ "Except", "Include" });
+
+	if (ImGui::Button("Except"))
+		if (valid) {
+			for (size_t i = 0, end = m_SelectedTileIndices.size(); i < end; ++i)
+				m_Sprites[m_SelectedTileIndices[i]].first = false;
+		}
+		
+	ImGui::SameLine();
 
 	if (ImGui::Button("Include"))
 		if (valid) {
 			for (size_t i = 0, end = m_SelectedTileIndices.size(); i < end; ++i)
 				m_Sprites[m_SelectedTileIndices[i]].first = true;
-		}
-
-	ImGui::SameLine();
-
-	if (ImGui::Button("Except")) 
-		if (valid) {
-			for (size_t i = 0, end = m_SelectedTileIndices.size(); i < end; ++i)
-				m_Sprites[m_SelectedTileIndices[i]].first = false;
 		}
 }
 
@@ -412,19 +406,11 @@ void AtlasEditorUI::ControlButtons() {
 	}
 	ImGui::SameLine();
 
-	float spacing = ImGui::GetStyle().ItemSpacing.x;
+	EditorMgr::RightAlignNextItem({ "Apply", "Save" });
 
-	float applyWidth = ImGui::CalcTextSize("Apply").x + ImGui::GetStyle().FramePadding.x * 2.0f;
-	float saveWidth = ImGui::CalcTextSize("Save").x + ImGui::GetStyle().FramePadding.x * 2.0f;
-
-	float totalWidth = applyWidth + spacing + saveWidth;
-
-	// 오른쪽으로 커서 이동
-	ImGui::SetCursorPosX(ImGui::GetContentRegionAvail().x - totalWidth + ImGui::GetCursorPosX());
-
-	if (ImGui::Button("Apply")) MakeSprites();
+	if (ImGui::Button("Save")) SaveSprites(); 
 	ImGui::SameLine();
-	if (ImGui::Button("Save")) SaveSprites();
+	if (ImGui::Button("Apply")) MakeSprites();
 }
 
 void AtlasEditorUI::LowerPanel() {
@@ -451,7 +437,7 @@ void AtlasEditorUI::LowerPanel() {
 	ImGui::InvisibleButton("##CONTNET_WIDTH", ImVec2(totalWidth, 1.f));
 	ImGui::SetCursorPos(ImVec2(0.f, 0.f));
 
-	for (int i = 0, cnt = 1, end = m_Sprites.size(); i < end; ++i) {
+	for (int i = 0, cnt = 1, end = static_cast<int>(m_Sprites.size()); i < end; ++i) {
 		auto sprite = m_Sprites[i];
 		if (!sprite.first) continue;
 
@@ -508,6 +494,8 @@ void AtlasEditorUI::LowerPanel() {
 }
 
 void AtlasEditorUI::MakeSprites() {
+	if (m_Texture == nullptr) return;
+
 	m_Sprites.clear();
 
 	auto rows = m_Grid[0];
@@ -521,6 +509,10 @@ void AtlasEditorUI::MakeSprites() {
 			sprite->SetAtlas(m_Texture);
 
 			auto leftTop = Vec2(slice.x * col, 0.f) + Vec2(0.f, slice.y * row);
+
+			auto idx = row * cols + col;
+
+			sprite->SetName(format(L"{}_{}", StrToWStr(m_Prefix), idx));
 
 			sprite->SetSliceUV(slice);
 			sprite->SetLeftTopUV(leftTop);

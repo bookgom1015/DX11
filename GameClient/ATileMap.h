@@ -20,6 +20,11 @@ public:
     void SetRowCol(UINT _Row, UINT _Col);    
     void SetSprite(UINT _Row, UINT _Col, Ptr<ASprite> _Sprite);
 
+    Ptr<ASprite> GetSprite(UINT _Row, UINT _Col) {
+        UINT index = _Row * m_Col + _Col;
+        return m_vecSpriteInfo[index];
+    }
+
     __forceinline UINT GetRow() const;
     __forceinline UINT GetCol() const;
 
