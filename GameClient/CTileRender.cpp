@@ -61,11 +61,11 @@ void CTileRender::SetTileMap(Ptr<ATileMap> _TileMap) {
 	m_vecSpriteInfo.clear();	
 
 	// 크키 조정
-	UINT Row = m_TileMap->GetRow();
-	UINT Col = m_TileMap->GetCol();
-	Vec2 TileSize = m_TileMap->GetTileSize();
-	Vec3 vScale = Vec3(TileSize.x * (float)Row, TileSize.y * (float)Col, 1.f);
-	Transform()->SetRelativeScale(vScale);
+	//UINT Row = m_TileMap->GetRow();
+	//UINT Col = m_TileMap->GetCol();
+	//Vec2 TileSize = m_TileMap->GetTileSize();
+	//Vec3 vScale = Vec3(TileSize.x * (float)Row, TileSize.y * (float)Col, 1.f);
+	//Transform()->SetRelativeScale(vScale);
 
 	// TileMap 의 Sprite 의 UV 정보를 받아옴
 	vector<Ptr<ASprite>> vecSprites = m_TileMap->GetSprites();

@@ -44,6 +44,9 @@ void GameObject::Begin() {
 
 void GameObject::Tick() {
 	for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i)
+		if (m_vecScripts[i]->GetFirstTick()) m_vecScripts[i]->TickOnce();
+
+	for (size_t i = 0, end = m_vecScripts.size(); i < end; ++i)
 		m_vecScripts[i]->Tick();
 	
 	for (size_t i = 0, end = m_vecChild.size(); i < end; ++i)
@@ -258,6 +261,8 @@ void GameObject::RemoveComponent(EComponent::Type _Type, SCRIPT_TYPE _ScriptType
 			return s->GetScriptType() == _ScriptType;
 		});
 		assert(iter != end);
+
+		iter->Get()->CleanUp();
 
 		std::iter_swap(iter, end - 1);
 		m_vecScripts.pop_back();

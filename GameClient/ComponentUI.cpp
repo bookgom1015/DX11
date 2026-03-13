@@ -2,6 +2,7 @@
 #include "ComponentUI.h"
 
 #include "TaskMgr.h"
+#include "EditorMgr.h"
 
 #include "ScriptUI.h"
 
@@ -27,13 +28,18 @@ void ComponentUI::SetTarget(Ptr<GameObject> _Object) {
 
 void ComponentUI::OutputTitle(const string& _Title) {
 	ImGui::PushID(0);
+
 	ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(0.f, 0.6f, 0.6f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(0.f, 0.6f, 0.6f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(0.f, 0.6f, 0.6f));
 	ImGui::Button(_Title.c_str());
 	ImGui::PopStyleColor(3);
+
 	ImGui::SameLine();
+
+	EditorMgr::RightAlignNextItem({ "X" });
 	if (ImGui::Button(format("X##{}", _Title).c_str())) RemoveComponent();
+
 	ImGui::PopID();
 
 	ImGui::Spacing();

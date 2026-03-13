@@ -5,6 +5,8 @@ class Component;
 // Task
 void CreateObject(class GameObject* _Object, int LayerIdx);
 
+void DestroyObject(class GameObject* _Object);
+
 namespace Util {
 	void ChangeLevel(const wstring& _NextLevelName);
 
@@ -43,8 +45,18 @@ namespace Util {
         return true;
     }
 
+    static bool Intersects(const Vec2& a, const SimpleRect& b) {
+        if (a.x <= b.Min.x || a.x >= b.Max.x) return false;
+        if (a.y <= b.Min.y || a.y >= b.Max.y) return false;
+        return true;
+    }
+
     static float LengthSq(const Vec2& v) {
         return v.x * v.x + v.y * v.y;
+    }
+
+    static bool MouseInRect(Vec2 pos, Vec2 min, Vec2 max) {
+        return pos.x >= min.x && pos.x <= max.x && pos.y >= min.y && pos.y <= max.y;
     }
 }
 

@@ -361,6 +361,9 @@
     <ClInclude Include="TileMapEditorUI.h">
       <Filter>GameEngine\07. EditorUI\13. TileMapEditorUI</Filter>
     </ClInclude>
+    <ClInclude Include="Vignette.h">
+      <Filter>RenderProcess</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="GameClient.ico">
@@ -991,6 +994,9 @@
     <ClCompile Include="TileMapEditorUI.cpp">
       <Filter>GameEngine\07. EditorUI\13. TileMapEditorUI</Filter>
     </ClCompile>
+    <ClCompile Include="Vignette.cpp">
+      <Filter>RenderProcess</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -1095,6 +1101,9 @@
       <Filter>HLSL\2. Render\PostProcess\Blur</Filter>
     </FxCompile>
     <FxCompile Include="pixelization.fx">
+      <Filter>HLSL\2. Render\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="vignette.fx">
       <Filter>HLSL\2. Render\PostProcess</Filter>
     </FxCompile>
   </ItemGroup>

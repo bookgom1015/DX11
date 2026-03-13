@@ -20,6 +20,12 @@ public:
 		EAsset::Type _Type,
 		const std::function<void(Ptr<Asset>)>& func);
 
+	static Vec2 GetCursorScreenPos();
+
+	static Vec2 GetItemRectSize();
+	static Vec2 GetItemRectMin();
+	static Vec2 GetItemRectMax();
+
 private:
 	void Tick();
 	void Render();

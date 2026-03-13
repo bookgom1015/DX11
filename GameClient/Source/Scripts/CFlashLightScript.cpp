@@ -24,17 +24,21 @@ CFlashLightScript::CFlashLightScript()
 
 CFlashLightScript::~CFlashLightScript() {}
 
-void CFlashLightScript::Begin() {
+void CFlashLightScript::TickOnce() {
+	CScript::TickOnce();
+
 	// 점광원
 	mFlashLight = NEW GameObject;
 	mFlashLight->SetName(L"Player_PointLight");
 	mFlashLight->AddComponent(NEW CTransform);
 	mFlashLight->AddComponent(NEW CLight2D);
-	
-	mFlashLight->Light2D()->SetLightType(ELight::E_Point);
-	mFlashLight->Light2D()->SetLightColor(Vec3(1.f));
-	mFlashLight->Light2D()->SetIntensity(0.08f);
-	mFlashLight->Light2D()->SetRadius(250.f);
+
+	const auto& light = mFlashLight->Light2D();
+	light->SetLightType(ELight::E_Point);
+	light->SetLightColor(Vec3(1.f));
+	light->SetIntensity(0.08f);
+	light->SetRadius(250.f);
+	light->Disable(false);
 
 	CreateObject(mFlashLight.Get(), ELevelLayer::E_Light);
 
@@ -44,12 +48,14 @@ void CFlashLightScript::Begin() {
 	mFlashLight2->AddComponent(NEW CTransform);
 	mFlashLight2->AddComponent(NEW CLight2D);
 
-	mFlashLight2->Light2D()->SetLightType(ELight::E_Spot);
-	mFlashLight2->Light2D()->SetLightColor(Vec3(1.f));
-	mFlashLight2->Light2D()->SetIntensity(0.35f);
-	mFlashLight2->Light2D()->SetLightDir(Vec3(1.f, 0.f, 0.f));
-	mFlashLight2->Light2D()->SetRadius(1000.f);
-	mFlashLight2->Light2D()->SetAngle(DegToRad * 90.f);
+	const auto& light2 = mFlashLight2->Light2D();
+	light2->SetLightType(ELight::E_Spot);
+	light2->SetLightColor(Vec3(1.f));
+	light2->SetIntensity(0.35f);
+	light2->SetLightDir(Vec3(1.f, 0.f, 0.f));
+	light2->SetRadius(1000.f);
+	light2->SetAngle(DegToRad * 90.f);
+	light2->Disable(false);
 
 	CreateObject(mFlashLight2.Get(), ELevelLayer::E_Light);
 }
@@ -74,4 +80,9 @@ void CFlashLightScript::Tick() {
 	mFlashLight->Transform()->SetRelativePos(dest);
 	mFlashLight2->Transform()->SetRelativePos(dest + newPos);
 	mFlashLight2->Light2D()->SetLightDir(dir);
+}
+
+void CFlashLightScript::CleanUp() {
+	DestroyObject(mFlashLight.Get());
+	DestroyObject(mFlashLight2.Get());
 }

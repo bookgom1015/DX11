@@ -21,6 +21,7 @@ private:
     void RightPanel();
     void GridControl();
     void BrushControl();
+    void TileMapControl();
     void ControlButtons();
 
 private:
@@ -33,4 +34,6 @@ private:
     DragSelectState m_DragSelect;
     std::vector<SimpleRect> m_TileRects;
     std::vector<int> m_HoveredTiles;
+
+    float m_BrushSize;
 };

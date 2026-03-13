@@ -30,6 +30,7 @@ public:
 
 public:
     void SetTileMap(Ptr<ATileMap> _TileMap);
+    Ptr<ATileMap> GetTileMap() const { return m_TileMap; }
 
 private:
     Ptr<ATileMap> m_TileMap;

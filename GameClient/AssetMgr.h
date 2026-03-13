@@ -8,6 +8,9 @@ class AssetMgr : public singleton<AssetMgr> {
 	SINGLE(AssetMgr)
 
 public:
+	using FileStamp = pair<chrono::steady_clock::time_point, wstring>;
+
+public:
 	void Init();
 	bool IsChanged();
 
@@ -21,6 +24,7 @@ private:
 
 	void LoadTextures();
 	void LoadSprites();
+	void LoadTileMaps();
 	void LoadLevels();
 
 	void LoadAssets(
@@ -55,7 +59,7 @@ private:
 	bool m_Quit;
 
 	vector<wstring> m_Logs;
-	vector<pair<chrono::steady_clock::time_point, wstring>> m_Files;
+	vector<FileStamp> m_Files;
 
 	HANDLE m_DirHandle;
 

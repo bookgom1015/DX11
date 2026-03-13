@@ -12,6 +12,7 @@
 #include "Bloom.h"
 #include "Blur.h"
 #include "Pixelization.h"
+#include "Vignette.h"
 
 #include "EditorMgr.h"
 #include "LevelMgr.h"
@@ -31,6 +32,7 @@ RenderMgr::RenderMgr() {
 	mBloom = std::make_unique<Bloom>();
 	mBlur = std::make_unique<Blur>();
 	mPixelization = std::make_unique<Pixelization>();
+	mVignette = std::make_unique<Vignette>();
 }
 
 RenderMgr::~RenderMgr() {}
@@ -49,6 +51,7 @@ void RenderMgr::Init() {
 	mBloom->Init();
 	mBlur->Init();
 	mPixelization->Init();
+	mVignette->Init();
 
 	mCB = NEW ConstBuffer();
 	mCB->Create(CB_TYPE::MATERIAL, sizeof(MtrlConst));	
@@ -206,6 +209,7 @@ void RenderMgr::Render_Post() {
 	ApplyToneMapping();
 	ApplyGammaCorrection();
 	ApplyPixelization();
+	ApplyVigette();
 }
 
 void RenderMgr::UpdateLightInfos(std::vector<Light2DInfo>& infos) {
@@ -385,4 +389,8 @@ void RenderMgr::ApplyPixelization() {
 
 void RenderMgr::ApplyShadow() {
 	mShadow->Apply(m_vecLight2D);
+}
+
+void RenderMgr::ApplyVigette() {
+	mVignette->Apply();
 }

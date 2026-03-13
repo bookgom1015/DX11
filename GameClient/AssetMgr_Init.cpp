@@ -274,6 +274,13 @@ void AssetMgr::LoadSprites() {
 	});
 }
 
+void AssetMgr::LoadTileMaps() {
+	LoadAssets(L"TileMap\\", { ".tile" }, [&](const wstring& path) {
+		auto tile = LOAD(ATileMap, path.c_str());
+		AddAsset(tile->GetKey(), tile.Get());
+		});
+}
+
 void AssetMgr::LoadLevels() {
 	LoadAssets(L"Level\\", { ".lv" }, [&](const wstring& path) {
 		auto level = LOAD(ALevel, path.c_str());

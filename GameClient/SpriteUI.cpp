@@ -18,13 +18,18 @@ void SpriteUI::Tick_UI() {
 
 	auto leftTopUV = pSprite->GetLeftTopUV();
 	auto sliceUV = pSprite->GetSliceUV();
+	auto backgroundUV = pSprite->GetBackgroundUV();
+	auto offsetUV = pSprite->GetOffsetUV();
+
+	auto actualLeftTopUV = leftTopUV + sliceUV * 0.5f - backgroundUV * 0.5f;
+	actualLeftTopUV += offsetUV;
 
 	ImGui::Text("Sprite");
 	ImGui::SameLine(100.f);
 	ImGui::ImageWithBg(
 		(ImTextureRef)pSprite->GetAtlas()->GetSRV().Get()
 		, ImVec2(200.f, 200.f)
-		, leftTopUV, leftTopUV + sliceUV
+		, actualLeftTopUV, actualLeftTopUV + backgroundUV
 		, ImVec4(0.f, 0.f, 0.f, 1.f));
 
 	ImGui::Text("Name");

@@ -10,8 +10,9 @@ public:
     virtual ~CFlashLightScript();
 
 public:
-    virtual void Begin() override;
+    virtual void TickOnce() override;
     virtual void Tick() override;
+    virtual void CleanUp() override;
 
 public:
     CLONE(CFlashLightScript);

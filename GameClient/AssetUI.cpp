@@ -31,17 +31,17 @@ void AssetUI::OutputTitle() {
 		auto key = asset->GetKey();
 		switch (asset->GetType()) {
 		case EAsset::E_Mesh: {
-			auto loadedAsset = LOAD(AMesh, key);
+			auto loadedAsset = FORCE_LOAD(AMesh, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;
 		case EAsset::E_Material: {
-			auto loadedAsset = LOAD(AMaterial, key);
+			auto loadedAsset = FORCE_LOAD(AMaterial, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;
 		case EAsset::E_Texture: {
-			auto loadedAsset = LOAD(ATexture, key);
+			auto loadedAsset = FORCE_LOAD(ATexture, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;
@@ -52,7 +52,7 @@ void AssetUI::OutputTitle() {
 		case EAsset::E_ComputeShader:
 			break;
 		case EAsset::E_Level: {
-			auto loadedAsset = LOAD(ALevel, key);
+			auto loadedAsset = FORCE_LOAD(ALevel, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;
@@ -62,12 +62,12 @@ void AssetUI::OutputTitle() {
 		}
 			break;
 		case EAsset::E_Flipbook: {
-			auto loadedAsset = LOAD(AFlipbook, key);
+			auto loadedAsset = FORCE_LOAD(AFlipbook, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;
 		case EAsset::E_TileMap: {
-			auto loadedAsset = LOAD(ATileMap, key);
+			auto loadedAsset = FORCE_LOAD(ATileMap, key);
 			SetTargetAsset(loadedAsset.Get());
 		}
 			break;

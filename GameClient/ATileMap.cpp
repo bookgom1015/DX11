@@ -17,11 +17,17 @@ void ATileMap::SetRowCol(UINT _Row, UINT _Col) {
 }
 
 void ATileMap::SetSprite(UINT _Row, UINT _Col, Ptr<ASprite> _Sprite) {
-	if (m_Atlas == nullptr || _Sprite->GetAtlas() != m_Atlas) return;
+	if (m_Atlas == nullptr || _Sprite == nullptr || _Sprite->GetAtlas() != m_Atlas) return;
 
 	// 2 차원 행렬 좌표를 1차원 인덱스로 변환
 	int Idx = _Row * m_Col + _Col;
 	m_vecSpriteInfo[Idx] = _Sprite;
+}
+
+void ATileMap::ResetSprite(UINT _Row, UINT _Col) {
+	// 2 차원 행렬 좌표를 1차원 인덱스로 변환
+	int Idx = _Row * m_Col + _Col;
+	m_vecSpriteInfo[Idx] = nullptr;
 }
 
 int ATileMap::Save(const wstring& _FilePath) {

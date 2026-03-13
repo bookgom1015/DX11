@@ -19,6 +19,7 @@ public:
 
     void SetRowCol(UINT _Row, UINT _Col);    
     void SetSprite(UINT _Row, UINT _Col, Ptr<ASprite> _Sprite);
+    void ResetSprite(UINT _Row, UINT _Col);
 
     Ptr<ASprite> GetSprite(UINT _Row, UINT _Col) {
         UINT index = _Row * m_Col + _Col;

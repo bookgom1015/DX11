@@ -9,10 +9,17 @@ namespace {
 
 void CreateObject(GameObject* _Object, int LayerIdx) {
     TaskInfo info{};
-
     info.Type = ETask::E_CreateObject;
     info.Param_0 = (DWORD_PTR)_Object;
     info.Param_1 = LayerIdx;
+
+    TaskMgr::GetInst()->AddTask(info);
+}
+
+void DestroyObject(class GameObject* _Object) {
+    TaskInfo info{};
+    info.Type = ETask::E_DestroyObject;
+    info.Param_0 = (DWORD_PTR)_Object;
 
     TaskMgr::GetInst()->AddTask(info);
 }

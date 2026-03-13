@@ -2,11 +2,15 @@
 #include "TileMapEditorUI.h"
 
 #include "EditorMgr.h"
+#include "PathMgr.h"
 
 TileMapEditorUI::TileMapEditorUI() 
 	: EditorUI("TileMap Editor")
 	, m_Grid{ 1, 1 }
-	, m_BufGrid{ 1,1 } {}
+	, m_BufGrid{ 1,1 }
+	, m_BrushSize{ 1.f } {
+	m_TileRects.reserve(1);
+}
 
 TileMapEditorUI::~TileMapEditorUI() {}
 
@@ -31,14 +35,14 @@ void TileMapEditorUI::Tick_UI() {
 }
 
 void TileMapEditorUI::LeftPanel() {
-	auto leftTopPos = Vec2(ImGui::GetCursorScreenPos().x, ImGui::GetCursorScreenPos().y);
+	auto leftTopPos = EditorMgr::GetCursorScreenPos();
 
 	auto avail = ImGui::GetContentRegionAvail();
 	ImGui::ImageWithBg(nullptr, avail, Vec2(0.f), Vec2(1.f), Vec4(0.f, 0.f, 0.f, 1.f));
 
-	auto imageRectSize = Vec2(ImGui::GetItemRectSize().x, ImGui::GetItemRectSize().y);
-	auto imageMin = Vec2(ImGui::GetItemRectMin().x, ImGui::GetItemRectMin().y);
-	auto imageMax = Vec2(ImGui::GetItemRectMax().x, ImGui::GetItemRectMax().y);
+	auto imageRectSize = EditorMgr::GetItemRectSize();
+	auto imageMin = EditorMgr::GetItemRectMin();
+	auto imageMax = EditorMgr::GetItemRectMax();
 
 	Grid(imageMin, imageMax);
 	Sprite(leftTopPos, imageRectSize);
@@ -112,19 +116,16 @@ void TileMapEditorUI::Sprite(Vec2 leftTopPos, Vec2 imageRectSize) {
 	int rows = m_Grid[0];
 	int cols = m_Grid[1];
 
+	Vec2 spriteSize = Vec2(
+		imageRectSize.x / static_cast<float>(cols),
+		imageRectSize.y / static_cast<float>(rows));
+
 	auto numTiles = rows * cols;
 	for (int i = 0; i < numTiles; ++i) {
 
-		auto texWidth = imageRectSize.x;
-		auto texHeight = imageRectSize.y;
-
-		auto spriteSizeX = texWidth / static_cast<float>(cols);
-		auto spriteSizeY = texHeight / static_cast<float>(rows);
-
 		int row = i / cols;
 		int col = i % cols;
-		auto newPos = leftTopPos + Vec2(col * spriteSizeX, row * spriteSizeY);
-		auto size = Vec2(spriteSizeX, spriteSizeY);
+		auto newPos = leftTopPos + Vec2(col * spriteSize.x, row * spriteSize.y);
 
 		ImGui::SetCursorScreenPos(newPos);
 
@@ -141,7 +142,7 @@ void TileMapEditorUI::Sprite(Vec2 leftTopPos, Vec2 imageRectSize) {
 			uv1 = uv0 + sprite->GetSliceUV();
 		}
 
-		ImGui::ImageWithBg(srv, size, uv0, uv1, Vec4(0.f));
+		ImGui::ImageWithBg(srv, spriteSize, uv0, uv1, Vec4(0.f));
 	}
 }
 
@@ -160,31 +161,34 @@ void TileMapEditorUI::Selectable(Vec2 leftTopPos, Vec2 imageRectSize) {
 	m_TileRects.reserve(numTiles);
 	m_HoveredTiles.clear();
 
-	const float texWidth = imageRectSize.x;
-	const float texHeight = imageRectSize.y;
-
-	const float spriteSizeX = texWidth / static_cast<float>(cols);
-	const float spriteSizeY = texHeight / static_cast<float>(rows);
+	const Vec2 spriteSize = Vec2(
+		imageRectSize.x / static_cast<float>(cols),
+		imageRectSize.y / static_cast<float>(rows));	
 
 	// 전체 그리드 영역
 	SimpleRect gridRect(
 		Vec2(leftTopPos.x, leftTopPos.y),
-		Vec2(leftTopPos.x + texWidth, leftTopPos.y + texHeight));
+		Vec2(leftTopPos.x + imageRectSize.x, leftTopPos.y + imageRectSize.y));
+
+	const Vec2 mousePos = Vec2(io.MousePos.x, io.MousePos.y);
+
+	SimpleRect rect{
+		.Min = Vec2(mousePos.x - m_BrushSize, mousePos.y - m_BrushSize),
+		.Max = Vec2(mousePos.x + m_BrushSize, mousePos.y + m_BrushSize)	};
 
 	// -------------------------
 	// 드래그 시작 판정
 	// -------------------------
-	const bool mouseInGrid =
-		(io.MousePos.x >= gridRect.Min.x && io.MousePos.x <= gridRect.Max.x &&
-			io.MousePos.y >= gridRect.Min.y && io.MousePos.y <= gridRect.Max.y);
-
-	if (!m_DragSelect.Dragging 
-		&& mouseInGrid 
-		&& ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-		m_DragSelect.Dragging = true;
-		m_DragSelect.BoxSelecting = false;
-		m_DragSelect.Start = Vec2(io.MousePos.x, io.MousePos.y);
-		m_DragSelect.End = Vec2(io.MousePos.x, io.MousePos.y);
+	const bool mouseInGrid = Util::MouseInRect(mousePos, gridRect.Min, gridRect.Max);
+	const bool clicked = ImGui::IsMouseClicked(ImGuiMouseButton_Left)
+		|| ImGui::IsMouseClicked(ImGuiMouseButton_Right);
+	if (!m_DragSelect.Dragging  && mouseInGrid  && clicked) {
+		m_DragSelect = {
+			.Dragging = true,
+			.BoxSelecting = true,
+			.RightClick = ImGui::IsMouseClicked(ImGuiMouseButton_Right),
+			.Start = mousePos,
+			.End = mousePos };		
 	}
 
 	// -------------------------
@@ -195,72 +199,47 @@ void TileMapEditorUI::Selectable(Vec2 leftTopPos, Vec2 imageRectSize) {
 		int col = i % cols;
 
 		Vec2 newPos(
-			leftTopPos.x + col * spriteSizeX,
-			leftTopPos.y + row * spriteSizeY);
+			leftTopPos.x + col * spriteSize.x,
+			leftTopPos.y + row * spriteSize.y);
 
-		Vec2 size(spriteSizeX, spriteSizeY);
-
-		ImGui::SetCursorScreenPos(newPos);
-
-		// 클릭용 selectable
-		bool selected = false;
-		if (ImGui::Selectable(
-			format("##TILE_{}", i).c_str()
-			, &selected
-			, ImGuiSelectableFlags_None
-			, size)) {
-			// 클릭했는데 드래그 아니면 단일 타일 적용
-			if (!m_DragSelect.BoxSelecting) {
-				if (m_TileMap != nullptr && m_SpriteBrush != nullptr) {
-					m_TileMap->SetSprite(
-						static_cast<UINT>(row),
-						static_cast<UINT>(col),
-						m_SpriteBrush);
-				}
-			}
-		}
-
-		m_TileRects.emplace_back(newPos, newPos + size);
+		m_TileRects.emplace_back(newPos, newPos + spriteSize);
 	}
 
 	// -------------------------
 	// 드래그 중 처리
 	// -------------------------
 	if (m_DragSelect.Dragging) {
-		m_DragSelect.End = Vec2(io.MousePos.x, io.MousePos.y);
+		m_DragSelect.End = mousePos;
 
 		const float dx = m_DragSelect.End.x - m_DragSelect.Start.x;
 		const float dy = m_DragSelect.End.y - m_DragSelect.Start.y;
 		const float dragDistSq = dx * dx + dy * dy;
 
 		// 살짝 움직인 건 클릭 취급, 어느 정도 이상 움직여야 박스 선택
-		if (dragDistSq > 9.0f)
-			m_DragSelect.BoxSelecting = true;
+		if (dragDistSq > 9.f) m_DragSelect.BoxSelecting = true;
 
 		if (m_DragSelect.BoxSelecting) {
-			Vec2 boxMin(
-				(m_DragSelect.Start.x < m_DragSelect.End.x) ? m_DragSelect.Start.x : m_DragSelect.End.x,
-				(m_DragSelect.Start.y < m_DragSelect.End.y) ? m_DragSelect.Start.y : m_DragSelect.End.y);
-
-			Vec2 boxMax(
-				(m_DragSelect.Start.x > m_DragSelect.End.x) ? m_DragSelect.Start.x : m_DragSelect.End.x,
-				(m_DragSelect.Start.y > m_DragSelect.End.y) ? m_DragSelect.Start.y : m_DragSelect.End.y);
-
-			SimpleRect selectRect(boxMin, boxMax);
-
 			// 겹치는 타일 모으기
-			for (int i = 0, end = static_cast<int>(m_TileRects.size()); i < end; ++i)
-				if (Util::Intersects(selectRect, m_TileRects[i]))
-					m_HoveredTiles.push_back(i);
+			for (int i = 0, end = static_cast<int>(m_TileRects.size()); i < end; ++i) {
+				if (Util::Intersects(rect, m_TileRects[i])) {
+					int row = i / cols;
+					int col = i % cols;
 
-			// 드래그 박스 시각화
-			drawList->AddRectFilled(
-				selectRect.Min, selectRect.Max,
-				IM_COL32(80, 140, 255, 40));
-
-			drawList->AddRect(
-				selectRect.Min, selectRect.Max,
-				IM_COL32(80, 140, 255, 200));
+					if (m_TileMap != nullptr && m_SpriteBrush != nullptr) {
+						if (m_DragSelect.RightClick) {
+							m_TileMap->ResetSprite(
+								static_cast<UINT>(row),
+								static_cast<UINT>(col));
+						}
+						else {
+							m_TileMap->SetSprite(
+								static_cast<UINT>(row),
+								static_cast<UINT>(col),
+								m_SpriteBrush);
+						}
+					}
+				}
+			}
 
 			// 드래그 중 겹친 타일 강조
 			for (int tileIndex : m_HoveredTiles) {
@@ -276,25 +255,20 @@ void TileMapEditorUI::Selectable(Vec2 leftTopPos, Vec2 imageRectSize) {
 		// 드래그 종료
 		// -------------------------
 		if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
-			if (m_DragSelect.BoxSelecting 
-				&& m_TileMap != nullptr 
-				&& m_SpriteBrush != nullptr) {
-				for (int tileIndex : m_HoveredTiles) {
-					int row = tileIndex / cols;
-					int col = tileIndex % cols;
-
-					m_TileMap->SetSprite(
-						static_cast<UINT>(row),
-						static_cast<UINT>(col),
-						m_SpriteBrush);
-				}
-			}
-
 			m_DragSelect.Dragging = false;
 			m_DragSelect.BoxSelecting = false;
 			m_HoveredTiles.clear();
 		}
 	}
+
+	// 브러쉬 시각화
+	drawList->AddRectFilled(
+		rect.Min, rect.Max,
+		IM_COL32(80, 140, 255, 40));
+
+	drawList->AddRect(
+		rect.Min, rect.Max,
+		IM_COL32(80, 140, 255, 200));
 
 	ImGui::EndGroup();
 	ImGui::PopStyleVar();
@@ -308,6 +282,12 @@ void TileMapEditorUI::RightPanel() {
 	ImGui::Dummy(ImVec2(0.f, 20.f));
 
 	BrushControl();
+
+	ImGui::Dummy(ImVec2(0.f, 20.f));
+	ImGui::Separator();
+	ImGui::Dummy(ImVec2(0.f, 20.f));
+
+	TileMapControl();
 
 	ImGui::Dummy(ImVec2(0.f, 20.f));
 	ImGui::Separator();
@@ -370,15 +350,44 @@ void TileMapEditorUI::BrushControl() {
 			ImGui::EndDragDropTarget();
 		}
 	}
+	{
+		ImGui::Text("Brush Size");
+		ImGui::SameLine(100.f);
+
+		ImGui::DragFloat("##BRUSH_SIZE", &m_BrushSize, 0.1f, 1.f, 128.f);
+	}
+}
+
+void TileMapEditorUI::TileMapControl() {
+	{
+		ImGui::Text("Name");
+		ImGui::SameLine(100.f);
+
+		string name{};
+		if (m_TileMap != nullptr) name = WStrToStr(m_TileMap->GetName());
+
+		ImGui::SetNextItemWidth(200.f);
+		if (ImGui::InputText("##TIMEMAP_NAME", &name)) 
+			if (m_TileMap != nullptr) m_TileMap->SetName(StrToWStr(name));
+	}
 }
 
 void TileMapEditorUI::ControlButtons() {
-	EditorMgr::RightAlignNextItem({ "Save", "Apply" });
+	EditorMgr::RightAlignNextItem({ "Clear", "Save", "Apply" });
 
+	if (ImGui::Button("Clear")) {
+		if (m_TileMap != nullptr) {
+			for (int row = 0; row < m_Grid[0]; ++row) 
+				for (int col = 0; col < m_Grid[1]; ++col) 
+					m_TileMap->ResetSprite(row, col);
+		}
+	}
+	ImGui::SameLine();
 	if (ImGui::Button("Save")) {
-		Ptr<ATileMap> tileMap = new ATileMap;
-
-		//tileMap->SetAtlas();
+		if (m_TileMap != nullptr) {
+			m_TileMap->Save(format(
+				L"{}TileMap\\{}.tile", CONTENT_PATH, m_TileMap->GetName()));
+		}
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Apply")) {

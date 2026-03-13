@@ -78,7 +78,7 @@ Ptr<T> AssetMgr::LoadForcefully(const wstring& _Key, const wstring& _RelativePat
 	EAsset::Type type = GetAssetType<T>();
 
 	// 맵에 에셋등록
-	m_mapAsset[type].insert(make_pair(_Key, pAsset.Get()));
+	m_mapAsset[type].insert_or_assign(_Key, pAsset.Get());
 
 	// 에셋이 자신이 매니저에 등롣될때 상요된 Key 와, 
 	// 자신이 어떤 경로에 있는 파일로부터 로딩된 에셋인지 스스로 알 수 있도록 해줌

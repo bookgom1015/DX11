@@ -26,13 +26,17 @@ public:
     virtual ~CScript();
 
 public:
+    virtual void TickOnce() { m_FirstTick = false; }
     virtual void Tick() = 0;
     virtual void FinalTick() final {}
+    virtual void CleanUp() {}
 
     virtual void SaveToLevelFile(FILE* const _FileStream) override {}
     virtual void LoadFromLevelFile(FILE* const _FileStream) override {}
 
 public:
+    GET(bool, FirstTick);
+
     int GetScriptType() { return m_ScriptType; }
 
     void GetProperties(vector<Property>& properties) { 
@@ -49,6 +53,8 @@ protected:
 
 
 private:
+    bool m_FirstTick;
+
     int m_ScriptType;
 
     vector<Property> m_Properties;

@@ -4,7 +4,7 @@
 #include "TaskMgr.h"
 
 CScript::CScript(int _ScriptType) 
-	: Component(EComponent::E_Script), m_ScriptType(_ScriptType) {}
+	: Component(EComponent::E_Script), m_FirstTick(true), m_ScriptType(_ScriptType) {}
 
 CScript::~CScript() {}
 

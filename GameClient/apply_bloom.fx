@@ -36,7 +36,9 @@ float4 PS_Bloom(VS_OUT pin) : SV_Target {
     const float3 Scene = gi_BackBuffer.SampleLevel(g_sam_0, pin.TexC, 0).rgb;
 	const float3 Bloom = gi_BloomMap.SampleLevel(g_sam_0, pin.TexC, 0).rgb;
 	
-	const float3 Color = SoftAddBloom(Scene, Bloom);
+	float3 Color = SoftAddBloom(Scene, Bloom);
+	
+	Color = Color + (Color - Bloom) * 0.3f;
 	
 	return float4(Color, 1.f);
 }

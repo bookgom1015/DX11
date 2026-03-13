@@ -121,6 +121,22 @@ void EditorMgr::AcceptAssetDragDrop(
     }
 }
 
+Vec2 EditorMgr::GetCursorScreenPos() {
+    return Vec2(ImGui::GetCursorScreenPos().x, ImGui::GetCursorScreenPos().y);
+}
+
+Vec2 EditorMgr::GetItemRectSize() {
+    return Vec2(ImGui::GetItemRectSize().x, ImGui::GetItemRectSize().y);
+}
+
+Vec2 EditorMgr::GetItemRectMin() {
+    return Vec2(ImGui::GetItemRectMin().x, ImGui::GetItemRectMin().y);
+}
+
+Vec2 EditorMgr::GetItemRectMax() {
+    return Vec2(ImGui::GetItemRectMax().x, ImGui::GetItemRectMax().y);
+}
+
 void EditorMgr::Tick() {
     // =============
     // Editor Object

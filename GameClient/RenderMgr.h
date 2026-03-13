@@ -11,6 +11,7 @@ class Shadow;
 class Bloom;
 class Blur;
 class Pixelization;
+class Vignette;
 
 class RenderMgr
 	: public singleton<RenderMgr>
@@ -51,6 +52,7 @@ private:
 	void ApplyToneMapping();
 	void ApplyGammaCorrection();
 	void ApplyPixelization();
+	void ApplyVigette();
 
 	void ApplyShadow();
 
@@ -77,6 +79,7 @@ private:
 	std::unique_ptr<Bloom> mBloom{};
 	std::unique_ptr<Blur> mBlur{};
 	std::unique_ptr<Pixelization> mPixelization{};
+	std::unique_ptr<Vignette> mVignette{};
 
 	Ptr<ConstBuffer> mCB;
 };

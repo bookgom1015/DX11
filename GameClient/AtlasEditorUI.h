@@ -47,4 +47,8 @@ private:
     vector<int> m_SelectedTileIndices;
     
     string m_Prefix;
+
+    DragSelectState m_DragSelect;
+    std::vector<SimpleRect> m_TileRects;
+    std::vector<int> m_HoveredTiles;
 };

@@ -188,7 +188,11 @@ void SceneUI::Scene() {
     m_SceneSize = Vec2(avail.x, avail.y);
 
     auto srv = Device::GetInst()->GetScene_Srv();
-    ImGui::Image((ImTextureID)srv, avail);
+    ImGui::ImageWithBg(
+        (ImTextureID)srv
+        , avail
+        , Vec2(0.f), Vec2(1.f)
+        , Vec4(0.f, 0.f, 0.f, 1.f));
 
     if (ImGui::BeginDragDropTarget()) {
         EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Level, [&](Ptr<Asset> asset) {

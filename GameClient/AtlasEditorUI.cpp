@@ -69,14 +69,6 @@ void AtlasEditorUI::LeftPanel() {
 	SelectableOnGrid(leftTopPos, imageRectSize);
 
 	BackgroundUV(imageMin, imageMax);
-
-	if (ImGui::BeginDragDropTarget()) {
-		EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Texture, [&](Ptr<Asset> asset) {
-			m_Texture = static_cast<ATexture*>(asset.Get());
-		});
-
-		ImGui::EndDragDropTarget();
-	}
 }
 
 void AtlasEditorUI::AtlasImage() {
@@ -88,6 +80,14 @@ void AtlasEditorUI::AtlasImage() {
 		m_Texture != nullptr ? m_Texture->GetSRV().Get() : nullptr
 		, avail
 		, ImVec2(0.f, 0.f), ImVec2(1.f, 1.f), ImVec4(0.f, 0.f, 0.f, 1.f));
+
+	if (ImGui::BeginDragDropTarget()) {
+		EditorMgr::AcceptAssetDragDrop("Content", EAsset::E_Texture, [&](Ptr<Asset> asset) {
+			m_Texture = static_cast<ATexture*>(asset.Get());
+			});
+
+		ImGui::EndDragDropTarget();
+	}
 }
 
 void AtlasEditorUI::Grid(ImVec2 imageMin, ImVec2 imageMax) {
@@ -199,26 +199,59 @@ void AtlasEditorUI::SelectableOnGrid(ImVec2 leftTopPos, ImVec2 imageRectSize) {
 	if (m_Texture == nullptr) return;
 
 	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-
 	ImGui::BeginGroup();
 
-	int numTiles = m_Grid[0] * m_Grid[1];
+	ImGuiIO& io = ImGui::GetIO();
+	ImDrawList* drawList = ImGui::GetWindowDrawList();
+
+	int rows = m_Grid[0];
+	int cols = m_Grid[1];
+	int numTiles = rows * cols;
+
+	m_TileRects.clear();
+	m_TileRects.reserve(numTiles);
+	m_HoveredTiles.clear();
+
+	const Vec2 spriteSize = Vec2(
+		imageRectSize.x / static_cast<float>(cols),
+		imageRectSize.y / static_cast<float>(rows));
+
+	// 전체 그리드 영역
+	SimpleRect gridRect(
+		Vec2(leftTopPos.x, leftTopPos.y),
+		Vec2(leftTopPos.x + imageRectSize.x, leftTopPos.y + imageRectSize.y));
+
+	const Vec2 mousePos = Vec2(io.MousePos.x, io.MousePos.y);
+
+	// -------------------------
+	// 드래그 시작 판정
+	// -------------------------
+	const bool mouseInGrid = Util::MouseInRect(mousePos, gridRect.Min, gridRect.Max);
+
+	if (!m_DragSelect.Dragging
+		&& mouseInGrid
+		&& ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+		if (!ImGui::GetIO().KeyShift) m_SelectedTileIndices.clear();
+
+		m_DragSelect = {
+			.Dragging = true,
+			.BoxSelecting = true,
+			.Start = mousePos,
+			.End = mousePos };
+	}
+
+	// -------------------------
+	// 타일 생성
+	// -------------------------
 	for (int i = 0; i < numTiles; ++i) {
+		int row = i / cols;
+		int col = i % cols;
 
-		auto texWidth = imageRectSize.x;
-		auto texHeight = imageRectSize.y;
-
-		auto spriteSizeX = texWidth / static_cast<float>(m_Grid[1]);
-		auto spriteSizeY = texHeight / static_cast<float>(m_Grid[0]);
-
-		int row = i / m_Grid[1];
-		int col = i % m_Grid[1];
-		auto newPos = ImVec2(
-			leftTopPos.x + col * spriteSizeX, leftTopPos.y + row * spriteSizeY);
-		auto size = ImVec2(spriteSizeX, spriteSizeY);
+		Vec2 newPos(
+			leftTopPos.x + col * spriteSize.x,
+			leftTopPos.y + row * spriteSize.y);
 
 		bool excepted = !m_Sprites.empty() && !m_Sprites[i].first;
-
 		if (excepted) {
 			ImGui::PushStyleColor(ImGuiCol_Header, IM_COL32(255, 44, 48, 128));
 			ImGui::PushStyleColor(ImGuiCol_HeaderHovered, IM_COL32(255, 44, 48, 200));
@@ -226,7 +259,7 @@ void AtlasEditorUI::SelectableOnGrid(ImVec2 leftTopPos, ImVec2 imageRectSize) {
 
 			ImDrawList* dl = ImGui::GetWindowDrawList();
 			dl->AddRectFilled(newPos
-				, ImVec2(newPos.x + size.x, newPos.y + size.y)
+				, newPos + spriteSize
 				, IM_COL32(255, 44, 48, 128));
 		}
 
@@ -237,14 +270,92 @@ void AtlasEditorUI::SelectableOnGrid(ImVec2 leftTopPos, ImVec2 imageRectSize) {
 			format("##TILE_{}", i).c_str()
 			, &selected
 			, ImGuiSelectableFlags_None
-			, size))
-			SelectTile(i);
+			, spriteSize)) {
+			// 클릭했는데 드래그 아니면 단일 타일 적용
+			if (!m_DragSelect.BoxSelecting) SelectTile(i);
+		}
 
 		if (excepted) ImGui::PopStyleColor(3);
+
+		m_TileRects.emplace_back(newPos, newPos + spriteSize);
+	}
+
+	// -------------------------
+	// 드래그 중 처리
+	// -------------------------
+	if (m_DragSelect.Dragging) {
+		m_DragSelect.End = mousePos;
+
+		const float dx = m_DragSelect.End.x - m_DragSelect.Start.x;
+		const float dy = m_DragSelect.End.y - m_DragSelect.Start.y;
+		const float dragDistSq = dx * dx + dy * dy;
+
+		// 살짝 움직인 건 클릭 취급, 어느 정도 이상 움직여야 박스 선택
+		if (dragDistSq > 9.f) m_DragSelect.BoxSelecting = true;
+
+		if (m_DragSelect.BoxSelecting) {
+			Vec2 boxMin(
+				(m_DragSelect.Start.x < m_DragSelect.End.x) ? m_DragSelect.Start.x : m_DragSelect.End.x,
+				(m_DragSelect.Start.y < m_DragSelect.End.y) ? m_DragSelect.Start.y : m_DragSelect.End.y);
+
+			Vec2 boxMax(
+				(m_DragSelect.Start.x > m_DragSelect.End.x) ? m_DragSelect.Start.x : m_DragSelect.End.x,
+				(m_DragSelect.Start.y > m_DragSelect.End.y) ? m_DragSelect.Start.y : m_DragSelect.End.y);
+
+			SimpleRect selectRect(boxMin, boxMax);
+
+			// 겹치는 타일 모으기
+			for (int i = 0, end = static_cast<int>(m_TileRects.size()); i < end; ++i)
+				if (Util::Intersects(selectRect, m_TileRects[i]))
+					m_HoveredTiles.push_back(i);
+
+			// 드래그 박스 시각화
+			drawList->AddRectFilled(
+				selectRect.Min, selectRect.Max,
+				IM_COL32(80, 140, 255, 40));
+
+			drawList->AddRect(
+				selectRect.Min, selectRect.Max,
+				IM_COL32(80, 140, 255, 200));
+
+			// 드래그 중 겹친 타일 강조
+			for (int tileIndex : m_HoveredTiles) {
+				const SimpleRect& rc = m_TileRects[tileIndex];
+				drawList->AddRect(
+					rc.Min, rc.Max,
+					IM_COL32(0, 255, 0, 255),
+					0.0f, 0, 2.0f);
+			}
+		}
+
+		// -------------------------
+		// 드래그 종료
+		// -------------------------
+		if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+			if (m_DragSelect.BoxSelecting) {
+				for (auto tile : m_HoveredTiles) {
+					auto begin = m_SelectedTileIndices.begin();
+					auto end = m_SelectedTileIndices.end();
+
+					auto iter = std::find(begin, end, tile);
+
+					if (iter == end) {
+						m_SelectedTileIndices.emplace_back(tile);
+					}
+					else {
+						iter_swap(iter, end - 1);
+						m_SelectedTileIndices.pop_back();
+					}
+				}
+			}
+
+			m_DragSelect.Dragging = false;
+			m_DragSelect.BoxSelecting = false;
+			m_HoveredTiles.clear();
+		}
 	}
 
 	ImGui::EndGroup();
-
 	ImGui::PopStyleVar();
 }
 
@@ -527,8 +638,9 @@ void AtlasEditorUI::SaveSprites() {
 	wstring contentPath = CONTENT_PATH;
 
 	for (const auto& sprite : m_Sprites) 
-		sprite.second->Save(
-			contentPath + format(L"Sprite\\{}.sprite", sprite.second->GetName()));
+		if (sprite.first) 
+			sprite.second->Save(
+				contentPath + format(L"Sprite\\{}.sprite", sprite.second->GetName()));
 }
 
 bool AtlasEditorUI::IsTileSelected(int index) {

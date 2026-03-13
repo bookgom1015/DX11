@@ -21,6 +21,7 @@ AssetMgr::~AssetMgr() {
 void AssetMgr::Init() {
 	LoadTextures();
 	LoadSprites();
+	LoadTileMaps();
 
 	CreateEngineMesh();
 	CreateEngineShader();
@@ -56,28 +57,34 @@ void AssetMgr::Tick() {
 		}
 
 		auto filePath = iter->second;
+		auto ext = filePath.find(L".");
+		if (ext == string::npos) {
+			++iter;
+			continue;
+		}
+
 		auto delim = filePath.find_first_of(L"\\");
 		auto folder = filePath.substr(0, delim);
 		
 		switch (Util::HashWString(folder)) {
 		case Util::HashWString(L"Texture"): {
-			auto texture = LOAD(ATexture, filePath);
-			AddAsset(texture->GetKey(), texture.Get());
+			FORCE_LOAD(ATexture, filePath);
 		}
 			break;
 		case Util::HashWString(L"Sprite"): {
-			auto sprite = LOAD(ASprite, filePath);
-			AddAsset(sprite->GetKey(), sprite.Get());
+			FORCE_LOAD(ASprite, filePath);
+		}
+			break;
+		case Util::HashWString(L"TileMap"): {
+			FORCE_LOAD(ATileMap, filePath);
 		}
 			break;
 		case Util::HashWString(L"Flipbook"): {
-			auto flipbook = LOAD(AFlipbook, filePath);
-			AddAsset(flipbook->GetKey(), flipbook.Get());
+			FORCE_LOAD(AFlipbook, filePath);
 		}
 			break;
 		case Util::HashWString(L"Level"): {
-			auto level = LOAD(ALevel, filePath);
-			AddAsset(level->GetKey(), level.Get());
+			FORCE_LOAD(ALevel, filePath);
 		}
 			break;
 		}
@@ -105,18 +112,18 @@ Ptr<Asset> AssetMgr::FindAsset(EAsset::Type _Type, const wstring& _Key) {
 void AssetMgr::AddAsset(const wstring& _Key, Ptr<Asset> _Asset) {	
 	auto iter = m_mapAsset[_Asset->GetType()].find(_Key);
 	auto end = m_mapAsset[_Asset->GetType()].end();
-	// 동일한 Key가 이미 있어도 경로가 같은 파일이면 동일 파일로 인식하여 무시
+	// 동일한 Key가 이미 있어도 경로가 같은 파일이면 OK
 	assert(iter == end || (iter->second->GetRelativePath() == _Asset->GetRelativePath()));
 	if (iter != end) return;
 
 	_Asset->SetKey(_Key);
-	m_mapAsset[(UINT)_Asset->GetType()].insert(make_pair(_Key, _Asset));
+	m_mapAsset[_Asset->GetType()].insert(make_pair(_Key, _Asset));
 
 	m_Changed = true;
 }
 
 void AssetMgr::GetAssetNames(EAsset::Type _type, vector<wstring>& _vec) {
-	for (const auto& pair : m_mapAsset[(UINT)_type])
+	for (const auto& pair : m_mapAsset[_type])
 		_vec.push_back(pair.first);
 }
 
@@ -184,7 +191,22 @@ void AssetMgr::WatchDirectory(const std::wstring& folderPath) {
 				m_Logs.push_back(format(
 					L"[Created] {}", fileName));
 				
-				m_Files.push_back({ chrono::steady_clock::now(), fileName});
+				FileStamp stamp = { chrono::steady_clock::now(), fileName };
+
+				auto iter = find_if(m_Files.begin(), m_Files.end(), [&](const FileStamp& stamp) {
+					return stamp.second == fileName;
+				});
+				if (iter != m_Files.end()) {
+					if (stamp.first > iter->first) {
+						iter_swap(iter, m_Files.end() - 1);
+						m_Files.pop_back();
+
+						m_Files.push_back(stamp);
+					}
+				}
+				else {
+					m_Files.push_back(stamp);
+				}
 			}
 				break;
 			case FILE_ACTION_REMOVED: {
@@ -199,6 +221,23 @@ void AssetMgr::WatchDirectory(const std::wstring& folderPath) {
 
 				m_Logs.push_back(format(
 					L"[Modified] {}", fileName));
+
+				FileStamp stamp = { chrono::steady_clock::now(), fileName };
+
+				auto iter = find_if(m_Files.begin(), m_Files.end(), [&](const FileStamp& stamp) {
+					return stamp.second == fileName;
+					});
+				if (iter != m_Files.end()) {
+					if (stamp.first > iter->first) {
+						iter_swap(iter, m_Files.end() - 1);
+						m_Files.pop_back();
+
+						m_Files.push_back(stamp);
+					}
+				}
+				else {
+					m_Files.push_back(stamp);
+				}
 			}
 				break;
 			case FILE_ACTION_RENAMED_OLD_NAME: {

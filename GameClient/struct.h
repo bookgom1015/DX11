@@ -108,6 +108,7 @@ struct ShaderParam {
 struct DragSelectState {
 	bool Dragging;
 	bool BoxSelecting; // 클릭이 아니라 실제 드래그인지
+	bool RightClick;
 	Vec2 Start;
 	Vec2 End;
 };
