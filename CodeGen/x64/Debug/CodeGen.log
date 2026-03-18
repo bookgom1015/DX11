@@ -1,385 +1,449 @@
-﻿빌드 시작: 2026-03-09 오전 10:48:19
-로깅의 세부 정보 표시가 Detailed(으)로 설정되었습니다.     1>2 노드의 "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트(Build 대상)입니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CheckForInvalidConfigurationAndPlatform" 대상("SetTelemetryEnvironmentVariables" 대상이 종속됨):
-     1>"Message" 작업
-       "Message" 작업을 실행했습니다.
-       "Message" 작업
-       "Message" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "_CheckForInvalidConfigurationAndPlatform" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.Cpp.DesignTime.targets" 파일에 있는 "SetTelemetryEnvironmentVariables" 대상("Build" 대상이 종속됨):
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "SetTelemetryEnvironmentVariables" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "_PrepareForBuild" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_PrepareForBuild" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_PrepareForReferenceResolution" 대상("ResolveReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_PrepareForReferenceResolution" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BeforeResolveReferences" 대상("ResolveReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BeforeResolveReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "IgnoreJavaScriptOutputAssembly" 대상("AssignProjectConfiguration" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "IgnoreJavaScriptOutputAssembly" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AssignProjectConfiguration" 대상("ResolveReferences" 대상이 종속됨):
-       "AssignProjectConfiguration" 작업
-       "AssignProjectConfiguration" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "AssignProjectConfiguration" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_SplitProjectReferencesByFileExistence" 대상("PrepareProjectReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_SplitProjectReferencesByFileExistence" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_AddOutputPathToGlobalPropertiesToRemove" 대상("_GetProjectReferenceTargetFrameworkProperties" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_AddOutputPathToGlobalPropertiesToRemove" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetProjectReferenceTargetFrameworkProperties" 대상("PrepareProjectReferences" 대상이 종속됨):
-       "MSBuild" 작업
-       "MSBuild" 작업을 실행했습니다.
-       "SetRidAgnosticValueForProjects" 작업
-       "SetRidAgnosticValueForProjects" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "_GetProjectReferenceTargetFrameworkProperties" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareProjectReferences" 대상("ResolveProjectReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PrepareProjectReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveProjectReferences" 대상("ResolveReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ResolveProjectReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetFrameworkPaths" 대상("ResolveAssemblyReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "GetFrameworkPaths" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetReferenceAssemblyPaths" 대상("ResolveAssemblyReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "GetReferenceAssemblyPaths" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" 파일에 있는 "AddExternalIncludDirectoriesToPaths" 대상("SetBuildDefaultEnvironmentVariables" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AddExternalIncludDirectoriesToPaths" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" 파일에 있는 "SetBuildDefaultEnvironmentVariables" 대상("PrepareForBuild" 대상이 종속됨):
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "SetBuildDefaultEnvironmentVariables" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "GetResolvedWinMD" 대상("PrepareForBuild" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "GetResolvedWinMD" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.targets" 파일에 있는 "_CheckWindowsSDKInstalled" 대상("PrepareForBuild" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_CheckWindowsSDKInstalled" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\v18.0\CodeAnalysis\Microsoft.CodeAnalysis.targets" 파일에 있는 "SetCABuildNativeEnvironmentVariables" 대상("PrepareForBuild" 대상이 종속됨):
-       "SetEnv" 작업
-       "SetEnv" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "SetCABuildNativeEnvironmentVariables" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "PrepareForBuild" 대상("ResolveAssemblyReferences" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-       "CheckVCToolsetVersion" 작업
-       "CheckVCToolsetVersion" 작업을 실행했습니다.
-       "VCMessage" 작업
-       "VCMessage" 작업을 실행했습니다.
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "PrepareForBuild" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveSDKReferences" 대상("ResolveAssemblyReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ResolveSDKReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ExpandSDKReferences" 대상("ResolveAssemblyReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ExpandSDKReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveAssemblyReferences" 대상("ResolveReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ResolveAssemblyReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AfterResolveReferences" 대상("ResolveReferences" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterResolveReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "ResolveReferences" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ResolveReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "InitializeBuildStatus" 대상("Build" 대상이 종속됨):
-       "ReadLinesFromFile" 작업
-       "ReadLinesFromFile" 작업을 실행했습니다.
-       "WriteLinesToFile" 작업
-       "WriteLinesToFile" 작업을 실행했습니다.
-       "Touch" 작업
-       "Touch" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "InitializeBuildStatus" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildGenerateSourcesTraverse" 대상("BuildGenerateSources" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildGenerateSourcesTraverse" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "BeforeBuildGenerateSources" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BeforeBuildGenerateSources" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PreBuildEvent" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PreBuildEvent" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_SelectedFiles" 대상("SelectCustomBuild" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_SelectedFiles" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "SelectCustomBuild" 대상("CustomBuild" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "SelectCustomBuild" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCustomBuildOutput" 대상("CustomBuild" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCustomBuildOutput" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "CustomBuild" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-       "GetOutOfDateItems" 작업
-       "GetOutOfDateItems" 작업을 실행했습니다.
-       "GetOutOfDateItems" 작업
-       "GetOutOfDateItems" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "CustomBuild" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "CopyFileToFolders" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-       "GetOutOfDateItems" 작업
-       "GetOutOfDateItems" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "CopyFileToFolders" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Xsd" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Xsd" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForMidl" 대상("_Midl" 대상이 종속됨):
-       "Makedir" 작업
-       "Makedir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForMidl" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeMIDLGeneratedCompileInputs" 대상("_Midl" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeMIDLGeneratedCompileInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterMidl" 대상("_Midl" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterMidl" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Midl" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Midl" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "AfterBuildGenerateSources" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildGenerateSources" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterBuildGenerateSourcesEvent" 대상("_BuildGenerateSourcesAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildGenerateSourcesEvent" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildGenerateSourcesAction" 대상("BuildGenerateSources" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_BuildGenerateSourcesAction" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildGenerateSources" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildGenerateSources" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildCompileTraverse" 대상("BuildCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildCompileTraverse" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeClCompile" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BeforeClCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLInputPDBName" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLInputPDBName" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "FindReferenceAssembliesForReferences" 대상("ComputeReferenceCLInput" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "FindReferenceAssembliesForReferences" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "GetReferencedVCProjectsInfo" 대상("ComputeReferenceCLInput" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "GetReferencedVCProjectsInfo" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeReferenceCLInput" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeReferenceCLInput" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "WarnCompileDuplicatedFilename" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "WarnCompileDuplicatedFilename" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "SetCppLanguageStandardCapabilities" 대상("ComputeStdModulesCompileInputs" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "SetCppLanguageStandardCapabilities" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ComputeStdModulesCompileInputs" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeStdModulesCompileInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "FixupCLCompileOptions" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "FixupCLCompileOptions" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForCl" 대상("_ClCompile" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForCl" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "SelectClCompile" 대상("ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "SelectClCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ClCompile" 대상("_ClCompile" 대상이 종속됨):
-       "CL" 작업
-       "CL" 작업을 실행했습니다.
-       "CL" 작업
-         C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yu"pch.h" /Fp"x64\Debug\CodeGen.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt main.cpp
+﻿Build started 2026-03-17 오후 6:55:03.
+Logging verbosity is set to: Detailed.     1>Project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" on node 3 (Rebuild target(s)).
+     1>Target "_CheckForInvalidConfigurationAndPlatform" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "SetTelemetryEnvironmentVariables" depends on it):
+     1>Task "Message"
+       Done executing task "Message".
+       Task "Message"
+       Done executing task "Message".
+     1>Done building target "_CheckForInvalidConfigurationAndPlatform" in project "CodeGen.vcxproj".
+     1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+     1>Done building target "SetTelemetryEnvironmentVariables" in project "CodeGen.vcxproj".
+     1>Target "_PrepareForRebuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "_PrepareForRebuild" in project "CodeGen.vcxproj".
+     1>Target "BeforeRebuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "BeforeRebuild" in project "CodeGen.vcxproj".
+     1>Target "_PrepareForClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+     1>Done building target "_PrepareForClean" in project "CodeGen.vcxproj".
+     1>Target "BeforeClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+     1>Done building target "BeforeClean" in project "CodeGen.vcxproj".
+     1>Target "CoreClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+       Task "ReadLinesFromFile"
+       Done executing task "ReadLinesFromFile".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "Delete"
+       Done executing task "Delete".
+       Task "RemoveDuplicates"
+       Done executing task "RemoveDuplicates".
+       Task "MakeDir"
+       Done executing task "MakeDir".
+       Task "WriteLinesToFile"
+       Done executing task "WriteLinesToFile".
+     1>Done building target "CoreClean" in project "CodeGen.vcxproj".
+     1>Target "IgnoreJavaScriptOutputAssembly" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "AssignProjectConfiguration" depends on it):
+     1>Done building target "IgnoreJavaScriptOutputAssembly" in project "CodeGen.vcxproj".
+     1>Target "AssignProjectConfiguration" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareProjectReferences" depends on it):
+       Task "AssignProjectConfiguration"
+       Done executing task "AssignProjectConfiguration".
+     1>Done building target "AssignProjectConfiguration" in project "CodeGen.vcxproj".
+     1>Target "_SplitProjectReferencesByFileExistence" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareProjectReferences" depends on it):
+     1>Done building target "_SplitProjectReferencesByFileExistence" in project "CodeGen.vcxproj".
+     1>Target "_AddOutputPathToGlobalPropertiesToRemove" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_GetProjectReferenceTargetFrameworkProperties" depends on it):
+     1>Done building target "_AddOutputPathToGlobalPropertiesToRemove" in project "CodeGen.vcxproj".
+     1>Target "_GetProjectReferenceTargetFrameworkProperties" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareProjectReferences" depends on it):
+       Task "MSBuild"
+       Done executing task "MSBuild".
+       Task "SetRidAgnosticValueForProjects"
+       Done executing task "SetRidAgnosticValueForProjects".
+     1>Done building target "_GetProjectReferenceTargetFrameworkProperties" in project "CodeGen.vcxproj".
+     1>Target "PrepareProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CleanReferencedProjects" depends on it):
+     1>Done building target "PrepareProjectReferences" in project "CodeGen.vcxproj".
+     1>Target "CleanReferencedProjects" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+     1>Done building target "CleanReferencedProjects" in project "CodeGen.vcxproj".
+     1>Target "CleanPublishFolder" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+     1>Done building target "CleanPublishFolder" in project "CodeGen.vcxproj".
+     1>Target "AfterClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+     1>Done building target "AfterClean" in project "CodeGen.vcxproj".
+     1>Target "BeforeCppClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CppClean" depends on it):
+     1>Done building target "BeforeCppClean" in project "CodeGen.vcxproj".
+     1>Target "CoreCppClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CppClean" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+       Task "CppClean"
+       Done executing task "CppClean".
+       Task "WriteLinesToFile"
+       Done executing task "WriteLinesToFile".
+     1>Done building target "CoreCppClean" in project "CodeGen.vcxproj".
+     1>Target "AfterCppClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CppClean" depends on it):
+     1>Done building target "AfterCppClean" in project "CodeGen.vcxproj".
+     1>Target "PGInstrumentedClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CppClean" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+     1>Done building target "PGInstrumentedClean" in project "CodeGen.vcxproj".
+     1>Target "CppClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Clean" depends on it):
+     1>Done building target "CppClean" in project "CodeGen.vcxproj".
+     1>Target "Clean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "Clean" in project "CodeGen.vcxproj".
+     1>Target "_PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "_PrepareForBuild" in project "CodeGen.vcxproj".
+     1>Target "_PrepareForReferenceResolution" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "_PrepareForReferenceResolution" in project "CodeGen.vcxproj".
+     1>Target "BeforeResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "BeforeResolveReferences" in project "CodeGen.vcxproj".
+     1>Target "ResolveProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "ResolveProjectReferences" in project "CodeGen.vcxproj".
+     1>Target "GetFrameworkPaths" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveAssemblyReferences" depends on it):
+     1>Done building target "GetFrameworkPaths" in project "CodeGen.vcxproj".
+     1>Target "GetReferenceAssemblyPaths" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveAssemblyReferences" depends on it):
+     1>Done building target "GetReferenceAssemblyPaths" in project "CodeGen.vcxproj".
+     1>Target "AddExternalIncludDirectoriesToPaths" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "SetBuildDefaultEnvironmentVariables" depends on it):
+     1>Done building target "AddExternalIncludDirectoriesToPaths" in project "CodeGen.vcxproj".
+     1>Target "SetBuildDefaultEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.Current.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareForBuild" depends on it):
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+       Task "SetEnv"
+       Done executing task "SetEnv".
+     1>Done building target "SetBuildDefaultEnvironmentVariables" in project "CodeGen.vcxproj".
+     1>Target "GetResolvedWinMD" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareForBuild" depends on it):
+     1>Done building target "GetResolvedWinMD" in project "CodeGen.vcxproj".
+     1>Target "_CheckWindowsSDKInstalled" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareForBuild" depends on it):
+     1>Done building target "_CheckWindowsSDKInstalled" in project "CodeGen.vcxproj".
+     1>Target "SetCABuildNativeEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VisualStudio\v18.0\CodeAnalysis\Microsoft.CodeAnalysis.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareForBuild" depends on it):
+       Task "SetEnv"
+       Done executing task "SetEnv".
+     1>Done building target "SetCABuildNativeEnvironmentVariables" in project "CodeGen.vcxproj".
+     1>Target "PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveAssemblyReferences" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+       Task "CheckVCToolsetVersion"
+       Done executing task "CheckVCToolsetVersion".
+       Task "VCMessage"
+       Done executing task "VCMessage".
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "PrepareForBuild" in project "CodeGen.vcxproj".
+     1>Target "ResolveSDKReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveAssemblyReferences" depends on it):
+     1>Done building target "ResolveSDKReferences" in project "CodeGen.vcxproj".
+     1>Target "ExpandSDKReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveAssemblyReferences" depends on it):
+     1>Done building target "ExpandSDKReferences" in project "CodeGen.vcxproj".
+     1>Target "ResolveAssemblyReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "ResolveAssemblyReferences" in project "CodeGen.vcxproj".
+     1>Target "AfterResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "AfterResolveReferences" in project "CodeGen.vcxproj".
+     1>Target "ResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "ResolveReferences" in project "CodeGen.vcxproj".
+     1>Target "InitializeBuildStatus" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+       Task "ReadLinesFromFile"
+       Done executing task "ReadLinesFromFile".
+       Task "WriteLinesToFile"
+       Done executing task "WriteLinesToFile".
+       Task "Touch"
+       Done executing task "Touch".
+     1>Done building target "InitializeBuildStatus" in project "CodeGen.vcxproj".
+     1>Target "BuildGenerateSourcesTraverse" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildGenerateSources" depends on it):
+     1>Done building target "BuildGenerateSourcesTraverse" in project "CodeGen.vcxproj".
+     1>Target "BeforeBuildGenerateSources" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "BeforeBuildGenerateSources" in project "CodeGen.vcxproj".
+     1>Target "PreBuildEvent" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "PreBuildEvent" in project "CodeGen.vcxproj".
+     1>Target "_SelectedFiles" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "SelectCustomBuild" depends on it):
+     1>Done building target "_SelectedFiles" in project "CodeGen.vcxproj".
+     1>Target "SelectCustomBuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CustomBuild" depends on it):
+     1>Done building target "SelectCustomBuild" in project "CodeGen.vcxproj".
+     1>Target "ComputeCustomBuildOutput" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CustomBuild" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "ComputeCustomBuildOutput" in project "CodeGen.vcxproj".
+     1>Target "CustomBuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+       Task "GetOutOfDateItems"
+       Done executing task "GetOutOfDateItems".
+       Task "GetOutOfDateItems"
+       Done executing task "GetOutOfDateItems".
+     1>Done building target "CustomBuild" in project "CodeGen.vcxproj".
+     1>Target "CopyFileToFolders" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+       Task "GetOutOfDateItems"
+       Done executing task "GetOutOfDateItems".
+     1>Done building target "CopyFileToFolders" in project "CodeGen.vcxproj".
+     1>Target "_Xsd" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "_Xsd" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForMidl" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Midl" depends on it):
+       Task "Makedir"
+       Done executing task "Makedir".
+     1>Done building target "MakeDirsForMidl" in project "CodeGen.vcxproj".
+     1>Target "ComputeMIDLGeneratedCompileInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Midl" depends on it):
+     1>Done building target "ComputeMIDLGeneratedCompileInputs" in project "CodeGen.vcxproj".
+     1>Target "AfterMidl" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Midl" depends on it):
+     1>Done building target "AfterMidl" in project "CodeGen.vcxproj".
+     1>Target "_Midl" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "_Midl" in project "CodeGen.vcxproj".
+     1>Target "AfterBuildGenerateSources" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "AfterBuildGenerateSources" in project "CodeGen.vcxproj".
+     1>Target "AfterBuildGenerateSourcesEvent" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildGenerateSourcesAction" depends on it):
+     1>Done building target "AfterBuildGenerateSourcesEvent" in project "CodeGen.vcxproj".
+     1>Target "_BuildGenerateSourcesAction" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildGenerateSources" depends on it):
+     1>Done building target "_BuildGenerateSourcesAction" in project "CodeGen.vcxproj".
+     1>Target "BuildGenerateSources" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "BuildGenerateSources" in project "CodeGen.vcxproj".
+     1>Target "BuildCompileTraverse" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildCompile" depends on it):
+     1>Done building target "BuildCompileTraverse" in project "CodeGen.vcxproj".
+     1>Target "BeforeClCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "BeforeClCompile" in project "CodeGen.vcxproj".
+     1>Target "ComputeCLInputPDBName" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "ComputeCLInputPDBName" in project "CodeGen.vcxproj".
+     1>Target "FindReferenceAssembliesForReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ComputeReferenceCLInput" depends on it):
+     1>Done building target "FindReferenceAssembliesForReferences" in project "CodeGen.vcxproj".
+     1>Target "GetReferencedVCProjectsInfo" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ComputeReferenceCLInput" depends on it):
+     1>Done building target "GetReferencedVCProjectsInfo" in project "CodeGen.vcxproj".
+     1>Target "ComputeReferenceCLInput" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "ComputeReferenceCLInput" in project "CodeGen.vcxproj".
+     1>Target "WarnCompileDuplicatedFilename" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "WarnCompileDuplicatedFilename" in project "CodeGen.vcxproj".
+     1>Target "SetCppLanguageStandardCapabilities" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ComputeStdModulesCompileInputs" depends on it):
+     1>Done building target "SetCppLanguageStandardCapabilities" in project "CodeGen.vcxproj".
+     1>Target "ComputeStdModulesCompileInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "ComputeStdModulesCompileInputs" in project "CodeGen.vcxproj".
+     1>Target "FixupCLCompileOptions" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "FixupCLCompileOptions" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForCl" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForCl" in project "CodeGen.vcxproj".
+     1>Target "SelectClCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ClCompile" depends on it):
+     1>Done building target "SelectClCompile" in project "CodeGen.vcxproj".
+     1>Target "ClCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+       Task "CL"
+         C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yc"pch.h" /Fp"x64\Debug\CodeGen.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt pch.cpp
+         pch.cpp
+       Done executing task "CL".
+       Task "CL"
+         C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /permissive- /Yu"pch.h" /Fp"x64\Debug\CodeGen.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt main.cpp PathMgr.cpp
          main.cpp
-       "CL" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "ClCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterClCompile" 대상("_ClCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterClCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ClCompile" 대상("_BuildCompileAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_ClCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BeforeResourceCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForResourceCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterResourceCompile" 대상("_ResourceCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterResourceCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ResourceCompile" 대상("_BuildCompileAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_ResourceCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterBuildCompileEvent" 대상("_BuildCompileAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuildCompileEvent" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildCompileAction" 대상("BuildCompile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_BuildCompileAction" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildCompile" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildCompile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildLinkTraverse" 대상("BuildLink" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildLinkTraverse" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeLegacyManifestEmbedding" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLegacyManifestEmbedding" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BeforeLink" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BeforeLink" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeRCOutputs" 대상("ComputeRCGeneratedLinkInputs" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeRCOutputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeRCGeneratedLinkInputs" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeRCGeneratedLinkInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeManifestGeneratedLinkerInputs" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeManifestGeneratedLinkerInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLOutputs" 대상("ComputeCLGeneratedLinkInputs" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLOutputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLGeneratedLinkInputs" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLGeneratedLinkInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeLinkInputsFromProject" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLinkInputsFromProject" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeManifestInputsTargets" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeManifestInputsTargets" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "AssignTargetPaths" 대상("PrepareResourceNames" 대상이 종속됨):
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "AssignTargetPaths" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "SplitResourcesByCulture" 대상("PrepareResourceNames" 대상이 종속됨):
-       "AssignCulture" 작업
-       "AssignCulture" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "SplitResourcesByCulture" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CreateCustomManifestResourceNames" 대상("PrepareResourceNames" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "CreateCustomManifestResourceNames" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareResourceNames" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PrepareResourceNames" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForLink" 대상("_Link" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForLink" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "DoLinkOutputFilesMatch" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "DoLinkOutputFilesMatch" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PreLinkEvent" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PreLinkEvent" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "ComputeLinkSwitches" 대상("Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeLinkSwitches" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "Link" 대상("_Link" 대상이 종속됨):
-       "Link" 작업
+         PathMgr.cpp
+         Generating Code...
+       Done executing task "CL".
+     1>Done building target "ClCompile" in project "CodeGen.vcxproj".
+     1>Target "AfterClCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ClCompile" depends on it):
+     1>Done building target "AfterClCompile" in project "CodeGen.vcxproj".
+     1>Target "_ClCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildCompileAction" depends on it):
+     1>Done building target "_ClCompile" in project "CodeGen.vcxproj".
+     1>Target "BeforeResourceCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ResourceCompile" depends on it):
+     1>Done building target "BeforeResourceCompile" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForResourceCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ResourceCompile" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForResourceCompile" in project "CodeGen.vcxproj".
+     1>Target "AfterResourceCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_ResourceCompile" depends on it):
+     1>Done building target "AfterResourceCompile" in project "CodeGen.vcxproj".
+     1>Target "_ResourceCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildCompileAction" depends on it):
+     1>Done building target "_ResourceCompile" in project "CodeGen.vcxproj".
+     1>Target "AfterBuildCompileEvent" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildCompileAction" depends on it):
+     1>Done building target "AfterBuildCompileEvent" in project "CodeGen.vcxproj".
+     1>Target "_BuildCompileAction" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildCompile" depends on it):
+     1>Done building target "_BuildCompileAction" in project "CodeGen.vcxproj".
+     1>Target "BuildCompile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "BuildCompile" in project "CodeGen.vcxproj".
+     1>Target "BuildLinkTraverse" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildLink" depends on it):
+     1>Done building target "BuildLinkTraverse" in project "CodeGen.vcxproj".
+     1>Target "ComputeLegacyManifestEmbedding" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "ComputeLegacyManifestEmbedding" in project "CodeGen.vcxproj".
+     1>Target "BeforeLink" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "BeforeLink" in project "CodeGen.vcxproj".
+     1>Target "ComputeRCOutputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ComputeRCGeneratedLinkInputs" depends on it):
+     1>Done building target "ComputeRCOutputs" in project "CodeGen.vcxproj".
+     1>Target "ComputeRCGeneratedLinkInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "ComputeRCGeneratedLinkInputs" in project "CodeGen.vcxproj".
+     1>Target "ComputeManifestGeneratedLinkerInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "ComputeManifestGeneratedLinkerInputs" in project "CodeGen.vcxproj".
+     1>Target "ComputeCLOutputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ComputeCLGeneratedLinkInputs" depends on it):
+     1>Done building target "ComputeCLOutputs" in project "CodeGen.vcxproj".
+     1>Target "ComputeCLGeneratedLinkInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "ComputeCLGeneratedLinkInputs" in project "CodeGen.vcxproj".
+     1>Target "ComputeLinkInputsFromProject" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "ComputeLinkInputsFromProject" in project "CodeGen.vcxproj".
+     1>Target "ComputeManifestInputsTargets" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "ComputeManifestInputsTargets" in project "CodeGen.vcxproj".
+     1>Target "AssignTargetPaths" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareResourceNames" depends on it):
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "AssignTargetPaths" in project "CodeGen.vcxproj".
+     1>Target "SplitResourcesByCulture" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareResourceNames" depends on it):
+       Task "AssignCulture"
+       Done executing task "AssignCulture".
+     1>Done building target "SplitResourcesByCulture" in project "CodeGen.vcxproj".
+     1>Target "CreateCustomManifestResourceNames" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareResourceNames" depends on it):
+     1>Done building target "CreateCustomManifestResourceNames" in project "CodeGen.vcxproj".
+     1>Target "PrepareResourceNames" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "PrepareResourceNames" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForLink" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForLink" in project "CodeGen.vcxproj".
+     1>Target "DoLinkOutputFilesMatch" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "DoLinkOutputFilesMatch" in project "CodeGen.vcxproj".
+     1>Target "PreLinkEvent" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "PreLinkEvent" in project "CodeGen.vcxproj".
+     1>Target "ComputeLinkSwitches" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Link" depends on it):
+     1>Done building target "ComputeLinkSwitches" in project "CodeGen.vcxproj".
+     1>Target "Link" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+       Task "Link"
          C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.exe" /INCREMENTAL /ILK:"x64\Debug\CodeGen.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.lib" /MACHINE:X64 x64\Debug\main.obj
          x64\Debug\PathMgr.obj
          x64\Debug\pch.obj
-       "Link" 작업을 실행했습니다.
-       "Message" 작업
+       Done executing task "Link".
+       Task "Message"
          CodeGen.vcxproj -> C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.exe
-       "Message" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "Link" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "AfterLink" 대상("_Link" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterLink" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Link" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Link" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_ALink" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_ALink" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Manifest" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Manifest" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "RegisterOutput" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "RegisterOutput" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ResolvedXDCMake" 대상("_XdcMake" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ResolvedXDCMake" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLCompileGeneratedXDCFiles" 대상("_XdcMake" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLCompileGeneratedXDCFiles" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForXdcMake" 대상("_XdcMake" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForXdcMake" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_XdcMake" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_XdcMake" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ComputeCLCompileGeneratedSbrFiles" 대상("_BscMake" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ComputeCLCompileGeneratedSbrFiles" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForBscMake" 대상("_BscMake" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForBscMake" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BscMake" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_BscMake" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "BuiltProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuiltProjectOutputGroup" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "SatelliteDllsProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "SatelliteDllsProjectOutputGroup" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "MakeDirsForFxc" 대상("ContentFilesProjectOutputGroup" 대상이 종속됨):
-       "MakeDir" 작업
-       "MakeDir" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "MakeDirsForFxc" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "ContentFilesProjectOutputGroup" 대상("CreateRecipeFile" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "ContentFilesProjectOutputGroup" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "CreateRecipeFile" 대상("_BuildLinkAction" 대상이 종속됨):
-       "GenerateDesktopDeployRecipe" 작업
-       "GenerateDesktopDeployRecipe" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "CreateRecipeFile" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GenerateSatelliteAssemblyInputs" 대상("CreateSatelliteAssemblies" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_GenerateSatelliteAssemblyInputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CreateSatelliteAssemblies" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "CreateSatelliteAssemblies" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Appverifier" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Appverifier" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_Deploy" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_Deploy" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_PopulateCommonStateForGetCopyToOutputDirectoryItems" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_PopulateCommonStateForGetCopyToOutputDirectoryItems" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets" 파일에 있는 "GetCopyToOutputDirectoryXamlAppDefs" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "GetCopyToOutputDirectoryXamlAppDefs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "GetCopyToOutputDirectoryItems" 대상("_CopySourceItemsToOutputDirectory" 대상이 종속됨):
-       "CallTarget" 작업
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" 대상을 빌드했습니다.
-       "CallTarget" 작업을 실행했습니다.
-       "CallTarget" 작업
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_GetCopyToOutputDirectoryItemsFromThisProject" 대상("GetCopyToOutputDirectoryItems" 대상이 종속됨):
-       "AssignTargetPath" 작업
-       "AssignTargetPath" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "_GetCopyToOutputDirectoryItemsFromThisProject" 대상을 빌드했습니다.
-       "CallTarget" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "GetCopyToOutputDirectoryItems" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CopySourceItemsToOutputDirectory" 대상("CopyFilesToOutputDirectory" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_CopySourceItemsToOutputDirectory" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CheckForCompileOutputs" 대상("CopyFilesToOutputDirectory" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_CheckForCompileOutputs" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "CopyFilesToOutputDirectory" 대상("PrepareForRun" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "CopyFilesToOutputDirectory" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "PrepareForRun" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PrepareForRun" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" 파일에 있는 "PostBuildEvent" 대상("_BuildLinkAction" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "PostBuildEvent" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "_BuildLinkAction" 대상("BuildLink" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "_BuildLinkAction" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "BuildLink" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "BuildLink" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "AfterBuild" 대상("Build" 대상이 종속됨):
-     1>"CodeGen.vcxproj" 프로젝트에 "AfterBuild" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "_CleanGetCurrentAndPriorFileWrites" 대상("IncrementalClean" 대상이 종속됨):
-       "ReadLinesFromFile" 작업
-       "ReadLinesFromFile" 작업을 실행했습니다.
-       "ConvertToAbsolutePath" 작업
-       "ConvertToAbsolutePath" 작업을 실행했습니다.
-       "FindUnderPath" 작업
-       "FindUnderPath" 작업을 실행했습니다.
-       "FindUnderPath" 작업
-       "FindUnderPath" 작업을 실행했습니다.
-       "FindUnderPath" 작업
-       "FindUnderPath" 작업을 실행했습니다.
-       "RemoveDuplicates" 작업
-       "RemoveDuplicates" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "_CleanGetCurrentAndPriorFileWrites" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" 파일에 있는 "IncrementalClean" 대상("Build" 대상이 종속됨):
-       "FindUnderPath" 작업
-       "FindUnderPath" 작업을 실행했습니다.
-       "FindUnderPath" 작업
-       "FindUnderPath" 작업을 실행했습니다.
-       "Delete" 작업
-       "Delete" 작업을 실행했습니다.
-       "RemoveDuplicates" 작업
-       "RemoveDuplicates" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "IncrementalClean" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "TlogCleanup" 대상("Build" 대상이 종속됨):
-       "CleanupStaleTlogItems" 작업
-       "CleanupStaleTlogItems" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "TlogCleanup" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" 파일에 있는 "FinalizeBuildStatus" 대상("Build" 대상이 종속됨):
-       "Delete" 작업
-       "Delete" 작업을 실행했습니다.
-       "Touch" 작업
-       "Touch" 작업을 실행했습니다.
-     1>"CodeGen.vcxproj" 프로젝트에 "FinalizeBuildStatus" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트의 "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" 파일에 있는 "Build" 대상(진입점):
-     1>"CodeGen.vcxproj" 프로젝트에 "Build" 대상을 빌드했습니다.
-     1>"C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+       Done executing task "Message".
+     1>Done building target "Link" in project "CodeGen.vcxproj".
+     1>Target "AfterLink" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_Link" depends on it):
+     1>Done building target "AfterLink" in project "CodeGen.vcxproj".
+     1>Target "_Link" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Link" in project "CodeGen.vcxproj".
+     1>Target "_ALink" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_ALink" in project "CodeGen.vcxproj".
+     1>Target "_Manifest" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Manifest" in project "CodeGen.vcxproj".
+     1>Target "RegisterOutput" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "RegisterOutput" in project "CodeGen.vcxproj".
+     1>Target "ResolvedXDCMake" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_XdcMake" depends on it):
+     1>Done building target "ResolvedXDCMake" in project "CodeGen.vcxproj".
+     1>Target "ComputeCLCompileGeneratedXDCFiles" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_XdcMake" depends on it):
+     1>Done building target "ComputeCLCompileGeneratedXDCFiles" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForXdcMake" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_XdcMake" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForXdcMake" in project "CodeGen.vcxproj".
+     1>Target "_XdcMake" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_XdcMake" in project "CodeGen.vcxproj".
+     1>Target "ComputeCLCompileGeneratedSbrFiles" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BscMake" depends on it):
+     1>Done building target "ComputeCLCompileGeneratedSbrFiles" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForBscMake" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BscMake" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForBscMake" in project "CodeGen.vcxproj".
+     1>Target "_BscMake" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_BscMake" in project "CodeGen.vcxproj".
+     1>Target "BuiltProjectOutputGroup" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CreateRecipeFile" depends on it):
+     1>Done building target "BuiltProjectOutputGroup" in project "CodeGen.vcxproj".
+     1>Target "SatelliteDllsProjectOutputGroup" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CreateRecipeFile" depends on it):
+     1>Done building target "SatelliteDllsProjectOutputGroup" in project "CodeGen.vcxproj".
+     1>Target "MakeDirsForFxc" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "ContentFilesProjectOutputGroup" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForFxc" in project "CodeGen.vcxproj".
+     1>Target "ContentFilesProjectOutputGroup" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CreateRecipeFile" depends on it):
+     1>Done building target "ContentFilesProjectOutputGroup" in project "CodeGen.vcxproj".
+     1>Target "CreateRecipeFile" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+       Task "GenerateDesktopDeployRecipe"
+       Done executing task "GenerateDesktopDeployRecipe".
+     1>Done building target "CreateRecipeFile" in project "CodeGen.vcxproj".
+     1>Target "_GenerateSatelliteAssemblyInputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CreateSatelliteAssemblies" depends on it):
+     1>Done building target "_GenerateSatelliteAssemblyInputs" in project "CodeGen.vcxproj".
+     1>Target "CreateSatelliteAssemblies" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "CreateSatelliteAssemblies" in project "CodeGen.vcxproj".
+     1>Target "_Appverifier" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Appverifier" in project "CodeGen.vcxproj".
+     1>Target "_Deploy" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Deploy" in project "CodeGen.vcxproj".
+     1>Target "_PopulateCommonStateForGetCopyToOutputDirectoryItems" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "GetCopyToOutputDirectoryItems" depends on it):
+     1>Done building target "_PopulateCommonStateForGetCopyToOutputDirectoryItems" in project "CodeGen.vcxproj".
+     1>Target "GetCopyToOutputDirectoryXamlAppDefs" in file "C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "GetCopyToOutputDirectoryItems" depends on it):
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "GetCopyToOutputDirectoryXamlAppDefs" in project "CodeGen.vcxproj".
+     1>Target "GetCopyToOutputDirectoryItems" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_CopySourceItemsToOutputDirectory" depends on it):
+       Task "CallTarget"
+     1>Target "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "GetCopyToOutputDirectoryItems" depends on it):
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "_GetCopyToOutputDirectoryItemsFromTransitiveProjectReferences" in project "CodeGen.vcxproj".
+       Done executing task "CallTarget".
+       Task "CallTarget"
+     1>Target "_GetCopyToOutputDirectoryItemsFromThisProject" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "GetCopyToOutputDirectoryItems" depends on it):
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "_GetCopyToOutputDirectoryItemsFromThisProject" in project "CodeGen.vcxproj".
+       Done executing task "CallTarget".
+     1>Done building target "GetCopyToOutputDirectoryItems" in project "CodeGen.vcxproj".
+     1>Target "_CopySourceItemsToOutputDirectory" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CopyFilesToOutputDirectory" depends on it):
+     1>Done building target "_CopySourceItemsToOutputDirectory" in project "CodeGen.vcxproj".
+     1>Target "_CheckForCompileOutputs" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "CopyFilesToOutputDirectory" depends on it):
+     1>Done building target "_CheckForCompileOutputs" in project "CodeGen.vcxproj".
+     1>Target "CopyFilesToOutputDirectory" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "PrepareForRun" depends on it):
+     1>Done building target "CopyFilesToOutputDirectory" in project "CodeGen.vcxproj".
+     1>Target "PrepareForRun" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "PrepareForRun" in project "CodeGen.vcxproj".
+     1>Target "PostBuildEvent" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "PostBuildEvent" in project "CodeGen.vcxproj".
+     1>Target "_BuildLinkAction" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "BuildLink" depends on it):
+     1>Done building target "_BuildLinkAction" in project "CodeGen.vcxproj".
+     1>Target "BuildLink" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "BuildLink" in project "CodeGen.vcxproj".
+     1>Target "AfterBuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+     1>Done building target "AfterBuild" in project "CodeGen.vcxproj".
+     1>Target "_CleanGetCurrentAndPriorFileWrites" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "IncrementalClean" depends on it):
+       Task "ReadLinesFromFile"
+       Done executing task "ReadLinesFromFile".
+       Task "ConvertToAbsolutePath"
+       Done executing task "ConvertToAbsolutePath".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "RemoveDuplicates"
+       Done executing task "RemoveDuplicates".
+     1>Done building target "_CleanGetCurrentAndPriorFileWrites" in project "CodeGen.vcxproj".
+     1>Target "IncrementalClean" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "FindUnderPath"
+       Done executing task "FindUnderPath".
+       Task "Delete"
+       Done executing task "Delete".
+       Task "RemoveDuplicates"
+       Done executing task "RemoveDuplicates".
+     1>Done building target "IncrementalClean" in project "CodeGen.vcxproj".
+     1>Target "TlogCleanup" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+       Task "CleanupStaleTlogItems"
+       Done executing task "CleanupStaleTlogItems".
+     1>Done building target "TlogCleanup" in project "CodeGen.vcxproj".
+     1>Target "FinalizeBuildStatus" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Build" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+       Task "Touch"
+       Done executing task "Touch".
+     1>Done building target "FinalizeBuildStatus" in project "CodeGen.vcxproj".
+     1>Target "Build" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "Build" in project "CodeGen.vcxproj".
+     1>Target "AfterRebuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "AfterRebuild" in project "CodeGen.vcxproj".
+     1>Target "Rebuild" in file "C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (entry point):
+     1>Done building target "Rebuild" in project "CodeGen.vcxproj".
+     1>Done Building Project "C:\Users\141245124\Desktop\lesson\Dx11\Dx11\CodeGen\CodeGen.vcxproj" (Rebuild target(s)).
 
-빌드했습니다.
-    경고 0개
-    오류 0개
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
 
-경과 시간: 00:00:00.16
+Time Elapsed 00:00:01.06
